@@ -1,224 +1,233 @@
 {
     "Context Big (rgthree)": {
-        "title": "大型上下文",
+        "title": "上下文(大型)",
         "inputs": {
-            "base_ctx": "基础上下文",
+            "base_ctx": "上下文",
             "model": "模型",
-            "clip": "CLIP模型",
-            "vae": "VAE模型",
-            "positive": "正向条件",
-            "negative": "负向条件",
-            "latent": "潜在空间数据",
+            "clip": "CLIP",
+            "vae": "VAE",
+            "positive": "正面条件",
+            "negative": "负面条件",
+            "latent": "Latent",
             "images": "图像",
-            "seed": "随机种子",
+            "seed": "随机种",
             "steps": "步数",
-            "step_refiner": "精炼器步数",
-            "cfg": "CFG值",
-            "ckpt_name": "模型检查点名称",
+            "step_refiner": "Refiner步数",
+            "cfg": "CFG",
+            "ckpt_name": "模型名称",
             "sampler": "采样器",
             "scheduler": "调度器",
-            "clip_width": "CLIP模型宽度",
-            "clip_height": "CLIP模型高度",
-            "text_pos_g": "正向文本-G",
-            "text_pos_l": "正向文本-L",
-            "text_neg_g": "负向文本-G",
-            "text_neg_l": "负向文本-L",
+            "clip_width": "CLIP宽度",
+            "clip_height": "CLIP高度",
+            "text_pos_g": "正面文本G",
+            "text_pos_l": "正面文本L",
+            "text_neg_g": "负面文本G",
+            "text_neg_l": "负面文本L",
             "mask": "遮罩",
-            "control_net": "控制网络"
+            "control_net": "ControlNet"
         },
         "outputs": {
             "CONTEXT": "上下文",
             "MODEL": "模型",
-            "CLIP": "CLIP模型",
-            "VAE": "VAE模型",
-            "POSITIVE": "正向条件",
-            "NEGATIVE": "负向条件",
-            "LATENT": "潜在空间数据",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "正面条件",
+            "NEGATIVE": "负面条件",
+            "LATENT": "Latent",
             "IMAGE": "图像",
-            "SEED": "随机种子",
+            "SEED": "随机种",
             "STEPS": "步数",
-            "STEP_REFINER": "精炼器步数",
-            "CFG": "CFG值",
-            "CKPT_NAME": "模型检查点名称",
+            "STEP_REFINER": "Refiner步数",
+            "CFG": "CFG",
+            "CKPT_NAME": "模型名称",
             "SAMPLER": "采样器",
             "SCHEDULER": "调度器",
-            "CLIP_WIDTH": "CLIP模型宽度",
-            "CLIP_HEIGHT": "CLIP模型高度",
-            "TEXT_POS_G": "正向文本-G",
-            "TEXT_POS_L": "正向文本-L",
-            "TEXT_NEG_G": "负向文本-G",
-            "TEXT_NEG_L": "负向文本-L",
+            "CLIP_WIDTH": "CLIP宽度",
+            "CLIP_HEIGHT": "CLIP高度",
+            "TEXT_POS_G": "正面文本G",
+            "TEXT_POS_L": "正面文本L",
+            "TEXT_NEG_G": "负面文本G",
+            "TEXT_NEG_L": "负面文本L",
             "MASK": "遮罩",
-            "CONTROL_NET": "控制网络"
+            "CONTROL_NET": "ControlNet"
         }
     },
     "Context (rgthree)": {
         "title": "上下文",
         "inputs": {
-            "base_ctx": "基础上下文",
+            "base_ctx": "上下文",
             "model": "模型",
-            "clip": "CLIP模型",
-            "vae": "VAE模型",
-            "positive": "正向条件",
-            "negative": "负向条件",
-            "latent": "潜在空间数据",
+            "clip": "CLIP",
+            "vae": "VAE",
+            "positive": "正面条件",
+            "negative": "负面条件",
+            "latent": "Latent",
             "images": "图像",
-            "seed": "随机种子"
+            "seed": "随机种"
         },
         "outputs": {
             "CONTEXT": "上下文",
             "MODEL": "模型",
-            "CLIP": "CLIP模型",
-            "VAE": "VAE模型",
-            "POSITIVE": "正向条件",
-            "NEGATIVE": "负向条件",
-            "LATENT": "潜在空间数据",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "正面条件",
+            "NEGATIVE": "负面条件",
+            "LATENT": "Latent",
             "IMAGE": "图像",
-            "SEED": "随机种子"
+            "SEED": "随机种"
         }
     },
     "Context Switch (rgthree)": {
         "title": "上下文切换",
         "inputs": {
-            "ctx_01": "上下文1",
-            "ctx_02": "上下文2",
-            "ctx_03": "上下文3",
-            "ctx_04": "上下文4",
-            "ctx_05": "上下文5"
+            "ctx_01": "上下文_01",
+            "ctx_02": "上下文_02",
+            "ctx_03": "上下文_03",
+            "ctx_04": "上下文_04",
+            "ctx_05": "上下文_05"
         },
         "outputs": {
             "CONTEXT": "上下文",
             "MODEL": "模型",
-            "CLIP": "CLIP模型",
-            "VAE": "VAE模型",
-            "POSITIVE": "正向条件",
-            "NEGATIVE": "负向条件",
-            "LATENT": "潜在空间数据",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "正面条件",
+            "NEGATIVE": "负面条件",
+            "LATENT": "Latent",
             "IMAGE": "图像",
-            "SEED": "随机种子"
+            "SEED": "随机种"
         }
     },
     "Context Switch Big (rgthree)": {
-        "title": "大型上下文切换",
+        "title": "上下文切换(大型)",
         "inputs": {
-            "ctx_01": "上下文1",
-            "ctx_02": "上下文2",
-            "ctx_03": "上下文3",
-            "ctx_04": "上下文4",
-            "ctx_05": "上下文5"
+            "ctx_01": "上下文_01",
+            "ctx_02": "上下文_02",
+            "ctx_03": "上下文_03",
+            "ctx_04": "上下文_04",
+            "ctx_05": "上下文_05"
         },
         "outputs": {
             "CONTEXT": "上下文",
             "MODEL": "模型",
-            "CLIP": "CLIP模型",
-            "VAE": "VAE模型",
-            "POSITIVE": "正向条件",
-            "NEGATIVE": "负向条件",
-            "LATENT": "潜在空间数据",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "正面条件",
+            "NEGATIVE": "负面条件",
+            "LATENT": "Latent",
             "IMAGE": "图像",
             "STEPS": "步数",
-            "SEED": "随机种子",
-            "STEP_REFINER": "精炼器步数",
-            "CFG": "CFG值",
-            "CKPT_NAME": "模型检查点名称",
+            "SEED": "随机种",
+            "STEP_REFINER": "Refiner步数",
+            "CFG": "CFG",
+            "CKPT_NAME": "模型名称",
             "SAMPLER": "采样器",
             "SCHEDULER": "调度器",
-            "CLIP_WIDTH": "CLIP模型宽度",
-            "CLIP_HEIGHT": "CLIP模型高度",
-            "TEXT_POS_G": "正向文本-G",
-            "TEXT_POS_L": "正向文本-L",
-            "TEXT_NEG_G": "负向文本-G",
-            "TEXT_NEG_L": "负向文本-L",
+            "CLIP_WIDTH": "CLIP宽度",
+            "CLIP_HEIGHT": "CLIP高度",
+            "TEXT_POS_G": "正面文本G",
+            "TEXT_POS_L": "正面文本L",
+            "TEXT_NEG_G": "负面文本G",
+            "TEXT_NEG_L": "负面文本L",
             "MASK": "遮罩",
-            "CONTROL_NET": "控制网络"
+            "CONTROL_NET": "ControlNet"
         }
     },
+
+
+
     "Display Int (rgthree)": {
         "title": "显示整数",
-        "inputs": {
+        "widgets": {
             "input": "输入"
         }
     },
     "Display Any (rgthree)": {
-        "title": "显示任意类型",
+        "title": "显示任意",
         "inputs": {
             "source": "输入"
         }
     },
+    
+    
+
     "Lora Loader Stack (rgthree)": {
-        "title": "LoRA堆栈加载器",
+        "title": "LoRA堆加载器",
         "inputs": {
             "model": "模型",
-            "clip": "CLIP模型"
+            "clip": "CLIP"
         },
         "widgets": {
-            "lora_01": "LoRA1",
-            "lora_02": "LoRA2",
-            "lora_03": "LoRA3",
-            "lora_04": "LoRA4",
-            "strength_01": "强度",
-            "strength_02": "强度",
-            "strength_03": "强度",
-            "strength_04": "强度"
+            "lora_01": "LoRA_01",
+            "lora_02": "LoRA_02",
+            "lora_03": "LoRA_03",
+            "lora_04": "LoRA_04",
+            "strength_01": "强度_01",
+            "strength_02": "强度_02",
+            "strength_03": "强度_03",
+            "strength_04": "强度_04"
         },
         "outputs": {
             "MODEL": "模型",
-            "CLIP": "CLIP模型"
+            "CLIP": "CLIP"
         }
     },
     "Seed (rgthree)": {
         "title": "随机种子",
         "widgets": {
-            "seed": "随机种子",
-            "🎲 Randomize Each Time": "🎲 每次随机化",
-            "🎲 New Fixed Random": "🎲 新固定随机",
-            "♻️ (Use Last Queued Seed)": "♻️ 使用上次队列种子"
+            "🎲 Randomize Each Time": "🎲每次随机",
+            "🎲 New Fixed Random": "🎲手动随机",
+            "♻️ (Use Last Queued Seed)": "♻️使用最近一次随机种",
+            "seed": "随机种"
         },
         "outputs": {
-            "SEED": "随机种子"
+            "SEED": "随机种"
         }
     },
     "Image Inset Crop (rgthree)": {
-        "title": "图像内裁剪",
+        "title": "图像嵌入裁剪",
         "inputs": {
             "image": "图像"
         },
         "widgets": {
-            "measurement": "测量模式",
-            "bottom": "底部",
-            "top": "顶部",
-            "left": "左侧",
-            "right": "右侧"
+            "measurement": "模式",
+            "bottom": "下",
+            "top": "上",
+            "left": "左",
+            "right": "右"
         },
         "outputs": {
             "IMAGE": "图像"
         }
     },
     "Power Prompt (rgthree)": {
-        "title": "强力提示词",
+        "title": "提示词",
         "inputs": {
-            "opt_model": "可选模型",
-            "opt_clip": "可选CLIP模型"
+            "opt_model": "模型",
+            "opt_clip": "CLIP"
         },
         "widgets": {
-            "insert_lora": "插入LoRA"
+            "prompt": "提示词",
+            "insert_lora": "插入LoRA",
+            "insert_embedding": "插入embedding",
+            "insert_saved": "插入自定义"
         },
         "outputs": {
             "CONDITIONING": "条件",
             "MODEL": "模型",
-            "CLIP": "CLIP模型",
+            "CLIP": "CLIP",
             "TEXT": "文本"
         }
     },
     "Power Prompt - Simple (rgthree)": {
-        "title": "简易强力提示词",
+        "title": "提示词(简易)",
         "inputs": {
-            "opt_clip": "可选CLIP模型"
+            "opt_clip": "CLIP"
         },
         "widgets": {
             "prompt": "提示词",
-            "insert_embedding": "插入嵌入向量",
-            "insert_saved": "插入保存内容"
+            "insert_embedding": "插入embedding",
+            "insert_saved": "插入自定义"
         },
         "outputs": {
             "CONDITIONING": "条件",
@@ -226,67 +235,47 @@
         }
     },
     "KSampler Config (rgthree)": {
-        "title": "K采样器配置",
+        "title": "K采样器设置",
         "widgets": {
             "steps_total": "总步数",
-            "refiner_step": "精炼器步数",
-            "cfg": "CFG值",
-            "sampler_name": "采样器",
+            "refiner_step": "Refiner步数",
+            "cfg": "CFG",
+            "sampler": "采样器",
             "scheduler": "调度器"
         },
         "outputs": {
             "STEPS": "步数",
-            "REFINER_STEP": "精炼器步数",
-            "CFG": "CFG值",
-            "SAMPLER": "采样器",
-            "SCHEDULER": "调度器"
+            "REFINER_STEP": "Refiner步数",
+            "CFG": "CFG"
         }
     },
     "SDXL Empty Latent Image (rgthree)": {
-        "title": "SDXL空潜在图像",
+        "title": "SDXL空Latent图像",
         "widgets": {
             "dimensions": "尺寸",
-            "clip_scale": "CLIP缩放比例",
+            "clip_scale": "CLIP缩放",
             "batch_size": "批次大小"
         },
         "outputs": {
-            "LATENT": "潜在空间数据",
-            "CLIP_WIDTH": "CLIP模型宽度",
-            "CLIP_HEIGHT": "CLIP模型高度"
+            "LATENT": "Latent",
+            "CLIP_WIDTH": "CLIP宽度",
+            "CLIP_HEIGHT": "CLIP高度"
         }
     },
     "SDXL Power Prompt - Positive (rgthree)": {
-        "title": "SDXL正向强力提示词",
+        "title": "SDXL提示词(正面)",
         "inputs": {
-            "opt_model": "可选模型",
-            "opt_clip": "可选CLIP模型",
-            "opt_clip_width": "可选CLIP模型宽度",
-            "opt_clip_height": "可选CLIP模型高度"
+            "opt_model": "模型",
+            "opt_clip": "CLIP"
         },
         "widgets": {
-            "insert_lora": "插入LoRA"
-        },
-        "outputs": {
-            "CONDITIONING": "条件",
-            "MODEL": "模型",
-            "CLIP": "CLIP模型",
-            "TEXT_G": "全局文本",
-            "TEXT_L": "局部文本"
-        }
-    },
-    "SDXL Power Prompt - Simple / Negative (rgthree)": {
-        "title": "SDXL简易/负向强力提示词",
-        "inputs": {
-            "opt_clip": "可选CLIP模型"
-        },
-        "widgets": {
-            "prompt_g": "全局提示词",
-            "prompt_l": "局部提示词",
-            "opt_clip_width": "可选CLIP模型宽度",
-            "opt_clip_height": "可选CLIP模型高度",
+            "prompt_g": "提示词G",
+            "prompt_l": "提示词L",
+            "opt_clip_width": "CLIP宽度",
+            "opt_clip_height": "CLIP高度",
             "insert_lora": "插入LoRA",
-            "insert_embedding": "插入嵌入向量",
-            "insert_saved": "插入保存内容",
+            "insert_embedding": "插入embedding",
+            "insert_saved": "插入自定义",
             "target_width": "目标宽度",
             "target_height": "目标高度",
             "crop_width": "裁剪宽度",
@@ -294,87 +283,113 @@
         },
         "outputs": {
             "CONDITIONING": "条件",
-            "TEXT_G": "全局文本",
-            "TEXT_L": "局部文本"
+            "MODEL": "模型",
+            "CLIP": "CLIP",
+            "TEXT_G": "文本G",
+            "TEXT_L": "文本L"
         }
     },
-    "Any Switch (rgthree)": {
-        "title": "任意切换器",
+    "SDXL Power Prompt - Simple / Negative (rgthree)": {
+        "title": "SDXL提示词(简易/负面)",
         "inputs": {
-            "any_01": "输入1",
-            "any_02": "输入2",
-            "any_03": "输入3",
-            "any_04": "输入4",
-            "any_05": "输入5"
+            "opt_clip": "CLIP"
+        },
+        "widgets": {
+            "prompt_g": "提示词G",
+            "prompt_l": "提示词L",
+            "opt_clip_width": "CLIP宽度",
+            "opt_clip_height": "CLIP高度",
+            "insert_lora": "插入LoRA",
+            "insert_embedding": "插入embedding",
+            "insert_saved": "插入自定义",
+            "target_width": "目标宽度",
+            "target_height": "目标高度",
+            "crop_width": "裁剪宽度",
+            "crop_height": "裁剪高度"
+        },
+        "outputs": {
+            "CONDITIONING": "条件",
+            "TEXT_G": "文本G",
+            "TEXT_L": "文本L"
+        }
+    },
+
+
+
+    "Any Switch (rgthree)": {
+        "title": "任意切换",
+        "inputs": {
+            "any_01": "输入_01",
+            "any_02": "输入_02",
+            "any_03": "输入_03",
+            "any_04": "输入_04",
+            "any_05": "输入_05"
         },
         "outputs": {
             "*": "输出"
         }
     },
     "Context Merge (rgthree)": {
-        "title": "上下文合并",
+        "title": "上下文融合",
         "inputs": {
-            "ctx_01": "上下文1",
-            "ctx_02": "上下文2",
-            "ctx_03": "上下文3",
-            "ctx_04": "上下文4",
-            "ctx_05": "上下文5"
+            "ctx_01": "上下文_01",
+            "ctx_02": "上下文_02",
+            "ctx_03": "上下文_03",
+            "ctx_04": "上下文_04",
+            "ctx_05": "上下文_05"
         },
         "outputs": {
             "CONTEXT": "上下文",
             "MODEL": "模型",
-            "CLIP": "CLIP模型",
-            "VAE": "VAE模型",
-            "POSITIVE": "正向条件",
-            "NEGATIVE": "负向条件",
-            "LATENT": "潜在空间数据",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "正面条件",
+            "NEGATIVE": "负面条件",
+            "LATENT": "Latent",
             "IMAGE": "图像",
-            "SEED": "随机种子"
+            "STEPS": "步数"
         }
     },
     "Context Merge Big (rgthree)": {
-        "title": "大型上下文合并",
+        "title": "上下文融合(大型)",
         "inputs": {
-            "ctx_01": "上下文1",
-            "ctx_02": "上下文2",
-            "ctx_03": "上下文3",
-            "ctx_04": "上下文4",
-            "ctx_05": "上下文5"
+            "ctx_01": "上下文_01",
+            "ctx_02": "上下文_02",
+            "ctx_03": "上下文_03",
+            "ctx_04": "上下文_04",
+            "ctx_05": "上下文_05"
         },
         "outputs": {
             "CONTEXT": "上下文",
             "MODEL": "模型",
-            "CLIP": "CLIP模型",
-            "VAE": "VAE模型",
-            "POSITIVE": "正向条件",
-            "NEGATIVE": "负向条件",
-            "LATENT": "潜在空间数据",
+            "CLIP": "CLIP",
+            "VAE": "VAE",
+            "POSITIVE": "正面条件",
+            "NEGATIVE": "负面条件",
+            "LATENT": "Latent",
             "IMAGE": "图像",
             "STEPS": "步数",
-            "SEED": "随机种子",
-            "STEP_REFINER": "精炼器步数",
-            "CFG": "CFG值",
-            "CKPT_NAME": "模型检查点名称",
+            "SEED": "随机种",
+            "STEP_REFINER": "Refiner步数",
+            "CFG": "CFG",
+            "CKPT_NAME": "模型名称",
             "SAMPLER": "采样器",
             "SCHEDULER": "调度器",
-            "CLIP_WIDTH": "CLIP模型宽度",
-            "CLIP_HEIGHT": "CLIP模型高度",
-            "TEXT_POS_G": "正向全局文本-G",
-            "TEXT_POS_L": "正向局部文本-L",
-            "TEXT_NEG_G": "负向全局文本-G",
-            "TEXT_NEG_L": "负向局部文本-L",
+            "CLIP_WIDTH": "CLIP宽度",
+            "CLIP_HEIGHT": "CLIP高度",
+            "TEXT_POS_G": "正面文本G",
+            "TEXT_POS_L": "正面文本L",
+            "TEXT_NEG_G": "负面文本G",
+            "TEXT_NEG_L": "负面文本L",
             "MASK": "遮罩",
-            "CONTROL_NET": "控制网络"
+            "CONTROL_NET": "ControlNet"
         }
     },
     "Reroute (rgthree)": {
-        "title": "重路由节点"
+        "title": "转接点"
     },
     "Node Collector (rgthree)": {
-        "title": "节点收集器",
-        "outputs": {
-            "Output": "输出"
-        }
+        "title": "节点集合"
     },
     "Fast Muter (rgthree)": {
         "title": "禁用节点",
@@ -389,93 +404,110 @@
         }
     },
     "Mute / Bypass Repeater (rgthree)": {
-        "title": "禁用/绕过中继节点",
+        "title": "禁用/忽略节点 (中继)",
         "outputs": {
             "OPT_CONNECTION": "可选连接"
         }
     },
     "Mute / Bypass Relay (rgthree)": {
-        "title": "禁用/绕过转发节点",
+        "title": "禁用/忽略节点 (发送)",
         "outputs": {
-            "REPEATER": "中继器"
+            "OPT_CONNECTION": "可选连接"
         }
     },
     "Fast Group Bypasser (rgthree)": {
-        "title": "忽略节点组",
+        "title": "忽略框",
         "outputs": {
             "OPT_CONNECTION": "可选连接"
         }
     },
     "Fast Groups Bypasser (rgthree)": {
-        "title": "忽略多个节点组",
+        "title": "忽略多框",
         "outputs": {
             "OPT_CONNECTION": "可选连接"
         }
     },
     "Fast Actions Button (rgthree)": {
-        "title": "快速操作按钮",
+        "title": "操作键",
         "widgets": {
-            "🎬 Action!": "🎬 启动!"
+            "🎬 Action!": "🎬启动!"
         }
     },
     "Bookmark (rgthree)": {
-        "title": "🔖 书签",
+        "title": "🔖书签",
         "widgets": {
             "shortcut_key": "快捷键",
-            "zoom": "缩放比例"
+            "zoom": "缩放"
         }
     },
     "Random Unmuter (rgthree)": {
-        "title": "随机启用节点",
-        "outputs": {}
+        "title": "随机启用"
     },
     "Fast Groups Muter (rgthree)": {
-        "title": "禁用节点组",
+        "title": "禁用框",
         "outputs": {
             "OPT_CONNECTION": "可选连接"
-        }
-    },
-    "Image Comparer (rgthree)": {
-        "title": "图像比较器",
-        "inputs": {
-            "image_a": "图像A",
-            "image_b": "图像B"
-        },
-        "outputs": {}
-    },
-    "Power Lora Loader (rgthree)": {
-        "title": "强力LoRA加载器",
-        "inputs": {
-            "model": "模型",
-            "clip": "CLIP模型"
-        },
-        "outputs": {
-            "MODEL": "模型",
-            "CLIP": "CLIP模型"
         }
     },
     "Label (rgthree)": {
         "title": "标签"
     },
+    "Image Comparer (rgthree)": {
+        "title": "图像对比",
+        "inputs": {
+            "image_a": "图像_A",
+            "image_b": "图像_B"
+        }
+    },
     "Node Combiner (rgthree)": {
-        "title": "节点合并器",
+        "title": "节点组合器",
+        "inputs": {
+            "image_a": "图像_A",
+            "image_b": "图像_B"
+        },
         "outputs": {
-            "Output": "输出"
+            "Output": "输出",
+            "clip": "CLIP"
         }
     },
     "Power Primitive (rgthree)": {
-        "title": "强力基础节点",
+        "title": "数量多功能工具",
+        "inputs": {},
         "widgets": {
+            "value": "值",
             "type": "类型"
         },
         "outputs": {
+            "INT": "整数",
+            "FLOAT": "浮点",
+            "BOOLEAN": "布尔",
+            "STRING": "字符串"
+        }
+    },
+    "Power Puter (rgthree)": {
+        "title": "功率计算器",
+        "inputs": {
+            "outputs": "输出",
+            "STRING": "字符串"
+        },
+        "widgets": {
+            "outputs": "输出",
+            "STRING": "字符串"
+        },
+        "outputs": {
+            "INT": "整数",
+            "FLOAT": "浮点",
+            "BOOLEAN": "布尔",
             "STRING": "字符串"
         }
     },
     "Image or Latent Size (rgthree)": {
-        "title": "图像或潜在空间大小",
+        "title": "图像或Latent尺寸",
         "inputs": {
             "input": "输入"
+        },
+        "widgets": {
+            "STRING": "字符串"
         },
         "outputs": {
             "WIDTH": "宽度",
@@ -488,24 +520,30 @@
             "image": "图像"
         },
         "widgets": {
-            "measurement": "测量",
+            "measurement": "模式",
             "width": "宽度",
             "height": "高度",
-            "fit": "适配",
+            "fit": "适合",
             "method": "方法"
         },
         "outputs": {
+            "IMAGE": "图像",
             "WIDTH": "宽度",
             "HEIGHT": "高度"
         }
     },
-    "Power Puter (rgthree)": {
-        "title": "强力生成器",
+    "Power Lora Loader (rgthree)": {
+        "title": "权重Lora加载器",
+        "inputs": {
+            "model": "模型",
+            "clip": "CLIP"
+        },
         "widgets": {
-            "outputs": "输出"
+            "➕ Add Lora": "➕添加Lora"
         },
         "outputs": {
-            "STRING": "字符串"
+            "MODEL": "模型",
+            "clip": "CLIP"
         }
     }
 }

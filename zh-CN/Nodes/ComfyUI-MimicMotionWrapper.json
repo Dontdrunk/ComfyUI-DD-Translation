@@ -1,0 +1,87 @@
+{
+    "DownloadAndLoadMimicMotionModel": {
+        "title": "（下载）加载模仿动作模型",
+        "inputs": {
+            "model": "模型",
+            "precision": "精度"
+        },
+        "widgets": {
+            "model": "模型",
+            "precision": "精度"
+        },
+        "outputs": {
+            "mimic_pipeline": "MIMIC节点束"
+        }
+    },
+    "DiffusersScheduler": {
+        "title": "扩散调度器",
+        "inputs": {
+            "scheduler": "调度器"
+        },
+        "widgets": {
+            "scheduler": "调度器",
+            "sigma_min": "最小sigma值",
+            "sigma_max": "最大sigma值",
+            "align_your_steps": "对齐步数"
+        },
+        "outputs": {
+            "scheduler": "扩散调度器"
+        }
+    },
+    "MimicMotionSampler": {
+        "title": "模仿动作采样器",
+        "inputs": {
+            "mimic_pipeline": "MIMIC节点束",
+            "ref_image": "参考图像",
+            "pose_images": "姿势图像",
+            "optional_scheduler": "可选调度器"
+        },
+        "widgets": {
+            "steps": "步数",
+            "cfg_min": "最小CFG值",
+            "cfg_max": "最大CFG值",
+            "seed": "种子",
+            "fps": "帧率",
+            "noise_aug_strength": "噪声增强强度",
+            "context_size": "上下文大小",
+            "context_overlap": "上下文重叠",
+            "keep_model_loaded": "保持模型加载",
+            "pose_strength": "姿势强度",
+            "pose_start_percent": "姿势开始百分比",
+            "pose_end_percent": "姿势结束百分比",
+            "image_embed_strength": "图像嵌入强度"
+        },
+        "outputs": {
+            "samples": "Latent"
+        }
+    },
+    "MimicMotionDecode": {
+        "title": "模仿动作解码",
+        "inputs": {
+            "mimic_pipeline": "MIMIC节点束",
+            "samples": "采样"
+        },
+        "widgets": {
+            "decode_chunk_size": "解码块大小"
+        },
+        "outputs": {
+            "images": "图像"
+        }
+    },
+    "MimicMotionGetPoses": {
+        "title": "模仿动作获取姿势",
+        "inputs": {
+            "ref_image": "参考图像",
+            "pose_images": "姿势图像"
+        },
+        "widgets": {
+            "include_body": "包含身体",
+            "include_hand": "包含手部",
+            "include_face": "包含面部"
+        },
+        "outputs": {
+            "poses_with_ref": "带参考的姿势图像",
+            "pose_images": "姿势图像"
+        }
+    }
+}

@@ -53,6 +53,12 @@ https://github.com/user-attachments/assets/1ec662ba-da6c-4712-8be7-61168b08940e
 - msola-ht丶是小张啊丶alinuo666丶猪的飞行梦丶ZXSZS丶tanglangxia丶AIGCZero丶Artistjjw丶henrylaobai
 
 ## 更新日志
+### v1.9.6 (2025-7-29) 
+- 合并贡献者（猪的飞行梦）提交的翻译涉及以下节点：
+- ComfyUI-MimicMotionWrapper节点的完整翻译
+- rgthree-comfy丶BizyAir节点的翻译补全优化
+- 完善部分分类翻译
+
 ### v1.9.5 (2025-7-26) 
 - 合并贡献者（henrylaobai）提交的翻译涉及以下节点：
 - ComfyUI-RBG-ImageStitchPlus节点的完整翻译
