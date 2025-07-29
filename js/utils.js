@@ -44,6 +44,29 @@ export function isAlreadyTranslated(originalName, currentLabel) {
 }
 
 /**
+ * 检查对象是否有原生翻译
+ * @param {Object} obj 要检查的对象
+ * @param {string} property 要检查的属性名
+ * @param {string} [originalValue] 原始值（用于更精确的检查）
+ * @returns {boolean} 是否有原生翻译
+ */
+export function hasNativeTranslation(obj, property, originalValue = null) {
+    if (!obj || !obj[property]) return false;
+    
+    // 如果包含中文字符，认为是原生翻译
+    if (containsChineseCharacters(obj[property])) {
+        return true;
+    }
+    
+    // 如果提供了原始值，检查是否已经被修改
+    if (originalValue && obj[property] !== originalValue) {
+        return true;
+    }
+    
+    return false;
+}
+
+/**
  * 不需要翻译的设置项列表
  */
 export const nativeTranslatedSettings = [

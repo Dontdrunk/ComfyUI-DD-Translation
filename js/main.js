@@ -4,6 +4,7 @@ import { applyMenuTranslation, observeFactory } from "./MenuTranslate.js";
 import {
   containsChineseCharacters,
   isAlreadyTranslated,
+  hasNativeTranslation,
   nativeTranslatedSettings,
   isTranslationEnabled,
   toggleTranslation,
@@ -120,8 +121,7 @@ export class TUtils {
       
       let class_type = nodeType.comfyClass ? nodeType.comfyClass : nodeType.type;
       if (nodesT.hasOwnProperty(class_type)) {
-        const hasNativeTranslation = nodeType.title && containsChineseCharacters(nodeType.title);
-        if (!hasNativeTranslation && nodesT[class_type]["title"]) {
+        if (!hasNativeTranslation(nodeType, 'title') && nodesT[class_type]["title"]) {
           nodeType.title = nodesT[class_type]["title"];
         }
       }
@@ -133,8 +133,7 @@ export class TUtils {
       const nodesT = TUtils.T.Nodes;
       const class_type = nodeDef.name;
       if (nodesT.hasOwnProperty(class_type)) {
-        const hasNativeTranslation = nodeDef.display_name && containsChineseCharacters(nodeDef.display_name);
-        if (!hasNativeTranslation && nodesT[class_type]["title"]) {
+        if (!hasNativeTranslation(nodeDef, 'display_name') && nodesT[class_type]["title"]) {
           nodeDef.display_name = nodesT[class_type]["title"];
         }
       }
@@ -253,11 +252,11 @@ export class TUtils {
         node[key].forEach((item) => {
           if (!item || !item.name) return;
           if (item.name in t[key]) {
-            // 检查是否有原生翻译
-            const hasNativeTranslation = item.label && containsChineseCharacters(item.label) && !item._original_name;
+            // 检查是否有原生翻译（特殊处理：排除有_original_name的项）
+            const hasNative = hasNativeTranslation(item, 'label') && !item._original_name;
             
             // 如果没有原生翻译，才应用我们的翻译
-            if (!hasNativeTranslation) {
+            if (!hasNative) {
               this.safeApplyTranslation(item, t[key][item.name]);
             }
           }
@@ -265,11 +264,10 @@ export class TUtils {
       }
       
       if (t.hasOwnProperty("title")) {
-        const hasNativeTranslation = node.title && containsChineseCharacters(node.title);
         const isCustomizedTitle = node._dd_custom_title || 
           (node.title && node.title !== (node.constructor.comfyClass || node.constructor.type) && node.title !== t["title"]);
         
-        if (!isCustomizedTitle && !hasNativeTranslation) {
+        if (!isCustomizedTitle && !hasNativeTranslation(node, 'title')) {
           // 保存原始标题
           if (!node._original_title) {
             node._original_title = node.constructor.comfyClass || node.constructor.type;

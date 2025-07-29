@@ -38,40 +38,47 @@ def try_get_json(path: Path):
     return {}
 
 
-def get_nodes_translation(locale):
-    path = CUR_PATH.joinpath(locale, "Nodes")
-    if not path.exists():
-        path = CUR_PATH.joinpath("en_US")
-    if not path.exists():
-        return {}
+def get_translation_by_type(locale, translation_type, fallback_file=None):
+    """
+    通用的翻译获取函数，减少代码重复
+    
+    Args:
+        locale: 语言代码
+        translation_type: 翻译类型 ('Nodes', 'Categories', 'Menus')
+        fallback_file: 可选的回退文件名
+    """
     translations = {}
-    for jpath in path.glob("*.json"):
-        translations.update(try_get_json(jpath))
+    
+    # 从目录中读取所有JSON文件
+    type_path = CUR_PATH.joinpath(locale, translation_type)
+    if type_path.exists():
+        for json_file in type_path.glob("*.json"):
+            translations.update(try_get_json(json_file))
+    
+    # 处理回退文件
+    if fallback_file:
+        fallback_path = CUR_PATH.joinpath(locale, fallback_file)
+        if not fallback_path.exists():
+            fallback_path = CUR_PATH.joinpath("en_US", fallback_file)
+        if fallback_path.exists():
+            translations.update(try_get_json(fallback_path))
+    
     return translations
 
 
+def get_nodes_translation(locale):
+    """获取节点翻译"""
+    return get_translation_by_type(locale, "Nodes")
+
+
 def get_category_translation(locale):
-    cats = {}
-    for cat_json in CUR_PATH.joinpath(locale, "Categories").glob("*.json"):
-        cats.update(try_get_json(cat_json))
-    path = CUR_PATH.joinpath(locale, "NodeCategory.json")
-    if not path.exists():
-        path = CUR_PATH.joinpath("en_US", "NodeCategory.json")
-    if path.exists():
-        cats.update(try_get_json(path))
-    return cats
+    """获取分类翻译"""
+    return get_translation_by_type(locale, "Categories", "NodeCategory.json")
 
 
 def get_menu_translation(locale):
-    menus = {}
-    for menu_json in CUR_PATH.joinpath(locale, "Menus").glob("*.json"):
-        menus.update(try_get_json(menu_json))
-    path = CUR_PATH.joinpath(locale, "Menu.json")
-    if not path.exists():
-        path = CUR_PATH.joinpath("en_US", "Menu.json")
-    if path.exists():
-        menus.update(try_get_json(path))
-    return menus
+    """获取菜单翻译"""
+    return get_translation_by_type(locale, "Menus", "Menu.json")
 
 
 def compile_translation(locale):
@@ -203,12 +210,8 @@ def unregister():
 
 register()
 atexit.register(unregister)
+
 NODE_CLASS_MAPPINGS = {}
 WEB_DIRECTORY = "./js"
-
-__all__ = ["NODE_CLASS_MAPPINGS", "WEB_DIRECTORY"]
-__version__ = VERSION
-WEB_DIRECTORY = "./js"
-
 __all__ = ["NODE_CLASS_MAPPINGS", "WEB_DIRECTORY"]
 __version__ = VERSION
