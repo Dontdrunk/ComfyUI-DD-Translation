@@ -79,7 +79,6 @@ https://github.com/user-attachments/assets/1ec662ba-da6c-4712-8be7-61168b08940e
 - 补全ComfyUI_Custom_Nodes_AlekPe插件的面板翻译
 - 补全comfy_mtb插件的面板翻译
 
-
 ### v1.9.1 (2025-7-07) 
 - 合并贡献者（AIGCZero）提交的ComfyUI_Custom_Nodes_AlekPet插件的部分翻译补充
 - 一个ComfyUI_LayerStyle插件输出接口翻译错误的临时性解决方案。点击链接查看https://github.com/Dontdrunk/ComfyUI-DD-Translation/issues/76
