@@ -31,6 +31,8 @@ https://github.com/user-attachments/assets/1ec662ba-da6c-4712-8be7-61168b08940e
 - 【最新版本整合包（至少半年内）或官方桌面版】
 - 【整合包用户推荐使用谷歌或Edge浏览器确保最佳前端兼容性】
 
+  如果有翻译问题请在这里反馈：[点击反馈翻译问题](https://github.com/Dontdrunk/ComfyUI-DD-Translation/issues/94) 
+
 ## 安装方法
 方法1:
 1. 下载本项目
