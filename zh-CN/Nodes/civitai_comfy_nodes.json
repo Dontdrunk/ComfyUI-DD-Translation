@@ -1,0 +1,40 @@
+{
+    "CivitAI_Checkpoint_Loader": {
+        "title": "加载CivitAI大模型",
+        "inputs": {},
+        "widgets": {
+            "ckpt_air": "模型_AIR",
+            "ckpt_name": "模型名称",
+            "api_key": "API密钥",
+            "download_chunks": "下载块数",
+            "download_path": "下载路径"
+        },
+        "outputs": {
+            "model": "模型",
+            "clip": "CLIP",
+            "vae": "VAE"
+        },
+        "description": "AI Resource Identifier (AIR) 是 Civitai 用来普遍引用 AI 资源的方法。它遵循统一资源命名标准。"
+    },
+    "CivitAI_Lora_Loader": {
+        "title": "加载CivitAI Lora",
+        "inputs": {
+            "model": "模型",
+            "clip": "CLIP"
+        },
+        "widgets": {
+            "lora_air": "Lora_AIR",
+            "lora_name": "Lora名称",
+            "strength_model": "模型强度",
+            "strength_clip": "CLIP强度",
+            "api_key": "API密钥",
+            "download_chunks": "下载块数",
+            "download_path": "下载路径"
+        },
+        "outputs": {
+            "model": "模型",
+            "clip": "CLIP"
+        },
+        "description": "AI Resource Identifier (AIR) 是 Civitai 用来普遍引用 AI 资源的方法。它遵循统一资源命名标准。"
+    }
+}

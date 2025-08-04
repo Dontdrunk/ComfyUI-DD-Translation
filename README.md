@@ -27,9 +27,7 @@ https://github.com/user-attachments/assets/1ec662ba-da6c-4712-8be7-61168b08940e
 本项目主要面向使用 ComfyUI 最新版本的用户：
 - 与老版本翻译插件AIGODLIKE/AIGODLIKE-ComfyUI-Translation并不兼容，在安装新翻译插件前请先卸载老插件
 - 为确保最佳兼容性，项目将优先支持最新版 ComfyUI
-- 可能会放弃对旧版本的兼容支持，推荐用以下内容：
-- 【最新版 ComfyUI 内核】
-- 【最新版本ComfyUI 前端依赖】
+- 可能会放弃对旧版本的兼容支持，推荐使用以下内容：
 - 【最新版本整合包（至少半年内）或官方桌面版】
 - 【整合包用户推荐使用谷歌或Edge浏览器确保最佳前端兼容性】
 
@@ -53,6 +51,11 @@ https://github.com/user-attachments/assets/1ec662ba-da6c-4712-8be7-61168b08940e
 - msola-ht丶是小张啊丶alinuo666丶猪的飞行梦丶ZXSZS丶tanglangxia丶AIGCZero丶Artistjjw丶henrylaobai
 
 ## 更新日志
+### v1.9.7 (2025-8-04) 
+- 合并贡献者（猪的飞行梦）提交的翻译涉及以下节点：
+- 官方工作流的模板翻译
+- ComfyUI_StoryDiffusion丶civitai_comfy_nodes节点的完整翻译
+
 ### v1.9.6 (2025-7-29) 
 - 合并贡献者（猪的飞行梦）提交的翻译涉及以下节点：
 - ComfyUI-MimicMotionWrapper节点的完整翻译

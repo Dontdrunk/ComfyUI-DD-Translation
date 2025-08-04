@@ -1,0 +1,138 @@
+{
+    "Comic_Type": {
+        "title": "漫画类型",
+        "inputs": {
+            "image": "图像",
+            "scene_prompts": "场景提示词"
+        },
+        "widgets": {
+            "fonts_list": "字体列表",
+            "comic_type": "漫画类型",
+            "text_size": "文本大小",
+            "split_lines": "分行"
+        },
+        "outputs": {
+            "image": "图像"
+        }
+    },
+    "Pre_Translate_prompt": {
+        "title": "预翻译提示词",
+        "inputs": {
+            "scene_prompts": "场景提示词"
+        },
+        "widgets": {
+            "keep_character_name": "保留角色名称"
+        },
+        "outputs": {
+            "text": "文本"
+        }
+    },
+    "EasyFunction_Lite": {
+        "title": "简易功能精简版",
+        "inputs": {},
+        "widgets": {
+            "extra_repo": "额外仓库",
+            "checkpoints": "大模型",
+            "clip_vision": "CLIP视觉",
+            "function_mode": "功能模式",
+            "select_method": "选择方法",
+            "temperature": "温度"
+        },
+        "outputs": {
+            "model": "模型",
+            "clip": "CLIP"
+        }
+    },
+    "StoryDiffusion_Apply": {
+        "title": "应用故事扩散模型",
+        "inputs": {
+            "model": "模型",
+            "vae": "VAE 编/解码器",
+            "CLIP_VISION": "CLIP视觉"
+        },
+        "widgets": {
+            "infer_mode": "推理模式",
+            "photomake_ckpt": "照片模型",
+            "ipadapter_ckpt": "IPAdapter模型",
+            "quantize_mode": "量化模式",
+            "lora_scale": "Lora缩放",
+            "extra_funtion": "额外功能"
+        },
+        "outputs": {
+            "model": "模型",
+            "switch": "扩散条件"
+        }
+    },
+    "StoryDiffusion_CLIPTextEncode": {
+        "title": "故事扩散CLIP文本编码",
+        "inputs": {
+            "clip": "CLIP",
+            "switch": "开关",
+            "tag_txt": "标签文本",
+            "image": "图像",
+            "control_image": "控制图像"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "role_text": "角色文本",
+            "scene_text": "场景文本",
+            "pos_text": "正面文本",
+            "neg_text": "负面文本",
+            "lora_trigger_words": "Lora触发词",
+            "add_style": "添加风格",
+            "mask_threshold": "遮罩阈值",
+            "extra_param": "额外参数",
+            "guidance_list": "引导列表"
+        },
+        "outputs": {
+            "positive": "条件",
+            "negative": "条件",
+            "info": "扩散信息",
+            "width": "宽度",
+            "height": "高度"
+        }
+    },
+    "StoryDiffusion_KSampler": {
+        "title": "故事扩散K采样器",
+        "inputs": {
+            "model": "模型",
+            "sampler_name": "采样器名称",
+            "scheduler": "调度器",
+            "positive": "正面",
+            "negative": "负面",
+            "info": "信息",
+            "latent_image": "Latent"
+        },
+        "widgets": {
+            "seed": "种子",
+            "steps": "步数",
+            "cfg": "CFG",
+            "sampler_name": "采样器",
+            "scheduler": "调度器",
+            "sa32_degree": "32像素自注意力程度",
+            "sa64_degree": "64像素自注意力程度",
+            "denoise": "去噪"
+        },
+        "outputs": {
+            "latent": "Latent"
+        }
+    },
+    "StoryDiffusion_Lora_Control": {
+        "title": "故事扩散_Lora_控制",
+        "inputs": {
+            "model": "模型",
+            "switch": "扩散条件"
+        },
+        "widgets": {
+            "loras": "Lora",
+            "controlnets": "ControlNet",
+            "trigger_words": "触发词",
+            "controlnet_scale": "ControlNet权重"
+        },
+        "outputs": {
+            "model": "模型",
+            "switch": "扩散条件"
+        }
+    }
+}
