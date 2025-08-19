@@ -50,6 +50,7 @@
 	"Update All Custom Nodes": "更新所有自定义节点",
     "Extensions": "扩展",
     "Conflicts": "冲突",
+    "Restart": "重启",
     
     "Update: ComfyUI Stable Version": "更新: ComfyUI 稳定版",
     "Update: ComfyUI Nightly Version": "更新: ComfyUI 夜间版",
