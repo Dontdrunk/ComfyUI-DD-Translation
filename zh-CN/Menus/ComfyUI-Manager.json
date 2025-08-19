@@ -51,6 +51,11 @@
     "Extensions": "扩展",
     "Conflicts": "冲突",
     "Restart": "重启",
+
+    "IMPORT FAILED ↗": "导入失败 ↗",
+    "Missing Node Types": "缺失节点类型",
+    "Open Manager": "打开管理器",
+    "When loading the graph, the following node types were not found": "加载工作流时，找不到以下节点类型",
     
     "Update: ComfyUI Stable Version": "更新: ComfyUI 稳定版",
     "Update: ComfyUI Nightly Version": "更新: ComfyUI 夜间版",
