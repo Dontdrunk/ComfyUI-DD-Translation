@@ -33,7 +33,7 @@
     "ComfyUI Examples": "ComfyUI使用例",
     "Close": "关闭",
 
-    "\nThe custom node DB is currently being updated, and updates to custom nodes are being checked for.\nNOTE: Update only checks for extensions that have been fetched.\n": "\n现在正在更新已安装的节点。\n注意: 仅更新已检查出可以更新的节点.\n",
+    "\nThe custom node DB is currently being updated, 和 updates to custom nodes are being checked for.\nNOTE: Update only checks for extensions that have been fetched.\n": "\n现在正在更新已安装的节点。\n注意: 仅更新已检查出可以更新的节点.\n",
     "input search keyword": "输入搜索关键词",
     "Filter": "过滤",
     "Tags": "标签",
@@ -50,7 +50,6 @@
 	"Update All Custom Nodes": "更新所有自定义节点",
     "Extensions": "扩展",
     "Conflicts": "冲突",
-    "Restart": "重启",
     "Confirm": "确认",
 
     "IMPORT FAILED ↗": "导入失败 ↗",
@@ -102,7 +101,7 @@
     "Channel: dev": "频道：开发",
     "Channel: tutorial": "频道：教程",
 
-    "DB: Channel (1day cache)": "数据库：频道(1天缓存)",
+    "DB: Channel (1 天之前 cache)": "数据库：频道(1天缓存)",
     "DB: Local": "数据库：本地",
     "DB: Channel (remote)": "数据库：频道：(远程)",
     "Filter: all": "过滤：全部",
