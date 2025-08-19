@@ -1,5 +1,7 @@
 {   
     "config": "设置",
+    "No bookmarks in current workflow.": "当前工作流中没有书签。",
+    "Workflow Bookmarks (rgthree-comfy)": "工作流书签(RG节点)",
     "Open rgthree-comfy config": "打开 RG节点设置",
     "🎲 Randomize Each Time": "🎲 每次随机",
     "🎲 New Fixed Random": "🎲 生成随机并固定",
