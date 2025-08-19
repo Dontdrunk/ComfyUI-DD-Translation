@@ -51,6 +51,7 @@
     "Extensions": "扩展",
     "Conflicts": "冲突",
     "Restart": "重启",
+    "Confirm": "确认",
 
     "IMPORT FAILED ↗": "导入失败 ↗",
     "Missing Node Types": "缺失节点类型",
@@ -148,6 +149,7 @@
     "The custom node DB is currently being updated, and updates to custom nodes are being checked for.":"正在更新节点数据库，同时正在检查已安装节点的可用更新。",
     "NOTE: Update only checks for extensions that have been fetched.": "注意：更新仅检查已获取的扩展。",
     "ComfyUI and all extensions have been updated to the latest version.": "ComfyUI 和所有扩展已更新到最新版本。",
+    "Loading custom nodes (cache) ...": "正在加载自定义节点（缓存）...",
     "none": "无(最快)",
     "auto": "自动",
     "taesd": "TAESD(慢)",
