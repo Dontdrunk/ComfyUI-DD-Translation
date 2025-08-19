@@ -53,6 +53,12 @@ https://github.com/user-attachments/assets/1ec662ba-da6c-4712-8be7-61168b08940e
 - msola-ht丶是小张啊丶alinuo666丶猪的飞行梦丶ZXSZS丶tanglangxia丶AIGCZero丶Artistjjw丶henrylaobai
 
 ## 更新日志
+### v1.9.8 (2025-8-19) 
+- 合并贡献者（猪的飞行梦）提交的翻译涉及以下节点：
+- 官方工作流的模板翻译补充
+- 合并贡献者（FanXiangTM ）提交的翻译涉及以下节点：
+- ComfyUI-Manager和rgthree-comfy节点翻译补充
+
 ### v1.9.7 (2025-8-04) 
 - 合并贡献者（猪的飞行梦）提交的翻译涉及以下节点：
 - 官方工作流的模板翻译
