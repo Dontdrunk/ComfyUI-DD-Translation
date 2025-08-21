@@ -1,0 +1,37 @@
+{
+    "IndexTTSRun": {
+        "title": "运行 IndexTTS 模型",
+        "description": "仅需几秒钟语音样本来即可克隆音色",
+        "inputs": {
+            "audio": "音频",
+            "text": "文本",
+            "dialogue_audio_s2": "对话音频_2"
+        },
+        "widgets": {
+            "version": "版本",
+            "temperature": "温度",
+            "max_mel_tokens": "控制长度",
+            "max_text_tokens_per_sentence": "句子最大标记数",
+            "sentences_bucket_max_size": "句子分桶最大容量",
+            "fast_inference": "启用快速推理",
+            "custom_cuda_kernel": "启用自定义 CUDA 内核",
+            "unload_model": "自动卸载模型",
+            "num_beams": "束宽度",
+            "top_k": "前 k 个",
+            "top_p": "核采样"
+        },
+        "outputs": {
+            "audio": "音频"
+        }
+    },
+    "IndexSpeakersPreview": {
+        "title": "语音载入"
+    },
+    "MultiLinePromptIndex": {
+        "title": "多行文本框",
+        "description": "多行文本输入，可区分两个角色：[S1]、 [S2]",
+        "outputs": {
+            "text": "文本"
+        }
+    }
+}
