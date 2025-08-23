@@ -1,0 +1,32 @@
+{
+    "NTCosyVoiceZeroShotSampler": {
+        "title": "语音克隆",
+        "description": "仅需几秒钟语音样本来即可克隆音色",
+        "inputs": {
+            "audio": "音频"
+        },
+        "outputs": {
+            "tts_speech": "语音输出"
+        }
+    },
+    "NTCosyVoiceInstruct2Sampler": {
+        "title": "自然语言控制",
+        "description": "可通过文本指令控制语音情感",
+        "inputs": {
+            "audio": "音频"
+        },
+        "outputs": {
+            "tts_speech": "语音输出"
+        }
+    },
+    "NTCosyVoiceCrossLingualSampler": {
+        "title": "跨语种复刻",
+        "description": "通过音频克隆音色，使用不同语种的文字生成语音",
+        "inputs": {
+            "audio": "语音"
+        },
+        "outputs": {
+            "tts_speech": "语音输出"
+        }
+    }
+}
