@@ -101,7 +101,7 @@
     "Channel: dev": "频道：开发",
     "Channel: tutorial": "频道：教程",
 
-    "DB: Channel (1 天之前 cache)": "数据库：频道(1天缓存)",
+    "DB: Channel (1day cache)": "数据库：频道(1天缓存)",
     "DB: Local": "数据库：本地",
     "DB: Channel (remote)": "数据库：频道：(远程)",
     "Filter: all": "过滤：全部",
