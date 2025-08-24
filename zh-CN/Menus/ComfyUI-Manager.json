@@ -178,5 +178,14 @@
     "No Results": "无结果",
     "Back": "返回",
     "Used In Workflow": "工作流中使用的",
-    "Please enter the URL of the Git repository to install": "请输入要安装的Git仓库URL"
+    "Please enter the URL of the Git repository to install": "请输入要安装的Git仓库URL",
+    "Queue": "队列",
+    "Keyboard Shortcuts (Ctrl + Shift + k)": "键盘快捷键 (Ctrl + Shift + k)",
+    "Essential": "基本",
+    "View Controls": "视图控件",
+    "Workflow": "工作流",
+    "Node": "节点",
+    "Panel Controls": "面板控制",
+    "commands.Workspace_ToggleBottomPanel_Shortcuts.label": "切换底部面板快捷方式",
+    "Manage Shortcuts": "管理快快捷键"
 }
