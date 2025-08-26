@@ -1,0 +1,21 @@
+{
+    "SeedVCRun": {
+        "title": "SeedVC 语音转换",
+        "inputs": {
+            "source_audio": "源音频",
+            "ref_audio": "参考音频"
+        },
+        "widgets": {
+            "steps": "扩散步数",
+            "speed": "音频倍速",
+            "f0_condition": "基频调整",
+            "inference_cfg_rate": "推理CFG速率",
+            "auto_f0_adjust": "自动基频调整",
+            "pitch_shift": "升降调",
+            "unload_model": "释放模型"
+        },
+        "outputs": {
+            "audio": "音频"
+        }
+    }
+}
