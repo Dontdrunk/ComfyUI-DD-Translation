@@ -67,6 +67,8 @@
     "$$canvas-image-preview": "$$画布图像预览",
     "Save As Component": "另存为组件",
     "Manage Group Node": "管理组节点",
+    "Convert to Group Node ": "转换为组节点 ",
+    "Convert to Group Node (Deprecated)": "转换为组节点 (过时)",
 
     "Mode": "模式",
     "Selection": "选择",
