@@ -305,5 +305,6 @@
     "canceled": "取消了",
     "Idle": "空闲状态",
     "Progress Bar by rgthree. right-click for rgthree menu.": "进度条由 rgthree 设计。右键点击可打开 rgthree 菜单。",
-    "pulid": "GR PuLID Flux应用"
+    "pulid": "GR PuLID Flux应用",
+    "Memory Management": "清理内存"
 }
