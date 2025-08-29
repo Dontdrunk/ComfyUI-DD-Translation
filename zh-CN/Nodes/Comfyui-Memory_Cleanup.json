@@ -1,0 +1,31 @@
+{
+    "VRAMCleanup": {
+        "title": "释放显存",
+        "inputs": {
+            "anything": "任意"
+        },
+        "widgets": {
+            "offload_model": "卸载模型",
+            "offload_cache": "清理显存缓存"
+        },
+        "outputs": {
+            "output": "输出"
+        }
+    },
+    "RAMCleanup": {
+        "title": "释放内存",
+        "description": "Comfyui-Memory_Cleanup",
+        "inputs": {
+            "anything": "任意"
+        },
+        "widgets": {
+            "clean_file_cache": "清理文件缓存",
+            "clean_processes": "清理进程内存",
+            "clean_dlls": "清理未使用的 DLL",
+            "retry_times": "重试次数"
+        },
+        "outputs": {
+            "output": "输出"
+        }
+    }
+}
