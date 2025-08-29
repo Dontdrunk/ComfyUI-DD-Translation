@@ -53,6 +53,11 @@ https://github.com/user-attachments/assets/1ec662ba-da6c-4712-8be7-61168b08940e
 - msola-ht丶是小张啊丶alinuo666丶猪的飞行梦丶ZXSZS丶tanglangxia丶AIGCZero丶Artistjjw丶henrylaobai丶FanXiangTM
 
 ## 更新日志
+### v1.9.10(2025-8-29) 
+- 合并贡献者（FanXiangTM）提交的翻译涉及以下节点：
+- 众多界面翻译补充
+- ComfyUI-EdgeTTS 丶ComfyUI_Seed-VC丶Comfyui-Memory_Cleanup节点的翻译
+
 ### v1.9.9 (2025-8-23) 
 - 合并贡献者（FanXiangTM）提交的翻译涉及以下节点：
 - Comfy设置菜单及管理器菜单部分翻译
