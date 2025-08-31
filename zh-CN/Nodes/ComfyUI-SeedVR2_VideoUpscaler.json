@@ -23,7 +23,8 @@
             "blocks_to_swap": "要交换的数据块",
             "offload_io_components": "卸载 I/O 组件",
             "cache_model": "保留模型缓存",
-            "enable_debug": "启用调试"
+            "enable_debug": "启用调试",
+            "use_non_blocking": "启用异步拷贝"
         },
         "outputs": {
             "block_swap_config": "数据块交换配置"
