@@ -1,0 +1,26 @@
+{
+    "HYPIRAdvancedRestoration": {
+        "title": "HYPIR 高级修复",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "upscale_factor": "放大倍数",
+            "seed": "种子",
+            "model_name": "模型名称",
+            "base_model_path": "基本模型路径",
+            "model_t": "模型步数",
+            "coeff_t": "系数步数",
+            "lora_rank": "LoRA 阶数",
+            "patch_size": "处理块大小",
+            "encode_patch_size": "编码块大小",
+            "decode_patch_size": "解码块大小",
+            "batch_size": "批量数",
+            "unload_model_after": "自动释放模型"
+        },
+        "outputs": {
+            "image": "图像",
+            "prompt": "提示词"
+        }
+    }
+}
