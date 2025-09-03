@@ -1,0 +1,26 @@
+{
+    "VibeVoiceTTS": {
+        "title": "VibeVoiceTTS",
+        "inputs": {
+            "speaker_1_voice": "说话者1",
+            "speaker_2_voice": "说话者2",
+            "speaker_3_voice": "说话者3",
+            "speaker_4_voice": "说话者4"
+        },
+        "widgets": {
+            "quantize_llm_4bit": "启用 LLM 4bit 量化",
+            "cfg_scale": "引导系数（CFG）",
+            "attention_mode": "注意力模式",
+            "inference_steps": "推理步骤",
+            "seed": "种子",
+            "do_sample": "启用随机采样",
+            "temperature": "温度",
+            "top_p": "核采样",
+            "top_k": "取前 k 个采样",
+            "force_offload": "强制释放显存"
+        },
+        "outputs": {
+            "audio": "音频"
+        }
+    }
+}
