@@ -1,0 +1,31 @@
+{
+    "MegaTTS3SpeakersPreview": {
+        "title": "MegaTTS3 加载音频",
+        "outputs": {
+            "audio": "音频",
+            "npy_file": "npy 文件"
+        }
+    },
+    "MegaTTS3Run": {
+        "title": "运行 MegaTTS3 语音克隆",
+        "inputs": {
+            "audio": "音频1",
+            "text": "文本",
+            "dialogue_audio_s2": "音频2",
+            "audio_npy_file": "音频 npy 文件",
+            "audio_s2_npy_file": "音频2 npy 文件"
+        },
+        "widgets": {
+            "time_step": "步数",
+            "p_w": "清晰度权重",
+            "t_w": "相似性权重",
+            "unload_model": "卸载模型"
+        }
+    },
+    "MultiLinePromptMG": {
+        "title": "多行文本",
+        "outputs": {
+            "text": "文本"
+        }
+    }
+}

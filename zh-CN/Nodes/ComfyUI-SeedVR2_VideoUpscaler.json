@@ -1,0 +1,33 @@
+{
+    "SeedVR2": {
+        "title": "SeedVR2 视频图像放大",
+        "inputs": {
+            "images": "图像",
+            "block_swap_config": "数据块交换配置",
+            "extra_args": "附加参数"
+        },
+        "widgets": {
+            "model": "模型",
+            "seed": "种子",
+            "new_resolution": "新分辨率",
+            "batch_size": "批量大小",
+            "preserve_vram": "保留显存"
+        },
+        "outputs": {
+            "image": "图像"
+        }
+    },
+    "SeedVR2BlockSwap": {
+        "title": "SeedVR2 数据块交换配置",
+        "widgets": {
+            "blocks_to_swap": "要交换的数据块",
+            "offload_io_components": "卸载 I/O 组件",
+            "cache_model": "保留模型缓存",
+            "enable_debug": "启用调试",
+            "use_non_blocking": "启用异步拷贝"
+        },
+        "outputs": {
+            "block_swap_config": "数据块交换配置"
+        }
+    }
+}

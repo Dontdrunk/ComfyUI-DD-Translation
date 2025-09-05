@@ -1,0 +1,60 @@
+{
+    "VibeVoiceMultipleSpeakersNode": {
+        "title": "多人说话（VibeVoice）",
+        "inputs": {
+            "speaker1_voice": "说话者1",
+            "speaker2_voice": "说话者2",
+            "speaker3_voice": "说话者3",
+            "speaker4_voice": "说话者4"
+        },
+        "widgets": {
+            "model": "模型",
+            "attention_type": "注意力类型",
+            "free_memory_after_generate": "生成后释放显存",
+            "diffusion_steps": "扩散步数",
+            "seed": "种子",
+            "cfg_scale": "引导系数(CFG)",
+            "temperature": "采样温度",
+            "top_p": "核采样",
+            "use_sampling": "启/禁用确定性生成"
+        },
+        "outputs": {
+            "audio": "音频"
+        }
+    },
+    "LoadTextFromFileNode": {
+        "title": "从文件加载文本（VibeVoice ）",
+        "outputs": {
+            "text": "文本"
+        }
+    },
+    "VibeVoiceSingleSpeakerNode": {
+        "title": "单人说话（VibeVoice）",
+        "inputs": {
+            "voice_to_clone": "语音输入"
+        },
+        "widgets": {
+            "attention_type": "注意类型",
+            "model": "模型",
+            "free_memory_after_generate": "生成后释放显存",
+            "diffusion_steps": "扩散步数",
+            "seed": "种子",
+            "cfg_scale": "引导系数(CFG)",
+            "temperature": "采样温度",
+            "top_p": "核采样",
+            "use_sampling": "启/禁用确定性生成"
+        },
+        "outputs": {
+            "audio": "音频"
+        }
+    },
+    "VibeVoiceFreeMemoryNode": {
+        "title": "释放内存（VibeVoice）",
+        "inputs": {
+            "audio": "音频"
+        },
+        "outputs": {
+            "audio": "音频"
+        }
+    }
+}
