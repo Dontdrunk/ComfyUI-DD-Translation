@@ -53,43 +53,47 @@ https://github.com/user-attachments/assets/1ec662ba-da6c-4712-8be7-61168b08940e
 - msola-ht丶是小张啊丶alinuo666丶猪的飞行梦丶ZXSZS丶tanglangxia丶AIGCZero丶Artistjjw丶henrylaobai丶FanXiangTM
 
 ## 更新日志
+### v1.9.11(2025-9-05) 
+- 合并贡献者（FanXiangTM）提交的翻译涉及以下插件：
+- ComfyUI_MegaTTS3丶ComfyUI-SeedVR2_VideoUpscaler丶Comfyui-HYPIR丶VibeVoice-ComfyUI插件的翻译
+
 ### v1.9.10(2025-8-29) 
-- 合并贡献者（FanXiangTM）提交的翻译涉及以下节点：
+- 合并贡献者（FanXiangTM）提交的翻译涉及以下插件：
 - 众多界面翻译补充
-- ComfyUI-EdgeTTS 丶ComfyUI_Seed-VC丶Comfyui-Memory_Cleanup节点的翻译
+- ComfyUI-EdgeTTS 丶ComfyUI_Seed-VC丶Comfyui-Memory_Cleanup插件的翻译
 
 ### v1.9.9 (2025-8-23) 
-- 合并贡献者（FanXiangTM）提交的翻译涉及以下节点：
+- 合并贡献者（FanXiangTM）提交的翻译涉及以下插件：
 - Comfy设置菜单及管理器菜单部分翻译
--  ComfyUI_NTCosyVoice和ComfyUI_IndexTT节点翻译
+-  ComfyUI_NTCosyVoice和ComfyUI_IndexTT插件翻译
 
 ### v1.9.8 (2025-8-19) 
-- 合并贡献者（猪的飞行梦）提交的翻译涉及以下节点：
+- 合并贡献者（猪的飞行梦）提交的翻译涉及以下插件：
 - 官方工作流的模板翻译补充
-- 合并贡献者（FanXiangTM ）提交的翻译涉及以下节点：
-- ComfyUI-Manager和rgthree-comfy节点翻译补充
+- 合并贡献者（FanXiangTM ）提交的翻译涉及以下插件：
+- ComfyUI-Manager和rgthree-comfy插件翻译补充
 
 ### v1.9.7 (2025-8-04) 
-- 合并贡献者（猪的飞行梦）提交的翻译涉及以下节点：
+- 合并贡献者（猪的飞行梦）提交的翻译涉及以下插件：
 - 官方工作流的模板翻译
-- ComfyUI_StoryDiffusion丶civitai_comfy_nodes节点的完整翻译
+- ComfyUI_StoryDiffusion丶civitai_comfy_nodes插件的完整翻译
 
 ### v1.9.6 (2025-7-29) 
-- 合并贡献者（猪的飞行梦）提交的翻译涉及以下节点：
+- 合并贡献者（猪的飞行梦）提交的翻译涉及以下插件
 - ComfyUI-MimicMotionWrapper节点的完整翻译
-- rgthree-comfy丶BizyAir节点的翻译补全优化
+- rgthree-comfy丶BizyAir插件的翻译补全优化
 - 完善部分分类翻译
 
 ### v1.9.5 (2025-7-26) 
-- 合并贡献者（henrylaobai）提交的翻译涉及以下节点：
-- ComfyUI-RBG-ImageStitchPlus节点的完整翻译
+- 合并贡献者（henrylaobai）提交的翻译涉及以下插件：
+- ComfyUI-RBG-ImageStitchPlus插件的完整翻译
 
 ### v1.9.4 (2025-7-16) 
-- 合并贡献者（是小张啊）提交的翻译涉及以下节点：
+- 合并贡献者（是小张啊）提交的翻译涉及以下插件：
 - ComfyUI-LBMWrapper丶wavespeed
-- 合并贡献者（AIGCZero）提交的翻译涉及以下节点：
+- 合并贡献者（AIGCZero）提交的翻译涉及以下插件：
 - ComfyUI-MagCache丶ComfyUI-WanVideoWrapper丶dio-separation-nodes-comfyui以及部分下拉菜单
-- 合并贡献者（Artistjjw）提交的翻译涉及以下节点：
+- 合并贡献者（Artistjjw）提交的翻译涉及以下插件：
 - ComfyUI-EsesImageEffectBloom
 
 ### v1.9.3 (2025-7-09) 
