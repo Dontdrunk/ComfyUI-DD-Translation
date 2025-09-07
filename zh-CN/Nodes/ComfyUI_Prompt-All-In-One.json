@@ -1,0 +1,232 @@
+{
+    "JoyCaptionRun": {
+        "title": "图像提示词反推（JoyCaption）",
+        "inputs": {
+            "image": "图片"
+        },
+        "widgets": {
+            "merge_prompt": "合并提示",
+            "model": "模型",
+            "use_cache": "使用缓存",
+            "do_sample": "启用采样",
+            "temperature": "采样温度",
+            "top_k": "前 k 个采样",
+            "top_p": "核采样",
+            "max_new_tokens": "最大生成的词数",
+            "seed": "种子",
+            "unload_model": "卸载模型",
+            "save_img_prompt_to_folder": "保存生成图像与提示词",
+            "preset_prompt": "预设提示词"
+        },
+        "outputs": {
+            "text": "文本"
+        }
+    },
+    "OllamaPromptGen": {
+        "title": "提示词反推（Ollama ）",
+        "inputs": {
+            "image": "图片",
+            "video": "视频"
+        },
+        "widgets": {
+            "model": "模型",
+            "max_new_tokens": "最大新令牌数",
+            "temperature": "采样温度",
+            "top_p": "核采样",
+            "top_k": "前 K  个采样",
+            "seed": "种子",
+            "unload_model": "卸载模型"
+        },
+        "outputs": {
+            "text": "文本"
+        }
+    },
+    "KeOmniRRun": {
+        "title": "音频反推提示词（Ke-Omni-R）",
+        "inputs": {
+            "prompt": "提示",
+            "audio": "音频"
+        },
+        "widgets": {
+            "batch_size": "批量大小",
+            "max_new_tokens": "最大新令牌数",
+            "seed": "种子",
+            "unload_model": "卸载模型",
+            "save_audio_prompt_to_folder": "将音频提示保存到文件夹",
+            "audios_dir": "音频文件路径"
+        },
+        "outputs": {
+            "text": "文本"
+        }
+    },
+    "MultiLinePromptKOR": {
+        "title": "多行提示",
+        "outputs": {
+            "prompt": "提示"
+        }
+    },
+    "APIGeminiImageGen": {
+        "title": "API 图片生成（ Gemini）",
+        "inputs": {
+            "image": "图片"
+        },
+        "widgets": {
+            "model": "模型",
+            "proxy": "代理",
+            "temperature": "采样温度",
+            "top_p": "核采样",
+            "top_k": "前 k 个采样",
+            "max_output_tokens": "最大输出令牌",
+            "seed": "种子"
+        },
+        "outputs": {
+            "image": "图片"
+        }
+    },
+    "APIGeminiImgOrAudioOrVideo2Text": {
+        "title": "API-图片音频视频反推（Gemini）",
+        "inputs": {
+            "image": "图片",
+            "audio": "音频",
+            "video": "视频"
+        },
+        "widgets": {
+            "model": "模型",
+            "proxy": "代理",
+            "temperature": "采样温度",
+            "top_p": "核采样",
+            "top_k": "前 k 个采样",
+            "max_output_tokens": "最大输出令牌",
+            "seed": "种子"
+        },
+        "outputs": {
+            "text": "文本"
+        }
+    },
+    "APIGeminiTextGen": {
+        "title": "API-文本提示词生成（Gemini）",
+        "widgets": {
+            "model": "模型",
+            "proxy": "代理",
+            "temperature": "采样温度",
+            "top_p": "核采样",
+            "top_k": "前 k 个采样",
+            "max_output_tokens": "最大输出令牌",
+            "seed": "种子"
+        },
+        "outputs": {
+            "text": "文本"
+        }
+    },
+    "APIGeminiTextUnderstand": {
+        "title": "API-文本理解（Gemini）",
+        "widgets": {
+            "model": "模型",
+            "proxy": "代理",
+            "temperature": "采样温度",
+            "top_p": "核采样",
+            "top_k": "前 k 个采样",
+            "max_output_tokens": "最大输出令牌",
+            "seed": "种子"
+        },
+        "outputs": {
+            "text": "文本"
+        }
+    },
+    "APIQwenAudio2Text": {
+        "title": "API-音频反推提示词（Qwen）",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {
+            "model": "模型",
+            "seed": "种子"
+        },
+        "outputs": {
+            "text": "文本"
+        }
+    },
+    "APIQwenImgOrVideo2Text": {
+        "title": "API-图片&视频反推提示词（Qwen）",
+        "inputs": {
+            "image": "图像",
+            "video": "视频"
+        },
+        "widgets": {
+            "model": "模型",
+            "seed": "种子"
+        },
+        "outputs": {
+            "text": "文本"
+        }
+    },
+    "APIQwenTextGen_R": {
+        "title": "API-文本生成-R（Qwen）",
+        "widgets": {
+            "model": "模型",
+            "seed": "种子"
+        },
+        "outputs": {
+            "thinking": "推理过程",
+            "text": "文本"
+        }
+    },
+    "APIQwenTextGen": {
+        "title": "API-文本生成（Qwen）",
+        "widgets": {
+            "model": "模型",
+            "seed": "种子"
+        },
+        "outputs": {
+            "text": "文本"
+        }
+    },
+    "APIQwenImage2Text": {
+        "title": "API-图像反推提示词（Qwen）",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "model": "模型",
+            "seed": "种子"
+        },
+        "outputs": {
+            "text": "文本"
+        }
+    },
+    "APIQwenImage2Text_R": {
+        "title": "API-图像反推提示词-R（Qwen）",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "model": "模型",
+            "seed": "种子"
+        },
+        "outputs": {
+            "text": "文本",
+            "thinking": "推理过程"
+        }
+    },
+    "DeepSeekV3": {
+        "title": "DeepSeek V3",
+        "widgets": {
+            "model": "模型",
+            "seed": "种子"
+        },
+        "outputs": {
+            "text": "文本"
+        }
+    },
+    "DeepSeekR1": {
+        "title": "DeepSeek R1",
+        "widgets": {
+            "model": "模型",
+            "seed": "种子"
+        },
+        "outputs": {
+            "text": "文本",
+            "thinking": "推理过程"
+        }
+    }
+}
