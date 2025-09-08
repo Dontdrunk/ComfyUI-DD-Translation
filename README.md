@@ -53,6 +53,10 @@ https://github.com/user-attachments/assets/1ec662ba-da6c-4712-8be7-61168b08940e
 - msola-ht丶是小张啊丶alinuo666丶猪的飞行梦丶ZXSZS丶tanglangxia丶AIGCZero丶Artistjjw丶henrylaobai丶FanXiangTM
 
 ## 更新日志
+### v1.9.12(2025-9-08) 
+- 合并贡献者（FanXiangTM）提交的翻译涉及以下插件：
+- ComfyUI_Prompt-All-In-One插件的翻译
+
 ### v1.9.11(2025-9-05) 
 - 合并贡献者（FanXiangTM）提交的翻译涉及以下插件：
 - ComfyUI_MegaTTS3丶ComfyUI-SeedVR2_VideoUpscaler丶Comfyui-HYPIR丶VibeVoice-ComfyUI插件的翻译
