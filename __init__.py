@@ -9,7 +9,7 @@ import folder_paths
 from aiohttp import web
 from pathlib import Path
 
-VERSION = "1.9.0"
+VERSION = "1.9.13"
 ADDON_NAME = "ComfyUI-DD-Translation"
 COMFY_PATH = Path(folder_paths.__file__).parent
 CUR_PATH = Path(__file__).parent

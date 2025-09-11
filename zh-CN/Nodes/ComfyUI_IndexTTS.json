@@ -33,5 +33,40 @@
         "outputs": {
             "text": "文本"
         }
+    },
+    "IndexTTS2Run": {
+        "title": "运行 IndexTTS2 模型",
+        "description": "仅需几秒钟语音样本来即可克隆音色，并且赋予声音情绪",
+        "inputs": {
+            "audio": "音频",
+            "text": "文本",
+            "dialogue_audio_s2": "对话音频_s2",
+            "emo_audio_prompt": "情绪音频提示",
+            "emo_audio_prompt_s2": "情绪音频提示_s2"
+        },
+        "widgets": {
+            "top_k": "前 k 个",
+            "top_p": "核采样",
+            "temperature": "温度",
+            "num_beams": "束宽度",
+            "max_mel_tokens": "控制长度",
+            "max_text_tokens_per_sentence": "句子最大标记数",
+            "custom_cuda_kernel": "启用自定义 CUDA 内核",
+            "deepspeed": "deepspeed",
+            "unload_model": "自动卸载模型",
+            "emo_alpha": "情绪控制强度",
+            "emo_vector": "情绪数值控制",
+            "use_emo_text": "使用情绪文本提示",
+            "emo_text": "情绪文本提示",
+            "use_random": "随机情绪",
+            "emo_alpha_s2": "情绪控制强度_s2",
+            "emo_vector_s2": "情绪数值控制_s2",
+            "use_emo_text_s2": "使用情绪文本提示_s2",
+            "emo_text_s2": "情绪文本提示_s2",
+            "use_random_s2": "随机情绪_s2"
+        },
+        "outputs": {
+            "audio": "音频"
+        }
     }
 }

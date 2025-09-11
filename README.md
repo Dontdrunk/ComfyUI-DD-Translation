@@ -53,6 +53,10 @@ https://github.com/user-attachments/assets/1ec662ba-da6c-4712-8be7-61168b08940e
 - msola-ht丶是小张啊丶alinuo666丶猪的飞行梦丶ZXSZS丶tanglangxia丶AIGCZero丶Artistjjw丶henrylaobai丶FanXiangTM
 
 ## 更新日志
+### v1.9.13(2025-9-11) 
+- 合并贡献者（tanglangxia）提交的翻译涉及以下插件：
+- ComfyUI_IndexTTS插件的TTS2新节点的翻译补充
+
 ### v1.9.12(2025-9-08) 
 - 合并贡献者（FanXiangTM）提交的翻译涉及以下插件：
 - ComfyUI_Prompt-All-In-One插件的翻译
