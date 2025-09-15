@@ -1,0 +1,77 @@
+{
+    "IDEmbeddingModelLoader": {
+        "title": "人脸嵌入模型加载器",
+        "inputs": {},
+        "widgets": {
+            "image_proj_model_name": "图像投影模型名称",
+            "image_proj_num_tokens": "图像投影令牌数量",
+            "face_analysis_provider": "人脸分析设备",
+            "face_analysis_det_size": "人脸分析检测大小"
+        },
+        "outputs": {
+            "FACE_DETECTOR": "人脸检测器",
+            "ARCFACE_MODEL": "弧形面部模型",
+            "IMAGE_PROJ_MODEL": "图像投影模型"
+        }
+    },
+    "ExtractFacePoseImage": {
+        "title": "提取人脸姿态图像",
+        "inputs": {
+            "face_detector": "人脸检测器",
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度"
+        },
+        "outputs": {
+            "IMAGE": "图像"
+        }
+    },
+    "ExtractIDEmbedding": {
+        "title": "提取人脸嵌入",
+        "inputs": {
+            "face_detector": "人脸检测器",
+            "arcface_model": "弧形面部模型",
+            "image_proj_model": "图像投影模型",
+            "image": "图像"
+        },
+        "widgets": {},
+        "outputs": {
+            "conditioning": "人脸嵌入条件",
+            "CONDITIONING": "人脸嵌入条件"
+        }
+    },
+    "InfuseNetLoader": {
+        "title": "加载InfuseNet无限你",
+        "inputs": {},
+        "widgets": {
+            "controlnet_name": "infusenet_sim模型"
+        },
+        "outputs": {
+            "controlnet": "Control Net"
+        }
+    },
+    "InfuseNetApply": {
+        "title": "应用 InfuseNet无限你",
+        "inputs": {
+            "positive": "正面条件",
+            "id_embedding": "人脸嵌入",
+            "control_net": "Control Net",
+            "image": "图像",
+            "negative": "负面条件",
+            "vae": "VAE",
+            "control_mask": "控制遮罩"
+        },
+        "widgets": {
+            "strength": "强度",
+            "start_percent": "开始百分比",
+            "end_percent": "结束百分比"
+        },
+        "outputs": {
+            "positive": "正面条件",
+            "negative": "负面条件"
+        }
+    }
+}

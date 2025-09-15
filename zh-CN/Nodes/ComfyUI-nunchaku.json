@@ -1,119 +1,247 @@
 {
-    "NunchakuFluxDiTLoader": {
-        "title": "Nunchaku FluxDiT 加载器",
-        "widgets": {
-            "model_path": "模型路径",
-            "cache_threshold": "缓存阈值",
-            "attention": "注意力",
-            "cpu_offload": "CPU 卸载",
-            "device_id": "设备 ID",
-            "data_type": "数据类型",
-            "i2f_mode": "图像到特征模式"
-        }
+  "NunchakuFluxLoraLoader": {
+    "title": "双截棍FluxLora加载器",
+    "inputs": {
+      "model": "模型"
     },
-    "NunchakuFluxLoraLoader": {
-        "title": "Nunchaku FluxLora 加载器",
-        "inputs": {
-            "model": "模型"
-        },
-        "widgets": {
-            "lora_name": "Lora 名称",
-            "lora_strength": "Lora 强度"
-        }
+    "widgets": {
+      "lora_name": "Lora名称",
+      "lora_strength": "Lora强度"
     },
-    "NunchakuTextEncoderLoader": {
-        "title": "Nunchaku CLIP文本编码加载器",
-        "widgets": {
-            "model_type": "模型类型",
-            "text_encoder1": "文本编码器 1",
-            "text_encoder2": "文本编码器 2",
-            "t5_min_length": "T5 最小长度",
-            "use_4bit_t5": "使用 4 位量化的 T5",
-            "int4_model": "Int4 模型"
-        }
-    },
-    "NunchakuTextEncoderLoaderV2": {
-        "title": "Nunchaku CLIP文本编码加载器",
-        "widgets": {
-            "model_type": "模型类型",
-            "text_encoder1": "文本编码器 1",
-            "text_encoder2": "文本编码器 2",
-            "t5_min_length": "T5 最小长度"
-        }
-    },
-    "NunchakuDepthPreprocessor": {
-        "title": "Nunchaku 深度预处理器",
-        "inputs": {
-            "image": "图像"
-        },
-        "widgets": {
-            "model_path": "模型路径"
-        }
-    },
-    "NunchakuPulidApply": {
-        "title": "Nunchaku Pulid 应用",
-        "inputs": {
-            "pulid": "pulid",
-            "image": "图像",
-            "model": "模型"
-        },
-        "widgets": {
-            "ip_weight": "IP 权重"
-        }
-    },
-    "NunchakuPulidLoader": {
-        "title": "Nunchaku Pulid 加载器",
-        "inputs": {
-            "model": "模型"
-        }
-    },
-    "NunchakuPuLIDLoaderV2": {
-        "title": "Nunchaku Pulid 加载器 V2",
-        "inputs": {
-            "model": "模型"
-        },
-        "widgets": {
-            "pulid_file": "Pulid 文件",
-            "eva_clip_file": "Eva-Clip 文件",
-            "insight_face_provider": "InsightFace 提供器"
-        },
-        "outputs": {
-            "PULID_PIPELINE": "Pulid_管线"
-        }
-    },
-    "NunchakuFluxPuLIDApplyV2": {
-        "title": "Nunchaku FluxPuLID 应用 V2",
-        "inputs": {
-            "model": "模型",
-            "pulid_pipline": "Pulid_管线",
-            "image": "图像",
-            "attn_mask": "关注层遮罩",
-            "options": "选项"
-        },
-        "widgets": {
-            "weight": "权重",
-            "start_at": "开始于",
-            "end_at": "结束于"
-        }
-    },
-    "NunchakuModelMerger": {
-        "title": "Nunchaku 模型合并器",
-        "widgets": {
-            "model_folder": "模型文件夹",
-            "save_name": "保存名称"
-        },
-        "outputs": {
-            "status": "状态"
-        }
-    },
-    "NunchakuWheelInstaller": {
-        "title": "Nunchaku Wheel 安装器",
-        "widgets": {
-            "source": "来源",
-            "version": "版本"
-        },
-        "outputs": {
-            "status": "状态"
-        }
+    "outputs": {
+      "model": "模型"
     }
+  },
+  "NunchakuModelMerger": {
+    "title": "双截棍模型合并",
+    "inputs": {
+      "model": "模型"
+    },
+    "widgets": {
+      "save_name": "保存名称",
+      "model_folder": "模型文件夹"
+    },
+    "outputs": {
+      "status": "状态"
+    }
+  },
+  "NunchakuFluxDiTLoader": {
+    "title": "双截棍FluxDiT加载器",
+    "inputs": {},
+    "widgets": {
+      "model_path": "模型路径",
+      "cache_threshold": "缓存阈值",
+      "attention": "注意力模式",
+      "cpu_offload": "CPU卸载",
+      "device_id": "设备ID",
+      "data_type": "数据类型",
+      "i2f_mode": "I2F模式"
+    },
+    "outputs": {
+      "model": "模型"
+    }
+  },
+  "NunchakuQwenImageDiTLoader": {
+    "title": "双截棍千问图像DiT加载器",
+    "inputs": {},
+    "widgets": {
+      "model_name": "模型名称",
+      "cache_threshold": "缓存阈值",
+      "attention": "注意力模式",
+      "cpu_offload": "CPU卸载",
+      "device_id": "设备ID",
+      "data_type": "数据类型",
+      "i2f_mode": "I2F模式"
+    },
+    "outputs": {
+      "model": "模型"
+    }
+  },
+  "NunchakuTextEncoderLoader": {
+    "title": "双截棍文本编码器加载器",
+    "inputs": {},
+    "widgets": {
+      "model_type": "模型类型",
+      "text_encoder1": "文本编码器1",
+      "text_encoder2": "文本编码器2",
+      "t5_min_length": "T5最小长度",
+      "use_4bit_t5": "使用4位T5",
+      "int4_model": "INT4模型"
+    },
+    "outputs": {
+      "clip": "CLIP"
+    }
+  },
+  "NunchakuTextEncoderLoaderV2": {
+    "title": "双截棍文本编码器加载器V2",
+    "inputs": {},
+    "widgets": {
+      "model_type": "模型类型",
+      "text_encoder1": "文本编码器1",
+      "text_encoder2": "文本编码器2",
+      "t5_min_length": "T5最小长度",
+      "use_4bit_t5": "使用4位T5",
+      "int4_model": "INT4模型"
+    },
+    "outputs": {
+      "clip": "CLIP"
+    }
+  },
+  "NunchakuPulidApply": {
+    "title": "双截棍PulID应用（已弃用）",
+    "inputs": {
+      "model": "模型",
+      "pulid": "PulID",
+      "image": "图像"
+    },
+    "widgets": {
+      "ip_weight": "IP权重"
+    },
+    "outputs": {
+      "model": "模型",
+      "MODEL": "模型"
+    }
+  },
+  "NunchakuFluxIPAdapterApply": {
+    "title": "双截棍FLUX IP-Adapter应用",
+    "inputs": {
+      "model": "模型",
+      "ipadapter_pipeline": "IPAdapter管道",
+      "image": "图像"
+    },
+    "widgets": {
+      "weight": "权重"
+    },
+    "outputs": {
+      "model": "模型",
+      "MODEL": "模型"
+    }
+  },
+  "NunchakuIPAdapterLoader": {
+    "title": "双截棍IP-Adapter加载器",
+    "inputs": {
+      "model": "模型"
+    },
+    "widgets": {},
+    "outputs": {
+      "IPADAPTER_PIPELINE": "IPAdapter管道",
+      "MODEL": "模型"
+    }
+  },
+  "NunchakuFluxPuLIDApplyV2": {
+    "title": "双截棍FluxPulID应用V2",
+    "inputs": {
+      "model": "模型",
+      "pulid_pipline": "PulID管道",
+      "image": "图像",
+      "attn_mask": "注意力遮罩",
+      "options": "选项"
+    },
+    "widgets": {
+      "weight": "权重",
+      "start_at": "开始于",
+      "end_at": "结束于"
+    },
+    "outputs": {
+      "model": "模型",
+      "MODEL": "模型"
+    }
+  },
+  "NunchakuPulidLoader": {
+    "title": "双截棍PulID加载器（已弃用）",
+    "inputs": {
+      "model": "模型"
+    },
+    "widgets": {
+      "ip_weight": "IP权重"
+    },
+    "outputs": {
+      "PULID": "PulID",
+      "MODEL": "模型"
+    }
+  },
+  "NunchakuPuLIDLoaderV2": {
+    "title": "双截棍PulID加载器V2",
+    "inputs": {
+      "model": "模型"
+    },
+    "widgets": {
+      "pulid_file": "PulID文件",
+      "eva_clip_file": "eva_CLIP文件",
+      "insight_face_provider": "检测人脸处理器"
+    },
+    "outputs": {
+      "PULID": "PulID",
+      "PULID_PIPELINE": "PulID管道"
+    }
+  },
+  "NunchakuWheelInstaller": {
+    "title": "双截棍轮子安装器",
+    "inputs": {},
+    "widgets": {
+      "source": "来源",
+      "version": "版本",
+      "dev_version_github": "开发版本  GitHub",
+      "backend": "后端"
+    },
+    "outputs": {
+      "status": "状态"
+    },
+    "description": "连接预览任意节点并运行，自动下载并安装，完成后重启ComfyUI"
+  },
+  "NunchakuFluxLoraStack": {
+    "title": "双截棍FLUX Lora堆",
+    "inputs": {
+      "model": "模型"
+    },
+    "widgets": {
+      "lora_name_1": "Lora1名称",
+      "lora_strength_1": "Lora1强度",
+      "lora_name_2": "Lora2名称",
+      "lora_strength_2": "Lora2强度",
+      "lora_name_3": "Lora3名称",
+      "lora_strength_3": "Lora3强度",
+      "lora_name_4": "Lora4名称",
+      "lora_strength_4": "Lora4强度",
+      "lora_name_5": "Lora5名称",
+      "lora_strength_5": "Lora5强度",
+      "lora_name_6": "Lora6名称",
+      "lora_strength_6": "Lora6强度",
+      "lora_name_7": "Lora7名称",
+      "lora_strength_7": "Lora7强度",
+      "lora_name_8": "Lora8名称",
+      "lora_strength_8": "Lora8强度",
+      "lora_name_9": "Lora9名称",
+      "lora_strength_9": "Lora9强度",
+      "lora_name_10": "Lora10名称",
+      "lora_strength_10": "Lora10强度",
+      "lora_name_11": "Lora11名称",
+      "lora_strength_11": "Lora11强度",
+      "lora_name_12": "Lora12名称",
+      "lora_strength_12": "Lora12强度",
+      "lora_name_13": "Lora13名称",
+      "lora_strength_13": "Lora13强度",
+      "lora_name_14": "Lora14名称",
+      "lora_strength_14": "Lora14强度",
+      "lora_name_15": "Lora15名称",
+      "lora_strength_15": "Lora15强度"
+    },
+    "outputs": {
+      "MODEL": "模型"
+    }
+  },
+  "NunchakuDepthPreprocessor": {
+    "title": "双截棍深度预处理器",
+    "inputs": {
+      "image": "图像",
+      "model_path": "模型路径"
+    },
+    "widgets": {
+      "model_path": "模型路径"
+    },
+    "outputs": {
+      "image": "图像",
+      "IMAGE": "深度图"
+    }
+  }
 }

@@ -1,0 +1,26 @@
+{
+    "MelBandRoFormerModelLoader": {
+        "title": "加载Mel - Band RoFormer模型 🎵音频分离",
+        "inputs": {
+            "model_name": "模型名称"
+        },
+        "widgets": {
+            "model_name": "模型名称"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "MelBandRoFormerSampler": {
+        "title": "Mel - Band RoFormer采样器 🎵音频分离",
+        "inputs": {
+            "model": "模型",
+            "audio": "音频"
+        },
+        "widgets": {},
+        "outputs": {
+            "vocals": "人声音频",
+            "instruments": "乐器音频"
+        }
+    }
+}

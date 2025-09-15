@@ -620,6 +620,28 @@
             "model": "模型"
         }
     },
+    "BizyAir_WanImageToVideo": {
+        "title": "☁️BizyAir Wan图像到视频",
+        "inputs": {
+            "positive": "正向条件",
+            "negative": "负面条件",
+            "camera_conditions": "相机条件",
+            "clip_vision_output": "CLIP视觉输出",
+            "start_image": "起始图像",
+            "end_image": "结束图像"
+        },
+        "widgets": {
+            "width": "宽度",
+            "height": "高度",
+            "length": "时长",
+            "batch_size": "批大小"
+        },
+        "outputs": {
+            "positive": "正向条件",
+            "negative": "负面条件",
+            "latent": "Latent"
+        }
+    },
     "BizyAirPiDiNetPreprocessor": {
         "title": "☁️BizyAir PiDiNet软边缘线提取",
         "inputs": {
@@ -1276,6 +1298,45 @@
             "mask": "输出遮罩"
         }
     },
+    "BizyAir_LayerMaskLoadSAM2Model": {
+        "title": "☁️BizyAir 图层遮罩：加载SAM2模型（高级）",
+        "inputs": {
+            "image": "图像",
+            "bboxes": "BBoxes"
+        },
+        "widgets": {
+            "sam2_model": "SAM2模型",
+            "precision": "精度",
+            "device": "设备"
+        },
+        "outputs": {
+            "sam2_model": "SAM2模型"
+        }
+    },
+    "BizyAir_LayerMaskSAM2UltraV2": {
+        "title": "图层遮罩：SAM2 超级V2（高级）",
+        "inputs": {
+            "sam2_model": "SAM2模型",
+            "image": "图像",
+            "bboxes": "BBoxes"
+        },
+        "widgets": {
+            "bbox_select": "选择BBox",
+            "select_index": "选择编号",
+            "detail_method": "细节处理方法",
+            "detail_erode": "细节消融",
+            "detail_dilate": "细节膨胀",
+            "black_point": "黑色阈值",
+            "white_point": "白色阈值",
+            "process_detail": "处理细节",
+            "device": "设备",
+            "max_megapixels": "Vitmatte最大尺寸"
+        },
+        "outputs": {
+            "image": "图像",
+            "mask": "遮罩"
+        }
+    },
     "BizyAir_PulidFluxModelLoader": {
         "title": "☁️BizyAir_PuLID Flux模型加载器",
         "widgets": {
@@ -1536,42 +1597,55 @@
             "guidance": "引导强度"
         },
         "outputs": {
-            "conditioning": "输出条件"
+            "conditioning": "条件"
         }
     },
     "BizyAir_FluxGuidance": {
         "title": "☁️BizyAir_Flux引导条件",
         "inputs": {
-            "conditioning": "输入条件"
+            "conditioning": "条件"
         },
         "widgets": {
             "guidance": "引导强度"
         },
         "outputs": {
-            "BIZYAIR_CONDITIONING": "BizyAir_输出条件"
+            "BIZYAIR_CONDITIONING": "BizyAir_条件"
+        }
+    },
+    "BizyAir_ReferenceLatent": {
+        "title": "☁️BizyAir_参考Latent",
+        "inputs": {
+            "conditioning": "条件",
+            "latent": "Latent"
+        },
+        "widgets": {
+            "guidance": "引导强度"
+        },
+        "outputs": {
+            "BIZYAIR_CONDITIONING": "BizyAir_条件"
         }
     },
     "BizyAir_ConditioningZeroOut": {
         "title": "☁️BizyAir_零条件输出",
         "inputs": {
-            "conditioning": "输入条件",
+            "conditioning": "条件",
             "guidance": "引导强度"
         },
         "outputs": {
-            "BIZYAIR_CONDITIONING": "BizyAir_输出条件"
+            "BIZYAIR_CONDITIONING": "BizyAir_条件"
         }
     },
     "BizyAir_ConditioningSetTimestepRange": {
         "title": "☁️BizyAir_条件设置时间步长范围",
         "inputs": {
-            "conditioning": "输入条件"
+            "conditioning": "条件"
         },
         "widgets": {
             "start": "引导开始",
             "end": "引导结束"
         },
         "outputs": {
-            "BIZYAIR_CONDITIONING": "BizyAir_输出条件"
+            "BIZYAIR_CONDITIONING": "BizyAir_条件"
         }
     },
     "BizyAir_LoadImageURL": {
@@ -2189,6 +2263,31 @@
         "outputs": {
             "text": "文本",
             "bboxes": "边界框"
+        }
+    },
+    "BizyAir_NanoBanana": {
+        "title": "☁️BizyAir NanoBanana",
+        "inputs": {
+            "image": "图像",
+            "image2": "图像2",
+            "image3": "图像3",
+            "image4": "图像4",
+            "imag5e": "图像5"
+        },
+        "widgets": {
+            "operation": "运行",
+            "temperature": "温度",
+            "target": "目标",
+            "top_p": "top_p",
+            "seed": "种子",
+            "max_tokens": "最大字数",
+            "quality": "质量",
+            "aspect_ratio": "宽高比",
+            "character_consistency": "角色一致性"
+        },
+        "outputs": {
+            "IMAGE": "图像",
+            "STRING": "字符串"
         }
     },
     "BizyAirGenerateLightningImage": {

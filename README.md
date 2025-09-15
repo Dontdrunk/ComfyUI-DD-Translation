@@ -50,9 +50,17 @@ https://github.com/user-attachments/assets/1ec662ba-da6c-4712-8be7-61168b08940e
 ## 贡献者名单
 感谢以下贡献者对于ComfyUI中文开源生态的支持
 
-- msola-ht丶是小张啊丶alinuo666丶猪的飞行梦丶ZXSZS丶tanglangxia丶AIGCZero丶Artistjjw丶henrylaobai丶FanXiangTM
+- msola-ht丶是小张啊丶alinuo666丶猪的飞行梦丶ZXSZS丶tanglangxia丶AIGCZero丶Artistjjw丶henrylaobai丶FanXiangTM丶xuchenxu168
 
 ## 更新日志
+### v1.9.14(2025-9-15) 
+- 合并贡献者（xuchenxu168）提交的翻译涉及以下插件：
+- comfyui-Index-TTS2插件的的翻译
+- 合并贡献者（猪的飞行梦）提交的翻译涉及以下插件：
+- ComfyUI-MelBandRoFormer丶 ComfyUI_InfiniteYou新插件的翻译
+- ComfyUI-nunchaku丶 ComfyUI-KJNodes丶BizyAir 插件翻译补充
+- 以及官方模板翻译与部分界面翻译
+
 ### v1.9.13(2025-9-11) 
 - 合并贡献者（tanglangxia）提交的翻译涉及以下插件：
 - ComfyUI_IndexTTS插件的TTS2新节点的翻译补充

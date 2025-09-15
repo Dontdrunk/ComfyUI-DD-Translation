@@ -21,6 +21,9 @@
     "Flux Schnell full text to image": "Flux Schnell full快速完整版文生图",
     "Generate images quickly with Flux Schnell full version. Uses Apache2.0 license, requires only 4 steps to generate images while maintaining good image quality.": "使用Flux快速完整版快速生成图像。采用Apache2.0许可证，仅需4步即可生成图像，同时保持良好的图像质量。",
 
+    "Flux.1 Dev USO Reference Image Generation": "Flux.1 开发版 USO 参考图像生成",
+    "Use reference images to control both style and subject - keep your character's face while changing artistic style, or apply artistic styles to new scenes": "使用参考图像同时控制风格与主体——在改变艺术风格时保留角色面部特征，或将艺术风格应用到新场景中",
+
 
 
     "Flux Inpaint": "Flux局部重绘",
@@ -30,7 +33,18 @@
 
 
     "Qwen-Image Text to Image": "千问图像 文生图",
-    "Generate images with exceptional multilingual text rendering and editing capabilities using Qwen-Image's 20B MMDiT model..": "使用Qwen-Image 20B参数MMDiT模型生成图像，具备卓越的多语言文本渲染和编辑能力。",
+    "Generate images with exceptional multilingual text rendering and editing capabilities using Qwen-Image's 20B MMDiT model..": "使用千问图像 20B参数MMDiT模型生成图像，具备卓越的多语言文本渲染和编辑能力。",
+    "Qwen-Image InstantX ControlNet": "千问图像 InstantX ControlNet",
+    "Generate images with Qwen-Image InstantX ControlNet, supporting canny, soft edge, depth, pose": "使用千问图像 InstantX ControlNet生成图像，支持边缘检测、软边缘、深度和姿态控制",
+
+    "Qwen-Image Union Control": "千问图像 通用ControlNet",
+    "Generate images with precise structural control using Qwen-Image's unified ControlNet LoRA. Supports multiple control types including canny, depth, lineart, softedge, normal, and openpose for diverse creative applications.": "使用千问图像的通用ControlNet LoRA生成具有精确结构控制的图像。支持多种控制类型，包括边缘检测、深度、线稿、软边缘、法线和姿态，适用于多样化的创意应用。",
+    "Qwen-Image ControlNet model patch": "千问图像 ControlNet模型补丁",
+    "Control image generation using Qwen-Image ControlNet models. Supports canny, depth, and inpainting controls through model patching.": "使用千问图像 ControlNet模型控制图像生成。通过模型补丁支持边缘检测、深度和修复控制。",
+
+    "Qwen Image Edit": "千问图像 编辑",
+    "Edit images with precise bilingual text editing and dual semantic/appearance editing capabilities using Qwen-Image-Edit's 20B MMDiT model.": "使用千问图像 编辑 20B参数MMDiT模型编辑图像，具备精确的双语文本编辑和双重语义/外观编辑能力。",
+
 
     "OmniGen2 Text to Image": "OmniGen2文生图",
     "Generate high-quality images from text prompts using OmniGen2's unified 7B multimodal model with dual-path architecture.": "使用OmniGen2 的统一 7B 多模态模型（其采用双路径架构）从文本提示中生成高质量图像。",
@@ -43,6 +57,7 @@
 
     "Chroma text to image": "Chroma文生图",
     "Chroma is modified from flux and has some changes in the architecture.": "Chroma是基于Flux改进的版本，在架构上做了一些调整。",
+    "Chroma - enhanced Flux model with improved image quality and better prompt understanding for stunning text-to-image generation.": "Chroma是具有色彩增强功能的 Flux 模型，其图像质量得到提升，对文本转图像的生成过程中的提示理解也更加准确，从而实现了令人惊叹的图像生成效果。",
 
     "HiDream I1 Dev": "HiDream I1开发版",
     "HiDream I1 Fast": "HiDream I1快速版",
@@ -65,14 +80,27 @@
     "Wan 2.2 14B First-Last Frame to Video": "Wan2.2 14B 首尾帧转视频",
     "Generate smooth video transitions by defining start and end frames.": "通过定义起始帧和结束帧生成流畅的视频过渡效果。",
 
-    "Wan 2.2 14B Fun Inp": "万2.2 14B趣味输入版",
-    "Generate videos from start and end frames using Wan 2.2 Fun Inp.": "使用万2.2趣味输入版通过起始帧和结束帧生成视频。",
-    "Wan 2.2 14B Fun Control": "万2.2 14B趣味控制版",
-    "Generate videos guided by pose, depth, and edge controls using Wan 2.2 Fun Control.": "使用万2.2趣味控制版，通过姿态、深度和边缘控制引导生成视频。",
+    "Wan2.2-S2V Audio-Driven Video Generation": "万2.2-S2V音频驱动视频生成",
+    "Transform static images and audio into dynamic videos with perfect synchronization and minute-level generation.": "将静态图像和音频转换为动态视频，实现完美同步和分钟级生成。",
+
+    "Wan 2.2 14B Fun Inp": "Wan2.2 14B趣味输入版",
+    "Generate videos from start and end frames using Wan 2.2 Fun Inp.": "使用Wan2.2趣味输入版通过起始帧和结束帧生成视频。",
+    "Wan 2.2 14B Fun Control": "Wan2.2 14B趣味控制版",
+    "Generate videos guided by pose, depth, and edge controls using Wan 2.2 Fun Control.": "使用Wan2.2趣味控制版，通过姿态、深度和边缘控制引导生成视频。",
+
+    "Wan 2.2 14B Fun Camera Control": "Wan2.2 14B趣味相机控制版",
+    "Generate videos with camera motion controls including pan, zoom, and rotation using Wan 2.2 Fun Camera Control.": "使用Wan2.2趣味相机控制版生成视频，支持包括平移、缩放和旋转在内的摄像机运动控制。",
 
     "Wan 2.2 5B Video Generation": "Wan2.2 5B视频生成",
     "Generate videos from text or images using Wan 2.2 5B hybrid model": "使用Wan2.2 5B混合模型，从文本或图像生成视频。",
     "Wan VACE Text to Video": "WanVACE文本生成视频",
+
+    "Fast text-to-video and image-to-video generation with 5B parameters. Optimized for rapid prototyping and creative exploration.": "50亿参数快速文本到视频和图像到视频生成。专为快速原型设计和创意探索优化。",
+    "Wan 2.2 5B Fun Inpaint": "Wan2.2 5B趣味修复版",
+    "Efficient video inpainting from start and end frames. 5B model delivers quick iterations for testing workflows.": "基于起始帧和结束帧的高效视频修复。50亿模型为工作流测试提供快速迭代。",
+    "Wan 2.2 5B Fun Control": "Wan2.2 5B趣味控制版",
+    "Multi-condition video control with pose, depth, and edge guidance. Compact 5B size for experimental development.": "支持姿态、深度和边缘引导的多条件视频控制。紧凑的50亿规模适合实验开发。",
+
     "Transform text descriptions into high-quality videos. Supports both 480p and 720p with VACE-14B model.": "将文本描述转化为高质量视频。使用VACE-14B模型，支持480p和720p分辨率。",
     "Wan VACE Reference to Video": "WanVACE参考生成视频",
     "Create videos that match the style and content of a reference image. Perfect for style-consistent video generation.": "创建与参考图像风格和内容匹配的视频，非常适合风格一致的视频生成。",
@@ -93,6 +121,12 @@
     "Wan 2.1 FLF2V 720p F16": "Wan 2.1 首尾帧视频 720p F16",
     "Cosmos Predict2 2B Video2World 480p 16fps": "宇宙预测2 2B视频转世界 480p 16帧/秒",
     "Generate videos with Cosmos-Predict2 2B Video2World, generating physically accurate, high-fidelity, and consistent video simulations.": "使用宇宙预测2 2B视频转世界模型生成视频，可产生物理精确、高保真且一致性的视频模拟效果。",
+
+    "ByteDance Seedream 4.0": "字节跳动 即梦4.0",
+    "Multi-modal AI model for text-to-image and image editing. Generate 2K images in under 2 seconds with natural language control.": "多模态AI模型，支持文生图和图像编辑。通过自然语言控制，可在2秒内生成2K分辨率图像。",
+
+    "Google Gemini Image": "谷歌Gemini图像",
+    "Nano-banana (Gemini-2.5-Flash Image) - image editing with consistency.": "纳米香蕉(Gemini-2.5-Flash图像) - 保持一致性图像编辑。",
 
     "BFL Flux.1 Kontext Multiple Image Input": "BFL Flux.1 Kontext 多图像输入",
     "Input multiple images and edit them with Flux.1 Kontext.": "输入多张图像并使用Flux.1 Kontext进行编辑。",
@@ -123,6 +157,16 @@
     "Generate dynamic videos by applying visual effects to images using Kling.": "使用Kling对图像应用视觉效果生成动态视频。",
     "Kling: FLF2V": "Kling: 首尾帧转视频",
     "Generate videos through controlling the first and last frames.": "通过控制首尾帧生成视频。",
+
+    "Vidu: Text to Video": "Vidu: 文本生成视频",
+    "Generate high-quality 1080p videos from text prompts with adjustable movement amplitude and duration control using Vidu's advanced AI model.": "使用Vidu先进AI模型，通过文本提示生成高质量1080p视频，支持可调节运动幅度和时长控制。",
+    "Vidu: Image to Video": "Vidu: 图像生成视频", 
+    "Transform static images into dynamic 1080p videos with precise motion control and customizable movement amplitude using Vidu.": "使用Vidu将静态图像转换为动态1080p视频，具备精确的运动控制和可定制的运动幅度。",
+    "Vidu: Reference to Video": "Vidu: 参考生成视频",
+    "Generate videos with consistent subjects using multiple reference images (up to 7) for character and style continuity across the video sequence.": "使用多张参考图像（最多7张）生成主题一致的视频，确保角色和风格在视频序列中的连续性。",
+    "Vidu: Start End to Video": "Vidu: 首尾帧生成视频",
+    "Create smooth video transitions between defined start and end frames with natural motion interpolation and consistent visual quality.": "在定义的起始帧和结束帧之间创建流畅的视频过渡，具有自然的运动插值和一致的视觉质量。",
+
     "Luma: Text to Video": "Luma: 文生视频",
     "High-quality videos can be generated using simple prompts.": "使用简单提示即可生成高质量视频。",
     "Moonvalley: Text to Video": "Moonvalley: 文生视频",
@@ -145,6 +189,12 @@
     "Apply motion from one video to another.": "将动作从一段视频迁移到另一段视频。",
     "Moonvalley: Pose Control": "Moonvalley: 姿态控制",
     "Apply human pose and movement from one video to another.": "将人体姿态和动作从一段视频迁移到另一段视频。",
+
+    "MiniMax: Video": "MiniMax: 视频生成",
+    "Generate high-quality videos from text prompts with optional first-frame control using MiniMax Hailuo-02 model. Supports multiple resolutions (768P/1080P) and durations (6/10s) with intelligent prompt optimization.": "使用MiniMax海螺-02模型从文本提示生成高质量视频，支持可选的首帧控制。提供多种分辨率（768P/1080P）和时长（6/10秒）选项，并具备智能提示词优化功能。",
+    "Veo3: Image to Video": "Veo3：图像生成视频",
+    "Generate high-quality 8-second videos from text prompts or images using Google's advanced Veo 3 API. Features audio generation, prompt enhancement, and dual model options for speed or quality.": "使用Google先进的Veo 3 API，从文本提示或图像生成高质量的8秒视频。具备音频生成、提示增强功能，并提供速度或质量双模型选项。",
+
     "Rodin: Image to Model": "Rodin：图片转3D模型",
     "Generate detailed 3D models from single photos using Rodin AI.": "使用RodinAI从单张照片生成精细的3D模型",
     "Rodin: Multiview to Model": "Rodin：多视角转3D模型",
@@ -168,6 +218,9 @@
     "Hunyuan3D 2.0 MV Turbo": "混元3D 2.0多视角加速版",
     "Generate 3D models from multiple views using Hunyuan3D 2.0 MV Turbo.": "使用混元3D 2.0多视角加速版从多角度图像快速生成3D模型。",
 
+    "Stable Zero123": "Stable 零123",
+    "Generate 3D views from single images using Stable Zero123.": "使用Stable Zero123从单张图像生成3D视图。",
+
     "Stable Audio": "Stable音频",
     "Generate audio from text prompts using Stable Audio.": "使用Stable音频从文本提示生成音频。",
     "ACE-Step v1 Text to Instrumentals Music": "ACE-Step v1 文本转器乐曲",
@@ -177,5 +230,149 @@
     "ACE Step v1 M2M Editing": "ACE-Step v1 音乐到音乐编辑",
     "Edit existing songs to change style and lyrics using ACE-Step v1 M2M.": "使用ACE-Step v1 M2M编辑现有歌曲，改变风格和歌词。",
 
-    "zhudefeixingmeng": "猪的飞行梦汉化20250802 01:13"
+    "Stability AI: Text to Audio": "Stability AI: 文本转音频",
+    "Generate music from text using Stable Audio 2.5. Create minutes-long tracks in seconds.": "使用Stable音频2.5 从文本生成音乐。几秒内创作分钟级长度的音轨。",
+    "Stability AI: Audio to Audio": "Stability AI: 音频转音频",
+    "Transform audio into new compositions using Stable Audio 2.5. Upload audio and AI creates complete tracks.": "使用Stable音频2.5 将音频转换为新的音乐作品。上传音频，AI将生成完整音轨。",
+    "Stability AI: Audio Inpainting": "Stability AI: 音频修复",
+    "Complete or extend audio tracks using Stable Audio 2.5. Upload audio and AI generates the rest.": "使用Stable音频2.5 完成或扩展音轨。上传音频，AI将生成剩余部分。",
+
+    "Extract Instrumental from Song": "从歌曲中提取伴奏",
+    "Isolate Vocals from Audio": "从音频中分离人声",
+    "Isolate Vocals from Video": "从视频中分离人声",
+    "Remix Song": "歌曲重混",
+    "Replace BGM with Stable-Audio-Generated Music": "使用Stable音频 生成的音乐替换背景音乐",
+    "Replace BGM with Stable Audio Generated Music": "使用Stable音频 生成的音乐替换背景音乐",
+
+
+    "Comparing Detailers": "细节增强器对比",
+    "Flux img2img DetailDaemon": "Flux图生图细节守护进程",
+    "Flux inpainting Detail Daemon": "Flux修复细节守护进程",
+    "Flux upscale Detail Daemon": "Flux放大细节守护进程",
+    "SDXL txt2img DetailDaemon": "SDXL文生图细节守护进程",
+
+    "framepack hv example": "关键帧 混元视频 示例",
+
+    "hunhyuan_rf_inversion_testing_01": "混元RF反演测试01",
+    "hyvideo_dashtoon_keyframe_example_01": "混元视频-达斯通关键帧示例01",
+    "hyvideo_i2v_example_01": "混元视频-图转视频示例01",
+    "hyvideo_i2v_example_fixed_model_02": "混元视频-图转视频固定模型示例02",
+    "hyvideo_ip2v_experimental_dango": "混元视频-图像提示转视频实验版Dango",
+    "hyvideo_leapfusion_img2vid_example_01": "混元视频-跳跃融合图转视频示例01",
+    "hyvideo_lowvram_blockswap_test": "混元视频-低显存块交换测试",
+    "hyvideo_prompt_mix_experimental": "混元视频-提示词混合实验",
+    "hyvideo_skyreel_img2vid_example_01": "混元视频-天轮图转视频示例01",
+    "hyvideo_t2v_example_01": "混元视频-文转视频示例01",
+    "hyvideo_v2v_example_01": "混元视频-视频转视频示例01",
+    "hunhyuan rf inversion testing 01": "混元RF反演测试01",
+    "hyvideo dashtoon keyframe example 01": "混元视频-达斯通关键帧示例01",
+    "hyvideo i2v example 01": "混元视频-图转视频示例01",
+    "hyvideo i2v example fixed model 02": "混元视频-图转视频固定模型示例02",
+    "hyvideo ip2v experimental dango": "混元视频-图像提示转视频实验版Dango",
+    "hyvideo leapfusion img2vid example 01": "混元视频-跳跃融合图转视频示例01",
+    "hyvideo lowvram blockswap test": "混元视频-低显存块交换测试",
+    "hyvideo prompt mix experimental": "混元视频-提示词混合实验",
+    "hyvideo skyreel img2vid example 01": "混元视频-天轮图转视频示例01",
+    "hyvideo t2v example 01": "混元视频-文转视频示例01",
+    "hyvideo v2v example 01": "混元视频-视频转视频示例01",
+
+    "1-FaceDetailer": "1-面部优化",
+    "1 FaceDetailer": "1 面部优化",
+    "2-MaskDetailer": "2-遮罩优化",
+    "2 MaskDetailer": "2 遮罩优化",
+    "3-SEGSDetailer": "3-SEGS优化",
+    "3 SEGSDetailer": "3 SEGS优化",
+    "4-MakeTileSEGS-Upscale": "4-分块SEGS放大",
+    "4 MakeTileSEGS Upscale": "4 分块SEGS放大",
+    "5-PreviewDetailerHookProvider": "5-预览优化钩子提供器",
+    "5 PreviewDetailerHookProvider": "5 预览优化钩子提供器",
+    "5-prompt-per-tile": "5-分块提示词",
+    "5 prompt per tile": "5 分块提示词",
+    "6-DetailerWildcard": "6-优化提示词",
+    "6 DetailerWildcard": "6 优化通提示词",
+
+    "inpaint_flux": "Flux修复",
+    "inpaint_hires": "高分辨率修复",
+    "inpaint_sd15": "SD1.5修复",
+
+    "inpaint flux": "Flux修复",
+    "inpaint hires": "高分辨率修复",
+    "inpaint sd15": "SD1.5修复",
+
+    "leapfusion_hunyuuanvideo_i2v_native_testing": "跳跃融合-混元视频 原生图转视频测试",
+    "leapfusion hunyuuanvideo i2v native testing": "跳跃融合-混元视频 原生图转视频测试",
+
+    "install_wheel": "安装Wheel包",
+    "merge_safetensors": "合并安全张量文件",
+    "nunchaku-flux.1-canny-lora": "双节棍-Flux.1-边缘检测-LoRA",
+    "nunchaku-flux.1-canny": "双节棍-Flux.1-边缘检测",
+    "nunchaku-flux.1-depth-lora": "双节棍-Flux.1-深度图-LoRA",
+    "nunchaku-flux.1-depth": "双节棍-Flux.1-深度图",
+    "nunchaku-flux.1-dev-controlnet-union-pro2": "双节棍-Flux.1-开发版-ControlNet联合-Pro2",
+    "nunchaku-flux.1-dev-controlnet-upscaler": "双节棍-Flux.1-开发版-ControlNet超分辨率",
+    "nunchaku-flux.1-dev-pulid": "双节棍-Flux.1-开发版-PULID",
+    "nunchaku-flux.1-dev-qencoder": "双节棍-Flux.1-开发版-Q编码器",
+    "nunchaku-flux.1-dev": "双节棍-Flux.1-开发版",
+    "nunchaku-flux.1-fill-removalV2": "双节棍-Flux.1-重绘V2",
+    "nunchaku-flux.1-fill": "双节棍-Flux.1-重绘",
+    "nunchaku-flux.1-ip-adapter": "双节棍-Flux.1-IPAdapter",
+    "nunchaku-flux.1-kontext-dev-turbo_lora": "双节棍-Flux.1-上下文开发版-涡轮LoRA",
+    "nunchaku-flux.1-kontext-dev": "双节棍-Flux.1-上下文开发版",
+    "nunchaku-flux.1-redux-dev": "双节棍-Flux.1-简化开发版",
+    "nunchaku-flux.1-schnell": "双节棍-Flux.1-快速版",
+    "nunchaku-qwen-image": "双节棍-千问图像版",
+    "install wheel": "安装Wheel包",
+    "merge safetensors": "合并安全张量文件",
+    "nunchaku flux.1 canny lora": "双节棍 Flux.1 边缘检测 LoRA",
+    "nunchaku flux.1 canny": "双节棍 Flux.1 边缘检测",
+    "nunchaku flux.1 depth lora": "双节棍 Flux.1 深度图 LoRA",
+    "nunchaku flux.1 depth": "双节棍 Flux.1 深度图",
+    "nunchaku flux.1 dev controlnet union pro2": "双节棍 Flux.1 开发版 ControlNet联合 Pro2",
+    "nunchaku flux.1 dev controlnet upscaler": "双节棍 Flux.1 开发版 ControlNet超分辨率",
+    "nunchaku flux.1 dev pulid": "双节棍 Flux.1 开发版 PULID",
+    "nunchaku flux.1 dev qencoder": "双节棍 Flux.1 开发版 Q编码器",
+    "nunchaku flux.1 dev": "双节棍 Flux.1 开发版",
+    "nunchaku flux.1 fill removalV2": "双节棍 Flux.1 重绘V2",
+    "nunchaku flux.1 fill": "双节棍 Flux.1 重绘",
+    "nunchaku flux.1 ip adapter": "双节棍 Flux.1 IPAdapter",
+    "nunchaku flux.1 kontext dev turbo lora": "双节棍 Flux.1 上下文开发版 涡轮LoRA",
+    "nunchaku flux.1 kontext dev": "双节棍 Flux.1 上下文开发版",
+    "nunchaku flux.1 redux dev": "双节棍 Flux.1 简化开发版",
+    "nunchaku flux.1 schnell": "双节棍 Flux.1 快速版",
+    "nunchaku qwen image": "双节棍 千问图像版",
+
+    "wanvideo_1_3B_control_lora_example_01": "万视频2.1_3B控制LoRA示例_01",
+    "wanvideo_1_3B_ReCamMaster_example_01": "万视频2.1_3BReCamMaster示例_01",
+    "wanvideo_1_3B_VACE_examples_02": "万视频2.1_3BVACE示例_02",
+    "wanvideo_480p_I2V_endframe_example_01": "万视频_480p图转视频尾帧示例_01",
+    "wanvideo_480p_I2V_example_02": "万视频_480p图转视频示例_02",
+    "wanvideo_flowedit_I2V_example_01": "万视频_流编辑图转视频示例_01",
+    "wanvideo_Fun_control_example_01": "万视频_趣味控制示例_01",
+    "wanvideo_long_T2V_example_01": "万视频_长文本转视频示例_01",
+    "wanvideo_skyreels_a2_example_01": "万视频_天空卷轴A2示例_01",
+    "wanvideo_T2V_example_02": "万视频_文本转视频示例_02",
+    "wanvideo_vid2vid_example_01": "万视频_视频转视频示例_01",
+
+    "unsample_example": "非采样 示例",
+    "variations_example": "变体 示例",
+    "unsample example": "非采样 示例",
+    "variations example": "变体 示例",
+
+    "catvton_example": "虚拟试衣示例",
+    "catvton example": "虚拟试衣示例",
+
+    "Interpolate_KeyFrame": "关键帧插值",
+    "my OpenPose": "我的Open姿态",
+    "smoothvideo": "视频平滑",
+    "smothvideo with batch_size(faster)": "批量处理视频平滑（更快）",
+
+    "DynamiCrafter-CIL-testing_example_01": "动态制作者-CIL测试示例01",
+    "dynamicrafter_i2v_example_01": "动态制作者 图转视频示例01",
+    "tooncrafter_example_01": "卡通制作者示例01",
+    "tooncrafter_example_low_vram_01": "卡通制作者低显存示例01",
+
+    "comfy_wordcloud_advance": "Comfy高级词云",
+    "comfy_wordcloud_simple": "Comfy简易词云",
+
+    "zhudefeixingmeng": "猪的飞行梦汉化20250911 16:44更新"
 }
