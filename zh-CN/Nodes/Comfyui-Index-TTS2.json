@@ -235,7 +235,8 @@
         },
         "outputs": {
             "cache_info": "缓存信息",
-            "cache_details": "缓存详细信息"
+            "cache_details": "缓存详细信息",
+            "summary": "概要"
         }
     },
     "IndexTTS2_TransformersCompatCheck": {
