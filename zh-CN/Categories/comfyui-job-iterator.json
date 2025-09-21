@@ -1,0 +1,9 @@
+{
+    "sort": "排序",
+    "reverse_sort": "反向排序",
+    "reverse": "反转",
+    "zip": "压缩",
+    "product": "乘积",
+    "repeat": "重复",
+    "clamp": "截取"
+}

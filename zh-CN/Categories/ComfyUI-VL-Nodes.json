@@ -1,0 +1,11 @@
+{
+    "enabled": "启用",
+    "disabled": "禁用",
+    "Enable Waiting": "启用等待",
+    "Disable Waiting": "禁用等待",
+    "Non-Thinking": "不思考",
+    "Thinking": "思考",
+    "Describe this image in detail.": "详细描述这张图片。",
+    "Min/Max Pixels": "最小/最大像素",
+    "Exact Dimensions": "精确尺寸"
+}

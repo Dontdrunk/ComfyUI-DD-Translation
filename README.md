@@ -53,6 +53,11 @@ https://github.com/user-attachments/assets/1ec662ba-da6c-4712-8be7-61168b08940e
 - msola-ht丶是小张啊丶alinuo666丶猪的飞行梦丶ZXSZS丶tanglangxia丶AIGCZero丶Artistjjw丶henrylaobai丶FanXiangTM丶xuchenxu168
 
 ## 更新日志
+### v1.9.15(2025-9-21) 
+- 合并贡献者（FanXiangTM ）对于TTS2系列插件的调整
+- 合并贡献者（Artistjjw）对于ComfyUI-WanVideoWrapper插件的新节点补全
+- 合并贡献者（tanglangxia）对于comfyui-job-iterator和ComfyUI-VL-Nodes插件的完整翻译
+
 ### v1.9.14(2025-9-15) 
 - 合并贡献者（xuchenxu168）提交的翻译涉及以下插件：
 - comfyui-Index-TTS2插件的的翻译

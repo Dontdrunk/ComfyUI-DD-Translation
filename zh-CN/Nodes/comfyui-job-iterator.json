@@ -1,0 +1,319 @@
+{
+    "Range": {
+        "title": "范围",
+        "widgets": {
+            "start": "开始",
+            "stop": "结束",
+            "step": "步长"
+        },
+        "outputs": {
+            "sequence": "序列"
+        }
+    },
+    "Literal": {
+        "title": "自定义数值",
+        "widgets": {
+            "literal": "自定义数值，格式参考python语法"
+        }
+    },
+    "Reorder": {
+        "title": "重新排序",
+        "inputs": {
+            "sequence": "序列"
+        },
+        "widgets": {
+            "method": "方法"
+        },
+        "outputs": {
+            "sequence": "序列"
+        }
+    },
+    "Combinations": {
+        "title": "组合",
+        "inputs": {
+            "sequence": "序列"
+        },
+        "widgets": {
+            "count": "计数",
+            "replacement": "替换"
+        },
+        "outputs": {
+            "sequence": "序列"
+        }
+    },
+    "Permutations": {
+        "title": "排列组合",
+        "inputs": {
+            "sequence": "序列"
+        },
+        "widgets": {
+            "count": "计数"
+        },
+        "outputs": {
+            "sequence": "序列"
+        }
+    },
+    "Slice": {
+        "title": "切片",
+        "inputs": {
+            "sequence": "序列"
+        },
+        "widgets": {
+            "start": "开始",
+            "stop": "结束",
+            "step": "步长"
+        },
+        "outputs": {
+            "sequence": "序列"
+        }
+    },
+    "ModelFinder": {
+        "title": "模型查找器",
+        "inputs": {
+            "filenames": "文件名"
+        },
+        "widgets": {
+            "model_type": "模型类型",
+            "recursive": "递归",
+            "skip_missing": "跳过缺失值"
+        },
+        "outputs": {
+            "paths": "路径",
+            "stems": "名称"
+        }
+    },
+    "MakeJob": {
+        "title": "创建任务",
+        "inputs": {
+            "sequence": "序列"
+        },
+        "widgets": {
+            "name": "名称"
+        },
+        "outputs": {
+            "job": "任务",
+            "count": "计数"
+        }
+    },
+    "CombineJobs": {
+        "title": "合并任务",
+        "inputs": {
+            "a": "a",
+            "b": "b",
+            "c": "c",
+            "d": "d",
+            "e": "e"
+        },
+        "widgets": {
+            "method": "方法"
+        },
+        "outputs": {
+            "job": "任务",
+            "count": "计数"
+        }
+    },
+    "EnumerateJob": {
+        "title": "枚举任务",
+        "inputs": {
+            "job": "任务"
+        },
+        "widgets": {
+            "name": "名称"
+        },
+        "outputs": {
+            "job": "任务",
+            "count": "计数"
+        }
+    },
+    "GetJobStep": {
+        "title": "获取任务步数",
+        "inputs": {
+            "job": "任务"
+        },
+        "widgets": {
+            "step": "步数",
+            "wrap": "循环"
+        },
+        "outputs": {
+            "attributes": "属性"
+        }
+    },
+    "Join": {
+        "title": "连接",
+        "inputs": {
+            "sequence": "序列"
+        },
+        "widgets": {
+            "join_str": "连接字符串"
+        },
+        "outputs": {
+            "sequence": "序列"
+        }
+    },
+    "FormatAttributes": {
+        "title": "格式属性",
+        "inputs": {
+            "attributes": "属性"
+        },
+        "widgets": {
+            "format": "格式"
+        },
+        "outputs": {
+            "string": "字符串"
+        }
+    },
+    "GetAttribute": {
+        "title": "获取属性",
+        "inputs": {
+            "attributes": "属性"
+        },
+        "widgets": {
+            "name": "名称"
+        },
+        "outputs": {
+            "value": "值"
+        }
+    },
+    "JobToList": {
+        "title": "任务列表",
+        "inputs": {
+            "job": "任务"
+        },
+        "outputs": {
+            "attributes": "属性"
+        }
+    },
+    "GetAttributeInt": {
+        "title": "获取整数属性",
+        "inputs": {
+            "attributes": "属性"
+        },
+        "widgets": {
+            "name": "名称"
+        },
+        "outputs": {
+            "value": "值"
+        }
+    },
+    "GetAttributeString": {
+        "title": "获取字符串属性",
+        "inputs": {
+            "attributes": "属性"
+        },
+        "widgets": {
+            "name": "名称"
+        },
+        "outputs": {
+            "value": "值"
+        }
+    },
+    "GetAttributeFloat": {
+        "title": "获取浮点属性",
+        "inputs": {
+            "attributes": "属性"
+        },
+        "widgets": {
+            "name": "名称"
+        },
+        "outputs": {
+            "value": "值"
+        }
+    },
+    "JoinImageBatch": {
+        "title": "连接图像批次",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "mode": "模式"
+        },
+        "outputs": {
+            "image": "图像"
+        }
+    },
+    "JoinImages": {
+        "title": "连接图像",
+        "inputs": {
+            "image_a": "图像a",
+            "image_b": "图像b"
+        },
+        "widgets": {
+            "mode": "模式"
+        },
+        "outputs": {
+            "image": "图像"
+        }
+    },
+    "SelectImageBatch": {
+        "title": "选择图像批次",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "select": "选择"
+        },
+        "outputs": {
+            "image": "图像"
+        }
+    },
+    "SelectImageList": {
+        "title": "选择图像列表",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "select": "选择"
+        },
+        "outputs": {
+            "image": "图像"
+        }
+    },
+    "StringToImage": {
+        "title": "字符串转图像",
+        "widgets": {
+            "text": "文本",
+            "width": "宽度",
+            "height": "高度",
+            "colour": "颜色",
+            "background": "背景颜色"
+        },
+        "outputs": {
+            "image": "图像"
+        }
+    },
+    "ProgressBar": {
+        "title": "进度条",
+        "inputs": {
+            "progress": "进度"
+        },
+        "widgets": {
+            "padding": "内边距",
+            "width": "宽度",
+            "height": "高度",
+            "colour": "颜色",
+            "background": "背景颜色"
+        },
+        "outputs": {
+            "image": "图像"
+        }
+    },
+    "Stringify": {
+        "title": "字符串化",
+        "inputs": {
+            "x": "x"
+        },
+        "outputs": {
+            "str": "字符串",
+            "repr": "repr"
+        }
+    },
+    "Interact": {
+        "title": "互动",
+        "inputs": {
+            "a": "a",
+            "b": "b",
+            "c": "c",
+            "d": "d"
+        }
+    }
+}
