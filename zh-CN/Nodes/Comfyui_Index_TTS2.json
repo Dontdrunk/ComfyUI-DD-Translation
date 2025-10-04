@@ -1,0 +1,321 @@
+{
+    "IndexTTS2_Basic": {
+        "title": "基本 (IndexTTS2)",
+        "inputs": {
+            "speaker_audio": "说话者音频",
+            "model_manager": "模型管理器"
+        },
+        "widgets": {
+            "output_filename": "输出文件名",
+            "language": "语言",
+            "speed": "种子",
+            "temperature": "温度",
+            "top_p": "采样阈值",
+            "use_fp16": "使用半精度",
+            "use_cuda_kernel": "使用CUDA内核",
+            "verbose": "详细输出"
+        },
+        "outputs": {
+            "audio": "音频",
+            "output_path": "输出路径",
+            "info": "信息"
+        }
+    },
+    "IndexTTS2_ModelManager": {
+        "title": "模型管理器 (IndexTTS2)",
+        "description": "高效的模型加载、缓存和内存管理",
+        "widgets": {
+            "model_name": "模型名称",
+            "config_path": "配置文件路径",
+            "model_dir": "模型路径",
+            "use_fp16": "使用半精度",
+            "use_cuda_kernel": "使用CUDA内核",
+            "device": "设备",
+            "cache_model": "缓存模型",
+            "force_reload": "强制重新加载",
+            "memory_optimization": "内存优化",
+            "verbose": "详细输出"
+        },
+        "outputs": {
+            "model": "模型",
+            "model_info": "模型信息",
+            "model_stats": "模型统计"
+        }
+    },
+    "IndexTTS2_Duration": {
+        "title": "时间控制 (IndexTTS2)",
+        "inputs": {
+            "speaker_audio": "扬声器音频",
+            "model_manager": "模型管理器"
+        },
+        "widgets": {
+            "duration_mode": "持续时间模式",
+            "output_filename": "输出文件名",
+            "speed_multiplier": "速度调节",
+            "target_duration": "目标持续时间",
+            "token_count": "令牌计数",
+            "prosody_preservation": "保持自然节奏",
+            "use_fp16": "使用半精度",
+            "use_cuda_kernel": "使用CUDA内核",
+            "verbose": "详细输出"
+        },
+        "outputs": {
+            "audio": "音频",
+            "output_path": "输出路径",
+            "info": "信息",
+            "actual_duration": "实际持续时间"
+        }
+    },
+    "IndexTTS2_Emotion": {
+        "title": "多模态情绪控制 (IndexTTS2)",
+        "inputs": {
+            "speaker_audio": "说话者_音频",
+            "model_manager": "模型管理器",
+            "duration_mode": "持续时间模式"
+        },
+        "widgets": {
+            "output_filename": "输出文件名",
+            "emotion_alpha": "情绪强度",
+            "happy": "高兴",
+            "angry": "愤怒",
+            "sad": "悲哀",
+            "fear": "害怕",
+            "hate": "厌恶",
+            "low": "平静",
+            "surprise": "惊讶",
+            "neutral": "中性",
+            "use_random": "使用随机",
+            "use_fp16": "使用半精度",
+            "use_cuda_kernel": "使用CUDA内核",
+            "verbose": "详细输出"
+        },
+        "outputs": {
+            "audio": "音频",
+            "output_path": "输出路径",
+            "info": "信息",
+            "emotion_analysis": "情绪分析"
+        }
+    },
+    "IndexTTS2_Advanced": {
+        "title": "高级控制 (IndexTTS2)",
+        "inputs": {
+            "speaker_audio": "说话者_音频",
+            "model_manager": "模型管理器",
+            "emotion_audio": "情感音频"
+        },
+        "widgets": {
+            "output_filename": "输出文件名",
+            "enable_duration_control": "启用持续时间控制",
+            "duration_mode": "持续时间模式",
+            "speed_multiplier": "速度调节",
+            "target_duration": "目标持续时间",
+            "token_count": "令牌计数",
+            "enable_emotion_control": "启用情绪控制",
+            "emotion_mode": "情绪模式",
+            "emotion_alpha": "情绪强度",
+            "happy": "高兴",
+            "angry": "愤怒",
+            "fear": "害怕",
+            "hate": "厌恶",
+            "low": "平静",
+            "surprise": "惊讶",
+            "neutral": "中性",
+            "use_gpt_latents": "增强稳定性",
+            "prosody_preservation": "保持自然节奏",
+            "stability_enhancement": "提高一致性",
+            "clarity_boost": "增强音频清晰度",
+            "temperature": "温度",
+            "top_p": "采样阈值",
+            "use_random": "使用随机",
+            "use_fp16": "使用半精度",
+            "use_cuda_kernel": "使用CUDA内核",
+            "verbose": "详细输出",
+            "sad": "悲哀"
+        },
+        "outputs": {
+            "audio": "音频",
+            "output_path": "输出路径",
+            "info": "信息",
+            "emotion_analysis": "情绪分析",
+            "synthesis_stats": "综合统计数据",
+            "duration": "持续时间"
+        }
+    },
+    "IndexTTS2_MultiTalk": {
+        "title": "带情绪控制的多对人话 (IndexTTS2)",
+        "inputs": {
+            "speaker1_audio": "说话者1_音频",
+            "speaker2_audio": "说话者2_音频",
+            "speaker3_audio": "说话者3_音频",
+            "speaker4_audio": "说话者4_音频",
+            "model_manager": "模型管理器",
+            "speaker1_emotion_config": "说话者1_情绪_配置",
+            "speaker2_emotion_config": "说话者2_情绪_配置",
+            "speaker3_emotion_config": "说话者3_情绪_配置",
+            "speaker4_emotion_config": "说话者4_情绪_配置"
+        },
+        "widgets": {
+            "output_filename": "输出文件名",
+            "language": "语言",
+            "speed": "种子",
+            "silence_duration": "停顿间隔时间",
+            "voice_consistency": "语音一致性",
+            "reference_boost": "启用参考音频增强",
+            "temperature": "温度",
+            "use_fp16": "使用半精度",
+            "use_cuda_kernel": "使用CUDA内核",
+            "verbose": "详细输出",
+            "top_p": "采样阈值"
+        },
+        "outputs": {
+            "audio": "音频",
+            "output_path": "输出路径",
+            "info": "信息",
+            "emotion_analysis": "情绪分析"
+        }
+    },
+    "IndexTTS2_EmotionVoiceMultiTalk": {
+        "title": "情感语音多重会话 (IndexTTS2)",
+        "inputs": {
+            "speaker1_voice": "说话者1_声音",
+            "speaker2_voice": "说话者2_声音",
+            "speaker3_voice": "说话者3_声音",
+            "speaker4_voice": "说话者4_声音",
+            "model_manager": "模型管理器",
+            "speaker1_emotion_voice": "说话者1_情感声音",
+            "speaker2_emotion_voice": "说话者2_情感声音",
+            "speaker3_emotion_voice": "说话者3_情感声音",
+            "speaker4_emotion_voice": "说话者4_情感声音"
+        },
+        "widgets": {
+            "num_speakers": "发言人数",
+            "output_filename": "输出文件名",
+            "speaker1_emotion_alpha": "说话者1_情绪强度",
+            "speaker2_emotion_alpha": "说话者2_情绪强度",
+            "speaker3_emotion_alpha": "说话者3_情绪强度",
+            "speaker4_emotion_alpha": "说话者4_情绪强度",
+            "silence_duration": "停顿间隔时间",
+            "speed": "种子",
+            "use_fp16": "使用半精度",
+            "use_cuda_kernel": "使用CUDA内核"
+        },
+        "outputs": {
+            "audio": "音频",
+            "conversation_info": "对话信息"
+        }
+    },
+    "IndexTTS2_AudioUtils": {
+        "title": "音频实用程序 (IndexTTS2)",
+        "widgets": {
+            "operation": "操作",
+            "audio_path": "音频路径",
+            "reference_audio": "参考音频",
+            "output_format": "输出格式",
+            "sample_rate": "采样率",
+            "normalize_volume": "标准化音量",
+            "remove_silence": "消除静音",
+            "noise_reduction": "降噪",
+            "output_filename": "输出文件名",
+            "verbose": "详细输出"
+        },
+        "outputs": {
+            "processed_audio": "已处理音频",
+            "output_path": "输出路径",
+            "analysis_results": "分析结果",
+            "info": "信息"
+        }
+    },
+    "IndexTTS2_ModelCacheInfo": {
+        "title": "模型缓存信息 (IndexTTS2)",
+        "widgets": {
+            "refresh": "刷新",
+            "show_details": "显示详情",
+            "show_file_sizes": "显示文件大小",
+            "verbose": "详细输出"
+        },
+        "outputs": {
+            "cache_info": "缓存信息",
+            "cache_details": "缓存详细信息",
+            "summary": "概要"
+        }
+    },
+    "IndexTTS2_TransformersCompatCheck": {
+        "title": "检查 Transformers 兼容性 (IndexTTS2)",
+        "widgets": {
+            "check_compatibility": "检查兼容性",
+            "show_upgrade_command": "显示升级命令",
+            "verbose": "详细输出"
+        },
+        "outputs": {
+            "compatibility_info": "兼容性信息",
+            "details": "详情",
+            "upgrade_command": "升级命令"
+        }
+    },
+    "IndexTTS2_AudioEnhancement": {
+        "title": "音频增强 (IndexTTS2)",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {
+            "enhancement_mode": "增强模式",
+            "output_filename": "输出文件名",
+            "enhancement_strength": "增强强度",
+            "noise_reduction_level": "降噪强度",
+            "spectral_boost": "频域增强",
+            "dynamic_range_compression": "动态范围压缩",
+            "voice_clarity_boost": "提高语音清晰度",
+            "preserve_original_character": "保留原始音色",
+            "use_ai_models": "使用AI模型",
+            "real_time_processing": "实时处理",
+            "output_sample_rate": "输出采样率",
+            "verbose": "详细输出"
+        },
+        "outputs": {
+            "enhanced_audio": "增强的音频",
+            "output_path": "输出路径",
+            "enhancement_info": "增强信息",
+            "info": "信息"
+        }
+    },
+    "IndexTTS2_SpeakerEmotionConfig": {
+        "title": "讲话者情感配置 (IndexTTS2)",
+        "inputs": {
+            "emotion_audio": "情感音频"
+        },
+        "widgets": {
+            "speaker_name": "说话者名称",
+            "emotion_mode": "情感模式",
+            "emotion_alpha": "情绪强度",
+            "happy": "开心",
+            "angry": "愤怒",
+            "sad": "悲哀",
+            "fear": "害怕",
+            "hate": "厌恶",
+            "low": "平静",
+            "surprise": "惊奇",
+            "neutral": "中性",
+            "enabled": "启用"
+        },
+        "outputs": {
+            "emotion_config": "情绪配置",
+            "info": "信息"
+        }
+    },
+    "IndexTTS2_QwenModelStatus": {
+        "title": "千问模型状态 (IndexTTS2)",
+        "description": "详细的模型状态信息",
+        "outputs": {
+            "current_model": "当前模型",
+            "model_status": "模型状态",
+            "detailed_info": "详细信息"
+        }
+    },
+    "IndexTTS2_QwenModelDisplay": {
+        "title": "千问模型展示 (IndexTTS2)",
+        "description": "直观显示当前推荐模型",
+        "outputs": {
+            "current_qwen_model": "当前 Qwen 模型"
+        }
+    }
+}

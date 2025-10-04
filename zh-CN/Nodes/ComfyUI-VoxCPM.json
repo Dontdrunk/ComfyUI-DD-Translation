@@ -1,0 +1,22 @@
+{
+    "VoxCPM_TTS": {
+        "title": "VoxCPM TTS",
+        "inputs": {
+            "prompt_audio": "提示音频"
+        },
+        "widgets": {
+            "model_name": "模型名称",
+            "cfg_value": "CFG 值",
+            "inference_timesteps": "推理时间步长",
+            "seed": "种子",
+            "force_offload": "强制卸载",
+            "device": "设备",
+            "retry_max_attempts": "最大重试次数",
+            "retry_threshold": "重试阈值",
+            "normalize_text": "规范文本"
+        },
+        "outputs": {
+            "Generated Audio": "生成的音频"
+        }
+    }
+}
