@@ -1,0 +1,157 @@
+{
+    "HunyuanVideoFoley": {
+        "title": "HunyuanVideo音效生成器",
+        "inputs": {
+            "text_prompt": "文本提示词",
+            "guidance_scale": "引导强度",
+            "num_inference_steps": "推理步数",
+            "sample_nums": "采样数量",
+            "seed": "随机种子",
+            "video": "视频",
+            "images": "图像",
+            "fps": "帧率",
+            "negative_prompt": "负面提示词",
+            "output_format": "输出格式",
+            "output_folder": "输出文件夹",
+            "filename_prefix": "文件名前缀",
+            "feature_extraction_batch_size": "特征提取批处理大小",
+            "syncformer_batch_size": "Syncformer批处理大小",
+            "memory_efficient": "内存优化",
+            "cpu_offload": "CPU卸载",
+            "enabled": "启用",
+            "silent_audio": "静音音频"
+        },
+        "widgets": {
+            "text_prompt": "文本提示词",
+            "guidance_scale": "引导强度",
+            "num_inference_steps": "推理步数",
+            "sample_nums": "采样数量",
+            "seed": "随机种子",
+            "video": "视频",
+            "images": "图像",
+            "fps": "帧率",
+            "negative_prompt": "负面提示词",
+            "output_format": "输出格式",
+            "output_folder": "输出文件夹",
+            "filename_prefix": "文件名前缀",
+            "feature_extraction_batch_size": "特征提取批处理大小",
+            "syncformer_batch_size": "Syncformer批处理大小",
+            "memory_efficient": "内存优化",
+            "cpu_offload": "CPU卸载",
+            "enabled": "启用",
+            "silent_audio": "静音音频"
+        },
+        "outputs": {
+            "video_path": "视频路径",
+            "video_frames": "视频帧",
+            "audio": "音频",
+            "status_message": "状态消息"
+        }
+    },
+    "HunyuanVideoFoleyModelLoader": {
+        "title": "HunyuanVideo音效模型加载器",
+        "inputs": {
+            "quantization": "量化方式",
+            "cpu_offload": "CPU卸载",
+            "model_path": "模型路径",
+            "config_path": "配置路径"
+        },
+        "widgets": {
+            "quantization": "量化方式",
+            "cpu_offload": "CPU卸载",
+            "model_path": "模型路径",
+            "config_path": "配置路径"
+        },
+        "outputs": {
+            "model": "模型",
+            "status": "状态"
+        }
+    },
+    "HunyuanVideoFoleyDependenciesLoader": {
+        "title": "HunyuanVideo音效依赖加载器",
+        "inputs": {
+            "model": "模型",
+            "load_text_encoder": "加载文本编码器",
+            "load_feature_extractor": "加载特征提取器"
+        },
+        "widgets": {
+            "model": "模型",
+            "load_text_encoder": "加载文本编码器",
+            "load_feature_extractor": "加载特征提取器"
+        },
+        "outputs": {
+            "dependencies": "依赖项",
+            "status": "状态"
+        }
+    },
+    "HunyuanVideoFoleyTorchCompile": {
+        "title": "HunyuanVideo音效Torch编译优化",
+        "inputs": {
+            "dependencies": "依赖项",
+            "compile_vae": "编译VAE",
+            "compile_mode": "编译模式",
+            "backend": "后端"
+        },
+        "widgets": {
+            "dependencies": "依赖项",
+            "compile_vae": "编译VAE",
+            "compile_mode": "编译模式",
+            "backend": "后端"
+        },
+        "outputs": {
+            "compiled_model": "编译模型",
+            "status": "状态"
+        }
+    },
+    "HunyuanVideoFoleyGeneratorAdvanced": {
+        "title": "HunyuanVideo音效高级生成器",
+        "inputs": {
+            "text_prompt": "文本提示词",
+            "guidance_scale": "引导强度",
+            "num_inference_steps": "推理步数",
+            "sample_nums": "采样数量",
+            "seed": "随机种子",
+            "video": "视频",
+            "images": "图像",
+            "fps": "帧率",
+            "negative_prompt": "负面提示词",
+            "output_format": "输出格式",
+            "output_folder": "输出文件夹",
+            "filename_prefix": "文件名前缀",
+            "feature_extraction_batch_size": "特征提取批处理大小",
+            "syncformer_batch_size": "Syncformer批处理大小",
+            "memory_efficient": "内存优化",
+            "cpu_offload": "CPU卸载",
+            "enabled": "启用",
+            "silent_audio": "静音音频",
+            "compiled_model": "编译模型"
+        },
+        "widgets": {
+            "text_prompt": "文本提示词",
+            "guidance_scale": "引导强度",
+            "num_inference_steps": "推理步数",
+            "sample_nums": "采样数量",
+            "seed": "随机种子",
+            "video": "视频",
+            "images": "图像",
+            "fps": "帧率",
+            "negative_prompt": "负面提示词",
+            "output_format": "输出格式",
+            "output_folder": "输出文件夹",
+            "filename_prefix": "文件名前缀",
+            "feature_extraction_batch_size": "特征提取批处理大小",
+            "syncformer_batch_size": "Syncformer批处理大小",
+            "memory_efficient": "内存优化",
+            "cpu_offload": "CPU卸载",
+            "enabled": "启用",
+            "silent_audio": "静音音频",
+            "compiled_model": "编译模型"
+        },
+        "outputs": {
+            "video_path": "视频路径",
+            "video_frames": "视频帧",
+            "audio": "音频",
+            "status_message": "状态消息"
+        }
+    }
+}

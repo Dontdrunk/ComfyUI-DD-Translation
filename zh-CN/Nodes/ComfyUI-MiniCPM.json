@@ -1,0 +1,78 @@
+{
+    "AILab_MiniCPM_V": {
+        "title": "MiniCPM_V",
+        "inputs": {
+            "image": "图像",
+            "video": "视频"
+        },
+        "widgets": {
+            "model": "模型",
+            "preset_prompt": "预设提示词",
+            "device": "加载设备",
+            "memory_management": "内存管理",
+            "seed": "随机种子"
+        }
+    },
+    "AILab_MiniCPM_V_Advanced": {
+        "title": "MiniCPM_V（高级）",
+        "inputs": {
+            "image": "图像",
+            "video": "视频"
+        },
+        "widgets": {
+            "model": "模型",
+            "preset_prompt": "预设提示词",
+            "max_new_tokens": "最大新Token数量",
+            "temperature": "温度系数",
+            "top_p": "Top_P采样",
+            "top_k": "Top_K采样",
+            "repetition_penalty": "重复惩罚系数",
+            "video_max_num_frames": "视频最大帧数",
+            "video_max_slice_frames": "视频最大切片数",
+            "device": "加载设备",
+            "memory_management": "内存管理",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "PROMPT": "提示词"
+        }
+    },
+    "AILab_MiniCPM_V_GGUF": {
+        "title": "MiniCPM_V_GGUF",
+        "inputs": {
+            "image": "图像",
+            "video": "视频"
+        },
+        "widgets": {
+            "model": "模型",
+            "preset_prompt": "预设提示词",
+            "device": "加载设备",
+            "memory_management": "内存管理",
+            "seed": "随机种子"
+        }
+    },
+ "AILab_MiniCPM_V_GGUF_Advanced": {
+        "title": "MiniCPM_V_GGUF（高级）",
+        "inputs": {
+            "image": "图像",
+            "video": "视频"
+        },
+        "widgets": {
+            "model": "模型",
+            "preset_prompt": "预设提示词",
+            "max_new_tokens": "最大新Token数量",
+            "temperature": "温度系数",
+            "top_p": "Top_P采样",
+            "top_k": "Top_K采样",
+            "repetition_penalty": "重复惩罚系数",
+            "video_max_num_frames": "视频最大帧数",
+            "video_max_slice_frames": "视频最大切片数",
+            "device": "加载设备",
+            "memory_management": "内存管理",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "PROMPT": "提示词"
+        }
+    }
+}
