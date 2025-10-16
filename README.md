@@ -53,6 +53,9 @@ https://github.com/user-attachments/assets/1ec662ba-da6c-4712-8be7-61168b08940e
 - msola-ht丶是小张啊丶alinuo666丶猪的飞行梦丶ZXSZS丶tanglangxia丶AIGCZero丶Artistjjw丶henrylaobai丶FanXiangTM丶xuchenxu168
 
 ## 更新日志
+### v1.9.17(2025-10-16) 
+- 合并贡献者（猪的飞行梦）提交的的官方模板翻译
+
 ### v1.9.16(2025-10-04) 
 - 合并贡献者（AIGCZero）提交的的ComfyUI_HunyuanVideoFoley插件翻译
 - 合并贡献值(Artistjjw)提交的的ComfyUI-MiniCPM插件翻译
