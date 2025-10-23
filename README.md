@@ -50,9 +50,16 @@ https://github.com/user-attachments/assets/1ec662ba-da6c-4712-8be7-61168b08940e
 ## 贡献者名单
 感谢以下贡献者对于ComfyUI中文开源生态的支持
 
-- msola-ht丶是小张啊丶alinuo666丶猪的飞行梦丶ZXSZS丶tanglangxia丶AIGCZero丶Artistjjw丶henrylaobai丶FanXiangTM丶xuchenxu168
+- msola-ht丶是小张啊丶alinuo666丶猪的飞行梦丶ZXSZS丶tanglangxia丶AIGCZero丶Artistjjw丶henrylaobai丶FanXiangTM丶xuchenxu168丶LovedeHua丶uiiiaiii
 
 ## 更新日志
+### v1.9.18(2025-10-23) 
+- 合并贡献者（LovedeHua）对于ComfyUI-Crystools工具的翻译完善
+- 合并贡献者（AIGCZero）对于下方插件的翻译更新：
+-  ComfyUI-SeedVR2_VideoUpscaler丶Comfyui-SecNodes丶ComfyUI-WanVideoWrapper丶ComfyUI-WanAnimatePreprocess
+- 合并贡献者(uiiiaiii)对Comfyui本体翻译的补充
+
+
 ### v1.9.17(2025-10-16) 
 - 合并贡献者（猪的飞行梦）提交的的官方模板翻译
 

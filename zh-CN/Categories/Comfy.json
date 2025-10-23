@@ -1,0 +1,19 @@
+{
+    "Drag Navigation": "拖动画布平移",
+    "Rename": "重命名",
+    "Copy": "复制",
+    "Duplicate": "复制（副本）",
+    "Node Info": "节点信息",
+    "Adjust Size": "调整大小",
+    "Minimize Node": "最小化节点",
+    "Shape": "形状",
+    "Dark (Default)": "深色（默认）",
+    "Light": "浅色（主题）",
+    "Solarized": "Solarized（主题）",
+    "Arc": "Arc（主题）",
+    "Nord": "Nord（主题）",
+    "Github": "Github（主题）",
+    "Unload Models and Execution Cache": "释放模型和节点缓存",
+    "Open Folder": "打开文件夹",
+    "Convert to Subgraph": "转换为子图"
+}

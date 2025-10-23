@@ -1,0 +1,62 @@
+{
+    "SeCModelLoader": {
+        "title": "SeC模型加载器",
+        "inputs": {
+            "model_file": "模型文件",
+            "device": "设备"
+        },
+        "widgets": {
+            "model_file": "模型文件",
+            "device": "设备",
+            "use_flash_attn": "使用Flash注意力",
+            "allow_mask_overlap": "允许遮罩重叠"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "SeCVideoSegmentation": {
+        "title": "SeC视频分割",
+        "inputs": {
+            "model": "模型",
+            "frames": "视频帧",
+            "positive_points": "正点坐标",
+            "negative_points": "负点坐标",
+            "bbox": "边界框",
+            "input_mask": "输入遮罩"
+        },
+        "widgets": {
+            "positive_points": "正点坐标",
+            "negative_points": "负点坐标",
+            "tracking_direction": "跟踪方向",
+            "annotation_frame_idx": "标注帧索引",
+            "object_id": "对象ID",
+            "max_frames_to_track": "最大跟踪帧数",
+            "mllm_memory_size": "MLLM内存大小",
+            "offload_video_to_cpu": "将视频卸载到CPU",
+            "auto_unload_model": "自动卸载模型"
+        },
+        "outputs": {
+            "masks": "遮罩",
+            "object_ids": "对象ID"
+        }
+    },
+    "CoordinatePlotter": {
+        "title": "坐标绘制器",
+        "inputs": {
+            "coordinates": "坐标",
+            "image": "图像"
+        },
+        "widgets": {
+            "coordinates": "坐标",
+            "point_shape": "点形状",
+            "point_size": "点大小",
+            "point_color": "点颜色",
+            "width": "宽度",
+            "height": "高度"
+        },
+        "outputs": {
+            "image": "图像"
+        }
+    }
+}
