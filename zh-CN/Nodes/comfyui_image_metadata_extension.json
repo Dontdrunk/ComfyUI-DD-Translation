@@ -1,0 +1,19 @@
+{
+    "SaveImageWithMetaData": {
+        "title": "保存图像（元数据）",
+        "description": "保存civital能识别的元数据",
+        "inputs": {
+            "images": "图像",
+            "extra_metadata": "额外的元数据"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "subdirectory_name": "子目录名称",
+            "output_format": "输出形式",
+            "quality": "质量",
+            "metadata_scope": "元数据范围‌",
+            "include_batch_num": "包含批次号",
+            "prefer_nearest": "优先选择最近节点"
+        }
+    }
+}
