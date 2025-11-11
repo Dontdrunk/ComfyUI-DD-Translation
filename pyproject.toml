@@ -1,7 +1,7 @@
 [project]
 name = "ComfyUI-DD-Translation"
 description = "A translation branch project."
-version = "1.9.13"
+version = "1.9.19"
 license = "LICENSE"
 dependencies = ["git+https://github.com/Dontdrunk/ComfyUI-DD-Translation/tree/Dontdrunk.git"]
 

@@ -57,7 +57,8 @@ https://github.com/user-attachments/assets/1ec662ba-da6c-4712-8be7-61168b08940e
 - 合并贡献者（fuxijun-max）对于ComfyUI-joycaption-beta-one-GGUF插件的翻译完善
 - 合并贡献者（LovedeHua）对于ComfyUI-Crystools插件的与Civital元数据保存图像插件的翻译完善
 - 合并贡献者（FanXiangTM）对于ComfyUI-SoulX-Podcast 插件的翻译完善
-- 我添加了RES4LYF插件的菜单完整翻译
+- 添加了RES4LYF插件的菜单完整翻译
+- 更新了模板翻译，同步最新前端
 
 ### v1.9.18(2025-10-23) 
 - 合并贡献者（LovedeHua）对于ComfyUI-Crystools工具的翻译完善

@@ -40,10 +40,23 @@
 
 
 
+    "Getting Started": "快速开始",
+    "GENERATION TYPE": "生成类型",
+    "CLOSED SOURCE MODELS": "闭源模型",
+    "Model Filter": "模型筛选",
+    "Use Case": "使用场景",
+    "License": "许可证",
+    "Newest": "最新",
+    "Open Source": "开源",
+    "Closed Source (API Nodes)": "闭源（API 节点）",
+    "VRAM Utilization (Low to High)": "显存占用（从低到高）",
+    "Model Size (Low to High)": "模型大小（从小到大）",
+
   "Chroma1 Radiance text to image": "Chroma1 辐射 文生图",
   "Chroma1-Radiance works directly with image pixels instead of compressed latents, delivering higher quality images with reduced artifacts and distortion.": "Chroma1-辐射 直接处理图像像素而非压缩Latent，可生成更高质量图像，减少伪影和失真。",
   "Flux.1 Dev OneReward": "Flux.1 开发版 奖励1",
   "Supports various tasks such as image inpainting, outpainting, and object removal by bytedance-research team": "支持多种任务，如图像修复、外绘和对象移除，由字节跳动研究团队开发",
+  "Supports various tasks such as image inpainting, outpainting, and object removal": "支持多种任务，如图像修复、外绘和对象移除",
 
     "Flux.1 Krea Dev": "Flux.1 Krea 开发版",
     "A fine-tuned FLUX model pushing photorealism to the max": "经过精细调校的FLUX模型，将照片级真实感推向极致",
@@ -887,5 +900,6 @@
     "comfy_wordcloud_advance": "Comfy高级词云",
     "comfy_wordcloud_simple": "Comfy简易词云",
 
-    "zhudefeixingmeng": "猪的飞行梦汉化20251012 18:56更新"
+    "zhudefeixingmeng": "2025-11-11 18:56更新"
+  
 }
