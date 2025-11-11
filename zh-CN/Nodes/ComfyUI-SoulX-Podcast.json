@@ -1,0 +1,48 @@
+{
+    "SoulXPodcastLoader": {
+        "title": "SoulX Podcast 模型加载",
+        "widgets": {
+            "model_name": "模型选择",
+            "llm_engine": "LLM 推理引擎",
+            "fp16_flow": "FP16 精度",
+            "seed": "种子"
+        },
+        "outputs": {
+            "SOULX_MODEL": "模型对象"
+        }
+    },
+    "SoulXPodcastInputParser": {
+        "title": "SoulX Podcast 输入处理器",
+        "inputs": {
+            "soulx_model": "模型对象",
+            "input_mode": "文本模式"
+        },
+        "widgets": {
+            "S1_prompt_audio": "说话人1_语音",
+            "S2_prompt_audio": "说话人2_语音",
+            "dialogue_script": "多行文本"
+        },
+        "outputs": {
+            "PODCAST_INPUT": "预处理数据"
+        }
+    },
+    "SoulXPodcastGenerate": {
+        "title": "SoulX Podcast 播客生成器",
+        "inputs": {
+            "soulx_model": "模型对象",
+            "podcast_input": "预处理数据"
+        },
+        "widgets": {
+            "seed": "种子",
+            "temperature": "LLM 采样温度",
+            "repetition_penalty": "重复惩罚系数",
+            "top_k": "前 k 个采样",
+            "top_p": "核采样",
+            "min_tokens": "最小 token 数量",
+            "max_tokens": "最大 token 数量"
+        },
+        "outputs": {
+            "AUDIO": "音频"
+        }
+    }
+}
