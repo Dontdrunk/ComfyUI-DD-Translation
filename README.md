@@ -53,6 +53,11 @@ https://github.com/user-attachments/assets/1ec662ba-da6c-4712-8be7-61168b08940e
 - msola-ht丶是小张啊丶alinuo666丶猪的飞行梦丶ZXSZS丶tanglangxia丶AIGCZero丶Artistjjw丶henrylaobai丶FanXiangTM丶xuchenxu168丶LovedeHua丶uiiiaiii
 
 ## 更新日志
+### v1.9.19(2025-11-10) 
+- 合并贡献者（fuxijun-max）对于ComfyUI-joycaption-beta-one-GGUF插件的翻译完善
+- 合并贡献者（LovedeHua）对于ComfyUI-Crystools插件的与Civital元数据保存图像插件的翻译完善
+- 合并贡献者（FanXiangTM）对于ComfyUI-SoulX-Podcast 插件的翻译完善
+
 ### v1.9.18(2025-10-23) 
 - 合并贡献者（LovedeHua）对于ComfyUI-Crystools工具的翻译完善
 - 合并贡献者（AIGCZero）对于下方插件的翻译更新：

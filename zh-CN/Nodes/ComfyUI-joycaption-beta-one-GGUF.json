@@ -1,0 +1,84 @@
+{
+    "JJC_JoyCaption_GGUF_ExtraOptions": {
+        "title": "JoyCaptionGGUF额外选项",
+        "inputs": {},
+        "widgets": {
+            "refer_character_name": "参考角色名称",
+            "exclude_people_info": "排除人物信息",
+            "include_lighting": "包含光照信息",
+            "include_camera_angle": "包含相机角度信息",
+            "include_watermark_info": "包含水印信息",
+            "include_JPEG_artifacts": "包含JPEG伪影信息",
+            "include_exif": "包含EXIF信息",
+            "exclude_sexual": "排除色情相关信息",
+            "exclude_image_resolution": "排除图像分辨率信息",
+            "include_aesthetic_quality": "包含美学质量信息",
+            "include_composition_style": "包含构图风格信息",
+            "exclude_text": "排除文本信息",
+            "specify_depth_field": "指定景深信息",
+            "specify_lighting_sources": "指定光源信息",
+            "do_not_use_ambiguous_language": "不使用模糊语言",
+            "include_nsfw_rating": "包含NSFW评级信息",
+            "only_describe_most_important_elements": "仅描述最重要的元素",
+            "do_not_include_artist_name_or_title": "不包含艺术家姓名或标题",
+            "identify_image_orientation": "识别图像方向",
+            "use_vulgar_slang_and_profanity": "使用粗俗俚语和脏话",
+            "do_not_use_polite_euphemisms": "不使用礼貌委婉语",
+            "include_character_age": "包含角色年龄信息",
+            "include_camera_shot_type": "包含相机拍摄类型信息",
+            "exclude_mood_feeling": "排除情绪感受信息",
+            "include_camera_vantage_height": "包含相机视角高度信息",
+            "mention_watermark_explicitly": "明确提及水印",
+            "avoid_meta_descriptive_phrases": "避免元描述性短语",
+            "character_name": "角色名称"
+        },
+        "outputs": {
+            "extra_options_gguf": "额外选项_GGUF"
+        }
+    },
+    "JJC_JoyCaption_GGUF": {
+        "title": "JoyCaptionGGUF",
+        "inputs": {
+           "image":"图像",
+           "extra_options_input":"额外选项输入"
+        },
+        "widgets": {
+           "gguf_model":"GGUF模型",
+           "mmproj_file":"mmproj模型文件",
+           "n_gpu_layers":"GPU层数",
+           "n_ctx":"上下文长度",
+           "caption_type":"提示词类型",
+           "caption_length":"提示词长度",
+           "max_new_tokens":"最大输出Token",
+           "temperature":"温度",
+           "top_p":"top_p",
+           "top_k":"top_k",
+           "seed":"随机种子",
+           "unload_after_generate":"生成后卸载"
+        },
+        "outputs": {
+          "query":"查询",
+          "caption":"字符串"
+        }
+    },
+    "JJC_JoyCaption_Custom_GGUF": {
+        "title": "自定义JoyCaptionGGUF",
+        "inputs": {
+           "image":"图像",
+           "extra_options_input":"额外选项输入"
+        },
+        "widgets": {
+           "gguf_model":"GGUF模型",
+           "mmproj_file":"mmproj模型文件",
+           "n_gpu_layers":"GPU层数",
+           "n_ctx":"上下文长度",
+           "max_new_tokens":"最大输出Token",
+           "temperature":"温度",
+           "top_p":"top_p",
+           "top_k":"top_k",
+           "seed":"随机种子",
+           "unload_after_generate":"生成后卸载"
+        },
+        "outputs": {}
+    }
+}
