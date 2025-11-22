@@ -1,0 +1,59 @@
+{
+    "SDPoseOODLoader": {
+        "title": "SDPose加载器",
+        "widgets": {
+            "model_type": "模型类型",
+            "unet_precision": "unet精度",
+            "device": "设备",
+            "unload_on_finish": "完成后卸载"
+        },
+        "outputs": {
+            "SDPOSE_MODEL": "SDPose模型"
+        }
+    },
+    "YOLOModelLoader": {
+        "title": "YOLO模型加载器",
+        "widgets": {
+            "model_name": "模型名称"
+        },
+        "outputs": {
+            "YOLO_MODEL": "YOLO模型"
+        }
+    },
+    "GroundingDinoModelLoader_SDPose": {
+        "title": "Grounding Dino模型加载器_SDPose",
+        "widgets": {
+            "model_name": "模型名称"
+        },
+        "outputs": {
+            "GROUNDING_DINO_MODEL": "Grounding Dino模型"
+        }
+    },
+    "SDPoseOODProcessor": {
+        "title": "SDPose处理器",
+        "inputs": {
+            "sdpose_model": "SDPose模型",
+            "images": "图像",
+            "data_from_florence2": "来自Florence2的数据",
+            "grounding_dino_model": "Grounding Dino模型",
+            "yolo_model": "YOLO模型"
+        },
+        "widgets": {
+            "score_threshold": "分数阈值",
+            "overlay_alpha": "叠加透明度",
+            "batch_size": "批次大小",
+            "prompt": "提示词",
+            "gd_threshold": "GD阈值",
+            "save_for_editor": "为编辑器保存",
+            "filename_prefix_edit": "文件名前缀编辑",
+            "keep_face": "保留面部",
+            "keep_hands": "保留手部",
+            "keep_feet": "保留脚部",
+            "scale_for_xinsr": "用于xinsr缩放比例"
+        },
+        "outputs": {
+            "images": "图像",
+            "pose_keypoint": "姿态关键点"
+        }
+    }
+}

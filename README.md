@@ -50,9 +50,13 @@ https://github.com/user-attachments/assets/1ec662ba-da6c-4712-8be7-61168b08940e
 ## 贡献者名单
 感谢以下贡献者对于ComfyUI中文开源生态的支持
 
-- msola-ht丶是小张啊丶alinuo666丶猪的飞行梦丶ZXSZS丶tanglangxia丶AIGCZero丶Artistjjw丶henrylaobai丶FanXiangTM丶xuchenxu168丶LovedeHua丶uiiiaiii丶fuxijun-max
+- msola-ht丶是小张啊丶alinuo666丶猪的飞行梦丶ZXSZS丶tanglangxia丶AIGCZero丶Artistjjw丶henrylaobai丶FanXiangTM丶xuchenxu168丶LovedeHua丶uiiiaiii丶fuxijun-max丶ANe5s
 
 ## 更新日志
+### v1.9.20(2025-11-22) 
+- 合并贡献者（ANe5s）对于Comfyui-fluxtrainer插件的翻译完善
+- 合并贡献者（ZXSZS）对于SeedVR2LoadDiTModel与SDPoseOODLoader插件的翻译完善
+
 ### v1.9.19(2025-11-10) 
 - 合并贡献者（fuxijun-max）对于ComfyUI-joycaption-beta-one-GGUF插件的翻译完善
 - 合并贡献者（LovedeHua）对于ComfyUI-Crystools插件的与Civital元数据保存图像插件的翻译完善

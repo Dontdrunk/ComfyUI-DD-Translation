@@ -1,64 +1,76 @@
 {
-    "SeedVR2": {
-        "title": "SeedVR2 视频图像放大",
+    "SeedVR2LoadDiTModel": {
+        "title": "加载SeedVR2 DiT模型",
         "inputs": {
-            "images": "图像",
-            "block_swap_config": "数据块交换配置",
-            "extra_args": "附加参数"
+            "torch_compile_args": "torch编译参数"
         },
         "widgets": {
             "model": "模型",
-            "seed": "种子",
-            "new_resolution": "新分辨率",
-            "batch_size": "批量大小"
-        },
-        "outputs": {
-            "image": "图像"
-        }
-    },
-    "SeedVR2GGUF": {
-        "title": "SeedVR2 视频图像放大(GGUF)",
-        "inputs": {
-            "images": "图像",
-            "block_swap_config": "数据块交换配置",
-            "extra_args": "附加参数"
-        },
-        "widgets": {
-            "model": "模型",
-            "seed": "种子",
-            "new_resolution": "新分辨率",
-            "batch_size": "批量大小"
-        },
-        "outputs": {
-            "image": "图像"
-        }
-    },
-    "SeedVR2BlockSwap": {
-        "title": "SeedVR2 数据块交换配置",
-        "widgets": {
-            "blocks_to_swap": "要交换的数据块",
-            "use_non_blocking": "启用异步拷贝",
-            "offload_io_components": "卸载 I/O 组件",
-            "cache_model": "保留模型缓存",
-            "enable_debug": "启用调试"
-        },
-        "outputs": {
-            "block_swap_config": "数据块交换配置"
-        }
-    },
-    "SeedVR2ExtraArgs": {
-        "title": "SeedVR2额外参数",
-        "widgets": {
-            "tiled_vae": "平铺VAE",
-            "vae_tile_size": "VAE平铺大小",
-            "vae_tile_overlap": "VAE平铺重叠",
-            "preserve_vram": "保持显存",
+            "device": "设备",
+            "blocks_to_swap": "要交换的块",
+            "swap_io_components": "交换输入输出组件",
+            "offload_device": "卸载设备",
             "cache_model": "缓存模型",
-            "enable_debug": "启用调试",
-            "device": "设备"
+            "attention_mode": "注意力模式"
         },
         "outputs": {
-            "extra_args": "额外参数"
+            "SEEDVR2_DIT": "SeedVR2 DiT模型"
+        }
+    },
+    "SeedVR2TorchCompileSettings": {
+        "title": "SeedVR2 Torch编译设置",
+        "widgets": {
+            "backend": "后端",
+            "mode": "模式",
+            "fullgraph": "全图模式",
+            "dynamic": "动态",
+            "dynamo_cache_size_limit": "Dynamo缓存大小限制",
+            "dynamo_recompile_limit": "Dynamo重新编译限制"
+        },
+        "outputs": {
+            "TORCH_COMPILE_ARGS": "torch编译参数"
+        }
+    },
+        "SeedVR2LoadVAEModel": {
+        "title": "加载SeedVR2 VAE模型",
+        "inputs": {
+            "torch_compile_args": "torch编译参数"
+        },
+        "widgets": {
+            "model": "模型",
+            "device": "设备",
+            "encode_tiled": "分块编码",
+            "encode_tile_size": "编码块大小",
+            "encode_tile_overlap": "编码块重叠",
+            "decode_tiled": "分块解码",
+            "decode_tile_size": "解码块大小",
+            "decode_tile_overlap": "解码块重叠",
+            "tile_debug": "区块调试",
+            "offload_device": "卸载设备",
+            "cache_model": "缓存模型"
+        },
+        "outputs": {
+            "SEEDVR2_VAE": "SeedVR2 VAE模型"
+        }
+    },
+        "SeedVR2VideoUpscaler": {
+        "title": "SeedVR2视频放大器",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "seed": "种子",
+            "resolution": "分辨率",
+            "max_resolution": "最大分辨率",
+            "batch_size": "批次大小",
+            "uniform_batch_size": "统一批次大小",
+            "color_correction": "色彩校正",
+            "temporal_overlap": "时间重叠",
+            "prepend_frames": "前置帧数",
+            "input_noise_scale": "输入噪声比例",
+            "latent_noise_scale": "潜空间噪声比例",
+            "offload_device": "卸载设备",
+            "enable_debug": "启用调试"
         }
     }
 }

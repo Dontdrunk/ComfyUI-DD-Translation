@@ -1,0 +1,591 @@
+{
+    "InitFluxLoRATraining": {
+        "title": "初始化Flux LoRA训练",
+        "inputs": {
+            "flux_models": "Flux模型集合",
+            "dataset": "数据集配置",
+            "optimizer_settings": "优化器设置参数",
+            "resume_args": "恢复训练参数",
+            "block_args": "网络块参数（限制LoRA作用范围）",
+            "loss_args": "损失函数参数",
+            "network_config": "网络配置参数"
+        },
+        "widgets": {
+            "output_name": "输出名称",
+            "output_dir": "输出目录（ComfyUI根目录）",
+            "network_dim": "网络维度",
+            "network_alpha": "网络Alpha值",
+            "learning_rate": "学习率",
+            "max_train_steps": "最大训练步数",
+            "apply_t5_attn_mask": "启用T5注意力掩码",
+            "cache_latents": "潜变量缓存方式",
+            "cache_text_encoder_outputs": "文本编码器输出缓存方式",
+            "blocks_to_swap": "交换块数量（原split_mode，用于节省内存，默认启用建议18）",
+            "weighting_scheme": "权重分配策略",
+            "logit_mean": "logit均值（仅logit_normal策略使用）",
+            "logit_std": "logit标准差（仅logit_normal策略使用）",
+            "mode_scale": "模式缩放因子（仅mode策略有效）",
+            "timestep_sampling": "时间步采样方式（推荐flux_shift）",
+            "sigmoid_scale": "sigmoid缩放因子（仅timestep-sampling为sigmoid时使用）",
+            "model_prediction_type": "模型预测类型（raw：直接使用，additive：加至带噪输入，sigma_scaled：应用sigma缩放）",
+            "guidance_scale": "引导系数（Flux训练建议设为1.0）",
+            "discrete_flow_shift": "离散流偏移量（Euler离散调度器默认3.0）",
+            "highvram": "高显存模式",
+            "fp8_base": "启用fp8基础模型",
+            "gradient_dtype": "梯度数据类型（训练实际使用的dtype）",
+            "save_dtype": "保存数据类型（checkpoint保存格式）",
+            "attention_mode": "注意力模式（内存高效注意力方式）",
+            "sample_prompts": "采样提示词（多提示词用`|`分隔）",
+            "additional_args": "额外参数（传递给训练命令）",
+            "train_text_encoder": "训练文本编码器（T5不能单独训练）",
+            "clip_l_lr": "CLIP-L学习率（文本编码器学习率）",
+            "T5_lr": "T5学习率（文本编码器学习率）",
+            "gradient_checkpointing": "梯度检查点模式（enabled：启用，enabled_with_cpu_offloading：启用并CPU卸载，disabled：禁用）"
+        },
+        "outputs": {
+            "network_trainer": "网络训练器实例",
+            "epochs_count": "总轮次计数",
+            "args": "训练参数集合"
+        }
+    },
+    "InitFluxTraining": {
+        "title": "初始化Flux全量训练",
+        "inputs": {
+            "flux_models": "Flux模型集合",
+            "dataset": "数据集配置",
+            "optimizer_settings": "优化器设置参数",
+            "resume_args": "恢复训练参数"
+        },
+        "widgets": {
+            "output_name": "输出名称",
+            "output_dir": "输出目录（ComfyUI根目录）",
+            "learning_rate": "学习率",
+            "max_train_steps": "最大训练步数",
+            "apply_t5_attn_mask": "启用T5注意力掩码",
+            "t5xxl_max_token_length": "T5模型最大令牌长度（dev/LibreFlux用512，schnell用256）",
+            "cache_latents": "潜变量缓存方式",
+            "cache_text_encoder_outputs": "文本编码器输出缓存方式",
+            "weighting_scheme": "权重分配策略",
+            "logit_mean": "logit均值（仅logit_normal策略使用）",
+            "logit_std": "logit标准差（仅logit_normal策略使用）",
+            "mode_scale": "模式缩放因子（仅mode策略有效）",
+            "loss_type": "损失函数类型",
+            "timestep_sampling": "时间步采样方式",
+            "sigmoid_scale": "sigmoid缩放因子",
+            "model_prediction_type": "模型预测类型",
+            "cpu_offload_checkpointing": "CPU卸载梯度检查点（可减少约2GB显存占用）",
+            "optimizer_fusing": "优化器融合方式（减少内存占用）",
+            "blocks_to_swap": "交换块数量（每块约640MB，增加数量降低显存占用但减慢速度）",
+            "guidance_scale": "引导系数",
+            "discrete_flow_shift": "离散流偏移量（Euler离散调度器默认3.0）",
+            "highvram": "高显存模式",
+            "fp8_base": "启用fp8基础模型",
+            "gradient_dtype": "梯度数据类型",
+            "save_dtype": "保存数据类型",
+            "attention_mode": "注意力模式",
+            "sample_prompts": "采样提示词",
+            "additional_args": "额外参数"
+        },
+        "outputs": {
+            "network_trainer": "网络训练器实例",
+            "epochs_count": "总轮次计数",
+            "args": "训练参数集合"
+        }
+    },
+    "FluxTrainModelSelect": {
+        "title": "Flux训练模型选择",
+        "widgets": {
+            "transformer": "Transformer模型路径",
+            "vae": "VAE模型路径",
+            "clip_l": "CLIP-L模型路径",
+            "t5": "T5模型路径",
+            "lora_path": "预训练LoRA路径"
+        },
+        "outputs": {
+            "flux_models": "Flux模型集合"
+        }
+    },
+    "TrainDatasetGeneralConfig": {
+        "title": "训练数据集通用配置",
+        "widgets": {
+            "color_aug": "颜色增强（启用弱颜色增强）",
+            "flip_aug": "翻转增强（启用水平翻转）",
+            "shuffle_caption": "字幕打乱",
+            "caption_dropout_rate": "字幕丢弃率（标签dropout率）",
+            "alpha_mask": "alpha掩码（使用alpha通道作为训练掩码）",
+            "reset_on_queue": "队列重置（强制刷新以优化队列）",
+            "caption_extension": "字幕文件扩展名"
+        },
+        "outputs": {
+            "dataset_general": "数据集通用配置"
+        }
+    },
+    "TrainDatasetAdd": {
+        "title": "训练数据集添加",
+        "inputs": {
+            "dataset_config": "数据集配置",
+            "regularization": "正则化配置"
+        },
+        "widgets": {
+            "width": "图像宽度",
+            "height": "图像高度",
+            "batch_size": "批次大小",
+            "dataset_path": "数据集路径",
+            "class_tokens": "类别标记",
+            "enable_bucket": "启用分桶",
+            "bucket_no_upscale": "分桶不 upscale",
+            "num_repeats": "重复次数",
+            "min_bucket_reso": "最小分桶分辨率",
+            "max_bucket_reso": "最大分桶分辨率"
+        },
+        "outputs": {
+            "dataset": "数据集配置"
+        }
+    },
+    "FluxTrainLoop": {
+        "title": "Flux训练循环",
+        "inputs": {
+            "network_trainer": "网络训练器实例"
+        },
+        "widgets": {
+            "steps": "训练步数"
+        },
+        "outputs": {
+            "network_trainer": "更新后的网络训练器",
+            "steps": "已完成步数"
+        }
+    },
+    "VisualizeLoss": {
+        "title": "损失可视化",
+        "inputs": {
+            "network_trainer": "网络训练器实例"
+        },
+        "widgets": {
+            "plot_style": "图表样式",
+            "window_size": "窗口大小",
+            "normalize_y": "Y轴归一化",
+            "width": "图表宽度",
+            "height": "图表高度",
+            "log_scale": "对数缩放"
+        },
+        "outputs": {
+            "plot": "损失趋势图表",
+            "loss_list": "损失值列表"
+        }
+    },
+    "FluxTrainValidate": {
+        "title": "Flux训练验证",
+        "inputs": {
+            "network_trainer": "网络训练器实例",
+            "validation_settings": "验证设置参数"
+        },
+        "outputs": {
+            "network_trainer": "更新后的网络训练器",
+            "validation_images": "验证图像"
+        }
+    },
+    "FluxTrainValidationSettings": {
+        "title": "Flux训练验证设置",
+        "widgets": {
+            "steps": "采样步数（默认20）",
+            "width": "图像宽度（默认512）",
+            "height": "图像高度（默认512）",
+            "guidance_scale": "引导系数（默认3.5）",
+            "seed": "随机种子（默认42，可设为randomize）",
+            "control_after_generate": "生成后控制（默认true）",
+            "shift": "启用调度偏移（倾向高时间步以获得高信号图像，默认true）",
+            "base_shift": "基础偏移量（默认0.5）",
+            "max_shift": "最大偏移量（默认1.15）"
+        },
+        "outputs": {
+            "validation_settings": "验证设置参数"
+        }
+    },
+    "FluxTrainEnd": {
+        "title": "Flux训练结束",
+        "inputs": {
+            "network_trainer": "网络训练器实例"
+        },
+        "widgets": {
+            "save_state": "保存训练状态（默认true）"
+        },
+        "outputs": {
+            "lora_name": "LoRA名称",
+            "metadata": "训练元数据",
+            "lora_path": "LoRA模型路径"
+        }
+    },
+    "FluxTrainSave": {
+        "title": "Flux训练保存",
+        "inputs": {
+            "network_trainer": "网络训练器实例"
+        },
+        "widgets": {
+            "save_state": "保存训练状态（默认false）",
+            "copy_to_comfy_lora_folder": "复制到Comfy LoRA文件夹（默认false）"
+        },
+        "outputs": {
+            "network_trainer": "更新后的网络训练器",
+            "lora_path": "LoRA保存路径",
+            "steps": "当前训练步数"
+        }
+    },
+    "FluxKohyaInferenceSampler": {
+        "title": "Flux Kohya推理采样器",
+        "inputs": {
+            "flux_models": "Flux模型集合"
+        },
+        "widgets": {
+            "lora_name": "LoRA名称",
+            "lora_method": "LoRA应用方式（默认apply）",
+            "steps": "采样步数（默认20）",
+            "width": "图像宽度（默认512）",
+            "height": "图像高度（默认512）",
+            "guidance_scale": "引导系数（默认3.5）",
+            "seed": "随机种子（默认42，可设为randomize）",
+            "control_after_generate": "生成后控制（默认true）",
+            "use_fp8": "使用fp8权重（默认true）",
+            "apply_t5_attn_mask": "启用T5注意力掩码（默认true）",
+            "prompt": "提示词（示例：illustration of a kitten）"
+        },
+        "outputs": {
+            "image": "生成图像"
+        }
+    },
+    "UploadToHuggingFace": {
+        "title": "上传至HuggingFace",
+        "inputs": {
+            "network_trainer": "网络训练器实例"
+        },
+        "widgets": {
+            "source_path": "源文件路径",
+            "repo_id": "仓库ID",
+            "revision": "版本号",
+            "private": "私有仓库（默认true）",
+            "token": "认证令牌"
+        },
+        "outputs": {
+            "network_trainer": "更新后的网络训练器",
+            "status": "上传状态"
+        }
+    },
+    "OptimizerConfig": {
+        "title": "优化器配置",
+        "widgets": {
+            "optimizer_type": "优化器类型",
+            "max_grad_norm": "最大梯度范数",
+            "lr_scheduler": "学习率调度器",
+            "lr_warmup_steps": "学习率预热步数",
+            "lr_scheduler_num_cycles": "调度器周期数",
+            "lr_scheduler_power": "调度器幂次",
+            "min_snr_gamma": "最小SNR伽马值",
+            "extra_optimizer_args": "额外优化器参数"
+        },
+        "outputs": {
+            "optimizer_settings": "优化器设置参数"
+        }
+    },
+    "OptimizerConfigAdafactor": {
+        "title": "Adafactor优化器配置",
+        "widgets": {
+            "max_grad_norm": "最大梯度范数（默认0.0）",
+            "lr_scheduler": "学习率调度器（默认constant_with_warmup）",
+            "lr_warmup_steps": "学习率预热步数（默认0）",
+            "lr_scheduler_num_cycles": "调度器周期数（默认1）",
+            "lr_scheduler_power": "调度器幂次（默认1.0）",
+            "relative_step": "相对步长（默认false）",
+            "scale_parameter": "缩放参数（默认false）",
+            "warmup_init": "预热初始化（默认false）",
+            "clip_threshold": "裁剪阈值（默认1.0）",
+            "min_snr_gamma": "最小SNR伽马值（默认5.0）",
+            "extra_optimizer_args": "额外优化器参数"
+        },
+        "outputs": {
+            "optimizer_settings": "优化器设置参数"
+        }
+    },
+    "OptimizerConfigProdigy": {
+        "title": "Prodigy优化器配置",
+        "widgets": {
+            "max_grad_norm": "最大梯度范数",
+            "lr_scheduler": "学习率调度器",
+            "lr_warmup_steps": "学习率预热步数",
+            "lr_scheduler_num_cycles": "调度器周期数",
+            "lr_scheduler_power": "调度器幂次",
+            "weight_decay": "权重衰减",
+            "decouple": "解耦模式",
+            "use_bias_correction": "启用偏差校正",
+            "min_snr_gamma": "最小SNR伽马值"
+        },
+        "outputs": {
+            "optimizer_settings": "优化器设置参数"
+        }
+    },
+    "FluxTrainResume": {
+        "title": "Flux训练恢复",
+        "widgets": {
+            "load_state_path": "训练状态文件路径",
+            "skip_until_initial_step": "跳至初始步骤（恢复后从第一步开始）"
+        },
+        "outputs": {
+            "resume_args": "恢复训练参数"
+        }
+    },
+    "FluxTrainBlockSelect": {
+        "title": "Flux训练块选择",
+        "widgets": {
+            "include": "包含的网络块（默认lora_unet_single_blocks_20_linear2）"
+        },
+        "outputs": {
+            "block_args": "网络块参数"
+        }
+    },
+    "TrainDatasetRegularization": {
+        "title": "训练数据集正则化",
+        "widgets": {
+            "dataset_path": "数据集路径",
+            "class_tokens": "类别标记",
+            "num_repeats": "重复次数（默认1）"
+        },
+        "outputs": {
+            "subset": "正则化子集配置"
+        }
+    },
+    "FluxTrainAndValidateLoop": {
+        "title": "Flux训练与验证循环",
+        "inputs": {
+            "network_trainer": "网络训练器实例",
+            "validation_settings": "验证设置参数"
+        },
+        "widgets": {
+            "validate_at_steps": "验证间隔步数（默认250）",
+            "save_at_steps": "保存间隔步数（默认250）"
+        },
+        "outputs": {
+            "network_trainer": "更新后的网络训练器",
+            "steps": "已完成步数"
+        }
+    },
+    "OptimizerConfigProdigyPlusScheduleFree": {
+        "title": "Prodigy+无调度优化器配置",
+        "widgets": {
+            "lr": "学习率调整参数（默认1.0）",
+            "max_grad_norm": "最大梯度范数（默认0.0）",
+            "prodigy_steps": "Prodigy步长冻结步数（默认0）",
+            "d0": "初始学习率（默认1e-6）",
+            "d_coeff": "d估计系数（默认1.0）",
+            "split_groups": "分组跟踪适配值（默认true）",
+            "use_bias_correction": "启用偏差校正（默认false）",
+            "min_snr_gamma": "最小SNR伽马值（默认5.0）",
+            "use_stableadamw": "启用稳定AdamW（默认true）",
+            "use_cautious": "启用谨慎更新（默认false）",
+            "use_adopt": "启用ADOPT更新（默认false）",
+            "use_grams": "启用Grams更新（默认false）",
+            "stochastic_rounding": "启用随机舍入（默认true）",
+            "extra_optimizer_args": "额外优化器参数"
+        },
+        "outputs": {
+            "optimizer_settings": "优化器设置参数"
+        }
+    },
+    "FluxTrainerLossConfig": {
+        "title": "Flux训练器损失配置",
+        "widgets": {
+            "loss_type": "损失函数类型（l2：均方误差，huber：Huber损失，smooth_l1：平滑L1损失）",
+            "huber_schedule": "Huber调度方式（snr：基于SNR，exponential：指数式，constant：恒定）",
+            "huber_c": "Huber衰减参数（仅huber或smooth_l1模式使用，默认0.1）",
+            "huber_scale": "Huber缩放参数（仅huber或smooth_l1模式使用，默认1.0）"
+        },
+        "outputs": {
+            "loss_args": "损失函数参数"
+        }
+    },
+    "TrainNetworkConfig": {
+        "title": "训练网络配置",
+        "widgets": {
+            "network_type": "网络类型",
+            "lycoris_preset": "LyCORIS预设模式",
+            "factor": "LoKr因子值（-1为自动）",
+            "extra_network_args": "额外网络参数（每行一个，用|分隔）"
+        },
+        "outputs": {
+            "network_config": "网络配置参数"
+        }
+    },
+    "FluxTrainSaveModel": {
+        "title": "Flux训练模型保存",
+        "inputs": {
+            "network_trainer": "网络训练器实例"
+        },
+        "widgets": {
+            "copy_to_comfy_model_folder": "复制到Comfy模型文件夹（默认false）",
+            "end_training": "结束训练（默认false）"
+        },
+        "outputs": {
+            "network_trainer": "更新后的网络训练器",
+            "model_path": "模型保存路径",
+            "steps": "当前训练步数"
+        }
+    },
+    "ExtractFluxLoRA": {
+        "title": "提取Flux LoRA",
+        "widgets": {
+            "original_model": "原始模型",
+            "finetuned_model": "微调后模型",
+            "output_path": "提取输出路径（示例：D:\\ComfyUI\\models\\loras\\Flux）",
+            "dim": "LoRA维度（默认4）",
+            "save_dtype": "保存数据类型（默认bf16）",
+            "load_device": "加载设备（默认cuda）",
+            "store_device": "存储设备（默认cpu）",
+            "clamp_quantile": "裁剪分位数（默认0.99）",
+            "metadata": "生成元数据（默认true）",
+            "mem_eff_safe_open": "内存高效加载（默认false）"
+        },
+        "outputs": {
+            "output_path": "提取的LoRA路径"
+        }
+    },
+    "SD3ModelSelect": {
+        "title": "SD3模型选择",
+        "inputs": {
+            "lora_path": "预训练LoRA路径（可选）"
+        },
+        "widgets": {
+            "transformer": "Transformer模型（从checkpoints文件夹选择）",
+            "clip_l": "CLIP-L模型（从clip文件夹选择）",
+            "clip_g": "CLIP-G模型（从clip文件夹选择）",
+            "t5": "T5模型（从clip文件夹选择）"
+        },
+        "outputs": {
+            "sd3_models": "SD3模型集合"
+        }
+    },
+    "InitSD3LoRATraining": {
+        "title": "初始化SD3 LoRA训练",
+        "inputs": {
+            "sd3_models": "SD3模型集合",
+            "dataset": "数据集配置",
+            "optimizer_settings": "优化器设置参数",
+            "resume_args": "恢复训练参数（可选）",
+            "block_args": "网络块参数（限制LoRA作用范围，可选）",
+            "loss_args": "损失函数参数（可选）"
+        },
+        "widgets": {
+            "output_name": "输出名称（默认sd35_lora）",
+            "output_dir": "输出目录（ComfyUI根目录）",
+            "network_dim": "网络维度（默认16，范围1-2048）",
+            "network_alpha": "网络Alpha值（默认16.0，范围0.0-2048.0）",
+            "learning_rate": "学习率（默认0.0001，范围0.0-10.0）",
+            "max_train_steps": "最大训练步数（默认1500，范围1-100000）",
+            "cache_latents": "潜变量缓存方式",
+            "cache_text_encoder_outputs": "文本编码器输出缓存方式",
+            "training_shift": "训练时间步分布偏移值",
+            "highvram": "高显存模式（默认false，内存使用模式）",
+            "blocks_to_swap": "交换块数量（默认0，范围0-100；SD3.5L最大36，SD3.5M最大22，用于减少内存占用）",
+            "fp8_base": "启用fp8基础模型（默认false）",
+            "gradient_dtype": "梯度数据类型（默认fp32，训练实际使用的dtype）",
+            "save_dtype": "保存数据类型（默认bf16，checkpoint保存格式）",
+            "attention_mode": "注意力模式（默认sdpa，内存高效注意力方式）",
+            "train_text_encoder": "训练文本编码器",
+            "clip_l_lr": "CLIP-L学习率（默认0.0，范围0.0-10.0，文本编码器学习率）",
+            "clip_g_lr": "CLIP-G学习率（默认0.0，范围0.0-10.0，文本编码器学习率）",
+            "T5_lr": "T5学习率（默认0.0，范围0.0-10.0，文本编码器学习率）",
+            "gradient_checkpointing": "梯度检查点模式（默认enabled）"
+        },
+        "outputs": {
+            "network_trainer": "网络训练器实例",
+            "epochs_count": "总轮次计数",
+            "args": "训练参数集合"
+        }
+    },
+    "SD3TrainValidationSettings": {
+        "title": "SD3训练验证设置",
+        "widgets": {
+            "steps": "采样步数（默认20，范围1-256）",
+            "width": "图像宽度（默认1024，范围64-4096，步长8）",
+            "height": "图像高度（默认1024，范围64-4096，步长8）",
+            "guidance_scale": "引导系数（默认4.0，范围1.0-32.0，步长0.05）",
+            "seed": "随机种子（默认42）"
+        },
+        "outputs": {
+            "validation_settings": "验证设置参数"
+        }
+    },
+    "SDXLModelSelect": {
+        "title": "SDXL模型选择",
+        "inputs": {
+            "lora_path": "预训练LoRA路径（可选，输入完整路径）"
+        },
+        "widgets": {
+            "checkpoint": "SDXL checkpoint模型（从checkpoints文件夹选择）"
+        },
+        "outputs": {
+            "sdxl_models": "SDXL模型集合"
+        }
+    },
+    "InitSDXLLoRATraining": {
+        "title": "初始化SDXL LoRA训练",
+        "inputs": {
+            "SDXL_models": "SDXL模型集合",
+            "dataset": "数据集配置",
+            "optimizer_settings": "优化器设置参数",
+            "resume_args": "恢复训练参数（可选）",
+            "block_args": "网络块参数（限制LoRA作用范围，可选）",
+            "loss_args": "损失函数参数（可选）",
+            "network_config": "网络配置参数（可选）"
+        },
+        "widgets": {
+            "output_name": "输出名称（默认SDXL_lora）",
+            "output_dir": "输出目录（ComfyUI根目录）",
+            "network_dim": "网络维度（默认16，范围1-100000）",
+            "network_alpha": "网络Alpha值（默认16.0，范围0.0-2048.0）",
+            "learning_rate": "学习率（默认0.000001，范围0.0-10.0，步长0.0000001）",
+            "max_train_steps": "最大训练步数（默认1500，范围1-100000）",
+            "cache_latents": "潜变量缓存方式",
+            "cache_text_encoder_outputs": "文本编码器输出缓存方式",
+            "highvram": "高显存模式（默认false，内存使用模式）",
+            "blocks_to_swap": "交换块数量（默认0，范围0-100；SDXL.5L最大36，SDXL.5M最大22，用于减少内存占用）",
+            "fp8_base": "启用fp8基础模型（默认false）",
+            "gradient_dtype": "梯度数据类型（默认fp32，训练实际使用的dtype）",
+            "save_dtype": "保存数据类型（默认fp16，checkpoint保存格式）",
+            "attention_mode": "注意力模式（默认sdpa，内存高效注意力方式）",
+            "train_text_encoder": "训练文本编码器（默认disabled）",
+            "clip_l_lr": "CLIP-L学习率（默认0.0，范围0.0-10.0，步长0.000001，文本编码器学习率）",
+            "clip_g_lr": "CLIP-G学习率（默认0.0，范围0.0-10.0，步长0.000001，文本编码器学习率）",
+            "sample_prompts_pos": "正向采样提示词（默认illustration of a kitten | photograph of a turtle，多提示词用`|`分隔）",
+            "sample_prompts_neg": "负向采样提示词（默认空，多提示词用`|`分隔）",
+            "gradient_checkpointing": "梯度检查点模式（默认enabled）",
+            "additional_args": "额外参数（可选，传递给训练命令的额外参数，多行输入）"
+        },
+        "outputs": {
+            "network_trainer": "网络训练器实例",
+            "epochs_count": "总轮次计数",
+            "args": "训练参数集合"
+        }
+    },
+    "SDXLTrainValidationSettings": {
+        "title": "SDXL训练验证设置",
+        "widgets": {
+            "steps": "采样步数（默认20，范围1-256）",
+            "width": "图像宽度（默认1024，范围64-4096，步长8）",
+            "height": "图像高度（默认1024，范围64-4096，步长8）",
+            "guidance_scale": "引导系数（默认7.5，范围1.0-32.0，步长0.05）",
+            "sampler": "采样器类型",
+            "seed": "随机种子（默认42，可设为randomize）"
+        },
+        "outputs": {
+            "validation_settings": "验证设置参数"
+        }
+    },
+    "SDXLTrainValidate": {
+        "title": "SDXL训练验证",
+        "inputs": {
+            "network_trainer": "网络训练器实例",
+            "validation_settings": "验证设置参数（可选）"
+        },
+        "outputs": {
+            "network_trainer": "更新后的网络训练器",
+            "validation_images": "验证图像"
+        }
+    }
+}
