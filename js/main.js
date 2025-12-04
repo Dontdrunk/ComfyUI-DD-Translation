@@ -475,117 +475,8 @@ export class TUtils {
     }
   }
   static addPanelButtons(app) {
-    try {
-      if(document.getElementById("toggle-translation-button")) return;
-      
-      const translationEnabled = isTranslationEnabled();
-      
-      // 创建样式元素，添加按钮动画效果
-      const styleElem = document.createElement('style');
-      styleElem.textContent = `
-        @keyframes flowEffect {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-        
-        .dd-translation-active {
-          background: linear-gradient(90deg, #e6a919, #f4d03f, #f9e79f, #f4d03f, #e6a919);
-          background-size: 300% 100%;
-          color: #333;
-          border: none;
-          animation: flowEffect 5s ease infinite;
-          text-shadow: 0 1px 1px rgba(0,0,0,0.1);
-          box-shadow: 0 0 5px rgba(244, 208, 63, 0.5);
-          transition: all 0.3s ease;
-        }
-        
-        .dd-translation-inactive {
-          background: linear-gradient(90deg, #1a5276, #2980b9, #3498db, #2980b9, #1a5276);
-          background-size: 300% 100%;
-          color: white;
-          border: none;
-          animation: flowEffect 7s ease infinite;
-          box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
-          transition: all 0.3s ease;
-        }
-        
-        .dd-translation-btn:hover {
-          transform: translateY(-1px);
-          box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-          cursor: pointer;
-        }
-
-        .dd-translation-btn {
-          cursor: pointer;
-        }
-      `;
-      document.head.appendChild(styleElem);
-      
-      // 添加旧版UI的切换按钮
-      if(document.querySelector(".comfy-menu") && !document.getElementById("toggle-translation-button")) {
-        app.ui.menuContainer.appendChild(
-          $el("button.dd-translation-btn", {
-            id: "toggle-translation-button",
-            textContent: translationEnabled ? "附加翻译" : "官方实现",
-            className: translationEnabled ? "dd-translation-btn dd-translation-active" : "dd-translation-btn dd-translation-inactive",
-            style: {
-              fontWeight: "bold",
-              fontSize: "12px",
-              padding: "5px 10px",
-              borderRadius: "4px",
-            },
-            title: translationEnabled ? "已开启额外附加翻译" : "已使用官方原生翻译",
-            onclick: async () => {
-              await toggleTranslation();
-            },
-          })
-        );
-      }
-      
-      // 添加新版UI的切换按钮
-      try {
-        if(window?.comfyAPI?.button?.ComfyButton && window?.comfyAPI?.buttonGroup?.ComfyButtonGroup) {
-          var ComfyButtonGroup = window.comfyAPI.buttonGroup.ComfyButtonGroup;
-          var ComfyButton = window.comfyAPI.button.ComfyButton;
-          
-          var btn = new ComfyButton({
-            action: async () => {
-              await toggleTranslation();
-            },
-            tooltip: translationEnabled ? "已开启额外附加翻译" : "已使用官方原生翻译",
-            content: translationEnabled ? "附加翻译" : "官方实现",
-            classList: "toggle-translation-button"
-          });
-          
-          // 设置按钮样式
-          if(btn.element) {
-            btn.element.classList.add("dd-translation-btn");
-            btn.element.classList.add(translationEnabled ? "dd-translation-active" : "dd-translation-inactive");
-            btn.element.style.fontWeight = "bold";
-            btn.element.style.fontSize = "12px";
-            btn.element.style.padding = "5px 10px";
-            btn.element.style.borderRadius = "4px";
-          }
-          
-          var group = new ComfyButtonGroup(btn.element);
-          if(app.menu?.settingsGroup?.element) {
-            app.menu.settingsGroup.element.before(group.element);
-          }
-        }
-      } catch(e) {
-        error("添加新版UI语言按钮失败:", e);
-      }
-    } catch (e) {
-      error("添加面板按钮失败:", e);
-    }
-  }static addNodeTitleMonitoring(app) {
+  }
+  static addNodeTitleMonitoring(app) {
     try {
       if (typeof LGraphNode === 'undefined') {
         error("LGraphNode未定义，无法设置标题监听");
@@ -625,6 +516,18 @@ const ext = {
       
       TUtils.addNodeTitleMonitoring(app);
       
+      app.ui.settings.addSetting({
+        id: "AGL.Translation.Enable",
+        name: "AGL Translation (附加翻译)",
+        type: "boolean",
+        defaultValue: isTranslationEnabled(),
+        onChange: async (value) => {
+            if (value !== isTranslationEnabled()) {
+                await toggleTranslation();
+            }
+        },
+      });
+
       if (isTranslationEnabled()) {
         TUtils.applyNodeTypeTranslation(app);
         TUtils.applyContextMenuTranslation(app);
