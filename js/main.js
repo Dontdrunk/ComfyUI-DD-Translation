@@ -517,8 +517,8 @@ const ext = {
       TUtils.addNodeTitleMonitoring(app);
       
       app.ui.settings.addSetting({
-        id: "AGL.Translation.Enable",
-        name: "AGL Translation (附加翻译)",
+        id: "🌐翻译设置.语言开关.Enable",
+        name: "是否开启附加翻译",
         type: "boolean",
         defaultValue: isTranslationEnabled(),
         onChange: async (value) => {
