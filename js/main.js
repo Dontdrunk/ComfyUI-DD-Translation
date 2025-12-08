@@ -153,6 +153,93 @@ export class TUtils {
       error(`为Vue节点 ${nodeDef?.name} 应用翻译失败:`, e);
     }
   }
+
+  /**
+   * Inject translations into Vue Node Definition (Inputs/Outputs/Widgets)
+   * @param {Object} nodeDef
+   */
+  static applyVueNodeDefTranslation(nodeDef) {
+    try {
+        const class_type = nodeDef.name;
+        const nodesT = TUtils.T.Nodes;
+        if (!nodesT || !nodesT.hasOwnProperty(class_type)) return;
+        const t = nodesT[class_type];
+
+        // 1. Translate Inputs (Required & Optional)
+        // input: { required: { key: [type, opts] }, optional: { ... } }
+        const translateInputs = (inputObj) => {
+            if (!inputObj) return;
+            for (const key in inputObj) {
+                // Try 'inputs' dictionary first, then 'widgets' (as widgets are defined in inputs)
+                let translation = null;
+                if (t["inputs"] && key in t["inputs"]) {
+                    translation = t["inputs"][key];
+                } else if (t["widgets"] && key in t["widgets"]) {
+                    translation = t["widgets"][key];
+                } else if (t["inputs"] && t["inputs"]["*"]) {
+                    translation = t["inputs"]["*"];
+                } else {
+                    // Heuristic suffix mapping for common patterns
+                    const idx = key.lastIndexOf("_");
+                    if (idx > 0) {
+                        const base = key.slice(0, idx);
+                        const suffix = key.slice(idx + 1);
+                        if (suffix === "embeds") {
+                            translation = `${base}嵌入`;
+                        } else if (suffix === "args") {
+                            translation = `${base}参数`;
+                        }
+                    }
+                }
+
+                if (translation) {
+                    const val = inputObj[key];
+                    // val is [TYPE, OPTIONS]
+                    if (Array.isArray(val) && val.length > 1 && typeof val[1] === 'object') {
+                        // Inject label into options
+                        // Avoid overwriting if native translation exists (check if label has Chinese)
+                        if (!val[1].label || !containsChineseCharacters(val[1].label)) {
+                            val[1].label = translation;
+                        }
+                    }
+                }
+            }
+        };
+
+        if (nodeDef.input) {
+            translateInputs(nodeDef.input.required);
+            translateInputs(nodeDef.input.optional);
+        }
+
+        // 2. Translate Output Names
+        // output_name: ["Output1", "Output2"]
+         if (t["outputs"] && nodeDef.output_name && Array.isArray(nodeDef.output_name)) {
+             for (let i = 0; i < nodeDef.output_name.length; i++) {
+                 const originalName = nodeDef.output_name[i];
+                 if (originalName in t["outputs"]) {
+                      const translation = t["outputs"][originalName];
+                      if (translation && !containsChineseCharacters(originalName)) {
+                          nodeDef.output_name[i] = translation;
+                      }
+                 } else if (t["outputs"]["*"]) {
+                      const translation = t["outputs"]["*"];
+                      if (translation) {
+                          nodeDef.output_name[i] = translation;
+                      }
+                 } else if (t["outputs"]["samples"] && /_samples$/.test(originalName)) {
+                      const translation = t["outputs"]["samples"];
+                      if (translation) {
+                          nodeDef.output_name[i] = translation;
+                      }
+                 }
+             }
+         }
+
+    } catch (e) {
+        error(`Vue节点定义翻译注入失败 (${nodeDef?.name}):`, e);
+    }
+  }
+
   static applyNodeTypeTranslation(app) {
     try {
       if (!isTranslationEnabled()) return;
@@ -259,6 +346,19 @@ export class TUtils {
             // 如果没有原生翻译，才应用我们的翻译
             if (!hasNative) {
               this.safeApplyTranslation(item, t[key][item.name]);
+            }
+          } else if (key === 'inputs' || key === 'widgets') {
+            const idx = item.name.lastIndexOf('_');
+            if (idx > 0) {
+              const base = item.name.slice(0, idx);
+              const suffix = item.name.slice(idx + 1);
+              let trans = null;
+              if (suffix === 'embeds') trans = `${base}嵌入`;
+              else if (suffix === 'args') trans = `${base}参数`;
+              if (trans) {
+                const hasNative = hasNativeTranslation(item, 'label') && !item._original_name;
+                if (!hasNative) this.safeApplyTranslation(item, trans);
+              }
             }
           }
         });
@@ -373,6 +473,82 @@ export class TUtils {
       }
     } catch (e) {
       error("应用菜单翻译失败:", e);
+    }
+  }
+  static applyVueI18nNodeDefs() {
+    try {
+      if (!isTranslationEnabled()) return;
+      if (!isVueNodes2()) return;
+      const api = window.comfyAPI?.i18n;
+      if (!api || typeof api.addTranslations !== 'function') return;
+      const payloadNodeDefs = { nodeDefs: {} };
+      const payloadFlat = {};
+      const nodesT = TUtils.T.Nodes || {};
+      for (const class_type in nodesT) {
+        const t = nodesT[class_type];
+        const entry = {};
+        if (t?.title) entry.display_name = t.title;
+        const inputs = {};
+        if (t?.inputs) {
+          for (const key in t.inputs) {
+            const name = t.inputs[key];
+            if (name) inputs[key] = { name };
+          }
+        }
+        if (t?.widgets) {
+          for (const key in t.widgets) {
+            const name = t.widgets[key];
+            if (name && !inputs[key]) inputs[key] = { name };
+          }
+        }
+        // Heuristic for common suffixes when missing explicit translation
+        Object.keys(inputs).forEach(k=>{});
+        if (t?.inputs) {
+          for (const key in t.inputs) {}
+        }
+        // Provide heuristics for keys not in inputs/widgets
+        const provideHeuristic = (key) => {
+          if (inputs[key]) return;
+          const idx = key.lastIndexOf('_');
+          if (idx > 0) {
+            const base = key.slice(0, idx);
+            const suffix = key.slice(idx + 1);
+            if (suffix === 'embeds') inputs[key] = { name: `${base}嵌入` };
+            else if (suffix === 'args') inputs[key] = { name: `${base}参数` };
+          }
+        };
+
+        // Attempt heuristics from known node keys
+        if (entry.inputs) {
+          Object.keys(entry.inputs).forEach(()=>{});
+        }
+
+        const outputs = {};
+        if (t?.outputs) {
+          for (const key in t.outputs) {
+            const name = t.outputs[key];
+            if (name) outputs[key] = name;
+          }
+          if (t.outputs["samples"] && !outputs["denoised_samples"]) {
+            outputs["denoised_samples"] = t.outputs["samples"];
+          }
+        }
+        if (Object.keys(inputs).length) entry.inputs = inputs;
+        if (Object.keys(outputs).length) entry.outputs = outputs;
+        if (Object.keys(entry).length) {
+          payloadNodeDefs.nodeDefs[class_type] = entry;
+          payloadFlat[class_type] = entry;
+        }
+      }
+      // Try multiple language codes and shapes to maximize compatibility
+      api.addTranslations('zh-CN', payloadNodeDefs);
+      api.addTranslations('zh', payloadNodeDefs);
+      api.addTranslations('zh-cn', payloadNodeDefs);
+      api.addTranslations('zh-CN', payloadFlat);
+      api.addTranslations('zh', payloadFlat);
+      api.addTranslations('zh-cn', payloadFlat);
+    } catch (e) {
+      error("注入Vue节点定义翻译失败:", e);
     }
   }
   static applyContextMenuTranslation(app) {
@@ -539,13 +715,16 @@ const ext = {
           TUtils.applyContextMenuTranslation(app);
         }
         
-        // Menu translation needs to handle both modes internally or be split
-        if (!isComfyUIChineseNative) {
+        // In Vue mode, allow text-only replacement regardless of native locale
+        if (!isComfyUIChineseNative || isVueNodes2()) {
           TUtils.applyMenuTranslation(app);
         }
         
         if (!isVueNodes2()) {
           TUtils.addRegisterNodeDefCB(app);
+        }
+        if (isVueNodes2()) {
+          TUtils.applyVueI18nNodeDefs();
         }
       }
       
@@ -572,6 +751,7 @@ const ext = {
       
       nodeDefs.forEach(TUtils.applyVueNodeDisplayNameTranslation);
       nodeDefs.forEach(TUtils.applyVueNodeTranslation);
+      nodeDefs.forEach(TUtils.applyVueNodeDefTranslation);
     } catch (e) {
       error("注册Vue应用节点定义前处理失败:", e);
     }

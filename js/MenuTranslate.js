@@ -195,8 +195,8 @@ class TExe {
 
       // Element Node
       if (target.nodeType === Node.ELEMENT_NODE) {
-        // Skip canvas/graph to avoid layout issues
-        if (target.tagName === 'CANVAS' || target.classList?.contains('lgraphcanvas')) return;
+        // Skip actual canvas elements
+        if (target.tagName === 'CANVAS') return;
 
         // Attributes
         if (target.title && !containsChineseCharacters(target.title)) {
@@ -236,6 +236,34 @@ function applyVueMenuTranslation(T) {
             return;
         }
         
+        // Merge node input/output/widget terms into menu dictionary for safe text replacement
+        try {
+          const extra = {};
+          const nodes = T.Nodes || {};
+          for (const cls in nodes) {
+            const nt = nodes[cls];
+            if (nt?.inputs) {
+              for (const k in nt.inputs) {
+                const v = nt.inputs[k];
+                if (typeof v === 'string' && !extra[k]) extra[k] = v;
+              }
+            }
+            if (nt?.widgets) {
+              for (const k in nt.widgets) {
+                const v = nt.widgets[k];
+                if (typeof v === 'string' && !extra[k]) extra[k] = v;
+              }
+            }
+            if (nt?.outputs) {
+              for (const k in nt.outputs) {
+                const v = nt.outputs[k];
+                if (typeof v === 'string' && !extra[k]) extra[k] = v;
+              }
+            }
+          }
+          texe.T.Menu = Object.assign({}, texe.T.Menu || {}, extra);
+        } catch (e) {}
+
         // 2. Fallback: Safe MutationObserver
         texe.safeReplaceVue(document.body);
         
