@@ -28,7 +28,6 @@
     "Add node filter condition": "添加节点筛选条件",
     "Category": "分类",
     "Source": "来源",
-    "Add": "加",
 
     "Add Node": "新建节点",
     "Add Reroute": "添加转接点",
@@ -58,7 +57,6 @@
     "yellow": "黄色",
     "black": "黑色",
     
-    "Inputs": "输入",
     "Outputs": "输出",
     "Properties": "属性",
     "Properties Panel": "属性面板",

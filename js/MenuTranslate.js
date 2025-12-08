@@ -2,7 +2,8 @@ import {
   containsChineseCharacters, 
   nativeTranslatedSettings,
   error,
-  isVueNodes2
+  isVueNodes2,
+  shouldSkipNode
 } from "./utils.js";
 
 /**
@@ -37,13 +38,11 @@ class TExe {
    * @returns {boolean} 是否需要跳过
    */
   tSkip(node) {
-    try {
-      // 判断node.classList 是否包含 excludeClass中的一个
-      return this.excludeClass.some((cls) => node.classList?.contains(cls));
-    } catch (e) {
-      // 如果出错，默认不跳过
-      return false;
-    }
+    return shouldSkipNode(
+      node,
+      this.excludeClass,
+      '.workflow-list, .workflow, .workflows, .file-list, .file-browser, .p-tree, .p-treenode, .p-inputtext'
+    );
   }
   translateKjPopDesc(node) {
     try {
@@ -236,7 +235,7 @@ function applyVueMenuTranslation(T) {
             return;
         }
         
-        // Merge node input/output/widget terms into menu dictionary for safe text replacement
+        // Merge node input/widget terms (only snake_case) into menu dictionary for safe text replacement
         try {
           const extra = {};
           const nodes = T.Nodes || {};
@@ -245,39 +244,44 @@ function applyVueMenuTranslation(T) {
             if (nt?.inputs) {
               for (const k in nt.inputs) {
                 const v = nt.inputs[k];
-                if (typeof v === 'string' && !extra[k]) extra[k] = v;
+                if (typeof v === 'string' && !extra[k] && k.includes('_')) extra[k] = v;
               }
             }
             if (nt?.widgets) {
               for (const k in nt.widgets) {
                 const v = nt.widgets[k];
-                if (typeof v === 'string' && !extra[k]) extra[k] = v;
-              }
-            }
-            if (nt?.outputs) {
-              for (const k in nt.outputs) {
-                const v = nt.outputs[k];
-                if (typeof v === 'string' && !extra[k]) extra[k] = v;
+                if (typeof v === 'string' && !extra[k] && k.includes('_')) extra[k] = v;
               }
             }
           }
           texe.T.Menu = Object.assign({}, texe.T.Menu || {}, extra);
         } catch (e) {}
+        // 2. Fallback: Targeted MutationObservers (avoid sidebar/workflow list)
+        const targets = [
+          document.querySelector('.litegraph'),
+          document.querySelector('.comfyui-menu'),
+          document.querySelector('.comfy-menu'),
+          ...Array.from(document.querySelectorAll('.comfyui-popup')),
+          ...Array.from(document.querySelectorAll('.comfy-modal')),
+          ...Array.from(document.querySelectorAll('.p-dialog'))
+        ].filter(Boolean);
 
-        // 2. Fallback: Safe MutationObserver
-        texe.safeReplaceVue(document.body);
-        
-        const observer = observeFactory(document.body, (mutationsList) => {
+        targets.forEach(t => {
+          texe.safeReplaceVue(t);
+          const obs = observeFactory(t, (mutationsList) => {
             for (let mutation of mutationsList) {
-                if (mutation.type === 'childList') {
-                    mutation.addedNodes.forEach(node => texe.safeReplaceVue(node));
-                } else if (mutation.type === 'characterData') {
-                    texe.safeReplaceVue(mutation.target);
-                }
+              if (mutation.type === 'childList') {
+                mutation.addedNodes.forEach(node => texe.safeReplaceVue(node));
+              } else if (mutation.type === 'characterData') {
+                texe.safeReplaceVue(mutation.target);
+              } else if (mutation.type === 'attributes') {
+                texe.safeReplaceVue(mutation.target);
+              }
             }
-        }, true); // subtree true
-        
-        if (observer) texe.observers.push(observer);
+          }, true);
+          if (obs) texe.observers.push(obs);
+        });
+
         
     } catch (e) {
         error("Vue mode translation failed:", e);

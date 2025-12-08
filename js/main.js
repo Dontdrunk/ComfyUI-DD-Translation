@@ -10,7 +10,8 @@ import {
   toggleTranslation,
   initConfig,
   error,
-  isVueNodes2
+  isVueNodes2,
+  applySuffixHeuristic
 } from "./utils.js";
 
 export class TUtils {
@@ -179,17 +180,8 @@ export class TUtils {
                 } else if (t["inputs"] && t["inputs"]["*"]) {
                     translation = t["inputs"]["*"];
                 } else {
-                    // Heuristic suffix mapping for common patterns
-                    const idx = key.lastIndexOf("_");
-                    if (idx > 0) {
-                        const base = key.slice(0, idx);
-                        const suffix = key.slice(idx + 1);
-                        if (suffix === "embeds") {
-                            translation = `${base}嵌入`;
-                        } else if (suffix === "args") {
-                            translation = `${base}参数`;
-                        }
-                    }
+                    const h = applySuffixHeuristic(key);
+                    if (h) translation = h;
                 }
 
                 if (translation) {
@@ -348,17 +340,10 @@ export class TUtils {
               this.safeApplyTranslation(item, t[key][item.name]);
             }
           } else if (key === 'inputs' || key === 'widgets') {
-            const idx = item.name.lastIndexOf('_');
-            if (idx > 0) {
-              const base = item.name.slice(0, idx);
-              const suffix = item.name.slice(idx + 1);
-              let trans = null;
-              if (suffix === 'embeds') trans = `${base}嵌入`;
-              else if (suffix === 'args') trans = `${base}参数`;
-              if (trans) {
-                const hasNative = hasNativeTranslation(item, 'label') && !item._original_name;
-                if (!hasNative) this.safeApplyTranslation(item, trans);
-              }
+            const trans = applySuffixHeuristic(item.name);
+            if (trans) {
+              const hasNative = hasNativeTranslation(item, 'label') && !item._original_name;
+              if (!hasNative) this.safeApplyTranslation(item, trans);
             }
           }
         });
