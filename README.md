@@ -50,11 +50,12 @@ https://github.com/user-attachments/assets/1ec662ba-da6c-4712-8be7-61168b08940e
 ## 贡献者名单
 感谢以下贡献者对于ComfyUI中文开源生态的支持
 
-- msola-ht丶是小张啊丶alinuo666丶猪的飞行梦丶ZXSZS丶tanglangxia丶AIGCZero丶Artistjjw丶henrylaobai丶FanXiangTM丶xuchenxu168丶LovedeHua丶uiiiaiii丶fuxijun-max丶ANe5s丶cnolka 丶XXXAbit7
+- msola-ht丶是小张啊丶alinuo666丶猪的飞行梦丶ZXSZS丶tanglangxia丶AIGCZero丶Artistjjw丶henrylaobai丶FanXiangTM丶xuchenxu168丶LovedeHua丶uiiiaiii丶fuxijun-max丶ANe5s丶cnolka 丶XXXAbit7 丶Yifo98
 
 ## 更新日志
 
-### v2.0.0(2025-12-08) 
+### v2.0.0(2025-12-08) 【兼容性更新】
+- 感谢贡献者(Yifo98)提供的新版本兼容示例，修复了ComfyUI Nodes 2.0节点的连线异常问题
 - 合并贡献者(cnolka)的PR，现在通过Comfyui原生设置面板来开关翻译，并移除导致BUG的错误翻译文件
 - 合并贡献者(cnolka) 对于ComfyUI-Easy-SAM3插件的翻译完善
 - 合并贡献者(XXXAbit7)对于Depthflow节点的翻译补全

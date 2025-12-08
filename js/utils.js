@@ -145,3 +145,11 @@ export async function toggleTranslation() {
         error("切换翻译状态失败");
     }
 }
+
+/**
+ * Check if running in ComfyUI Nodes 2.0 (Vue) mode
+ * @returns {boolean}
+ */
+export function isVueNodes2() {
+    return typeof window.comfyAPI !== 'undefined';
+}

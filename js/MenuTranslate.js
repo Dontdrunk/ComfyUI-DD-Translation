@@ -1,7 +1,8 @@
 import { 
   containsChineseCharacters, 
   nativeTranslatedSettings,
-  error
+  error,
+  isVueNodes2
 } from "./utils.js";
 
 /**
@@ -170,15 +171,100 @@ class TExe {
       error("清理观察者出错:", e);
     }
   }
+
+  /**
+   * Safe text replacement for Vue mode (Text nodes and attributes only)
+   * @param {Node} target 
+   */
+  safeReplaceVue(target) {
+    try {
+      if (!target) return;
+      if (!this.T) return;
+      if (this.tSkip(target)) return;
+
+      // Text Node
+      if (target.nodeType === Node.TEXT_NODE) {
+        if (target.nodeValue && !containsChineseCharacters(target.nodeValue)) {
+          const translated = this.MT(target.nodeValue);
+          if (translated) {
+            target.nodeValue = translated;
+          }
+        }
+        return;
+      }
+
+      // Element Node
+      if (target.nodeType === Node.ELEMENT_NODE) {
+        // Skip canvas/graph to avoid layout issues
+        if (target.tagName === 'CANVAS' || target.classList?.contains('lgraphcanvas')) return;
+
+        // Attributes
+        if (target.title && !containsChineseCharacters(target.title)) {
+          const t = this.MT(target.title);
+          if (t) target.title = t;
+        }
+        if (target.placeholder && !containsChineseCharacters(target.placeholder)) {
+           const t = this.MT(target.placeholder);
+           if (t) target.placeholder = t;
+        }
+        
+        // Button values (if input type=button)
+        if (target.tagName === "INPUT" && target.type === "button" && !containsChineseCharacters(target.value)) {
+            const t = this.MT(target.value);
+            if (t) target.value = t;
+        }
+
+        // Recurse
+        if (target.childNodes && target.childNodes.length) {
+            Array.from(target.childNodes).forEach(child => this.safeReplaceVue(child));
+        }
+      }
+    } catch (e) {
+      // error("Safe replace error:", e);
+    }
+  }
 }
 
 // 创建翻译执行器实例
 let texe = new TExe();
 
+function applyVueMenuTranslation(T) {
+    try {
+        // 1. Try comfyAPI i18n
+        if (window.comfyAPI && window.comfyAPI.i18n && window.comfyAPI.i18n.addTranslations) {
+            window.comfyAPI.i18n.addTranslations('zh-CN', T.Menu);
+            return;
+        }
+        
+        // 2. Fallback: Safe MutationObserver
+        texe.safeReplaceVue(document.body);
+        
+        const observer = observeFactory(document.body, (mutationsList) => {
+            for (let mutation of mutationsList) {
+                if (mutation.type === 'childList') {
+                    mutation.addedNodes.forEach(node => texe.safeReplaceVue(node));
+                } else if (mutation.type === 'characterData') {
+                    texe.safeReplaceVue(mutation.target);
+                }
+            }
+        }, true); // subtree true
+        
+        if (observer) texe.observers.push(observer);
+        
+    } catch (e) {
+        error("Vue mode translation failed:", e);
+    }
+}
+
 export function applyMenuTranslation(T) {
   try {
     texe.cleanupObservers();
     texe.T = T;
+    
+    if (isVueNodes2()) {
+        applyVueMenuTranslation(T);
+        return;
+    }
     
     texe.translateAllText(document.querySelector(".litegraph"));
     

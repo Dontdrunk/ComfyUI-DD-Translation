@@ -9,7 +9,8 @@ import {
   isTranslationEnabled,
   toggleTranslation,
   initConfig,
-  error
+  error,
+  isVueNodes2
 } from "./utils.js";
 
 export class TUtils {
@@ -504,7 +505,9 @@ const ext = {
     async init(app) {
     try {
       await initConfig();
-      TUtils.enhandeDrawNodeWidgets();
+      if (!isVueNodes2()) {
+        TUtils.enhandeDrawNodeWidgets();
+      }
       await TUtils.syncTranslation();
     } catch (e) {
       error("扩展初始化失败:", e);
@@ -514,7 +517,9 @@ const ext = {
     try {      
       const isComfyUIChineseNative = document.documentElement.lang === 'zh-CN';
       
-      TUtils.addNodeTitleMonitoring(app);
+      if (!isVueNodes2()) {
+        TUtils.addNodeTitleMonitoring(app);
+      }
       
       app.ui.settings.addSetting({
         id: "🌐翻译设置.语言开关.Enable",
@@ -529,17 +534,24 @@ const ext = {
       });
 
       if (isTranslationEnabled()) {
-        TUtils.applyNodeTypeTranslation(app);
-        TUtils.applyContextMenuTranslation(app);
+        if (!isVueNodes2()) {
+          TUtils.applyNodeTypeTranslation(app);
+          TUtils.applyContextMenuTranslation(app);
+        }
         
+        // Menu translation needs to handle both modes internally or be split
         if (!isComfyUIChineseNative) {
           TUtils.applyMenuTranslation(app);
         }
         
-        TUtils.addRegisterNodeDefCB(app);
+        if (!isVueNodes2()) {
+          TUtils.addRegisterNodeDefCB(app);
+        }
       }
       
-      TUtils.addPanelButtons(app);
+      if (!isVueNodes2()) {
+        TUtils.addPanelButtons(app);
+      }
     } catch (e) {
       error("扩展设置失败:", e);
     }
