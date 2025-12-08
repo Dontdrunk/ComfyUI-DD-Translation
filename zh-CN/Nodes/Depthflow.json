@@ -1,0 +1,373 @@
+{
+    "Depthflow": {
+        "title": "🌊 Depthflow 视差生成 (主节点)",
+        "inputs": {
+            "image": "图像",
+            "depth_map": "深度图",
+            "motion": "运动控制 (Motion)",
+            "effects": "特效叠加 (Effects)"
+        },
+        "widgets": {
+            "num_frames": "总帧数",
+            "input_fps": "输入帧率",
+            "output_fps": "输出帧率",
+            "quality": "生成质量 (1-100)",
+            "ssaa": "SSAA 抗锯齿强度",
+            "invert": "反转深度图 (是/否)",
+            "tiling_mode": "边缘平铺模式",
+            "option_tiling_mode": {
+                "mirror": "镜像 (Mirror)",
+                "repeat": "重复 (Repeat)",
+                "border": "边缘延伸 (Border)",
+                "zeros": "黑边填充 (Zeros)",
+                "none": "无 (None)"
+            }
+        },
+        "outputs": {
+            "output": "视频帧序列"
+        }
+    },
+    "DepthflowMotionPresetOrbital": {
+        "title": "🌊 动作：立体环绕 (Orbital)",
+        "outputs": {
+            "motion": "运动数据 (Motion)"
+        },
+        "widgets": {
+            "intensity": "环绕强度",
+            "depth": "深度/立体感",
+            "strength": "全局强度 (Strength)",
+            "feature_threshold": "特征阈值",
+            "feature_param": "特征参数",
+            "feature_mode": "特征模式",
+            "reverse": "反向运动",
+            "smooth": "平滑过渡",
+            "phase": "相位/起始点",
+            "loop": "循环播放"
+        }
+    },
+    "DepthflowMotionPresetCircle": {
+        "title": "🌊 动作：平面画圆 (Circle)",
+        "outputs": {
+            "motion": "运动数据 (Motion)"
+        },
+        "widgets": {
+            "intensity": "画圆强度",
+            "radius": "半径",
+            "strength": "全局强度 (Strength)",
+            "feature_threshold": "特征阈值",
+            "feature_param": "特征参数",
+            "feature_mode": "特征模式",
+            "reverse": "反向运动",
+            "smooth": "平滑过渡",
+            "phase": "相位/起始角度",
+            "loop": "循环播放",
+            "phase_x": "X轴相位",
+            "phase_y": "Y轴相位",
+            "phase_z": "Z轴相位",
+            "amplitude_x": "X轴振幅",
+            "amplitude_y": "Y轴振幅",
+            "amplitude_z": "Z轴振幅",
+            "static_value": "静态值"
+        }
+    },
+    "DepthflowMotionPresetDolly": {
+        "title": "🌊 动作：推拉镜头 (Dolly)",
+        "outputs": {
+            "motion": "运动数据 (Motion)"
+        },
+        "widgets": {
+            "intensity": "推拉强度 (正推/负拉)",
+            "strength": "全局强度 (Strength)",
+            "feature_threshold": "特征阈值",
+            "feature_param": "特征参数",
+            "feature_mode": "特征模式",
+            "reverse": "反向运动",
+            "smooth": "平滑过渡",
+            "phase": "相位/起始点",
+            "loop": "循环播放"
+        }
+    },
+    "DepthflowMotionPresetZoom": {
+        "title": "🌊 动作：变焦 (Zoom)",
+        "outputs": {
+            "motion": "运动数据 (Motion)"
+        },
+        "widgets": {
+            "intensity": "缩放强度",
+            "strength": "全局强度 (Strength)",
+            "feature_threshold": "特征阈值",
+            "feature_param": "特征参数",
+            "feature_mode": "特征模式",
+            "reverse": "反向运动",
+            "smooth": "平滑过渡",
+            "phase": "相位/起始点",
+            "loop": "循环播放"
+        }
+    },
+    "DepthflowMotionPresetPan": {
+        "title": "🌊 动作：任意平移 (Pan)",
+        "outputs": {
+            "motion": "运动数据 (Motion)"
+        },
+        "widgets": {
+            "intensity": "移动距离",
+            "direction": "移动方向 (角度)",
+            "strength": "全局强度 (Strength)",
+            "feature_threshold": "特征阈值",
+            "feature_param": "特征参数",
+            "feature_mode": "特征模式",
+            "reverse": "反向运动",
+            "smooth": "平滑过渡",
+            "phase": "相位/起始点",
+            "loop": "循环播放"
+        }
+    },
+    "DepthflowMotionPresetVertical": {
+        "title": "🌊 动作：垂直平移 (Vertical)",
+        "outputs": {
+            "motion": "运动数据 (Motion)"
+        },
+        "widgets": {
+            "intensity": "移动距离 (上下)",
+            "strength": "全局强度 (Strength)",
+            "feature_threshold": "特征阈值",
+            "feature_param": "特征参数",
+            "feature_mode": "特征模式",
+            "reverse": "反向运动",
+            "smooth": "平滑过渡",
+            "phase": "相位/起始点",
+            "loop": "循环播放"
+        }
+    },
+    "DepthflowMotionPresetHorizontal": {
+        "title": "🌊 动作：水平平移 (Horizontal)",
+        "outputs": {
+            "motion": "运动数据 (Motion)"
+        },
+        "widgets": {
+            "intensity": "移动距离 (左右)",
+            "strength": "全局强度 (Strength)",
+            "feature_threshold": "特征阈值",
+            "feature_param": "特征参数",
+            "feature_mode": "特征模式",
+            "reverse": "反向运动",
+            "smooth": "平滑过渡",
+            "phase": "相位/起始点",
+            "loop": "循环播放"
+        }
+    },
+    "DepthflowMotionLinear": {
+        "title": "🌊 组件：线性运动 (Linear)",
+        "outputs": {
+            "motion": "运动数据 (Motion)"
+        },
+        "widgets": {
+            "strength": "强度",
+            "feature_threshold": "特征阈值",
+            "feature_param": "特征参数",
+            "feature_mode": "特征模式",
+            "target": "控制目标 (Target)",
+            "start": "起始值 (Start)",
+            "end": "结束值 (End)",
+            "low": "下限值 (Low)",
+            "high": "上限值 (High)",
+            "exponent": "指数/曲率 (Exponent)",
+            "reverse": "反向",
+            "cumulative": "累积模式 (Cumulative)"
+        }
+    },
+    "DepthflowMotionSine": {
+        "title": "🌊 组件：正弦波运动 (Sine)",
+        "outputs": {
+            "motion": "运动数据 (Motion)"
+        },
+        "widgets": {
+            "strength": "强度",
+            "feature_threshold": "特征阈值",
+            "feature_param": "特征参数",
+            "feature_mode": "特征模式",
+            "target": "控制目标 (Target)",
+            "amplitude": "振幅",
+            "frequency": "频率",
+            "phase": "相位",
+            "offset": "偏移量",
+            "bias": "偏置 (Bias)",
+            "cycles": "周期数",
+            "reverse": "反向",
+            "cumulative": "累积模式 (Cumulative)"
+        }
+    },
+    "DepthflowMotionCosine": {
+        "title": "🌊 组件：余弦波运动 (Cosine)",
+        "outputs": {
+            "motion": "运动数据 (Motion)"
+        },
+        "widgets": {
+            "strength": "强度",
+            "feature_threshold": "特征阈值",
+            "feature_param": "特征参数",
+            "feature_mode": "特征模式",
+            "target": "控制目标 (Target)",
+            "amplitude": "振幅",
+            "cycles": "周期数",
+            "phase": "相位",
+            "bias": "偏置 (Bias)",
+            "reverse": "反向",
+            "cumulative": "累积模式 (Cumulative)"
+        }
+    },
+    "DepthflowMotionTriangle": {
+        "title": "🌊 组件：三角波运动 (Triangle)",
+        "outputs": {
+            "motion": "运动数据 (Motion)"
+        },
+        "widgets": {
+            "strength": "强度",
+            "feature_threshold": "特征阈值",
+            "feature_param": "特征参数",
+            "feature_mode": "特征模式",
+            "target": "控制目标 (Target)",
+            "amplitude": "振幅",
+            "cycles": "周期数",
+            "phase": "相位",
+            "bias": "偏置 (Bias)",
+            "reverse": "反向",
+            "cumulative": "累积模式 (Cumulative)"
+        }
+    },
+    "DepthflowMotionArc": {
+        "title": "🌊 组件：弧形运动 (Arc)",
+        "outputs": {
+            "motion": "运动数据 (Motion)"
+        },
+        "widgets": {
+            "strength": "强度",
+            "feature_threshold": "特征阈值",
+            "feature_param": "特征参数",
+            "feature_mode": "特征模式",
+            "target": "控制目标 (Target)",
+            "start": "起始值",
+            "middle": "中间值",
+            "end": "结束值",
+            "reverse": "反向",
+            "cumulative": "累积模式 (Cumulative)"
+        }
+    },
+    "DepthflowMotionSetTarget": {
+        "title": "🌊 组件：设定目标 (Set Target)",
+        "outputs": {
+            "motion": "运动数据 (Motion)"
+        },
+        "widgets": {
+            "strength": "强度",
+            "feature_threshold": "特征阈值",
+            "feature_param": "特征参数",
+            "feature_mode": "特征模式",
+            "target": "控制目标 (Target)",
+            "value": "目标数值"
+        }
+    },
+    "DepthflowMotionApplier": {
+        "title": "🌊 组件：应用器 (Applier)",
+        "inputs": {
+            "motion": "输入运动"
+        },
+        "outputs": {
+            "motion": "运动数据 (Motion)"
+        },
+        "widgets": {
+            "strength": "应用强度"
+        }
+    },
+    "DepthflowEffectDOF": {
+        "title": "🌊 特效：景深 (DOF)",
+        "outputs": {
+            "effects": "特效数据 (Effects)"
+        },
+        "widgets": {
+            "strength": "强度",
+            "feature_threshold": "特征阈值",
+            "feature_param": "特征参数",
+            "feature_mode": "特征模式",
+            "dof_enable": "启用景深 (Enable)",
+            "dof_intensity": "模糊强度",
+            "dof_start": "起始距离 (近处)",
+            "dof_end": "结束距离 (远处)",
+            "dof_exponent": "虚化衰减指数",
+            "dof_quality": "模糊质量",
+            "dof_directions": "模糊方向采样数"
+        }
+    },
+    "DepthflowEffectVignette": {
+        "title": "🌊 特效：暗角 (Vignette)",
+        "outputs": {
+            "effects": "特效数据 (Effects)"
+        },
+        "widgets": {
+            "strength": "强度",
+            "feature_threshold": "特征阈值",
+            "feature_param": "特征参数",
+            "feature_mode": "特征模式",
+            "vignette_enable": "启用暗角 (Enable)",
+            "vignette_intensity": "暗角强度",
+            "vignette_radius": "范围半径",
+            "vignette_center": "中心位置",
+            "vignette_decay": "边缘衰减"
+        }
+    },
+    "DepthflowEffectInpaint": {
+        "title": "🌊 特效：内补绘制 (Inpaint)",
+        "outputs": {
+            "effects": "特效数据 (Effects)"
+        },
+        "widgets": {
+            "strength": "强度",
+            "feature_threshold": "特征阈值",
+            "feature_param": "特征参数",
+            "feature_mode": "特征模式",
+            "inpaint_enable": "启用内补 (Enable)",
+            "inpaint_black": "填充黑色",
+            "inpaint_limit": "补全范围限制",
+            "inpaint_color": "填充颜色"
+        }
+    },
+    "DepthflowEffectColor": {
+        "title": "🌊 特效：色彩调整 (Color)",
+        "outputs": {
+            "effects": "特效数据 (Effects)"
+        },
+        "widgets": {
+            "strength": "强度",
+            "feature_threshold": "特征阈值",
+            "feature_param": "特征参数",
+            "feature_mode": "特征模式",
+            "color_enable": "启用色彩 (Enable)",
+            "color_saturation": "饱和度",
+            "color_contrast": "对比度",
+            "color_brightness": "亮度",
+            "color_gamma": "Gamma值",
+            "color_grayscale": "灰度化",
+            "color_sepia": "复古/褐色"
+        }
+    },
+    "DepthflowCompose": {
+        "title": "🌊 动作组合 (Compose)",
+        "inputs": {
+            "motion_1": "动作 A",
+            "motion_2": "动作 B"
+        },
+        "outputs": {
+            "motion": "组合后动作"
+        }
+    },
+    "DepthflowScheduler": {
+        "title": "🌊 调度器 (Scheduler)",
+        "outputs": {
+            "output": "调度输出"
+        },
+        "widgets": {
+            "value": "数值",
+            "mode": "插值模式"
+        }
+    }
+}
