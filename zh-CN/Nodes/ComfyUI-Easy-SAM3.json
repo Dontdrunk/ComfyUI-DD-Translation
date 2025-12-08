@@ -1,0 +1,164 @@
+{
+    "easy sam3ModelLoader": {
+        "title": "加载 SAM3 模型",
+        "inputs": {},
+        "widgets": {
+            "model": "模型",
+            "segmentor": "分割器",
+            "device": "设备",
+            "precision": "精度"
+        },
+        "outputs": {
+            "sam3_model": "SAM3 模型"
+        }
+    },
+    "easy sam3ImageSegmentation": {
+        "title": "SAM3 图像分割",
+        "inputs": {
+            "sam3_model": "SAM3 模型",
+            "images": "图像",
+            "coordinates_positive": "正向点坐标",
+            "coordinates_negative": "负向点坐标",
+            "bboxes": "边界框",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "prompt": "提示词",
+            "threshold": "置信度",
+            "keep_model_loaded": "保持模型加载",
+            "add_background": "添加背景",
+            "detection_limit": "检测对象限制"
+        },
+        "outputs": {
+            "masks": "遮罩",
+            "images": "图像",
+            "obj_masks": "对象遮罩",
+            "boxes": "边界框",
+            "scores": "置信度"
+        }
+    },
+    "easy sam3VideoSegmentation": {
+        "title": "SAM3 视频分割",
+        "inputs": {
+            "sam3_model": "SAM3 模型",
+            "video_frames": "视频帧",
+            "session_id": "会话 ID",
+            "extra_config": "SAM3 模型配置",
+            "positive_coords": "正向坐标",
+            "negative_coords": "负向坐标",
+            "bbox": "边界框"
+        },
+        "widgets": {
+            "sam3_model": "SAM3 模型",
+            "session_id": "会话 ID",
+            "extra_config": "SAM3 模型配置",
+            "prompt": "提示词",
+            "frame_index": "帧索引",
+            "object_id": "对象 ID",
+            "score_threshold_detection": "检测分数阈值",
+            "new_det_thresh": "新检测阈值",
+            "propagation_direction": "传播方向",
+            "start_frame_index": "起始帧索引",
+            "max_frames_to_track": "最大跟踪帧数",
+            "close_after_propagation": "传播后关闭",
+            "keep_model_loaded": "保持模型加载"
+        },
+        "outputs": {
+            "masks": "遮罩",
+            "session_id": "会话 ID",
+            "objects": "对象数据",
+            "obj_masks": "对象遮罩"
+        }
+    },
+    "easy sam3VideoModelExtraConfig": {
+        "title": "SAM3 视频模型额外配置",
+        "inputs": {},
+        "widgets": {
+            "assoc_iou_thresh": "关联 IoU 阈值",
+            "det_nms_thresh": "检测 NMS 阈值",
+            "new_det_thresh": "新检测阈值",
+            "hotstart_delay": "热启动延迟",
+            "hotstart_unmatch_thresh": "热启动不匹配阈值",
+            "hotstart_dup_thresh": "热启动重复阈值",
+            "suppress_unmatched_within_hotstart": "热启动抑制不匹配",
+            "min_trk_keep_alive": "最小保活值",
+            "max_trk_keep_alive": "最大保活值",
+            "init_trk_keep_alive": "初始保活值",
+            "suppress_overlap_occlusion_thresh": "抑制重叠遮挡阈值",
+            "suppress_det_at_boundary": "抑制边界检测",
+            "fill_hole_area": "孔洞填充面积",
+            "recondition_every_nth_frame": "重置间隔帧数",
+            "enable_masklet_confirmation": "启用掩码确认",
+            "decrease_alive_for_empty_masks": "空掩码减少保活",
+            "image_size": "图像尺寸"
+        },
+        "outputs": {
+            "extra_config": "额外配置"
+        }
+    },
+    "easy sam3Visualization": {
+        "title": "SAM3 可视化",
+        "inputs": {
+            "image": "图像",
+            "obj_masks": "对象遮罩",
+            "scores": "置信度"
+        },
+        "widgets": {
+            "alpha": "透明度",
+            "stroke_width": "描边宽度",
+            "font_size": "字体大小"
+        },
+        "outputs": {
+            "visualization": "可视化结果"
+        }
+    },
+    "easy sam3GetObjectIds": {
+        "title": "SAM3 获取对象 ID",
+        "inputs": {
+            "objects": "对象数据"
+        },
+        "widgets": {},
+        "outputs": {
+            "obj_ids": "ID 列表",
+            "count": "数量"
+        }
+    },
+    "easy sam3GetObjectMask": {
+        "title": "SAM3 获取对象遮罩",
+        "inputs": {
+            "objects": "对象数据"
+        },
+        "widgets": {
+            "obj_id": "对象 ID"
+        },
+        "outputs": {
+            "mask": "遮罩"
+        }
+    },
+    "easy stringToBBox": {
+        "title": "字符串转边界框",
+        "inputs": {
+            "bbox_string": "边界框字符串"
+        },
+        "widgets": {},
+        "outputs": {
+            "bbox": "边界框"
+        }
+    },
+    "easy framesEditor": {
+        "title": "帧编辑器",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "info": "信息",
+            "preview_rescale": "预览缩放"
+        },
+        "outputs": {
+            "positive_coords": "正向坐标",
+            "negative_coords": "负向坐标",
+            "bboxes": "边界框",
+            "frame_index": "帧索引"
+        }
+    }
+}
