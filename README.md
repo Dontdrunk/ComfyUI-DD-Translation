@@ -42,7 +42,7 @@ https://github.com/user-attachments/assets/1ec662ba-da6c-4712-8be7-61168b08940e
 方法2（推荐）：
 直接在Manager或启动器中使用git进行安装
 
-`https://github.com/1761696257/ComfyUI-DD-Translation.git`
+`https://github.com/Dontdrunk/ComfyUI-DD-Translation.git`
 
 方法3（推荐）：
 直接在Manager中搜索插件名称安装
