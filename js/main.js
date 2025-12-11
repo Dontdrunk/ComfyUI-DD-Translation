@@ -87,6 +87,22 @@ export class TUtils {
       OnFinished();
     }
   }
+  static getInputTranslationDict(t, key) {
+    if (!t) return null;
+    if (t["inputs"] && key in t["inputs"]) return t["inputs"][key];
+    if (t["widgets"] && key in t["widgets"]) return t["widgets"][key];
+    if (t["inputs"] && t["inputs"]["*"]) return t["inputs"]["*"];
+    const h = applySuffixHeuristic(key);
+    return h || null;
+  }
+  static setItemText(item, text) {
+    if (!text) return;
+    if (TUtils.needsTranslation(item)) {
+      if (!item._original_name) item._original_name = item.name;
+      if ("label" in item) item.label = text;
+      if ("localized_name" in item) item.localized_name = text;
+    }
+  }
   static applyNodeTypeTranslationEx(nodeName) {
     try {
       let nodesT = this.T.Nodes;
@@ -143,25 +159,10 @@ export class TUtils {
         const translateInputs = (inputObj) => {
             if (!inputObj) return;
             for (const key in inputObj) {
-                // Try 'inputs' dictionary first, then 'widgets' (as widgets are defined in inputs)
-                let translation = null;
-                if (t["inputs"] && key in t["inputs"]) {
-                    translation = t["inputs"][key];
-                } else if (t["widgets"] && key in t["widgets"]) {
-                    translation = t["widgets"][key];
-                } else if (t["inputs"] && t["inputs"]["*"]) {
-                    translation = t["inputs"]["*"];
-                } else {
-                    const h = applySuffixHeuristic(key);
-                    if (h) translation = h;
-                }
-
+                const translation = TUtils.getInputTranslationDict(t, key);
                 if (translation) {
                     const val = inputObj[key];
-                    // val is [TYPE, OPTIONS]
                     if (Array.isArray(val) && val.length > 1 && typeof val[1] === 'object') {
-                        // Inject label into options
-                        // Avoid overwriting if native translation exists (check if label has Chinese)
                         if (!val[1].label || !containsChineseCharacters(val[1].label)) {
                             val[1].label = translation;
                         }
@@ -180,21 +181,12 @@ export class TUtils {
          if (t["outputs"] && nodeDef.output_name && Array.isArray(nodeDef.output_name)) {
              for (let i = 0; i < nodeDef.output_name.length; i++) {
                  const originalName = nodeDef.output_name[i];
-                 if (originalName in t["outputs"]) {
-                      const translation = t["outputs"][originalName];
-                      if (translation && !containsChineseCharacters(originalName)) {
-                          nodeDef.output_name[i] = translation;
-                      }
-                 } else if (t["outputs"]["*"]) {
-                      const translation = t["outputs"]["*"];
-                      if (translation) {
-                          nodeDef.output_name[i] = translation;
-                      }
-                 } else if (t["outputs"]["samples"] && /_samples$/.test(originalName)) {
-                      const translation = t["outputs"]["samples"];
-                      if (translation) {
-                          nodeDef.output_name[i] = translation;
-                      }
+                 let translation = null;
+                 if (originalName in t["outputs"]) translation = t["outputs"][originalName];
+                 else if (t["outputs"]["*"]) translation = t["outputs"]["*"];
+                 else if (t["outputs"]["samples"] && /_samples$/.test(originalName)) translation = t["outputs"]["samples"];
+                 if (translation && !containsChineseCharacters(originalName)) {
+                     nodeDef.output_name[i] = translation;
                  }
              }
          }
@@ -297,26 +289,21 @@ export class TUtils {
       if (!t) return;
       
       for (let key of keys) {
-        if (!t.hasOwnProperty(key)) continue;
         if (!node.hasOwnProperty(key)) continue;
         if (!node[key] || !Array.isArray(node[key])) continue;
-        
         node[key].forEach((item) => {
           if (!item || !item.name) return;
-          if (item.name in t[key]) {
-            // 检查是否有原生翻译（特殊处理：排除有_original_name的项）
-            const hasNative = hasNativeTranslation(item, 'label') && !item._original_name;
-            
-            // 如果没有原生翻译，才应用我们的翻译
-            if (!hasNative) {
-              this.safeApplyTranslation(item, t[key][item.name]);
-            }
-          } else if (key === 'inputs' || key === 'widgets') {
-            const trans = applySuffixHeuristic(item.name);
-            if (trans) {
-              const hasNative = hasNativeTranslation(item, 'label') && !item._original_name;
-              if (!hasNative) this.safeApplyTranslation(item, trans);
-            }
+          const hasNative = hasNativeTranslation(item, 'label') && !item._original_name;
+          if (hasNative) return;
+          if (key === 'inputs' || key === 'widgets') {
+            const tr = TUtils.getInputTranslationDict(t, item.name);
+            if (tr) TUtils.setItemText(item, tr);
+          } else if (key === 'outputs') {
+            let tr = null;
+            if (t["outputs"] && item.name in t["outputs"]) tr = t["outputs"][item.name];
+            else if (t["outputs"] && t["outputs"]["*"]) tr = t["outputs"]["*"];
+            else if (t["outputs"] && t["outputs"]["samples"] && /_samples$/.test(item.name)) tr = t["outputs"]["samples"];
+            if (tr) TUtils.setItemText(item, tr);
           }
         });
       }
@@ -345,25 +332,21 @@ export class TUtils {
         if (this.inputs && Array.isArray(this.inputs)) {
           this.inputs.forEach((i) => {
             if (oldInputs.includes(i.name)) return;
-            if (t["widgets"] && i.widget?.name in t["widgets"]) {
-              TUtils.safeApplyTranslation(i, t["widgets"][i.widget?.name]);
-            }
+            const tr = TUtils.getInputTranslationDict(t, i.widget?.name || i.name);
+            if (tr) TUtils.setItemText(i, tr);
           });
         }
         return res;
       };
-        let onInputAdded = node.onInputAdded;
+      let onInputAdded = node.onInputAdded;
       node.onInputAdded = function (slot) {
         let res;
         if (onInputAdded) {
           res = onInputAdded.apply(this, arguments);
         }
         let t = TUtils.T.Nodes[this.comfyClass];
-        if (t?.["widgets"] && slot.name in t["widgets"]) {
-          if (TUtils.needsTranslation(slot)) {
-            slot.localized_name = t["widgets"][slot.name];
-          }
-        }
+        const tr = TUtils.getInputTranslationDict(t, slot.name);
+        if (tr) TUtils.setItemText(slot, tr);
         return res;
       };
     } catch (e) {
@@ -412,22 +395,6 @@ export class TUtils {
       if (!isTranslationEnabled()) return;
       
       applyMenuTranslation(TUtils.T);
-      
-      // Queue size 单独处理
-      const dragHandle = app.ui.menuContainer.querySelector(".drag-handle");
-      if (dragHandle && dragHandle.childNodes[1]) {
-        observeFactory(dragHandle.childNodes[1], (mutationsList, observer) => {
-          for (let mutation of mutationsList) {
-            for (let node of mutation.addedNodes) {
-              var match = node.data?.match(/(Queue size:) (\w+)/);
-              if (match?.length == 3) {
-                const t = TUtils.T.Menu[match[1]] ? TUtils.T.Menu[match[1]] : match[1];
-                node.data = t + " " + match[2];
-              }
-            }
-          }
-        });
-      }
     } catch (e) {
       error("应用菜单翻译失败:", e);
     }

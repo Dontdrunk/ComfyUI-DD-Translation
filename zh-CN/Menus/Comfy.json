@@ -1247,17 +1247,6 @@
     "style_transfer": "风格转换",
     "object_insertion": "对象插入",
 
-
-    "weighted_average": "加权平均",
-    "sdpa": "缩放点积注意力",
-    "flash_attn": "闪电注意力",
-    "sageattn": "贤者注意力",
-    "flash_attn_2": "闪电注意力2",
-    "flash_attn_3": "闪电注意力3", 
-    "sparse_sage_attention": "稀疏贤者注意力",
-    "flex_attention": "弹性注意力",
-    "radial_sage_attention": "径向贤者注意力",
-
     "never": "永不执行",
     "if_same_size": "同尺寸时",
     "skip_start": "跳过起始",
