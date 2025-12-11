@@ -1,7 +1,6 @@
 import os
 import json
 import platform
-import sys
 import shutil
 import atexit
 import server
