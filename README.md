@@ -53,8 +53,13 @@ https://github.com/user-attachments/assets/1ec662ba-da6c-4712-8be7-61168b08940e
 - msola-ht丶是小张啊丶alinuo666丶猪的飞行梦丶ZXSZS丶tanglangxia丶AIGCZero丶Artistjjw丶henrylaobai丶FanXiangTM丶xuchenxu168丶LovedeHua丶uiiiaiii丶fuxijun-max丶ANe5s丶cnolka 丶XXXAbit7 丶Yifo98
 
 ## 更新日志
+
+### v2.1.0(2025-12-09) 
+- 移除了ComfyUI旧版本UI的兼容代码 ，插件不再兼容旧版本ComfyUI界面，这样能解决很多性能问题
+（如需兼容旧版本ComfyUI界面，请使用v2.0.0之前的版本）
+
 ### v2.0.1(2025-12-09) 
-- 移除了ComfyUI模板的翻译文件，因为模板文件已经被ComfyUI官方翻译，无需重复翻译，重复翻译可能会导致性能问题
+- 移除了ComfyUI模板的翻译文件，ComfyUI官方翻译已经陆续实现了完整的模板中文翻译
 
 ### v2.0.0(2025-12-08) 【兼容性更新】
 - 添加了VUE NODES 2.0节点的全面翻译支持，全面适配最新版本的新节点系统，对最新版本UI做全面的兼容性支持
