@@ -56,7 +56,7 @@ https://github.com/user-attachments/assets/1ec662ba-da6c-4712-8be7-61168b08940e
 
 ### v2.1.0(2025-12-09) 
 - 移除了ComfyUI旧版本UI的兼容代码 ，插件不再兼容旧版本ComfyUI界面，这样能解决很多性能问题
-（如需兼容旧版本ComfyUI界面，请使用v2.0.0之前的版本）
+- （如需兼容旧版本ComfyUI界面，请使用v2.0.0之前的版本）
 
 ### v2.0.1(2025-12-09) 
 - 移除了ComfyUI模板的翻译文件，ComfyUI官方翻译已经陆续实现了完整的模板中文翻译
