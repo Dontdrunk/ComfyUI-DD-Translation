@@ -54,7 +54,7 @@ https://github.com/user-attachments/assets/1ec662ba-da6c-4712-8be7-61168b08940e
 
 ## 更新日志
 
-### v2.1.0(2025-12-09) 
+### v2.1.0(2025-12-10) 
 - 移除了ComfyUI旧版本UI的兼容代码 ，插件不再兼容旧版本ComfyUI界面，这样能解决很多性能问题
 - （如需兼容旧版本ComfyUI界面，请使用v2.0.0之前的版本）
 
