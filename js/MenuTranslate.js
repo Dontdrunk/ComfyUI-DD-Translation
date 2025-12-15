@@ -27,7 +27,7 @@ class TExe {
 
   constructor() {
     // 不需要翻译的CSS类列表
-    this.excludeClass = ["lite-search-item-type"];
+    this.excludeClass = ["lite-search-item-type", "lite-search", "lite-searchbox", "litegraph-searchbox"];
     // 记录已注册的观察者，便于后续管理
     this.observers = [];
   }
@@ -41,7 +41,7 @@ class TExe {
     return shouldSkipNode(
       node,
       this.excludeClass,
-      '.workflow-list, .workflow, .workflows, .file-list, .file-browser, .p-tree, .p-treenode, .p-inputtext, .litesearchbox, .comfy-search-box, .p-autocomplete-panel, .comfy-menu-search, .search-box'
+      '.workflow-list, .workflow, .workflows, .file-list, .file-browser, .p-tree, .p-treenode, .p-inputtext'
     );
   }
   translateKjPopDesc(node) {
@@ -109,7 +109,7 @@ class TExe {
         // 文本节点
         if (target.nodeValue && !containsChineseCharacters(target.nodeValue)) {
           const translated = this.MT(target.nodeValue);
-          if (translated) {
+          if (translated && translated !== target.nodeValue) {
             target.nodeValue = translated;
           }
         }
@@ -119,7 +119,7 @@ class TExe {
         // 处理 title 属性
         if (target.title && !containsChineseCharacters(target.title)) {
           const titleTranslated = this.MT(target.title);
-          if (titleTranslated) {
+          if (titleTranslated && titleTranslated !== target.title) {
             target.title = titleTranslated;
           }
         }
@@ -128,7 +128,7 @@ class TExe {
         if (target.nodeName === "INPUT" && target.type === "button" && 
             !containsChineseCharacters(target.value)) {
           const valueTranslated = this.MT(target.value);
-          if (valueTranslated) {
+          if (valueTranslated && valueTranslated !== target.value) {
             target.value = valueTranslated;
           }
         }
@@ -136,7 +136,7 @@ class TExe {
         // 处理文本内容
         if (target.innerText && !containsChineseCharacters(target.innerText)) {
           const innerTextTranslated = this.MT(target.innerText);
-          if (innerTextTranslated) {
+          if (innerTextTranslated && innerTextTranslated !== target.innerText) {
             target.innerText = innerTextTranslated;
           }
         }
@@ -147,7 +147,7 @@ class TExe {
           Array.from(target.options).forEach(option => {
             if (option.text && !containsChineseCharacters(option.text)) {
               const optionTextTranslated = this.MT(option.text);
-              if (optionTextTranslated) {
+              if (optionTextTranslated && optionTextTranslated !== option.text) {
                 option.text = optionTextTranslated;
               }
             }
@@ -196,21 +196,24 @@ class TExe {
       if (target.nodeType === Node.ELEMENT_NODE) {
         // Skip actual canvas elements
         if (target.tagName === 'CANVAS') return;
+        // Skip search overlay containers to avoid input typing stutter
+        const inSearchOverlay = target.closest?.('.lite-search, .lite-searchbox, .litegraph-searchbox');
+        if (inSearchOverlay) return;
 
         // Attributes
         if (target.title && !containsChineseCharacters(target.title)) {
           const t = this.MT(target.title);
-          if (t) target.title = t;
+          if (t && t !== target.title) target.title = t;
         }
         if (target.placeholder && !containsChineseCharacters(target.placeholder)) {
            const t = this.MT(target.placeholder);
-           if (t) target.placeholder = t;
+           if (t && t !== target.placeholder) target.placeholder = t;
         }
         
         // Button values (if input type=button)
         if (target.tagName === "INPUT" && target.type === "button" && !containsChineseCharacters(target.value)) {
             const t = this.MT(target.value);
-            if (t) target.value = t;
+            if (t && t !== target.value) target.value = t;
         }
 
         // Recurse
@@ -234,6 +237,28 @@ function applyVueMenuTranslation(T) {
             window.comfyAPI.i18n.addTranslations('zh-CN', T.Menu);
             return;
         }
+        
+        // Merge node input/widget terms (only snake_case) into menu dictionary for safe text replacement
+        try {
+          const extra = {};
+          const nodes = T.Nodes || {};
+          for (const cls in nodes) {
+            const nt = nodes[cls];
+            if (nt?.inputs) {
+              for (const k in nt.inputs) {
+                const v = nt.inputs[k];
+                if (typeof v === 'string' && !extra[k] && k.includes('_')) extra[k] = v;
+              }
+            }
+            if (nt?.widgets) {
+              for (const k in nt.widgets) {
+                const v = nt.widgets[k];
+                if (typeof v === 'string' && !extra[k] && k.includes('_')) extra[k] = v;
+              }
+            }
+          }
+          texe.T.Menu = Object.assign({}, texe.T.Menu || {}, extra);
+        } catch (e) {}
         // 2. Fallback: Targeted MutationObservers (avoid sidebar/workflow list)
         const targets = [
           document.querySelector('.litegraph'),
@@ -250,17 +275,17 @@ function applyVueMenuTranslation(T) {
             for (let mutation of mutationsList) {
               if (mutation.type === 'childList') {
                 mutation.addedNodes.forEach(node => texe.safeReplaceVue(node));
-              } else if (mutation.type === 'characterData') {
-                texe.safeReplaceVue(mutation.target);
               } else if (mutation.type === 'attributes') {
-                texe.safeReplaceVue(mutation.target);
+                // Avoid processing attribute changes inside search overlay
+                const skip = mutation.target?.closest?.('.lite-search, .lite-searchbox, .litegraph-searchbox');
+                if (!skip) texe.safeReplaceVue(mutation.target);
               }
             }
-          }, true);
+          }, true, { attributes: false, characterData: false });
           if (obs) texe.observers.push(obs);
         });
 
-        
+
     } catch (e) {
         error("Vue mode translation failed:", e);
     }
@@ -288,18 +313,15 @@ export function applyMenuTranslation(T) {
  * @param {boolean} subtree 是否观察子树
  * @returns {MutationObserver} 观察者实例
  */
-export function observeFactory(observeTarget, fn, subtree = false) {
+export function observeFactory(observeTarget, fn, subtree = false, options = {}) {
   if (!observeTarget) return null;
   try {
     const observer = new MutationObserver(function (mutationsList, observer) {
       fn(mutationsList, observer);
     });
-
-    observer.observe(observeTarget, {
-      childList: true,
-      attributes: true,
-      subtree: subtree,
-    });
+    const defaultOpts = { childList: true, attributes: true, subtree, characterData: false };
+    const observeOptions = Object.assign(defaultOpts, options || {});
+    observer.observe(observeTarget, observeOptions);
     return observer;
   } catch (e) {
     error("创建观察者出错:", e);

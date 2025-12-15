@@ -50,11 +50,13 @@ https://github.com/user-attachments/assets/1ec662ba-da6c-4712-8be7-61168b08940e
 ## 贡献者名单
 感谢以下贡献者对于ComfyUI中文开源生态的支持
 
-- msola-ht丶是小张啊丶alinuo666丶猪的飞行梦丶ZXSZS丶tanglangxia丶AIGCZero丶Artistjjw丶henrylaobai丶FanXiangTM丶xuchenxu168丶LovedeHua丶uiiiaiii丶fuxijun-max丶ANe5s丶cnolka 丶XXXAbit7 丶Yifo98
+- msola-ht丶是小张啊丶alinuo666丶猪的飞行梦丶ZXSZS丶tanglangxia丶AIGCZero丶Artistjjw丶henrylaobai丶FanXiangTM丶xuchenxu168丶LovedeHua丶uiiiaiii丶fuxijun-max丶ANe5s丶cnolka 丶XXXAbit7 丶Yifo98丶xiaobai9009
 
 ## 更新日志
 ### v2.1.1(2025-12-15) 
-修复了在搜索框输入free丶cfg等关键词会造成界面卡死的问题，删除了冗余的注入，搜索应该只检索标题
+- 修复了在搜索框输入free丶cfg等关键词会造成界面卡死的问题
+- 修复了之前遗失的tooltips键值翻译逻辑，现在所有节点的tooltips都有了中文翻译
+- 合并了贡献者（xiaobai9009）提交的带tooltips键值的完善ComfyUI-WanVideoWrapper翻译
 
 ### v2.1.0(2025-12-10) 
 - 移除了ComfyUI旧版本UI的兼容代码 ，插件不再兼容旧版本ComfyUI界面，这样能解决很多性能问题

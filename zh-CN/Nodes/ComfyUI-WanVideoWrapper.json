@@ -1,1041 +1,1463 @@
 {
-    "WanVideoLoraBlockEdit": {
-        "title": "WanVideo Lora 块编辑",
-        "outputs": {
-            "blocks": "块"
-        },
-        "widgets": {
-            "blocks.0.": "块.0.",
-            "blocks.1.": "块.1.",
-            "blocks.2.": "块.2.",
-            "blocks.3.": "块.3.",
-            "blocks.4.": "块.4.",
-            "blocks.5.": "块.5.",
-            "blocks.6.": "块.6.",
-            "blocks.7.": "块.7.",
-            "blocks.8.": "块.8.",
-            "blocks.9.": "块.9.",
-            "blocks.10.": "块.10.",
-            "blocks.11.": "块.11.",
-            "blocks.12.": "块.12.",
-            "blocks.13.": "块.13.",
-            "blocks.14.": "块.14.",
-            "blocks.15.": "块.15.",
-            "blocks.16.": "块.16.",
-            "blocks.17.": "块.17.",
-            "blocks.18.": "块.18.",
-            "blocks.19.": "块.19.",
-            "blocks.20.": "块.20.",
-            "blocks.21.": "块.21.",
-            "blocks.22.": "块.22.",
-            "blocks.23.": "块.23.",
-            "blocks.24.": "块.24.",
-            "blocks.25.": "块.25.",
-            "blocks.26.": "块.26.",
-            "blocks.27.": "块.27.",
-            "blocks.28.": "块.28.",
-            "blocks.29.": "块.29.",
-            "blocks.30.": "块.30.",
-            "blocks.31.": "块.31.",
-            "blocks.32.": "块.32.",
-            "blocks.33.": "块.33.",
-            "blocks.34.": "块.34.",
-            "blocks.35.": "块.35.",
-            "blocks.36.": "块.36.",
-            "blocks.37.": "块.37.",
-            "blocks.38.": "块.38.",
-            "blocks.39.": "块.39."
-        }
-    },
-    "WanVideoSampler": {
-        "title": "WanVideo 采样器",
-        "inputs": {
-            "model": "模型",
-            "text_embeds": "文本嵌入",
-            "image_embeds": "图像嵌入",
-            "samples": "采样输入",
-            "feta_args": "FETA参数",
-            "context_options": "上下文选项",
-            "cache_args": "缓存参数",
-            "flowedit_args": "FlowEdit参数",
-            "slg_args": "SLG参数",
-            "loop_args": "循环参数",
-            "experimental_args": "实验参数",
-            "sigmas": "Sigmas",
-            "unianimate_poses": "Unianimate姿态",
-            "fantasytalking_embeds": "FantasyTalking嵌入",
-            "uni3c_embeds": "Uni3C嵌入"
-        },
-        "widgets": {
-            "steps": "步数",
-            "cfg": "CFG",
-            "shift": "偏移",
-            "seed": "种子",
-            "control_after_generate": "生成后控制",
-            "force_offload": "强制卸载",
-            "scheduler": "调度器",
-            "riflex_freq_index": "Riflex频率索引",
-            "denoise_strength": "去噪强度",
-            "batched_cfg": "批量CFG",
-            "rope_function": "ROPE函数"
-        },
-        "outputs": {
-            "samples": "采样输出"
-        }
-    },
-    "WanVideoDecode": {
-        "title": "WanVideo 解码",
-        "inputs": {
-            "vae": "VAE",
-            "samples": "采样输入"
-        },
-        "widgets": {
-            "enable_vae_tiling": "启用VAE分块",
-            "tile_x": "分块X",
-            "tile_y": "分块Y",
-            "tile_stride_x": "分块步长X",
-            "tile_stride_y": "分块步长Y"
-        },
-        "outputs": {
-            "images": "图像"
-        }
-    },
-    "WanVideoModelLoader": {
-        "title": "WanVideo 模型加载器",
-        "inputs": {
-            "compile_args": "编译参数",
-            "block_swap_args": "块交换参数",
-            "lora": "Lora",
-            "vram_management_args": "显存管理参数",
-            "vace_model": "VACE模型",
-            "fantasytalking_model": "FantasyTalking模型",
-            "multitalk_model": "MultiTalk模型"
-        },
-        "widgets": {
-            "model": "模型",
-            "base_precision": "基础精度",
-            "quantization": "量化",
-            "load_device": "加载设备",
-            "attention_mode": "注意力模式"
-        },
-        "outputs": {
-            "model": "模型"
-        }
-    },
-    "WanVideoVAELoader": {
-        "title": "WanVideo VAE 加载器",
-        "description": "从 'ComfyUI/models/vae' 加载 Wan VAE 模型",
-        "inputs": {},
-        "widgets": {
-            "model_name": "模型名称",
-            "precision": "精度"
-        },
-        "outputs": {
-            "vae": "VAE"
-        }
-    },
-    "WanVideoTextEncode": {
-        "title": "WanVideo T5 文本编码",
-        "description": "将文本提示编码为文本嵌入。对于基本的提示过渡，您可以输入多个提示，用'|'分隔，它们将均匀分布在视频长度上",
-        "inputs": {
-            "model_to_offload": "待卸载模型",
-            "positive_prompt": "正向提示",
-            "negative_prompt": "负向提示"
-        },
-        "widgets": {
-            "force_offload": "强制卸载"
-        },
-        "outputs": {
-            "text_embeds": "文本嵌入"
-        }
-    },
-    "LoadWanVideoT5TextEncoder": {
-        "title": "加载 WanVideo T5 文本编码器",
-        "description": "从 'ComfyUI/models/LLM' 加载 Wan 文本编码器模型",
-        "inputs": {},
-        "widgets": {
-            "model_name": "模型名称",
-            "precision": "精度",
-            "load_device": "加载设备",
-            "quantization": "量化"
-        },
-        "outputs": {
-            "wan_t5_model": "WAN T5 模型"
-        }
-    },
-    "WanVideoEncode": {
-        "title": "WanVideo 编码",
-        "inputs": {
-            "vae": "VAE",
-            "image": "图像",
-            "mask": "蒙版"
-        },
-        "widgets": {
-            "enable_vae_tiling": "启用VAE分块",
-            "tile_x": "分块X",
-            "tile_y": "分块Y",
-            "tile_stride_x": "分块步长X",
-            "tile_stride_y": "分块步长Y",
-            "noise_aug_strength": "噪声增强强度",
-            "latent_strength": "潜空间强度"
-        },
-        "outputs": {
-            "samples": "采样结果"
-        }
-    },
-    "WanVideoImageClipEncode": {
-        "title": "WanVideo 图像剪辑编码(已弃用)",
-        "inputs": {
-            "clip_vision": "视觉编码器",
-            "image": "图像",
-            "vae": "VAE"
-        },
-        "widgets": {
-            "generation_width": "生成宽度",
-            "generation_height": "生成高度",
-            "num_frames": "帧数",
-            "force_offload": "强制卸载",
-            "noise_aug_strength": "噪声增强强度",
-            "latent_strength": "潜空间强度",
-            "clip_embed_strength": "剪辑嵌入强度",
-            "adjust_resolution": "调整分辨率"
-        },
-        "outputs": {
-            "image_embeds": "图像嵌入"
-        }
-    },
-    "WanVideoImageToVideoEncode": {
-        "title": "WanVideo 图像转视频编码",
-        "inputs": {
-            "vae": "VAE",
-            "clip_embeds": "剪辑嵌入",
-            "start_image": "起始图像",
-            "end_image": "结束图像",
-            "control_embeds": "控制嵌入",
-            "temporal_mask": "时序蒙版",
-            "extra_latents": "额外潜空间"
-        },
-        "widgets": {
-            "width": "宽度",
-            "height": "高度",
-            "num_frames": "帧数",
-            "noise_aug_strength": "噪声增强强度",
-            "start_latent_strength": "起始潜空间强度",
-            "end_latent_strength": "结束潜空间强度",
-            "force_offload": "强制卸载",
-            "fun_or_f2v_model": "Fun或F2V模型",
-            "tiled_vae": "分块VAE",
-            "add_cond_latents": "添加条件潜空间"
-        },
-        "outputs": {
-            "image_embeds": "图像嵌入"
-        }
-    },
-    "WanVideoClipVisionEncode": {
-        "title": "WanVideo 视觉编码器编码",
-        "inputs": {
-            "clip_vision": "视觉编码器",
-            "image_1": "图像1",
-            "image_2": "图像2",
-            "negative_image": "负面图像"
-        },
-        "widgets": {
-            "strength_1": "强度1",
-            "strength_2": "强度2",
-            "crop": "裁剪",
-            "combine_embeds": "合并嵌入",
-            "force_offload": "强制卸载",
-            "tiles": "分块数",
-            "ratio": "比率"
-        },
-        "outputs": {
-            "image_embeds": "图像嵌入"
-        }
-    },
-    "WanVideoBlockSwap": {
-        "title": "WanVideo 块交换",
-        "description": "块交换设置，通过将块交换到CPU内存来减少显存使用",
-        "outputs": {
-            "block_swap_args": "块交换参数"
-        },
-        "widgets": {
-            "blocks_to_swap": "交换块数",
-            "offload_img_emb": "卸载图像嵌入",
-            "offload_txt_emb": "卸载文本嵌入",
-            "use_non_blocking": "使用非阻塞",
-            "vace_blocks_to_swap": "VACE交换块数"
-        }
-    },
-    "LoadWanVideoClipTextEncoder": {
-        "title": "加载 WanVideo 视觉编码器",
-        "description": "从'ComfyUI/models/clip_vision'加载Wan视觉编码模型",
-        "widgets": {
-            "model_name": "模型名称",
-            "precision": "精度",
-            "load_device": "加载设备"
-        },
-        "outputs": {
-            "wan_clip_vision": "Wan视觉编码器"
-        }
-    },
-    "WanVideoTorchCompileSettings": {
-        "title": "WanVideo 火炬编译设置",
-        "description": "torch.compile设置，当连接到模型加载器时，尝试对所选层进行torch.compile。推荐需要TorchInductor和torch 2.3.0",
-        "outputs": {
-            "torch_compile_args": "torch编译参数"
-        },
-        "widgets": {
-            "backend": "后端",
-            "fullgraph": "完整图表",
-            "mode": "模式",
-            "dynamic": "动态",
-            "dynamo_cache_size_limit": "动态缓存大小限制",
-            "compile_transformer_blocks_only": "仅编译转换器块",
-            "dynamo_recompile_limit": "动态重编译限制"
-        }
-    },
-    "WanVideoEmptyEmbeds": {
-        "title": "WanVideo 空嵌入",
-        "inputs": {
-            "control_embeds": "控制嵌入",
-            "image_embeds": "图像嵌入"
-        },
-        "widgets": {
-            "width": "宽度",
-            "height": "高度",
-            "num_frames": "帧数"
-        },
-        "outputs": {
-            "image_embeds": "图像嵌入" 
-        }
-    },
-    "WanVideoLoraSelect": {
-        "title": "WanVideo Lora 选择",
-        "description": "从ComfyUI/models/lora选择一个Lora模型",
-        "inputs": {
-            "prev_lora": "上一个Lora",
-            "blocks": "块"
-        },
-        "widgets": {
-            "lora": "Lora",
-            "strength": "强度",
-            "low_mem_load": "低内存加载"
-        },
-        "outputs": {
-            "lora": "Lora"
-        }
-    },
     "WanVideoEnhanceAVideo": {
-        "title": "WanVideo 视频增强",
-        "description": "https://github.com/JD-P/LaLa-NeRF-Tab/Enhance-A-Video",
-        "outputs": {
-            "feta_args": "FETA参数"
-        },
+        "title": "WanVideo增强-视频",
+        "inputs": {},
         "widgets": {
             "weight": "权重",
-            "start_percent": "起始百分比",
-            "end_percent": "结束百分比"
-        }
-    },
-    "WanVideoContextOptions": {
-        "title": "WanVideo 上下文选项",
-        "description": "WanVideo的上下文选项，允许将视频分割成上下文窗口并尝试将它们混合在一起，以获得比模型和显存通常允许的更长的生成时间",
-        "inputs": {
-            "vae": "VAE"
-        },
-        "outputs": {
-            "context_options": "上下文选项"
-        },
-        "widgets": {
-            "context_schedule": "上下文调度",
-            "context_frames": "上下文帧数",
-            "context_stride": "上下文步幅",
-            "context_overlap": "上下文重叠",
-            "freenoise": "自由噪声",
-            "verbose": "详细输出",
-            "fuse_method": "融合方法"
-        }
-    },
-    "WanVideoTeaCache": {
-        "title": "WanVideo Tea缓存",
-        "description": "为WanVideo模型修补TeaCache。通过缓存输出并应用它代替执行步骤来加速推理。最佳效果通过为模型选择合适的系数获得。早期步骤不应被跳过，值过于激进可能会导致运动质量下降。后期开始可以缓解此问题。当不使用系数时，阈值值应该比使用系数时小约10倍。\n\n官方推荐值： https://github.com/ali-vilab/TeaCache/tree/main/TeaCache4Wan2.1\n\n| 模型 | 低 | 中 | 高 |\n|------------|------|------|------|\n| Wan2.1 t2v 1.3B | 0.05 | 0.07 | 0.08 |\n| Wan2.1 t2v 14B | 0.14 | 0.15 | 0.20 |\n| Wan2.1 i2v 480P | 0.13 | 0.19 | 0.26 |\n| Wan2.1 i2v 720P | 0.18 | 0.20 | 0.30 |",
-        "outputs": {
-            "teacache_args": "TEA缓存参数"
-        },
-        "widgets": {
-            "rel_ft_thresh": "相对ft阈值",
-            "start_step": "起始步骤",
-            "end_step": "结束步骤",
-            "cache_device": "缓存设备",
-            "use_coefficients": "使用系数",
-            "mode": "模式"
-        }
-    },
-    "WanVideoVRAMManagement": {
-        "title": "WanVideo VRAM 管理",
-        "description": "替代来自PixSynth-Studio的卸载方法，在减少内存使用上比块交换更激进，但可能会更慢",
-        "outputs": {
-            "vram_management_args": "VRAM管理参数"
-        },
-        "widgets": {
-            "offload_percent": "卸载百分比"
-        }
-    },
-    "WanVideoTextEmbedBridge": {
-        "title": "WanVideo 文本嵌入桥接",
-        "description": "ComfyUI原生文本嵌入与WanVideoWrapper文本嵌入之间的桥接",
-        "inputs": {
-            "positive": "正向提示",
-            "negative": "负向提示"
-        },
-        "outputs": {
-            "text_embeds": "文本嵌入"
-        }
-    },
-    "WanVideoFlowEdit": {
-        "title": "WanVideo 流编辑",
-        "description": "FlowEdit选项，用于WanVideo的生成效果",
-        "inputs": {
-            "source_embeds": "源嵌入",
-            "source_image_embeds": "源图像嵌入"
-        },
-        "outputs": {
-            "flowedit_args": "FlowEdit参数"
-        },
-        "widgets": {
-            "skip_steps": "跳过步数",
-            "drift_steps": "漂移步数",
-            "drift_flow_shift": "漂移流偏移",
-            "source_cfg": "源CFG",
-            "drift_cfg": "漂移CFG"
-        }
-    },
-    "WanVideoLoopArgs": {
-        "title": "WanVideo 循环参数",
-        "description": "通过潜空间平移使视频循环，如 https://github.com/rimij405/LoopBreak/ 所示",
-        "outputs": {
-            "loop_args": "循环参数"
-        },
-        "widgets": {
-            "shift_skip": "偏移跳过",
-            "start_percent": "起始百分比",
-            "end_percent": "结束百分比"
-        }
-    },
-    "WanVideoTinyVAELoader": {
-        "title": "WanVideo 小型VAE加载器",
-        "description": "从'ComfyUI/models/vae'加载Wan VAE模型",
-        "outputs": {
-            "vae": "VAE"
-        },
-        "widgets": {
-            "model_name": "模型名称",
-            "precision": "精度"
-        }
-    },
-    "WanVideoSLG": {
-        "title": "WanVideo SLG",
-        "description": "为选定的块应用SLG取消折叠",
-        "inputs": {
-            "blocks": "块"
-        },
-        "outputs": {
-            "slg_args": "SLG参数"
-        },
-        "widgets": {
-            "start_percent": "起始百分比",
-            "end_percent": "结束百分比"
-        }
-    },
-    "WanVideoControlEmbeds": {
-        "title": "WanVideo 控制嵌入",
-        "description": "通过图像生成控制嵌入",
-        "inputs": {
-            "latents": "潜空间",
-            "image_embeds": "图像嵌入"
-        },
-        "widgets": {
-            "start_percent": "起始百分比",
-            "end_percent": "结束百分比",
-            "fun_ref_image": "fun参考图像"
-        },
-        "outputs": {
-            "control_embeds": "控制嵌入"
-        }
-    },
-    "WanVideoImageResizeToClosest": {
-        "title": "WanVideo 图像调整至最近大小",
-        "description": "根据纵横比和最大像素，将图像调整为最接近的支持分辨率",
-        "inputs": {
-            "image": "图像"
-        },
-        "outputs": {
-            "image": "图像",
-            "width": "宽度",
-            "height": "高度"
-        },
-        "widgets": {
-            "generation_width": "生成宽度",
-            "generation_height": "生成高度",
-            "aspect_ratio_preservation": "保持纵横比"
-        }
-    },
-    "WanVideoExperimentalArgs": {
-        "title": "WanVideo 实验参数",
-        "description": "实验性参数设置",
-        "outputs": {
-            "exp_args": "实验参数"
-        },
-        "widgets": {
-            "video_attention_split_steps": "视频注意力分离步骤",
-            "cfg_zero_star": "CFG零起点",
-            "use_zero_init": "使用零初始化",
-            "zero_star_steps": "零起点步骤",
-            "use_fresca": "使用FRESCA",
-            "fresca_scale_low": "FRESCA低尺度",
-            "fresca_scale_high": "FRESCA高尺度",
-            "fresca_freq_cutoff": "FRESCA频率截止"
-        }
-    },
-    "WanVideoVACEStartToEndFrame": {
-        "title": "WanVideo VACE 起始到结束帧",
-        "description": "帮助模式，创建用于VACE的起始/结束帧批次和蒙版",
-        "inputs": {
-            "start_image": "起始图像",
-            "end_image": "结束图像",
-            "control_images": "控制图像",
-            "rgmask": "RG蒙版"
-        },
-        "outputs": {
-            "images": "图像",
-            "masks": "蒙版"
-        },
-        "widgets": {
-            "num_frames": "帧数",
-            "empty_frame_level": "空帧级别"
-        }
-    },
-    "CreateCFGScheduleFloatList": {
-        "title": "WanVideo CFG 调度浮点列表",
-        "description": "帮助模式，生成一个可用于调度cfg缩放的浮点列表，范围外的cfg设置为1.0",
-        "outputs": {
-            "float_list": "浮点列表" 
-        },
-        "widgets": {
-            "steps": "步数",
-            "cfg_scale_start": "CFG缩放起始值",
-            "cfg_scale_end": "CFG缩放结束值",
-            "interpolation": "插值",
-            "start_percent": "起始百分比",
-            "end_percent": "结束百分比"
-        }
-    },
-    "WanVideoReCamMasterCameraEmbed": {
-        "title": "WanVideo ReCamMaster 相机嵌入",
-        "description": "https://github.com/JD-P/LaLa-NeRF-Tab/ReCamMaster",
-        "inputs": {
-            "camera_poses": "相机姿态",
-            "latents": "潜空间"
-        },
-        "outputs": {
-            "camera_embeds": "相机嵌入",
-            "camera_poses": "相机姿态"
-        },
-        "widgets": {
-            "num_frames": "帧数",
-            "phantom_cfg_scale": "幻影CFG缩放",
-            "phantom_start_percent": "幻影起始百分比",
-            "phantom_end_percent": "幻影结束百分比"
-        }
-    },
-    "WanVideoVACEModelSelect": {
-        "title": "WanVideo VACE 模型选择",
-        "description": "VACE模型，用于当not included时，从'ComfyUI/models/diffusers_models'加载",
-        "outputs": {
-            "vace_model": "VACE模型"
-        },
-        "widgets": {
-            "model_name": "模型名称"
-        }
-    },
-    "WanVideoVACEEncode": {
-        "title": "WanVideo VACE 编码",
-        "inputs": {
-            "vae": "VAE",
-            "input_frames": "输入帧",
-            "ref_images": "参考图像",
-            "input_masks": "输入蒙版",
-            "prev_vace_embeds": "前一个VACE嵌入"
-        },
-        "widgets": {
-            "width": "宽度",
-            "height": "高度",
-            "num_frames": "帧数",
-            "strength": "强度",
-            "vace_start_percent": "VACE起始百分比",
-            "vace_end_percent": "VACE结束百分比",
-            "tiled_vae": "分块VAE"
-        },
-        "outputs": {
-            "vace_embeds": "VACE嵌入"
-        }
-    },
-    "WanVideoPhantomEmbeds": {
-        "title": "WanVideo 幻影嵌入",
-        "inputs": {
-            "phantom_latent_1": "幻影潜空间1",
-            "phantom_latent_2": "幻影潜空间2",
-            "phantom_latent_3": "幻影潜空间3",
-            "phantom_latent_4": "幻影潜空间4",
-            "vace_embeds": "VACE嵌入"
-        },
-        "outputs": {
-            "image_embeds": "图像嵌入"
-        },
-        "widgets": {
-            "num_frames": "帧数",
-            "phantom_cfg_scale": "幻影CFG缩放",
-            "phantom_start_percent": "幻影起始百分比",
-            "phantom_end_percent": "幻影结束百分比"
-        }
-    },
-    "ReCamMasterPoseVisualizer": {
-        "title": "ReCamMaster 姿态可视化器",
-        "description": "可视化来自AnimateDiff-Evolved CameraCtrl Pose或包含RealEstate相机内参和坐标的.txt文件的相机姿态，在3D图表中显示",
-        "inputs": {
-            "camera_poses": "相机姿态"
-        },
-        "outputs": {
-            "IMAGE": "图像"
-        },
-        "widgets": {
-            "base_xval": "基础X值",
-            "zval": "Z值",
-            "scale": "缩放",
-            "arrow_length": "箭头长度"
-        }
-    },
-    "WanVideoReCamMasterDefaultCamera": {
-        "title": "WanVideo ReCamMaster 默认相机",
-        "description": "https://github.com/KwaiVCI/ReCamMaster",
-        "inputs": {
-            "latents": "潜空间"
-        },
-        "outputs": {
-            "camera_poses": "相机姿态"
-        },
-        "widgets": {
-            "camera_type": "相机类型",
-            "pan_right": "右平移"
-        }
-    },
-    "WanVideoReCamMasterGenerateOrbitCamera": {
-        "title": "WanVideo ReCamMaster 生成轨道相机",
-        "description": "https://github.com/KwaiVCI/ReCamMaster",
-        "outputs": {
-            "camera_poses": "相机姿态"
-        },
-        "widgets": {
-            "num_frames": "帧数",
-            "degrees": "角度"
-        }
-    },
-    "WanVideoUniAnimateDWPoseDetector": {
-        "title": "WanVideo UniAnimate DWPose检测器",
-        "inputs": {
-            "pose_images": "姿态图像",
-            "reference_pose_image": "参考姿态图像"
-        },
-        "outputs": {
-            "poses": "姿态",
-            "reference_pose": "参考姿态"
-        },
-        "widgets": {
-            "score_threshold": "分数阈值",
-            "stick_width": "线段宽度",
-            "draw_body": "绘制身体",
-            "body_keypoint_size": "身体关键点大小",
-            "draw_feet": "绘制脚部",
-            "draw_hands": "绘制手部",
-            "hand_keypoint_size": "手部关键点大小",
-            "colorspace": "色彩空间",
-            "handle_not_detected": "处理未检测情况"
-        }
-    },
-    "WanVideoUniAnimatePoseInput": {
-        "title": "WanVideo UniAnimate 姿态输入",
-        "inputs": {
-            "pose_images": "姿态图像",
-            "reference_pose_image": "参考姿态图像"
-        },
-        "outputs": {
-            "unianimate_poses": "UniAnimate姿态"
-        },
-        "widgets": {
-            "strength": "强度",
-            "start_percent": "起始百分比",
-            "end_percent": "结束百分比"
-        }
-    },
-    "DownloadAndLoadWav2VecModel": {
-        "title": "下载 Wav2Vec 模型",
-        "outputs": {
-            "wav2vec_model": "Wav2Vec模型"
-        },
-        "widgets": {
-            "model": "模型",
-            "base_precision": "基础精度",
-            "load_device": "加载设备"
-        }
-    },
-    "WanVideoControlnetLoader": {
-        "title": "WanVideo 控制网络加载器",
-        "widgets": {
-            "model": "模型",
-            "base_precision": "基础精度",
-            "quantization": "量化",
-            "load_device": "加载设备"
-        },
-        "outputs": {
-            "controlnet": "控制网络"
-        }
-    },        "WanVideoUni3C_ControlnetLoader": {
-        "title": "WanVideo Uni3C 控制网络加载器",
-        "inputs": {
-            "compile_args": "编译参数"
-        },
-        "widgets": {
-            "model": "模型",
-            "base_precision": "基础精度",
-            "quantization": "量化",
-            "load_device": "加载设备",
-            "attention_mode": "注意力模式"
-        },
-        "outputs": {
-            "controlnet": "控制网络"
-        }
-    },
-    "WanVideoUni3C_embeds": {
-        "title": "WanVideo Uni3C 嵌入",
-        "inputs": {
-            "controlnet": "控制网络",
-            "render_latent": "渲染潜空间",
-            "render_mask": "渲染蒙版"
-        },
-        "widgets": {
-            "strength": "强度",
-            "start_percent": "起始百分比",
+            "start_percent": "开始百分比",
             "end_percent": "结束百分比"
         },
         "outputs": {
-            "uni3c_embeds": "Uni3C嵌入"
-        }
-    },
-    "WanVideoControlnet": {
-        "title": "WanVideo 控制网络应用",
-        "inputs": {
-            "model": "模型",
-            "controlnet": "控制网络",
-            "control_images": "控制图像"
+            "feta_args": "feta参数"
         },
-        "widgets": {
-            "strength": "强度",
-            "control_stride": "控制步幅", 
-            "control_start_percent": "控制起始百分比",
-            "control_end_percent": "控制结束百分比"
-        },
-        "outputs": {
-            "model": "模型"
-        }
-    },
-    "FantasyTalkingModelLoader": {
-        "title": "FantasyTalking 模型加载器",
-        "widgets": {
-            "model": "模型",
-            "base_precision": "基础精度",
-            "load_device": "加载设备"
-        },
-        "outputs": {
-            "fantasytalking_model": "FantasyTalking模型"
-        }
-    },
-    "FantasyTalkingWav2VecEmbeds": {
-        "title": "FantasyTalking Wav2Vec 嵌入",
-        "inputs": {
-            "wav2vec_model": "Wav2Vec模型",
-            "fantasytalking_model": "FantasyTalking模型",
-            "audio": "音频"
-        },
-        "widgets": {
-            "num_frames": "帧数",
-            "fps": "FPS",
-            "audio_scale": "音频缩放",
-            "audio_cfg_scale": "音频CFG缩放"
-        },
-        "outputs": {
-            "fantasytalking_embeds": "FantasyTalking嵌入"
-        }
-    },
-    "WanVideoFunCameraEmbeds": {
-        "title": "WanVideo Fun相机嵌入",
-        "inputs": {
-            "poses": "姿态"
-        },
-        "widgets": {
-            "width": "宽度",
-            "height": "高度",
-            "strength": "强度",
-            "start_percent": "起始百分比",
-            "end_percent": "结束百分比"
-        },
-        "outputs": {
-            "image_embeds": "图像嵌入"
+        "tooltips": {
+            "start_percent": "应用增强-视频的步骤开始百分比",
+            "weight": "增强视频的Feta权重",
+            "end_percent": "应用增强-视频的步骤结束百分比"
         }
     },
     "WanVideoSetBlockSwap": {
-        "title": "WanVideo 设置块交换",
+        "title": "WanVideo设置BlockSwap",
         "inputs": {
             "model": "模型",
-            "block_swap_args": "块交换参数"
+            "block_swap_args": "block_swap参数"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "模型"
+        },
+        "tooltips": {
+            "model": "WanVideo及关联模型ComfyUI封装节点。",
+            "block_swap_args": "该参数用于设置“block_swap参数”"
+        }
+    },
+    "WanVideoSetRadialAttention": {
+        "title": "WanVideo设置径向注意力",
+        "inputs": {
+            "model": "模型",
+            "dense_attention_mode": "密集注意力模式",
+            "block_size": "块大小"
+        },
+        "widgets": {
+            "dense_blocks": "密集块数",
+            "dense_vace_blocks": "密集vace块数",
+            "dense_timesteps": "稀疏注意力开始步数",
+            "decay_factor": "衰减因子"
         },
         "outputs": {
             "model": "模型"
+        },
+        "tooltips": {
+            "model": "为[WanVideo](https://github.com/Wan-Video/Wan2.1)及相关模型提供ComfyUI包装节点。",
+            "dense_attention_mode": "密集注意力的注意力模式",
+            "block_size": "径向注意力块大小，块越大速度越快，但限制可用维度更多。",
+            "decay_factor": "控制稀疏注意力掩码中，随着帧间距离增加，注意力窗口如何快速缩小。",
+            "dense_blocks": "应用普通注意力的块数",
+            "dense_vace_blocks": "应用普通注意力的vace块数",
+            "dense_timesteps": "开始应用稀疏注意力的步数"
         }
     },
-    "WanVideoDiffusionForcingSampler": {
-        "title": "WanVideo 扩散强制采样器",
+    "WanVideoBlockList": {
+        "title": "WanVideo块列表",
+        "inputs": {},
+        "widgets": {
+            "blocks": "块"
+        },
+        "outputs": {
+            "block_list": "块列表"
+        },
+        "tooltips": {
+            "blocks": "LoRA权重作为块内的缓冲分配给相应模块，遵循块交换机制，支持异步卸载的预取功能，但若未使用块交换则受限。"
+        }
+    },
+    "WanVideoTextEncodeCached": {
+        "title": "WanVideo文本编码缓存",
         "inputs": {
-            "model": "模型",
+            "model_name": "模型名",
+            "precision": "精度",
+            "quantization": "量化",
+            "device": "设备",
+            "extender_args": "扩展参数"
+        },
+        "widgets": {
+            "positive_prompt": "正面提示",
+            "negative_prompt": "负面提示",
+            "use_disk_cache": "使用磁盘缓存"
+        },
+        "outputs": {
             "text_embeds": "文本嵌入",
-            "image_embeds": "图像嵌入",
-            "samples": "采样输入",
-            "prefix_samples": "前缀采样",
-            "teacache_args": "TEA缓存参数",
-            "slg_args": "SLG参数",
-            "experimental_args": "实验参数",
-            "unianimate_poses": "Unianimate姿态"
+            "negative_text_embeds": "负面文本嵌入",
+            "positive_prompt": "正面提示"
         },
-        "widgets": {
-            "addnoise_condition": "添加噪声条件",
-            "fps": "FPS",
-            "steps": "步数",
-            "cfg": "CFG",
-            "shift": "偏移",
-            "seed": "种子",
-            "control_after_generate": "生成后控制",
-            "force_offload": "强制卸载",
-            "scheduler": "调度器",
-            "denoise_strength": "去噪强度",
-            "rope_function": "ROPE函数"
-        },
-        "outputs": {
-            "samples": "采样输出"
+        "tooltips": {
+            "precision": "该参数用于设置“精度”",
+            "quantization": "可选的量化方法",
+            "extender_args": "使用此节点扩展提示以添加额外文本。",
+            "device": "运行文本编码的设备。",
+            "positive_prompt": "该参数用于设置“正面提示”",
+            "use_disk_cache": "使用磁盘缓存文本嵌入以加速重复使用",
+            "model_name": "模型名：从'ComfyUI/models/text_encoders'加载模型",
+            "negative_prompt": "该参数用于设置“负面提示”"
         }
     },
-    "WanVideoMiniMaxRemoverEmbeds": {
-        "title": "WanVideo MiniMax 移除器嵌入",
+    "WanVideoTextEncode": {
+        "title": "WanVideo文本编码",
         "inputs": {
-            "latents": "潜空间",
-            "mask_latents": "蒙版潜空间"
+            "t5": "t5",
+            "model_to_offload": "模型卸载",
+            "device": "设备"
         },
         "widgets": {
-            "width": "宽度",
-            "height": "高度",
-            "num_frames": "帧数"
+            "positive_prompt": "正面提示",
+            "negative_prompt": "负面提示",
+            "force_offload": "强制卸载",
+            "use_disk_cache": "使用磁盘缓存"
         },
         "outputs": {
-            "image_embeds": "图像嵌入"
+            "text_embeds": "文本嵌入"
+        },
+        "tooltips": {
+            "force_offload": "该参数用于设置“强制卸载”",
+            "device": "运行文本编码的设备。",
+            "positive_prompt": "该参数用于设置“正面提示”",
+            "t5": "该参数用于设置“t5”",
+            "use_disk_cache": "使用磁盘缓存文本嵌入以快速重用",
+            "model_to_offload": "在编码前将模型移动到offload_device",
+            "negative_prompt": "该参数用于设置“负面提示”"
+        }
+    },
+    "WanVideoTextEncodeSingle": {
+        "title": "WanVideo 文本编码单",
+        "inputs": {
+            "t5": "t5",
+            "model_to_offload": "模型移至离线设备",
+            "device": "设备"
+        },
+        "widgets": {
+            "prompt": "提示",
+            "force_offload": "强制离线",
+            "use_disk_cache": "使用磁盘缓存"
+        },
+        "outputs": {
+            "text_embeds": "文本嵌入"
+        },
+        "tooltips": {
+            "force_offload": "该参数用于设置“强制离线”",
+            "device": "运行文本编码的设备。",
+            "t5": "该参数用于设置“t5”",
+            "use_disk_cache": "使用磁盘缓存文本嵌入以加速重复使用",
+            "model_to_offload": "编码前将模型移至离线设备",
+            "prompt": "该参数用于设置“提示”"
         }
     },
     "WanVideoApplyNAG": {
-        "title": "WanVideoNAG应用",
+        "title": "WanVideo 应用NAG",
         "inputs": {
             "original_text_embeds": "原始文本嵌入",
             "nag_text_embeds": "NAG文本嵌入"
         },
         "widgets": {
             "nag_scale": "NAG缩放",
-            "nag_tau": "NAG Tau",
-            "nag_alpha": "NAG Alpha"
+            "nag_tau": "nag_tau",
+            "nag_alpha": "nag_alpha"
         },
         "outputs": {
             "text_embeds": "文本嵌入"
+        },
+        "tooltips": {
+            "nag_alpha": "该参数用于设置“nag_alpha”",
+            "nag_tau": "该参数用于设置“nag_tau”",
+            "nag_text_embeds": "该参数用于设置“NAG文本嵌入”",
+            "original_text_embeds": "该参数用于设置“原始文本嵌入”",
+            "nag_scale": "该参数用于设置“NAG缩放”"
+        }
+    },
+    "WanVideoTextEmbedBridge": {
+        "title": "WanVideo 文本嵌入桥接",
+        "inputs": {
+            "positive": "正面",
+            "negative": "负面"
+        },
+        "widgets": {},
+        "outputs": {
+            "text_embeds": "文本嵌入"
+        },
+        "tooltips": {
+            "negative": "该参数用于设置“负面”",
+            "positive": "该参数用于设置“正面”"
+        }
+    },
+    "WanVideoClipVisionEncode": {
+        "title": "WanVideo CLIP视觉编码",
+        "inputs": {
+            "clip_vision": "CLIP视觉",
+            "image_1": "图像_1",
+            "crop": "裁剪",
+            "combine_embeds": "合并嵌入",
+            "image_2": "图像_2",
+            "negative_image": "负面图像"
+        },
+        "widgets": {
+            "strength_1": "额外CLIP嵌入乘数",
+            "strength_2": "额外CLIP嵌入乘数",
+            "force_offload": "强制离线",
+            "tiles": "使用matteo的瓦片图像编码以提升精度",
+            "ratio": "瓦片平均比例"
+        },
+        "outputs": {
+            "image_embeds": "图像嵌入"
+        },
+        "tooltips": {
+            "force_offload": "该参数用于设置“强制离线”",
+            "image_2": "该参数用于设置“图像_2”",
+            "crop": "编码前裁剪图像为224x224",
+            "image_1": "待编码图像",
+            "tiles": "使用matteo的瓦片图像编码以提升精度",
+            "ratio": "瓦片平均比例",
+            "strength_2": "额外CLIP嵌入乘数",
+            "clip_vision": "将CLIP视觉参数绑定到`ComfyUI/models/clip_vision`。",
+            "negative_image": "用于无条件编码的图像",
+            "combine_embeds": "合并多个CLIP嵌入的方法",
+            "strength_1": "额外CLIP嵌入乘数"
         }
     },
     "WanVideoRealisDanceLatents": {
-        "title": "WanVideo RealisDance 潜空间",
+        "title": "WanVideo RealisDance潜空间",
         "inputs": {
             "ref_latent": "参考潜空间",
-            "smpl_latent": "SMPL潜空间",
-            "hamer_latent": "Hamer潜空间"
+            "smpl_latent": "smpl潜空间",
+            "hamer_latent": "hamer潜空间"
         },
         "widgets": {
             "pose_cond_start_percent": "姿态条件起始百分比",
             "pose_cond_end_percent": "姿态条件结束百分比"
         },
         "outputs": {
-            "realisdance_latents": "RealisDance潜空间"
+            "add_cond_latents": "添加条件潜空间"
+        },
+        "tooltips": {
+            "smpl_latent": "SMPL姿态图像编码",
+            "hamer_latent": "Hamer手部姿态图像编码",
+            "ref_latent": "参考图像编码",
+            "pose_cond_start_percent": "SMPL模型的起始百分比",
+            "pose_cond_end_percent": "SMPL模型的结束百分比"
         }
     },
-    "WanVideoLoraSelectMulti": {
-        "title": "WanVideo Lora 多选",
+    "WanVideoAddStandInLatent": {
+        "title": "WanVideo 添加替身潜空间",
         "inputs": {
-            "prev_lora": "上一个Lora",
-            "blocks": "块"
+            "embeds": "嵌入",
+            "ip_image_latent": "IP图像潜空间"
         },
         "widgets": {
-            "lora_0": "Lora_0",
-            "strength_0": "强度_0",
-            "lora_1": "Lora_1",
-            "strength_1": "强度_1",
-            "lora_2": "Lora_2",
-            "strength_2": "强度_2",
-            "lora_3": "Lora_3",
-            "strength_3": "强度_3",
-            "lora_4": "Lora_4",
-            "strength_4": "强度_4",
-            "low_mem_load": "低内存加载"
-        },
-        "outputs": {
-            "lora": "Lora"
-        }
-    },
-    "WanVideoATITracks": {
-        "title": "WanVideo ATI 轨迹",
-        "inputs": {
-            "model": "模型"
-        },
-        "widgets": {
-            "tracks": "轨迹",
-            "width": "宽度",
-            "height": "高度",
-            "temperature": "温度",
-            "topk": "TopK",
-            "start_percent": "起始百分比",
-            "end_percent": "结束百分比"
-        },
-        "outputs": {
-            "model": "模型"
-        }
-    },
-    "WanVideoATITracksVisualize": {
-        "title": "WanVideo ATI 轨迹可视化",
-        "inputs": {
-            "images": "图像",
-            "tracks": "轨迹"
-        },
-        "widgets": {
-            "min_radius": "最小半径",
-            "max_radius": "最大半径",
-            "max_retain": "最大保留"
-        },
-        "outputs": {
-            "images": "图像"
-        }
-    },
-    "WanVideoATI_comfy": {
-        "title": "WanVideo ATI 便捷",
-        "inputs": {
-            "model": "模型"
-        },
-        "widgets": {
-            "width": "宽度",
-            "height": "高度",
-            "tracks": "轨迹",
-            "temperature": "温度",
-            "topk": "TopK"
-        },
-        "outputs": {
-            "model": "模型"
-        }
-    },
-    "MultiTalkModelLoader": {
-        "title": "MultiTalk 模型加载器",
-        "widgets": {
-            "model": "模型",
-            "base_precision": "基础精度",
-            "load_device": "加载设备"
-        },
-        "outputs": {
-            "multitalk_model": "MultiTalk模型"
-        }
-    },
-    "MultiTalkWav2VecEmbeds": {
-        "title": "MultiTalk Wav2Vec 嵌入",
-        "inputs": {
-            "wav2vec_model": "Wav2Vec模型",
-            "multitalk_model": "MultiTalk模型",
-            "audio_1": "音频1",
-            "audio_2": "音频2",
-            "audio_3": "音频3",
-            "audio_4": "音频4",
-            "ref_target_masks": "参考目标蒙版"
-        },
-        "widgets": {
-            "normalize_loudness": "规范化音量",
-            "num_frames": "帧数",
-            "fps": "FPS",
-            "audio_scale": "音频缩放",
-            "audio_cfg_scale": "音频CFG缩放",
-            "multi_audio_type": "多音频类型"
-        },
-        "outputs": {
-            "multitalk_embeds": "MultiTalk嵌入",
-            "audio": "音频"
-        }
-    },
-    "WanVideoImageToVideoMultiTalk": {
-        "title": "WanVideo 图像转视频 MultiTalk",
-        "inputs": {
-            "vae": "VAE",
-            "start_image": "起始图像",
-            "clip_embeds": "剪辑嵌入"
-        },
-        "widgets": {
-            "width": "宽度",
-            "height": "高度",
-            "frame_window_size": "帧窗口大小",
-            "motion_frame": "运动帧长度",
-            "force_offload": "强制卸载",
-            "colormatch": "颜色匹配",
-            "tiled_vae": "分块VAE"
+            "freq_offset": "频率偏移"
         },
         "outputs": {
             "image_embeds": "图像嵌入"
-        }
-    },
-    "WanVideoMagCache": {
-        "title": "WanVideo Mag缓存",
-        "description": "WanVideoWrapper的MagCache，来源 https://github.com/Zehong-Ma/MagCache",
-        "widgets": {
-            "magcache_thresh": "MagCache阈值",
-            "magcache_K": "MagCache K值",
-            "start_step": "起始步骤",
-            "end_step": "结束步骤",
-            "cache_device": "缓存设备"
         },
-        "outputs": {
-            "cache_args": "缓存参数"
+        "tooltips": {
+            "ip_image_latent": "参考图像编码",
+            "embeds": "该参数用于设置“嵌入”",
+            "freq_offset": "实验性：参考序列与其他序列的RoPE频率偏移"
         }
     },
-    "WanVideoTextEncodeSingle": {
-        "title": "WanVideo 单一文本编码",
-        "description": "将单一文本提示编码为文本嵌入",
+    "WanVideoAddBindweaveEmbeds": {
+        "title": "WanVideo 添加绑定嵌入",
         "inputs": {
-            "t5": "T5",
-            "model_to_offload": "待卸载模型"
+            "embeds": "嵌入组",
+            "reference_latents": "参考图像",
+            "ref_masks": "参考遮罩",
+            "qwenvl_embeds_pos": "Qwen-VL 参考图像正面嵌入",
+            "qwenvl_embeds_neg": "Qwen-VL 参考图像负面嵌入"
+        },
+        "widgets": {},
+        "outputs": {
+            "image_embeds": "图像嵌入",
+            "image_embed_preview": "图像嵌入预览",
+            "mask_preview": "遮罩预览"
+        },
+        "tooltips": {
+            "ref_masks": "参考遮罩编码",
+            "embeds": "该参数用于设置“嵌入组”",
+            "qwenvl_embeds_neg": "Qwen-VL 参考图像嵌入",
+            "qwenvl_embeds_pos": "Qwen-VL 参考图像嵌入",
+            "reference_latents": "参考图像编码"
+        }
+    },
+    "TextImageEncodeQwenVL": {
+        "title": "文本图像编码QwenVL",
+        "inputs": {
+            "clip": "clip",
+            "image": "图像"
         },
         "widgets": {
-            "prompt": "提示词",
-            "force_offload": "强制卸载"
+            "prompt": "提示"
         },
         "outputs": {
-            "text_embeds": "文本嵌入"
+            "qwenvl_embeds": "qwenvl嵌入"
+        },
+        "tooltips": {
+            "image": "图片提示",
+            "clip": "将视觉剪裁至 `ComfyUI/models/clip_vision`",
+            "prompt": "该参数用于设置“提示”"
+        }
+    },
+    "WanVideoAddMTVMotion": {
+        "title": "WanVideo MTV Crafter 动作",
+        "inputs": {
+            "embeds": "嵌入组",
+            "mtv_crafter_motion": "MTV Crafter动作"
+        },
+        "widgets": {
+            "strength": "强度",
+            "start_percent": "开始百分比",
+            "end_percent": "结束百分比"
+        },
+        "outputs": {
+            "image_embeds": "图像嵌入"
+        },
+        "tooltips": {
+            "mtv_crafter_motion": "该参数用于设置“MTV Crafter动作”",
+            "strength": "MTV运动强度",
+            "embeds": "该参数用于设置“嵌入组”",
+            "end_percent": "应用参考的结束百分比",
+            "start_percent": "应用参考的开始百分比"
+        }
+    },
+    "WanVideoImageToVideoEncode": {
+        "title": "WanVideo 图像转视频编码",
+        "inputs": {
+            "vae": "vae",
+            "clip_embeds": "CLIP嵌入",
+            "start_image": "起始图像",
+            "end_image": "结束图像",
+            "control_embeds": "控制嵌入",
+            "temporal_mask": "时间遮罩",
+            "extra_latents": "额外潜空间",
+            "add_cond_latents": "添加条件潜空间",
+            "empty_frame_pad_image": "空帧填充图像"
+        },
+        "widgets": {
+            "width": "宽",
+            "height": "高",
+            "num_frames": "帧数",
+            "noise_aug_strength": "噪声增强强度",
+            "start_latent_strength": "起始潜空间乘数",
+            "end_latent_strength": "结束潜空间乘数",
+            "force_offload": "强制卸载",
+            "fun_or_fl2v_model": "Fun或FLF2V模型",
+            "tiled_vae": "分块VAE编码",
+            "augment_empty_frames": "增强空帧"
+        },
+        "outputs": {
+            "image_embeds": "图像嵌入"
+        },
+        "tooltips": {
+            "empty_frame_pad_image": "使用此图像填充空帧而不是灰色，用于SVI-shot和SVI 2.0 LoRA",
+            "num_frames": "编码帧数",
+            "temporal_mask": "遮罩",
+            "extra_latents": "添加到输入前部的额外潜空间，用于Skyreels A2参考图像",
+            "fun_or_fl2v_model": "使用官方FLF2V或Fun模型时启用",
+            "start_latent_strength": "额外潜空间乘数，有助于I2V，较低值允许更多动作",
+            "force_offload": "该参数用于设置“强制卸载”",
+            "width": "编码图像的宽度",
+            "noise_aug_strength": "噪声增强强度，有助于I2V，增加噪声可添加动作并使结果更清晰",
+            "clip_embeds": "CLIP视觉编码图像",
+            "start_image": "编码图像",
+            "tiled_vae": "使用分块VAE编码以减少内存使用",
+            "augment_empty_frames": "实验性：用与起始图像的差异增强空帧以强制更多动作",
+            "end_image": "结束帧",
+            "height": "编码图像的高度",
+            "vae": "将 VAE 模型文件移动到 `ComfyUI/models/vae` 目录下。",
+            "end_latent_strength": "额外潜空间乘数，有助于I2V，较低值允许更多动作",
+            "control_embeds": "Fun模型的控制信号",
+            "add_cond_latents": "附加条件潜空间 WIP"
+        }
+    },
+    "WanVideoAnimateEmbeds": {
+        "title": "WanVideo 动画嵌入",
+        "inputs": {
+            "vae": "vae",
+            "colormatch": "颜色匹配",
+            "clip_embeds": "CLIP嵌入",
+            "ref_images": "参考图像",
+            "pose_images": "姿态图像",
+            "face_images": "面部图像",
+            "bg_images": "背景图像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "width": "宽",
+            "height": "高",
+            "num_frames": "帧数",
+            "force_offload": "强制卸载",
+            "frame_window_size": "帧窗口大小",
+            "pose_strength": "姿态乘数",
+            "face_strength": "面部乘数",
+            "tiled_vae": "分块VAE编码"
+        },
+        "outputs": {
+            "image_embeds": "图像嵌入"
+        },
+        "tooltips": {
+            "colormatch": "在窗口之间使用的颜色匹配方法",
+            "frame_window_size": "用于时间注意力窗口的帧数",
+            "num_frames": "编码帧数",
+            "face_strength": "面部的额外乘数",
+            "ref_images": "编码图像",
+            "face_images": "结束帧",
+            "force_offload": "该参数用于设置“强制卸载”",
+            "width": "编码图像的宽度",
+            "pose_images": "结束帧",
+            "bg_images": "背景图像",
+            "clip_embeds": "CLIP视觉编码图像",
+            "tiled_vae": "使用分块VAE编码以减少内存使用",
+            "pose_strength": "姿态的额外乘数",
+            "mask": "遮罩",
+            "height": "编码图像的高度",
+            "vae": "将Vae模型文件移动到`ComfyUI/models/vae`目录下"
+        }
+    },
+    "WanVideoUniLumosEmbeds": {
+        "title": "WanVideo UniLumos嵌入",
+        "inputs": {
+            "foreground_latents": "视频前景潜空间",
+            "background_latents": "视频背景潜空间"
+        },
+        "widgets": {
+            "width": "宽",
+            "height": "高",
+            "num_frames": "帧数"
+        },
+        "outputs": {
+            "image_embeds": "图像嵌入"
+        },
+        "tooltips": {
+            "width": "图片编码的宽度",
+            "background_latents": "视频背景潜空间",
+            "foreground_latents": "视频前景潜空间",
+            "height": "编码图像的高度",
+            "num_frames": "编码帧数"
+        }
+    },
+    "WanVideoEmptyEmbeds": {
+        "title": "WanVideo 空嵌入",
+        "inputs": {
+            "control_embeds": "控制嵌入",
+            "extra_latents": "额外潜空间"
+        },
+        "widgets": {
+            "width": "宽",
+            "height": "高",
+            "num_frames": "帧数"
+        },
+        "outputs": {
+            "image_embeds": "图像嵌入"
+        },
+        "tooltips": {
+            "extra_latents": "Pusa模型的第一个潜空间",
+            "width": "编码图像的宽度",
+            "height": "编码图像的高度",
+            "control_embeds": "Fun模型的控制信号",
+            "num_frames": "要编码的帧数"
+        }
+    },
+    "WanVideoAddExtraLatent": {
+        "title": "WanVideo 添加额外潜空间",
+        "inputs": {
+            "embeds": "嵌入",
+            "extra_latents": "额外潜空间"
+        },
+        "widgets": {
+            "latent_index": "潜空间索引"
+        },
+        "outputs": {
+            "image_embeds": "图像嵌入"
+        },
+        "tooltips": {
+            "extra_latents": "该参数用于设置“额外潜空间”",
+            "embeds": "该参数用于设置“嵌入”",
+            "latent_index": "在潜空间中插入额外潜空间的索引"
+        }
+    },
+    "WanVideoAddLucyEditLatents": {
+        "title": "WanVideo 添加LucyEdit潜空间",
+        "inputs": {
+            "embeds": "嵌入",
+            "extra_latents": "额外潜空间"
+        },
+        "widgets": {},
+        "outputs": {
+            "image_embeds": "图像嵌入"
+        },
+        "tooltips": {
+            "extra_latents": "该参数用于设置“额外潜空间”",
+            "embeds": "该参数用于设置“嵌入”"
+        }
+    },
+    "WanVideoMiniMaxRemoverEmbeds": {
+        "title": "WanVideo MiniMax移除嵌入",
+        "inputs": {
+            "latents": "潜空间",
+            "mask_latents": "遮罩潜空间"
+        },
+        "widgets": {
+            "width": "宽",
+            "height": "高",
+            "num_frames": "帧数"
+        },
+        "outputs": {
+            "image_embeds": "图像嵌入"
+        },
+        "tooltips": {
+            "mask_latents": "用作遮罩的编码潜空间",
+            "width": "编码图像的宽度",
+            "latents": "用作控制信号的编码潜空间",
+            "height": "编码图像的高度",
+            "num_frames": "要编码的帧数"
+        }
+    },
+    "WanVideoPhantomEmbeds": {
+        "title": "WanVideo 幽灵嵌入",
+        "inputs": {
+            "phantom_latent_1": "幽灵模型的参考潜空间_1",
+            "phantom_latent_2": "幽灵模型的参考潜空间_2",
+            "phantom_latent_3": "幽灵模型的参考潜空间_3",
+            "phantom_latent_4": "幽灵模型的参考潜空间_4",
+            "vace_embeds": "VACE嵌入"
+        },
+        "widgets": {
+            "num_frames": "帧数",
+            "phantom_cfg_scale": "额外幽灵条件传递的CFG缩放",
+            "phantom_start_percent": "幽灵模型的开始百分比",
+            "phantom_end_percent": "幽灵模型的结束百分比"
+        },
+        "outputs": {
+            "image_embeds": "图像嵌入"
+        },
+        "tooltips": {
+            "phantom_cfg_scale": "额外幽灵条件传递的CFG缩放",
+            "phantom_latent_2": "幽灵模型的参考潜空间",
+            "phantom_end_percent": "幽灵模型的结束百分比",
+            "phantom_latent_3": "幽灵模型的参考潜空间",
+            "phantom_latent_1": "幽灵模型的参考潜空间",
+            "vace_embeds": "VACE嵌入",
+            "phantom_latent_4": "幽灵模型的参考潜空间",
+            "phantom_start_percent": "幽灵模型的开始百分比",
+            "num_frames": "要编码的帧数"
+        }
+    },
+    "WanVideoControlEmbeds": {
+        "title": "WanVideo 控制嵌入",
+        "inputs": {
+            "latents": "潜空间",
+            "fun_ref_image": "Fun 1.1模型的参考潜空间"
+        },
+        "widgets": {
+            "start_percent": "开始百分比",
+            "end_percent": "结束百分比"
+        },
+        "outputs": {
+            "image_embeds": "图像嵌入"
+        },
+        "tooltips": {
+            "fun_ref_image": "Fun 1.1模型的参考潜空间",
+            "latents": "用作控制信号的编码潜空间",
+            "end_percent": "控制信号的结束百分比",
+            "start_percent": "控制信号的开始百分比"
+        }
+    },
+    "WanVideoAddControlEmbeds": {
+        "title": "WanVideo 控制嵌入添加",
+        "inputs": {
+            "embeds": "嵌入组",
+            "latents": "潜空间",
+            "fun_ref_image": "Fun 1.1 -模型参考潜空间"
+        },
+        "widgets": {
+            "start_percent": "控制信号开始百分比",
+            "end_percent": "控制信号结束百分比"
+        },
+        "outputs": {
+            "image_embeds": "图像嵌入组"
+        },
+        "tooltips": {
+            "fun_ref_image": "Fun 1.1 -模型的参考潜空间",
+            "embeds": "该参数用于设置“嵌入组”",
+            "latents": "用作控制信号的编码潜空间",
+            "end_percent": "控制信号结束百分比",
+            "start_percent": "控制信号开始百分比"
+        }
+    },
+    "WanVideoAddPusaNoise": {
+        "title": "WanVideo 添加Pusa噪声",
+        "inputs": {
+            "embeds": "嵌入组"
+        },
+        "widgets": {
+            "noise_multipliers": "Pusa噪声乘数，可为浮点数列表",
+            "noisy_steps": "应用额外噪声的步数"
+        },
+        "outputs": {
+            "image_embeds": "图像嵌入组"
+        },
+        "tooltips": {
+            "noisy_steps": "应用额外噪声的步数",
+            "embeds": "该参数用于设置“嵌入组”",
+            "noise_multipliers": "Pusa噪声乘数，可为浮点数列表"
+        }
+    },
+    "WanVideoSLG": {
+        "title": "WanVideo SLG",
+        "inputs": {},
+        "widgets": {
+            "blocks": "跳过无条件块，逗号分隔，索引从0开始",
+            "start_percent": "控制信号开始百分比",
+            "end_percent": "控制信号结束百分比"
+        },
+        "outputs": {
+            "slg_args": "slg参数"
+        },
+        "tooltips": {
+            "start_percent": "控制信号开始百分比",
+            "blocks": "跳过无条件块，逗号分隔，索引从0开始",
+            "end_percent": "控制信号结束百分比"
+        }
+    },
+    "WanVideoVACEEncode": {
+        "title": "WanVideo VACE编码",
+        "inputs": {
+            "vae": "vae",
+            "input_frames": "输入帧",
+            "ref_images": "参考图像",
+            "input_masks": "输入遮罩",
+            "prev_vace_embeds": "先前VACE嵌入组"
+        },
+        "widgets": {
+            "width": "宽",
+            "height": "高",
+            "num_frames": "编码帧数",
+            "strength": "强度",
+            "vace_start_percent": "应用VACE的步骤开始百分比",
+            "vace_end_percent": "应用VACE的步骤结束百分比",
+            "tiled_vae": "使用分块VAE编码以减少内存使用"
+        },
+        "outputs": {
+            "vace_embeds": "VACE嵌入组"
+        },
+        "tooltips": {
+            "strength": "该参数用于设置“强度”",
+            "width": "编码图像的宽度",
+            "vace_start_percent": "应用VACE的步骤开始百分比",
+            "tiled_vae": "使用分块VAE编码以减少内存使用",
+            "num_frames": "编码帧数",
+            "ref_images": "该参数用于设置“参考图像”",
+            "input_masks": "该参数用于设置“输入遮罩”",
+            "prev_vace_embeds": "该参数用于设置“先前VACE嵌入组”",
+            "height": "编码图像的高度",
+            "vae": "将Vae模型文件移动到`ComfyUI/models/vae`目录下",
+            "input_frames": "该参数用于设置“输入帧”",
+            "vace_end_percent": "应用VACE的步骤结束百分比"
+        }
+    },
+    "WanVideoContextOptions": {
+        "title": "WanVideo 上下文选项",
+        "inputs": {
+            "context_schedule": "上下文调度",
+            "fuse_method": "融合方法",
+            "reference_latent": "参考潜空间"
+        },
+        "widgets": {
+            "context_frames": "上下文像素帧数，注意：潜空间每帧对应4像素帧",
+            "context_stride": "上下文像素步进，注意：潜空间每帧对应4像素帧",
+            "context_overlap": "上下文像素重叠，注意：潜空间每帧对应4像素帧",
+            "freenoise": "打乱噪声",
+            "verbose": "打印调试输出"
+        },
+        "outputs": {
+            "context_options": "上下文选项"
+        },
+        "tooltips": {
+            "reference_latent": "用作I2V模型初始图像的图像，主要用于MAGREF模型，当第一帧不是实际第一帧时",
+            "context_stride": "上下文像素步进，注意：潜空间每帧对应4像素帧",
+            "fuse_method": "窗口权重函数：linear=仅在边缘呈线性变化，pyramid=三角形权重在中间峰值",
+            "freenoise": "打乱噪声",
+            "context_overlap": "上下文像素重叠，注意：潜空间每帧对应4像素帧",
+            "verbose": "打印调试输出",
+            "context_frames": "上下文像素帧数，注意：潜空间每帧对应4像素帧",
+            "context_schedule": "该参数用于设置“上下文调度”"
+        }
+    },
+    "WanVideoFlowEdit": {
+        "title": "WanVideo 流编辑",
+        "inputs": {
+            "source_embeds": "源嵌入组",
+            "source_image_embeds": "源图像嵌入组"
+        },
+        "widgets": {
+            "skip_steps": "跳过步数",
+            "drift_steps": "漂移步数",
+            "drift_flow_shift": "漂移流偏移",
+            "source_cfg": "源引导系数",
+            "drift_cfg": "漂移引导系数"
+        },
+        "outputs": {
+            "flowedit_args": "流编辑参数"
+        },
+        "tooltips": {
+            "source_cfg": "该参数用于设置“源引导系数”",
+            "skip_steps": "该参数用于设置“跳过步数”",
+            "drift_cfg": "该参数用于设置“漂移引导系数”",
+            "drift_flow_shift": "该参数用于设置“漂移流偏移”",
+            "source_image_embeds": "该参数用于设置“源图像嵌入组”",
+            "source_embeds": "该参数用于设置“源嵌入组”",
+            "drift_steps": "该参数用于设置“漂移步数”"
+        }
+    },
+    "WanVideoLoopArgs": {
+        "title": "万视频循环参数",
+        "inputs": {},
+        "widgets": {
+            "shift_skip": "跳过潜空间偏移步",
+            "start_percent": "循环效果的起始百分比",
+            "end_percent": "循环效果的结束百分比"
+        },
+        "outputs": {
+            "loop_args": "循环参数"
+        },
+        "tooltips": {
+            "start_percent": "循环效果的起始百分比",
+            "shift_skip": "跳过潜空间偏移步",
+            "end_percent": "循环效果的结束百分比"
+        }
+    },
+    "WanVideoExperimentalArgs": {
+        "title": "万视频实验参数",
+        "inputs": {},
+        "widgets": {
+            "video_attention_split_steps": "使用多个提示时分割自注意力的步数",
+            "cfg_zero_star": "cfg_zero_star",
+            "use_zero_init": "使用零初始化",
+            "zero_star_steps": "使用多个提示时分割自注意力的步数",
+            "use_fresca": "使用_fresca",
+            "fresca_scale_low": "FreSca低缩放",
+            "fresca_scale_high": "FreSca高缩放",
+            "fresca_freq_cutoff": "FreSca频率截止",
+            "use_tcfg": "使用_tcfg",
+            "raag_alpha": "RAAG的Alpha值，1.0为默认值，0.0为禁用。",
+            "bidirectional_sampling": "双向采样",
+            "temporal_score_rescaling": "时间分数缩放",
+            "tsr_k": "采样温度",
+            "tsr_sigma": "TSR如何早期引导采样过程"
+        },
+        "outputs": {
+            "exp_args": "实验参数"
+        },
+        "tooltips": {
+            "raag_alpha": "RAAG的Alpha值，1.0为默认值，0.0为禁用。",
+            "fresca_scale_low": "该参数用于设置“FreSca低缩放”",
+            "use_tcfg": "TCFG：切向阻尼分类器自由引导，减少CFG伪影，use_tcfg参数启用。",
+            "video_attention_split_steps": "使用多个提示时分割自注意力的步数",
+            "fresca_freq_cutoff": "该参数用于设置“FreSca频率截止”",
+            "use_zero_init": "该参数用于设置“使用零初始化”",
+            "tsr_sigma": "TSR如何早期引导采样过程",
+            "cfg_zero_star": "cfg_zero_star的提示信息",
+            "tsr_k": "采样温度",
+            "bidirectional_sampling": "启用双向采样，参考 https://github.com/ff2416/WanFM。",
+            "use_fresca": "使用Fresca参数的提示信息",
+            "zero_star_steps": "使用多个提示时分割自注意力的步数",
+            "temporal_score_rescaling": "启用时间分数重缩放：https://github.com/temporalscorerescaling/TSR/",
+            "fresca_scale_high": "该参数用于设置“FreSca高缩放”"
+        }
+    },
+    "WanVideoFreeInitArgs": {
+        "title": "万视频自由初始化参数",
+        "inputs": {
+            "freeinit_method": "自由初始化方法"
+        },
+        "widgets": {
+            "freeinit_num_iters": "自由初始化迭代次数",
+            "freeinit_n": "巴特沃斯滤波器阶数（仅用于巴特沃斯）",
+            "freeinit_d_s": "空间滤波器截止频率",
+            "freeinit_d_t": "时间滤波器截止频率"
+        },
+        "outputs": {
+            "freeinit_args": "自由初始化参数"
+        },
+        "tooltips": {
+            "freeinit_n": "巴特沃斯滤波器阶数（仅用于巴特沃斯）",
+            "freeinit_method": "频率滤波器类型",
+            "freeinit_d_t": "时间滤波器截止频率",
+            "freeinit_d_s": "空间滤波器截止频率",
+            "freeinit_num_iters": "自由初始化迭代次数"
+        }
+    },
+    "WanVideoScheduler": {
+        "title": "万视频调度器",
+        "inputs": {
+            "scheduler": "调度器",
+            "sigmas": "σ值"
+        },
+        "widgets": {
+            "steps": "调度器步数",
+            "shift": "偏移",
+            "start_step": "调度器起始步",
+            "end_step": "调度器结束步"
+        },
+        "outputs": {
+            "sigmas": "σ值",
+            "steps": "调度器步数",
+            "shift": "偏移",
+            "scheduler": "调度器",
+            "start_step": "调度器起始步",
+            "end_step": "调度器结束步"
+        },
+        "tooltips": {
+            "steps": "调度器步数",
+            "shift": "该参数用于设置“偏移”",
+            "end_step": "调度器结束步",
+            "start_step": "调度器起始步",
+            "scheduler": "该参数用于设置“调度器”",
+            "sigmas": "该参数用于设置“σ值”"
+        }
+    },
+    "WanVideoSchedulerSA_ODE": {
+        "title": "万视频调度器SA-ODE",
+        "inputs": {
+            "sigmas": "σ值"
+        },
+        "widgets": {
+            "use_adaptive_order": "使用自适应阶数",
+            "use_velocity_smoothing": "使用速度平滑",
+            "convergence_threshold": "速度平滑收敛阈值",
+            "smoothing_factor": "速度平滑因子",
+            "steps": "调度器步数",
+            "shift": "偏移",
+            "start_step": "调度器起始步",
+            "end_step": "调度器结束步"
+        },
+        "outputs": {
+            "sigmas": "σ值",
+            "steps": "调度器步数",
+            "shift": "偏移",
+            "scheduler": "调度器",
+            "start_step": "调度器起始步",
+            "end_step": "调度器结束步"
+        },
+        "tooltips": {
+            "steps": "调度器步数",
+            "convergence_threshold": "速度平滑收敛阈值",
+            "shift": "该参数用于设置“偏移”",
+            "end_step": "调度器结束步",
+            "use_adaptive_order": "使用自适应阶数",
+            "start_step": "调度器起始步",
+            "smoothing_factor": "速度平滑因子",
+            "sigmas": "该参数用于设置“σ值”",
+            "use_velocity_smoothing": "使用速度平滑"
+        }
+    },
+    "WanVideoRoPEFunction": {
+        "title": "万视频RoPE函数",
+        "inputs": {
+            "rope_function": "RoPE函数"
+        },
+        "widgets": {
+            "ntk_scale_f": "F维度RoPE缩放",
+            "ntk_scale_h": "H维度RoPE缩放",
+            "ntk_scale_w": "W维度RoPE缩放"
+        },
+        "outputs": {
+            "rope_function": "RoPE函数"
+        },
+        "tooltips": {
+            "ntk_scale_f": "该参数用于设置“F维度RoPE缩放”",
+            "rope_function": "该参数用于设置“RoPE函数”",
+            "ntk_scale_h": "该参数用于设置“H维度RoPE缩放”",
+            "ntk_scale_w": "该参数用于设置“W维度RoPE缩放”"
+        }
+    },
+    "WanVideoAddTTMLatents": {
+        "title": "WanVideo 添加TTMLatents",
+        "inputs": {
+            "embeds": "嵌入组",
+            "reference_latents": "参考潜空间",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "start_step": "开始步数",
+            "end_step": "结束步数"
+        },
+        "outputs": {
+            "image_embeds": "图像嵌入组"
+        },
+        "tooltips": {
+            "embeds": "该参数用于设置“嵌入组”",
+            "end_step": "停止应用TTM的步数",
+            "start_step": "整个降噪过程的开始步数",
+            "mask": "TTM使用的掩码参数MASK",
+            "reference_latents": "用作TTM参考的潜空间"
+        }
+    },
+    "WanVideoDecode": {
+        "title": "WanVideo 解码",
+        "inputs": {
+            "vae": "vae",
+            "samples": "样本",
+            "normalization": "归一化"
+        },
+        "widgets": {
+            "enable_vae_tiling": "启用VAE分块",
+            "tile_x": "分块宽度",
+            "tile_y": "分块高度",
+            "tile_stride_x": "分块步进X",
+            "tile_stride_y": "分块步进Y"
+        },
+        "outputs": {
+            "images": "图像"
+        },
+        "tooltips": {
+            "enable_vae_tiling": "启用VAE分块会显著减少内存使用，但在瓦片步长边界处引入接缝，其位置和数量由步长大小决定，可通过增大瓦片尺寸控制接缝可见度。",
+            "samples": "该参数用于设置“样本”",
+            "tile_stride_y": "像素分块步进Y。较小的值使用更少的VRAM，但会引入更多接缝。",
+            "tile_stride_x": "像素分块步进X。较小的值使用更少的VRAM，但会引入更多接缝。",
+            "normalization": "该参数用于设置“归一化”",
+            "vae": "将 VAE 模型文件移动到 `ComfyUI/models/vae` 目录下。",
+            "tile_y": "分块高度（像素）。值越小，VRAM占用越少，但接缝越明显。",
+            "tile_x": "分块宽度（像素）。值越小，VRAM占用越少，但接缝越明显。"
+        }
+    },
+    "WanVideoEncodeLatentBatch": {
+        "title": "WanVideo 编码潜空间批次",
+        "inputs": {
+            "vae": "vae",
+            "images": "图像"
+        },
+        "widgets": {
+            "enable_vae_tiling": "启用VAE分块",
+            "tile_x": "分块宽度",
+            "tile_y": "分块高度",
+            "tile_stride_x": "分块步进X",
+            "tile_stride_y": "分块步进Y"
+        },
+        "outputs": {
+            "samples": "样本"
+        },
+        "tooltips": {
+            "enable_vae_tiling": "大幅减少内存使用，但可能会引入接缝",
+            "tile_stride_x": "像素分块步进，较小的值使用更少的VRAM，可能会引入更多接缝",
+            "tile_stride_y": "像素分块步进，较小的值使用更少的VRAM，可能会引入更多接缝",
+            "images": "该参数用于设置“图像”",
+            "vae": "将 VAE 模型文件移动到 ComfyUI/models/vae 目录下。",
+            "tile_y": "分块高度（像素），值越小VRAM占用越少，但可能产生更多接缝",
+            "tile_x": "分块宽度（像素），较小值占用VRAM较少，但可能产生更多接缝"
+        }
+    },
+    "WanVideoEncode": {
+        "title": "WanVideo 编码",
+        "inputs": {
+            "vae": "vae",
+            "image": "图像",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "enable_vae_tiling": "启用VAE分块",
+            "tile_x": "分块宽度",
+            "tile_y": "分块高度",
+            "tile_stride_x": "分块步进X",
+            "tile_stride_y": "分块步进Y",
+            "noise_aug_strength": "噪声增强强度",
+            "latent_strength": "额外潜空间乘数"
+        },
+        "outputs": {
+            "samples": "样本"
+        },
+        "tooltips": {
+            "enable_vae_tiling": "大幅减少内存使用，但可能会引入接缝",
+            "noise_aug_strength": "噪声增强强度，有助于I2V，其中一些噪声可以增加运动并给出更清晰的结果",
+            "tile_stride_y": "像素分块步进，较小的值使用更少的VRAM，可能会引入更多接缝",
+            "tile_stride_x": "像素分块步进，较小的值使用更少的VRAM，可能会引入更多接缝",
+            "tile_x": "分块宽度（像素），较小值占用VRAM更少，但可能产生更多接缝。",
+            "vae": "将 VAE 模型文件移动到 `ComfyUI/models/vae` 目录下。",
+            "image": "图片提示",
+            "mask": "该参数用于设置“MASK”",
+            "latent_strength": "额外潜空间乘数，有助于I2V，较低的值允许更多运动",
+            "tile_y": "分块高度（像素），值越小VRAM占用越少，但可能产生更多接缝"
+        }
+    },
+    "WanVideoImageClipEncode": {
+        "title": "WanVideo 图像剪辑编码（已弃用）",
+        "inputs": {
+            "clip_vision": "CLIP视觉",
+            "image": "图像",
+            "vae": "vae"
+        },
+        "widgets": {
+            "generation_width": "生成宽度",
+            "generation_height": "生成高度",
+            "num_frames": "帧数",
+            "force_offload": "强制卸载",
+            "noise_aug_strength": "噪声增强强度",
+            "latent_strength": "额外潜空间乘数",
+            "clip_embed_strength": "额外CLIP嵌入乘数",
+            "adjust_resolution": "相同的分辨率调整"
+        },
+        "outputs": {
+            "image_embeds": "图像嵌入组"
+        },
+        "tooltips": {
+            "force_offload": "该参数用于设置“强制卸载”",
+            "noise_aug_strength": "噪声增强强度，有助于I2V，其中一些噪声可以增加运动并给出更清晰的结果",
+            "generation_width": "要编码的图像宽度",
+            "clip_embed_strength": "额外CLIP嵌入乘数",
+            "adjust_resolution": "执行与原始代码相同的分辨率调整",
+            "generation_height": "要编码的图像高度",
+            "num_frames": "要编码的帧数",
+            "vae": "Vae模型路径为`ComfyUI/models/vae`",
+            "image": "编码图像",
+            "clip_vision": "将CLIP视觉参数绑定至`ComfyUI/models/clip_vision`",
+            "latent_strength": "额外潜空间乘数，有助于I2V，较低的值允许更多运动"
+        }
+    },
+    "WanVideoBlockSwap": {
+        "title": "WanVideo 块交换",
+        "inputs": {},
+        "widgets": {
+            "blocks_to_swap": "交换块数",
+            "offload_img_emb": "卸载图像嵌入",
+            "offload_txt_emb": "卸载文本嵌入",
+            "use_non_blocking": "使用非阻塞内存传输卸载",
+            "vace_blocks_to_swap": "交换VACE块数",
+            "prefetch_blocks": "预取块数",
+            "block_swap_debug": "启用块交换调试日志"
+        },
+        "outputs": {
+            "block_swap_args": "块交换参数"
+        },
+        "tooltips": {
+            "block_swap_debug": "启用块交换调试日志",
+            "use_non_blocking": "使用非阻塞内存传输卸载，保留更多RAM但更快",
+            "prefetch_blocks": "预取块数：提前预取的块数量，可加速处理但会增加内存使用，通常设置为1足以抵消块交换带来的速度损失，使用调试选项可确认系统适用值。",
+            "blocks_to_swap": "交换的Transformer块数，14B模型有40块，1.3B和5B模型有30块，LongCat-video有48块。",
+            "offload_img_emb": "将img_emb卸载到offload_device",
+            "vace_blocks_to_swap": "要交换的VACE块数，VACE模型有15个块",
+            "offload_txt_emb": "将time_emb卸载到offload_device"
+        }
+    },
+    "WanVideoVRAMManagement": {
+        "title": "WanVideo VRAM 管理",
+        "inputs": {},
+        "widgets": {
+            "offload_percent": "卸载百分比"
+        },
+        "outputs": {
+            "vram_management_args": "VRAM管理参数"
+        },
+        "tooltips": {
+            "offload_percent": "要卸载的参数百分比"
+        }
+    },
+    "WanVideoTorchCompileSettings": {
+        "title": "WanVideo Torch 编译设置",
+        "inputs": {
+            "backend": "后端",
+            "mode": "模式"
+        },
+        "widgets": {
+            "fullgraph": "全图模式",
+            "dynamic": "动态模式",
+            "dynamo_cache_size_limit": "dynamo缓存大小限制",
+            "compile_transformer_blocks_only": "仅编译Transformer块",
+            "dynamo_recompile_limit": "dynamo重新编译限制",
+            "force_parameter_static_shapes": "强制参数静态形状",
+            "allow_unmerged_lora_compile": "允许未合并的LoRA编译"
+        },
+        "outputs": {
+            "torch_compile_args": "Torch编译参数"
+        },
+        "tooltips": {
+            "dynamo_recompile_limit": "torch._dynamo.config.recompile_limit：dynamo重新编译限制",
+            "fullgraph": "启用全图模式",
+            "dynamic": "启用动态模式",
+            "dynamo_cache_size_limit": "dynamo缓存大小限制",
+            "compile_transformer_blocks_only": "仅编译Transformer块，通常足够且可以加快编译速度并减少错误",
+            "mode": "WanVideo及关联模型ComfyUI封装节点，支持模式参数。",
+            "backend": "该参数用于设置“后端”",
+            "force_parameter_static_shapes": "强制参数静态形状配置",
+            "allow_unmerged_lora_compile": "允许LoRA应用通过torch.compile编译以避免图中断，对某些LoRA造成问题，主要是动态的"
+        }
+    },
+    "WanVideoLoraSelect": {
+        "title": "WanVideo LoRA选择",
+        "inputs": {
+            "lora": "lora",
+            "prev_lora": "先前LoRA",
+            "blocks": "块"
+        },
+        "widgets": {
+            "strength": "强度",
+            "low_mem_load": "低内存加载",
+            "merge_loras": "合并LoRAs"
+        },
+        "outputs": {
+            "lora": "lora"
+        },
+        "tooltips": {
+            "strength": "设置强度为0.0可取消合并LORA。",
+            "prev_lora": "用于加载多个LoRA",
+            "merge_loras": "合并LoRAs，否则它们将按需加载。GGUF和缩放fp8模型始终禁用此功能。此设置影响所有LoRAs，而不仅限于当前LoRA。",
+            "blocks": "LoRA权重被分配为模块的缓冲区，成为块的一部分，遵循块交换机制，实现卸载统一，并使LoRA权重受益于异步卸载的预取功能。缺点是，如果你没有使用块交换。",
+            "low_mem_load": "低内存加载：以较低VRAM使用量加载LORA模型，加载速度变慢，影响所有LoRAs，merge_loras为False时无效。",
+            "lora": "Lora模型应存放在ComfyUI/models/loras目录下，并使用.safetensors扩展名。"
+        }
+    },
+    "WanVideoLoraSelectByName": {
+        "title": "WanVideo LoRA按名称选择",
+        "inputs": {
+            "prev_lora": "先前LoRA",
+            "blocks": "块"
+        },
+        "widgets": {
+            "lora_name": "LoRA名称",
+            "strength": "强度",
+            "low_mem_load": "低内存加载",
+            "merge_loras": "合并LoRAs"
+        },
+        "outputs": {},
+        "tooltips": {
+            "strength": "LORA强度，设为0.0则取消合并LORA",
+            "lora_name": "要加载的LoRA文件名",
+            "prev_lora": "用于加载多个LoRA",
+            "merge_loras": "合并LoRAs，否则它们将按需加载。GGUF和缩放fp8模型始终禁用此功能。此设置影响所有LoRAs，而不仅限于当前LoRA。",
+            "blocks": "LoRA权重作为块内的缓冲分配给对应模块，遵循块交换机制，实现卸载统一，并使LoRA权重受益于异步卸载的预取功能。缺点是若未使用块交换，则无法实现。",
+            "low_mem_load": "低内存加载：以较低VRAM使用量加载LORA模型，加载速度较慢，影响所有LoRAs，若merge_loras为False则无效。"
+        }
+    },
+    "WanVideoLoraSelectMulti": {
+        "title": "WanVideo 多LoRA选择",
+        "inputs": {
+            "lora_0": "lora_0",
+            "lora_1": "lora_1",
+            "lora_2": "lora_2",
+            "lora_3": "lora_3",
+            "lora_4": "lora_4",
+            "prev_lora": "先前LoRA",
+            "blocks": "块"
+        },
+        "widgets": {
+            "strength_0": "强度_0",
+            "strength_1": "强度_1",
+            "strength_2": "强度_2",
+            "strength_3": "强度_3",
+            "strength_4": "强度_4",
+            "low_mem_load": "低内存加载",
+            "merge_loras": "合并LoRAs"
+        },
+        "outputs": {
+            "lora": "lora"
+        },
+        "tooltips": {
+            "lora_0": "该参数用于设置“lora_0”",
+            "strength_3": "LoRA强度，设置为0.0以取消合并LoRA",
+            "lora_1": "该参数用于设置“lora_1”",
+            "merge_loras": "合并LoRAs，否则动态加载，GGUF和fp8模型始终禁用此功能。",
+            "blocks": "LoRA权重作为块内的缓冲分配给相应模块，支持块交换，使权重受益于异步卸载的预取功能。缺点是若未使用块交换则受限。",
+            "low_mem_load": "使用较少VRAM加载LoRA模型，加载较慢。如果merge_loras为False则无效",
+            "lora_3": "该参数用于设置“lora_3”",
+            "strength_2": "LoRA强度，设置为0.0以取消合并LoRA",
+            "prev_lora": "用于加载多个LoRAs",
+            "strength_4": "LoRA强度，设置为0.0以取消合并LoRA",
+            "strength_0": "LoRA强度，设置为0.0以取消合并LoRA",
+            "strength_1": "LoRA强度，设置为0.0以取消合并LoRA",
+            "lora_2": "该参数用于设置“lora_2”",
+            "lora_4": "该参数用于设置“lora_4”"
+        }
+    },
+    "WanVideoVACEModelSelect": {
+        "title": "WanVideo VACE模块选择",
+        "inputs": {
+            "vace_model": "VACE模型"
+        },
+        "widgets": {},
+        "outputs": {
+            "extra_model": "额外模型"
+        },
+        "tooltips": {
+            "vace_model": "未使用内置VACE模型的场景下，从'ComfyUI/models/diffusion_models'加载VACE模型"
+        }
+    },
+    "WanVideoExtraModelSelect": {
+        "title": "WanVideo额外模型选择",
+        "inputs": {
+            "extra_model": "额外模型",
+            "prev_model": "先前模型"
+        },
+        "widgets": {},
+        "outputs": {
+            "extra_model": "额外模型"
+        },
+        "tooltips": {
+            "extra_model": "从'ComfyUI/models/diffusion_models'路径加载额外模型，以扩展主模型状态字典。",
+            "prev_model": "用于加载多个额外模型"
+        }
+    },
+    "WanVideoLoraBlockEdit": {
+        "title": "WanVideo LoRA模块编辑",
+        "inputs": {},
+        "widgets": {
+            "layer_filter": "层过滤"
+        },
+        "outputs": {
+            "blocks": "模块"
+        },
+        "tooltips": {
+            "layer_filter": "该参数用于设置“层过滤”"
+        }
+    },
+    "WanVideoSetLoRAs": {
+        "title": "WanVideo设置LoRA",
+        "inputs": {
+            "model": "模型",
+            "lora": "lora"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "模型"
+        },
+        "tooltips": {
+            "model": "WanVideo及关联模型ComfyUI封装节点。",
+            "lora": "最近更新中，我更改了未合并LoRA权重的处理方式。"
+        }
+    },
+    "WanVideoModelLoader": {
+        "title": "WanVideo模型加载器",
+        "inputs": {
+            "model": "模型",
+            "base_precision": "基础精度",
+            "quantization": "量化",
+            "load_device": "加载设备",
+            "attention_mode": "注意力模式",
+            "compile_args": "编译参数",
+            "block_swap_args": "块交换参数",
+            "lora": "lora",
+            "vram_management_args": "显存管理参数",
+            "extra_model": "额外模型",
+            "fantasytalking_model": "FantasyTalking模型",
+            "multitalk_model": "Multitalk模型",
+            "fantasyportrait_model": "FantasyPortrait模型",
+            "rms_norm_function": "RMS归一化函数"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "模型"
+        },
+        "tooltips": {
+            "model": "模型从'ComfyUI/models/diffusion_models'文件夹加载。",
+            "compile_args": "该参数用于设置“编译参数”",
+            "extra_model": "添加到主模型的额外模型，例如VAE或MTV Crafter",
+            "base_precision": "该参数用于设置“基础精度”",
+            "vram_management_args": "DiffSynth-Studio的替代显存卸载方法，比块交换更激进地减少内存使用，但可能更慢",
+            "block_swap_args": "该参数用于设置“块交换参数”",
+            "rms_norm_function": "RMS归一化函数：'pytorch'为新的原生torch RMSNorm，速度更快（主要在不使用torch.compile时），但结果略有变化；'default'为原始WanRMSNorm",
+            "fantasytalking_model": "FantasyTalking模型 GitHub: https://github.com/Fantasy-AMAP",
+            "quantization": "可选量化方法，'disabled'为自动选择，基于权重；缩放模式需匹配权重，_fast模式（fp8 matmul）需CUDA计算能力>=8.9（NVIDIA 4000系列及更高），e4m3fn在计算能力<8.9（3000系列及更低）上通常无法torch编译。",
+            "fantasyportrait_model": "FantasyPortrait模型",
+            "attention_mode": "该参数用于设置“注意力模式”",
+            "load_device": "初始加载模型的设备，不推荐用于较大模型，除非你有48GB+显存",
+            "multitalk_model": "Multitalk模型",
+            "lora": "最近更新中，我更改了未合并LoRA权重的处理方式。"
+        }
+    },
+    "WanVideoVAELoader": {
+        "title": "WanVideo VAE加载器",
+        "inputs": {
+            "model_name": "模型名称",
+            "precision": "精度",
+            "compile_args": "编译参数"
+        },
+        "widgets": {
+            "use_cpu_cache": "使用CPU缓存"
+        },
+        "outputs": {
+            "vae": "vae"
+        },
+        "tooltips": {
+            "compile_args": "该参数用于设置“编译参数”",
+            "use_cpu_cache": "减少显存使用，但会显著降低VAE速度",
+            "precision": "该参数用于设置“精度”",
+            "model_name": "模型名称：ComfyUI/models/vae"
+        }
+    },
+    "WanVideoTinyVAELoader": {
+        "title": "WanVideo微缩VAE加载器",
+        "inputs": {
+            "model_name": "模型名称",
+            "precision": "精度"
+        },
+        "widgets": {
+            "parallel": "并行"
+        },
+        "outputs": {
+            "vae": "vae"
+        },
+        "tooltips": {
+            "precision": "该参数用于设置“精度”",
+            "model_name": "模型名称：ComfyUI/models/vae_approx",
+            "parallel": "使用更多内存，但速度更快"
+        }
+    },
+    "LoadWanVideoT5TextEncoder": {
+        "title": "WanVideo T5文本编码器加载器",
+        "inputs": {
+            "model_name": "模型名称",
+            "precision": "精度",
+            "load_device": "加载设备",
+            "quantization": "量化"
+        },
+        "widgets": {},
+        "outputs": {
+            "wan_t5_model": "wan_t5模型"
+        },
+        "tooltips": {
+            "load_device": "该参数用于设置“加载设备”",
+            "precision": "该参数用于设置“精度”",
+            "model_name": "模型名称：ComfyUI/models/text_encoders",
+            "quantization": "可选的量化方法"
+        }
+    },
+    "LoadWanVideoClipTextEncoder": {
+        "title": "WanVideo CLIP文本编码器加载器",
+        "inputs": {
+            "model_name": "模型名称",
+            "precision": "精度",
+            "load_device": "加载设备"
+        },
+        "widgets": {},
+        "outputs": {
+            "wan_clip_vision": "wan_clip视觉"
+        },
+        "tooltips": {
+            "precision": "该参数用于设置“精度”",
+            "load_device": "该参数用于设置“加载设备”",
+            "model_name": "模型名称：ComfyUI/models/clip_vision"
+        }
+    },
+    "WanVideoSampler": {
+        "title": "WanVideo采样器",
+        "inputs": {
+            "model": "模型",
+            "image_embeds": "图像嵌入",
+            "scheduler": "调度器",
+            "text_embeds": "文本嵌入",
+            "samples": "样本",
+            "feta_args": "feta参数",
+            "context_options": "上下文选项",
+            "cache_args": "缓存参数",
+            "flowedit_args": "flowedit参数",
+            "slg_args": "slg参数",
+            "rope_function": "rope函数",
+            "loop_args": "循环参数",
+            "experimental_args": "实验参数",
+            "sigmas": "sigma值",
+            "unianimate_poses": "unianimate姿势",
+            "fantasytalking_embeds": "fantasytalking嵌入",
+            "uni3c_embeds": "uni3c嵌入",
+            "multitalk_embeds": "multitalk嵌入",
+            "freeinit_args": "freeinit参数"
+        },
+        "widgets": {
+            "steps": "步数",
+            "cfg": "引导系数",
+            "shift": "偏移",
+            "seed": "随机种子",
+            "force_offload": "强制卸载",
+            "riflex_freq_index": "riflex频率索引",
+            "denoise_strength": "降噪强度",
+            "batched_cfg": "批次引导系数",
+            "start_step": "开始步",
+            "end_step": "结束步",
+            "add_noise_to_samples": "为样本添加噪声"
+        },
+        "outputs": {
+            "samples": "样本",
+            "denoised_samples": "降噪样本"
+        },
+        "tooltips": {
+            "cfg": "该参数用于设置“引导系数”",
+            "steps": "该参数用于设置“步数”",
+            "slg_args": "该参数用于设置“slg参数”",
+            "uni3c_embeds": "该参数用于设置“uni3c嵌入”",
+            "denoise_strength": "该参数用于设置“降噪强度”",
+            "fantasytalking_embeds": "该参数用于设置“fantasytalking嵌入”",
+            "loop_args": "该参数用于设置“循环参数”",
+            "sigmas": "该参数用于设置“sigma值”",
+            "riflex_freq_index": "RIFLEX的频率索引，为0时禁用，默认6。允许在不循环的情况下生成新帧",
+            "freeinit_args": "该参数用于设置“freeinit参数”",
+            "batched_cfg": "批次条件化和无条件化，用于更快采样，在某些硬件上可能更快，但使用更多内存",
+            "shift": "该参数用于设置“偏移”",
+            "unianimate_poses": "该参数用于设置“unianimate姿势”",
+            "experimental_args": "该参数用于设置“实验参数”",
+            "flowedit_args": "该参数用于设置“flowedit参数”",
+            "multitalk_embeds": "该参数用于设置“multitalk嵌入”",
+            "model": "WanVideo及关联模型ComfyUI包装节点。",
+            "feta_args": "该参数用于设置“feta参数”",
+            "force_offload": "采样后将模型移至卸载设备",
+            "context_options": "该参数用于设置“上下文选项”",
+            "start_step": "采样的开始步，0表示全采样，否则仅从该步采样",
+            "seed": "该参数用于设置“随机种子”",
+            "scheduler": "该参数用于设置“调度器”",
+            "text_embeds": "该参数用于设置“文本嵌入”",
+            "add_noise_to_samples": "采样前为样本添加噪声，从干净视频进行视频到视频采样时需要",
+            "rope_function": "Comfy的RoPE实现不使用复数，因此可编译，使用torch.compile时应显著更快；非torch.compile时，分块版本可降低峰值VRAM使用。",
+            "end_step": "采样的结束步，-1表示全采样，否则仅采样到该步",
+            "samples": "初始化用于视频转视频过程的样本潜空间",
+            "image_embeds": "该参数用于设置“图像嵌入”",
+            "cache_args": "该参数用于设置“缓存参数”"
+        }
+    },
+    "WanVideoSamplerSettings": {
+        "title": "WanVideo采样器设置",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "sampler_inputs": "采样器输入"
+        },
+        "tooltips": {}
+    },
+    "WanVideoSamplerFromSettings": {
+        "title": "WanVideo从设置采样器",
+        "inputs": {
+            "sampler_inputs": "采样器输入"
+        },
+        "widgets": {},
+        "outputs": {},
+        "tooltips": {
+            "sampler_inputs": "该参数用于设置“采样器输入”"
+        }
+    },
+    "WanVideoImageResizeToClosest": {
+        "title": "WanVideo图像缩放到最近",
+        "inputs": {
+            "image": "图像",
+            "aspect_ratio_preservation": "保持宽高比"
+        },
+        "widgets": {
+            "generation_width": "生成宽度",
+            "generation_height": "生成高度"
+        },
+        "outputs": {
+            "image": "图像",
+            "width": "宽",
+            "height": "高"
+        },
+        "tooltips": {
+            "image": "调整图片大小",
+            "generation_width": "要编码的图像宽度",
+            "generation_height": "要编码的图像高度",
+            "aspect_ratio_preservation": "该参数用于设置“保持宽高比”"
         }
     },
     "ExtractStartFramesForContinuations": {
-        "title": "提取连续视频起始帧",
-        "description": "从视频序列中提取前N帧用于连续生成",
+        "title": "提取起始帧用于延续",
         "inputs": {
             "input_video_frames": "输入视频帧"
         },
@@ -1044,115 +1466,533 @@
         },
         "outputs": {
             "start_frames": "起始帧"
-        }
-    },
-    "WanVideoFreeInitArgs": {
-        "title": "WanVideo FreeInit参数",
-        "description": "https://github.com/TianxingWu/FreeInit; FreeInit，一种简洁而有效的方法，用于改善扩散模型生成视频的时间一致性",
-        "widgets": {
-            "freeinit_num_iters": "FreeInit迭代次数",
-            "freeinit_method": "频率滤波类型",
-            "freeinit_n": "Butterworth滤波阶数",
-            "freeinit_d_s": "空间滤波截止值",
-            "freeinit_d_t": "时间滤波截止值"
         },
-        "outputs": {
-            "freeinit_args": "FreeInit参数"
+        "tooltips": {
+            "input_video_frames": "从输入视频帧中提取起始帧。",
+            "num_frames": "从视频开头获取的帧数。"
         }
     },
-    "WanVideoTeaCache": {
-        "title": "WanVideo Tea缓存",
-        "description": "为WanVideo模型修补TeaCache。通过缓存输出并应用它代替执行步骤来加速推理。最佳效果通过为模型选择合适的系数获得。早期步骤不应被跳过，值过于激进可能会导致运动质量下降。后期开始可以缓解此问题。当不使用系数时，阈值值应该比使用系数时小约10倍。\n\n官方推荐值： https://github.com/ali-vilab/TeaCache/tree/main/TeaCache4Wan2.1\n\n| 模型 | 低 | 中 | 高 |\n|------------|------|------|------|\n| Wan2.1 t2v 1.3B | 0.05 | 0.07 | 0.08 |\n| Wan2.1 t2v 14B | 0.14 | 0.15 | 0.20 |\n| Wan2.1 i2v 480P | 0.13 | 0.19 | 0.26 |\n| Wan2.1 i2v 720P | 0.18 | 0.20 | 0.30 |",
-        "outputs": {
-            "teacache_args": "TEA缓存参数"
-        },
-        "widgets": {
-            "rel_ft_thresh": "相对ft阈值",
-            "start_step": "起始步骤",
-            "end_step": "结束步骤",
-            "cache_device": "缓存设备",
-            "use_coefficients": "使用系数",
-            "mode": "模式"
-        }
-    },
-    "WanVideoMagCache": {
-        "title": "WanVideo Mag缓存",
-        "description": "WanVideoWrapper的MagCache，来源 https://github.com/Zehong-Ma/MagCache",
-        "widgets": {
-            "magcache_thresh": "MagCache阈值",
-            "magcache_K": "MagCache K值",
-            "start_step": "起始步骤",
-            "end_step": "结束步骤",
-            "cache_device": "缓存设备"
-        },
-        "outputs": {
-            "cache_args": "缓存参数"
-        }
-    },
-    "WanVideoEasyCache": {
-        "title": "WanVideo Easy缓存",
-        "description": "WanVideoWrapper的EasyCache，来源 https://github.com/H-EmbodVis/EasyCache",
-        "widgets": {
-            "easycache_thresh": "EasyCache阈值",
-            "start_step": "起始步骤",
-            "end_step": "结束步骤",
-            "cache_device": "缓存设备"
-        },
-        "outputs": {
-            "cache_args": "缓存参数"
-        }
-    },
-    "WanVideoATITracks": {
-        "title": "WanVideo ATI 轨迹",
+    "WanVideoVACEStartToEndFrame": {
+        "title": "WanVideo VACE起始至结束帧",
         "inputs": {
-            "model": "模型"
+            "start_image": "起始图像",
+            "end_image": "结束图像",
+            "control_images": "控制图像",
+            "inpaint_mask": "修复遮罩"
         },
         "widgets": {
-            "tracks": "轨迹",
-            "width": "宽度",
-            "height": "高度",
-            "temperature": "温度",
-            "topk": "TopK",
+            "num_frames": "帧数",
+            "empty_frame_level": "空白帧级别",
+            "start_index": "起始索引",
+            "end_index": "结束索引"
+        },
+        "outputs": {
+            "images": "图像",
+            "masks": "遮罩"
+        },
+        "tooltips": {
+            "inpaint_mask": "用于空白帧的修复遮罩",
+            "start_index": "起始索引",
+            "end_index": "结束索引",
+            "empty_frame_level": "使用的空白帧白色级别",
+            "end_image": "该参数用于设置“结束图像”",
+            "control_images": "该参数用于设置“控制图像”",
+            "start_image": "该参数用于设置“起始图像”",
+            "num_frames": "编码的帧数"
+        }
+    },
+    "CreateCFGScheduleFloatList": {
+        "title": "创建CFG调度浮点列表",
+        "inputs": {
+            "interpolation": "插值"
+        },
+        "widgets": {
+            "steps": "步数",
+            "cfg_scale_start": "起始CFG缩放",
+            "cfg_scale_end": "结束CFG缩放",
             "start_percent": "起始百分比",
             "end_percent": "结束百分比"
         },
         "outputs": {
-            "model": "模型"
+            "float_list": "浮点列表"
+        },
+        "tooltips": {
+            "steps": "为CFG调度的步数",
+            "interpolation": "用于CFG缩放的插值方法",
+            "end_percent": "应用CFG的步骤结束百分比",
+            "cfg_scale_end": "用于步数的CFG缩放",
+            "cfg_scale_start": "用于步数的CFG缩放",
+            "start_percent": "应用CFG的步骤起始百分比"
         }
     },
-    "WanVideoATITracksVisualize": {
-        "title": "WanVideo ATI 轨迹可视化",
+    "CreateScheduleFloatList": {
+        "title": "创建调度浮点列表",
         "inputs": {
-            "images": "图像",
-            "tracks": "轨迹"
+            "interpolation": "插值"
         },
         "widgets": {
-            "min_radius": "最小半径",
-            "max_radius": "最大半径",
-            "max_retain": "最大保留"
+            "steps": "步数",
+            "start_value": "起始值",
+            "end_value": "结束值",
+            "default_value": "默认值",
+            "start_percent": "起始百分比",
+            "end_percent": "结束百分比"
+        },
+        "outputs": {
+            "float_list": "浮点列表"
+        },
+        "tooltips": {
+            "steps": "为CFG调度的步数",
+            "interpolation": "用于CFG缩放的插值方法",
+            "default_value": "用于步数的默认值",
+            "end_percent": "应用CFG的步骤结束百分比",
+            "end_value": "用于步数的CFG缩放",
+            "start_value": "用于步数的CFG缩放",
+            "start_percent": "应用CFG的步骤起始百分比"
+        }
+    },
+    "DummyComfyWanModelObject": {
+        "title": "Dummy Comfy Wan模型对象",
+        "inputs": {},
+        "widgets": {
+            "shift": "偏移"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "tooltips": {
+            "shift": "Sigma偏移值"
+        }
+    },
+    "WanVideoLatentReScale": {
+        "title": "WanVideo潜空间重缩放",
+        "inputs": {
+            "samples": "样本",
+            "direction": "方向"
+        },
+        "widgets": {},
+        "outputs": {
+            "samples": "样本"
+        },
+        "tooltips": {
+            "direction": "重缩放潜空间的方，从Comfy到包装器或反之",
+            "samples": "该参数用于设置“样本”"
+        }
+    },
+    "WanVideoSigmaToStep": {
+        "title": "WanVideo Sigma转步数",
+        "inputs": {},
+        "widgets": {
+            "sigma": "sigma"
+        },
+        "outputs": {
+            "step": "步数"
+        },
+        "tooltips": {
+            "sigma": "该参数用于设置“sigma”"
+        }
+    },
+    "NormalizeAudioLoudness": {
+        "title": "标准化音频响度",
+        "inputs": {
+            "audio": "音频"
+        },
+        "widgets": {
+            "lufs": "lufs"
+        },
+        "outputs": {
+            "audio": "音频"
+        },
+        "tooltips": {
+            "audio": "该参数用于设置“音频”",
+            "lufs": "该参数用于设置“lufs”"
+        }
+    },
+    "WanVideoPassImagesFromSamples": {
+        "title": "WanVideo 从样本传递图像",
+        "inputs": {
+            "samples": "样本"
+        },
+        "widgets": {},
+        "outputs": {
+            "images": "图像",
+            "output_path": "输出路径"
+        },
+        "tooltips": {
+            "samples": "该参数用于设置“样本”"
+        }
+    },
+    "FaceMaskFromPoseKeypoints": {
+        "title": "从姿态关键点生成面部遮罩",
+        "inputs": {},
+        "widgets": {},
+        "outputs": {
+            "output_0": "输出_0"
+        },
+        "tooltips": {}
+    },
+    "DrawGaussianNoiseOnImage": {
+        "title": "在图像上绘制高斯噪声",
+        "inputs": {
+            "image": "图像",
+            "mask": "遮罩",
+            "device": "设备"
+        },
+        "widgets": {
+            "seed": "随机种子"
         },
         "outputs": {
             "images": "图像"
+        },
+        "tooltips": {
+            "image": "图片提示",
+            "device": "设备用于处理",
+            "seed": "该参数用于设置“随机种子”",
+            "mask": "该参数用于设置“MASK”"
         }
     },
-    "WanVideoATI_comfy": {
-        "title": "WanVideo ATI 便捷",
+    "WanVideoPreviewEmbeds": {
+        "title": "WanVideo 预览嵌入组",
+        "inputs": {
+            "embeds": "嵌入组"
+        },
+        "widgets": {},
+        "outputs": {
+            "image_embeds": "图像嵌入组",
+            "mask": "遮罩"
+        },
+        "tooltips": {
+            "embeds": "该参数用于设置“嵌入组”"
+        }
+    },
+    "WanVideoATITracks": {
+        "title": "WanVideo ATI 跟踪",
         "inputs": {
             "model": "模型"
         },
         "widgets": {
-            "width": "宽度",
-            "height": "高度",
-            "tracks": "轨迹",
+            "tracks": "跟踪",
+            "width": "宽",
+            "height": "高",
             "temperature": "温度",
-            "topk": "TopK"
+            "topk": "topk",
+            "start_percent": "开始百分比",
+            "end_percent": "结束百分比"
         },
         "outputs": {
             "model": "模型"
+        },
+        "tooltips": {
+            "model": "WanVideo及关联模型ComfyUI封装节点。",
+            "width": "编码图像的宽度",
+            "end_percent": "应用 ATI 的步骤结束百分比",
+            "tracks": "该参数用于设置“跟踪”",
+            "start_percent": "应用 ATI 的步骤开始百分比",
+            "height": "编码图像的高度",
+            "topk": "该参数用于设置“topk”",
+            "temperature": "该参数用于设置“温度”"
+        }
+    },
+    "WanVideoATITracksVisualize": {
+        "title": "WanVideo ATI 跟踪可视化",
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "tracks": "跟踪",
+            "min_radius": "最小半径",
+            "max_radius": "最大半径",
+            "max_retain": "最大保留点数"
+        },
+        "outputs": {
+            "images": "图像"
+        },
+        "tooltips": {
+            "max_radius": "当前点（最新的）的半径",
+            "max_retain": "保留的最大点数",
+            "tracks": "该参数用于设置“跟踪”",
+            "images": "该参数用于设置“图像”",
+            "min_radius": "第一个点（最旧的）的半径"
+        }
+    },
+    "WanVideoATI_comfy": {
+        "title": "WanVideo ATI Comfy",
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "width": "宽",
+            "height": "高",
+            "tracks": "跟踪",
+            "temperature": "温度",
+            "topk": "topk"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "tooltips": {
+            "model": "为WanVideo及相关模型提供ComfyUI包装节点。",
+            "width": "图片编码的宽度",
+            "tracks": "该参数用于设置“跟踪”",
+            "height": "编码图像的高度",
+            "topk": "该参数用于设置“topk”",
+            "temperature": "该参数用于设置“温度”"
+        }
+    },
+    "WanVideoTeaCache": {
+        "title": "WanVideo TeaCache",
+        "inputs": {
+            "cache_device": "缓存设备",
+            "mode": "模式"
+        },
+        "widgets": {
+            "rel_l1_thresh": "相对 L1 阈值",
+            "start_step": "开始步骤",
+            "end_step": "结束步骤",
+            "use_coefficients": "使用系数"
+        },
+        "outputs": {
+            "cache_args": "缓存参数"
+        },
+        "tooltips": {
+            "end_step": "应用 TeaCache 的步骤结束",
+            "cache_device": "缓存到设备",
+            "rel_l1_thresh": "相对L1阈值越高，TeaCache越激进、越快，但可能产生伪影。1.3B模型推荐0.05-0.08，其他模型推荐0.15-0.30。",
+            "start_step": "应用 TeaCache 的步骤开始百分比",
+            "use_coefficients": "使用计算出的系数以获得更高的精度。启用时 therel_l1_thresh 应该是无启用时的约 10 倍",
+            "mode": "模式选择：使用e（时间嵌入，默认）或e0（调制时间嵌入）"
+        }
+    },
+    "WanVideoMagCache": {
+        "title": "WanVideo MagCache",
+        "inputs": {
+            "cache_device": "缓存设备"
+        },
+        "widgets": {
+            "magcache_thresh": "MagCache 输出的缓存强度。此值必须为非负数",
+            "magcache_K": "MagCache 的最大跳跃步骤",
+            "start_step": "开始应用 MagCache 的步骤",
+            "end_step": "结束应用 MagCache 的步骤"
+        },
+        "outputs": {
+            "cache_args": "缓存参数"
+        },
+        "tooltips": {
+            "magcache_thresh": "如何强烈缓存扩散模型的输出。此值必须为非负数",
+            "end_step": "结束应用 MagCache 的步骤",
+            "magcache_K": "MagCache 的最大跳跃步骤",
+            "cache_device": "缓存到设备",
+            "start_step": "开始应用 MagCache 的步骤"
+        }
+    },
+    "WanVideoEasyCache": {
+        "title": "WanVideo EasyCache",
+        "inputs": {
+            "cache_device": "缓存设备"
+        },
+        "widgets": {
+            "easycache_thresh": "如何强烈缓存扩散模型的输出。此值必须为非负数",
+            "start_step": "开始应用 EasyCache 的步骤",
+            "end_step": "结束应用 EasyCache 的步骤"
+        },
+        "outputs": {
+            "cache_args": "缓存参数"
+        },
+        "tooltips": {
+            "easycache_thresh": "如何强烈缓存扩散模型的输出。此值必须为非负数",
+            "end_step": "结束应用 EasyCache 的步骤",
+            "cache_device": "缓存到设备",
+            "start_step": "开始应用 EasyCache 的步骤"
+        }
+    },
+    "WanVideoControlnetLoader": {
+        "title": "WanVideo Controlnet 载入器",
+        "inputs": {
+            "model": "模型",
+            "base_precision": "基础精度",
+            "quantization": "量化方法",
+            "load_device": "初始载入设备"
+        },
+        "widgets": {},
+        "outputs": {
+            "controlnet": "controlnet"
+        },
+        "tooltips": {
+            "model": "模型从'ComfyUI/models/controlnet'文件夹加载（MODEL）",
+            "load_device": "初始载入模型的设备，不建议用于较大模型，除非你有 48GB+ 显存",
+            "base_precision": "该参数用于设置“基础精度”",
+            "quantization": "可选量化方法"
+        }
+    },
+    "WanVideoControlnet": {
+        "title": "WanVideo Controlnet 应用",
+        "inputs": {
+            "model": "模型",
+            "controlnet": "controlnet",
+            "control_images": "控制图像"
+        },
+        "widgets": {
+            "strength": "强度",
+            "control_stride": "Controlnet 步进",
+            "control_start_percent": "应用 Controlnet 的步骤开始百分比",
+            "control_end_percent": "应用 Controlnet 的步骤结束百分比"
+        },
+        "outputs": {
+            "model": "模型"
+        },
+        "tooltips": {
+            "strength": "控制网强度",
+            "model": "WanVideo及关联模型参数的ComfyUI包装节点。",
+            "controlnet": "该参数用于设置“controlnet”",
+            "control_images": "该参数用于设置“控制图像”",
+            "control_start_percent": "应用 Controlnet 的步骤开始百分比",
+            "control_stride": "Controlnet 步进",
+            "control_end_percent": "应用 Controlnet 的步骤结束百分比"
+        }
+    },
+    "FantasyPortraitFaceDetector": {
+        "title": "FantasyPortrait 人脸检测器",
+        "inputs": {
+            "portrait_model": "肖像模型",
+            "images": "图像",
+            "device": "设备"
+        },
+        "widgets": {
+            "adapter_scale": "适配器投影缩放",
+            "mouth_scale": "嘴部投影缩放",
+            "emo_scale": "情绪投影缩放"
+        },
+        "outputs": {
+            "portrait_embeds": "肖像嵌入组",
+            "bbox": "边界框",
+            "landmarks": "关键点"
+        },
+        "tooltips": {
+            "adapter_scale": "适配器投影的缩放",
+            "emo_scale": "情绪投影的缩放",
+            "device": "在设备上运行模型",
+            "images": "该参数用于设置“图像”",
+            "mouth_scale": "嘴部投影的缩放",
+            "portrait_model": "该参数用于设置“肖像模型”"
+        }
+    },
+    "LandmarksToImage": {
+        "title": "关键点到图像",
+        "inputs": {
+            "landmarks": "关键点",
+            "image": "图像"
+        },
+        "widgets": {
+            "width": "宽",
+            "height": "高"
+        },
+        "outputs": {
+            "keypoints_image": "关键点图像"
+        },
+        "tooltips": {
+            "image": "图片提示",
+            "width": "输出图像宽度",
+            "landmarks": "该参数用于设置“关键点”",
+            "height": "输出图像的高度"
+        }
+    },
+    "WanVideoAddFantasyPortrait": {
+        "title": "WanVideo 添加幻想肖像",
+        "inputs": {
+            "embeds": "嵌入组",
+            "portrait_embeds": "肖像嵌入组"
+        },
+        "widgets": {
+            "strength": "强度",
+            "start_percent": "嵌入应用开始百分比",
+            "end_percent": "嵌入应用结束百分比"
+        },
+        "outputs": {
+            "image_embeds": "图像嵌入组"
+        },
+        "tooltips": {
+            "strength": "肖像嵌入强度",
+            "embeds": "该参数用于设置“嵌入组”",
+            "end_percent": "嵌入应用结束百分比",
+            "start_percent": "嵌入应用开始百分比",
+            "portrait_embeds": "该参数用于设置“肖像嵌入组”"
+        }
+    },
+    "FantasyPortraitModelLoader": {
+        "title": "FantasyPortrait 模型载入器",
+        "inputs": {
+            "model": "模型",
+            "base_precision": "基础精度"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "模型"
+        },
+        "tooltips": {
+            "model": "模型加载自'ComfyUI/models/diffusion_models'文件夹",
+            "base_precision": "该参数用于设置“基础精度”"
+        }
+    },
+    "DownloadAndLoadWav2VecModel": {
+        "title": "(下)载Wav2Vec模型",
+        "inputs": {
+            "model": "模型",
+            "base_precision": "基础精度",
+            "load_device": "加载设备"
+        },
+        "widgets": {},
+        "outputs": {
+            "wav2vec_model": "wav2vec模型"
+        },
+        "tooltips": {
+            "model": "WanVideo及关联模型ComfyUI封装节点。",
+            "load_device": "初始模型加载设备，不建议用于较大模型，除非您有48GB+显存",
+            "base_precision": "该参数用于设置“基础精度”"
+        }
+    },
+    "FantasyTalkingModelLoader": {
+        "title": "幻想对话模型加载器",
+        "inputs": {
+            "model": "模型",
+            "base_precision": "基础精度"
+        },
+        "widgets": {},
+        "outputs": {
+            "model": "模型"
+        },
+        "tooltips": {
+            "model": "模型加载自'ComfyUI/models/diffusion_models'文件夹。",
+            "base_precision": "该参数用于设置“基础精度”"
+        }
+    },
+    "FantasyTalkingWav2VecEmbeds": {
+        "title": "幻想对话Wav2Vec嵌入",
+        "inputs": {
+            "wav2vec_model": "wav2vec模型",
+            "fantasytalking_model": "fantasytalking模型",
+            "audio": "音频"
+        },
+        "widgets": {
+            "num_frames": "帧数",
+            "fps": "帧率",
+            "audio_scale": "音频缩放",
+            "audio_cfg_scale": "音频引导系数"
+        },
+        "outputs": {
+            "fantasytalking_embeds": "fantasytalking嵌入"
+        },
+        "tooltips": {
+            "audio_cfg_scale": "当不为1.0时，将进行额外无音频条件的模型传递：推理速度更慢但允许更多动作",
+            "wav2vec_model": "该参数用于设置“wav2vec模型”",
+            "audio": "该参数用于设置“音频”",
+            "audio_scale": "音频条件强度",
+            "fps": "该参数用于设置“帧率”",
+            "fantasytalking_model": "该参数用于设置“fantasytalking模型”",
+            "num_frames": "该参数用于设置“帧数”"
         }
     },
     "WanVideoAddFlashVSRInput": {
-        "title": "WanVideo 添加FlashVSR输入",
+        "title": "WanVideo添加FlashVSR输入",
         "inputs": {
             "embeds": "嵌入",
             "images": "图像"
@@ -1162,186 +2002,307 @@
         },
         "outputs": {
             "image_embeds": "图像嵌入"
+        },
+        "tooltips": {
+            "strength": "应用FlashVSR潜力的强度",
+            "images": "低分辨率视频帧以增强",
+            "embeds": "该参数用于设置“嵌入”"
         }
     },
     "WanVideoFlashVSRDecoderLoader": {
         "title": "WanVideo FlashVSR解码器加载器",
-        "description": "从'ComfyUI/models/vae'加载Wan VAE模型",
-        "widgets": {
-            "model_name": "模型名称",
+        "inputs": {
+            "model_name": "模型名",
             "precision": "精度"
         },
+        "widgets": {},
         "outputs": {
-            "vae": "VAE"
+            "vae": "vae"
+        },
+        "tooltips": {
+            "model_name": "模型名：ComfyUI/models/vae",
+            "precision": "该参数用于设置“精度”"
+        }
+    },
+    "WanVideoFunCameraEmbeds": {
+        "title": "WanVideo趣味相机嵌入",
+        "inputs": {
+            "poses": "姿态"
+        },
+        "widgets": {
+            "width": "宽",
+            "height": "高",
+            "strength": "强度",
+            "start_percent": "开始百分比",
+            "end_percent": "结束百分比"
+        },
+        "outputs": {
+            "image_embeds": "图像嵌入"
+        },
+        "tooltips": {
+            "strength": "相机运动强度",
+            "width": "编码图像的宽度",
+            "end_percent": "应用相机动作的步骤结束百分比",
+            "start_percent": "应用相机动作的步骤开始百分比",
+            "poses": "该参数用于设置“姿态”",
+            "height": "编码图像的高度"
         }
     },
     "WhisperModelLoader": {
-        "title": "Whisper 模型加载器",
-        "widgets": {
+        "title": "Whisper模型加载器",
+        "inputs": {
             "model": "模型",
             "base_precision": "基础精度",
             "load_device": "加载设备"
         },
+        "widgets": {},
         "outputs": {
-            "whisper_model": "Whisper模型"
+            "whisper_model": "whisper模型"
+        },
+        "tooltips": {
+            "model": "模型从'ComfyUI/models/audio_encoders'文件夹加载（MODEL）",
+            "load_device": "模型加载的初始设备，不建议使用较大模型，除非你有48GB+显存",
+            "base_precision": "该参数用于设置“基础精度”"
         }
     },
     "HuMoEmbeds": {
-        "title": "HuMo 嵌入",
+        "title": "HuMo嵌入",
         "inputs": {
-            "whisper_model": "Whisper模型",
-            "vae": "VAE",
+            "whisper_model": "whisper模型",
+            "vae": "vae",
             "reference_images": "参考图像",
             "audio": "音频"
         },
         "widgets": {
             "num_frames": "帧数",
-            "width": "宽度",
-            "height": "高度",
-            "audio_scale": "音频缩放",
-            "audio_cfg_scale": "音频CFG缩放",
-            "audio_start_percent": "音频起始百分比",
-            "audio_end_percent": "音频结束百分比",
-            "tiled_vae": "分块VAE"
+            "width": "宽",
+            "height": "高",
+            "audio_scale": "音频条件强度",
+            "audio_cfg_scale": "当不为1.0时，执行无音频条件的额外模型传递：推理速度较慢但允许更多运动",
+            "audio_start_percent": "视频开始应用音频条件的百分比",
+            "audio_end_percent": "视频停止应用音频条件的百分比",
+            "tiled_vae": "使用分块VAE编码以减少内存使用"
         },
         "outputs": {
             "image_embeds": "图像嵌入"
+        },
+        "tooltips": {
+            "width": "该参数用于设置“width”",
+            "audio_scale": "音频条件强度",
+            "whisper_model": "该参数用于设置“whisper模型”",
+            "tiled_vae": "使用分块VAE编码以减少内存使用",
+            "num_frames": "生成总帧数",
+            "audio_cfg_scale": "当不为1.0时，执行无音频条件的额外模型传递：推理速度较慢但允许更多运动",
+            "audio_end_percent": "视频停止应用音频条件的百分比",
+            "audio_start_percent": "视频开始应用音频条件的百分比",
+            "audio": "该参数用于设置“音频”",
+            "reference_images": "humo模型的参考图像",
+            "height": "该参数用于设置“height”",
+            "vae": "将 VAE 模型文件移动到 ComfyUI/models/vae 目录下。"
         }
     },
     "WanVideoCombineEmbeds": {
-        "title": "WanVideo 合并嵌入",
+        "title": "WanVideo合并嵌入",
         "inputs": {
-            "embeds_1": "嵌入1",
-            "embeds_2": "嵌入2"
+            "embeds_1": "嵌入_1",
+            "embeds_2": "嵌入_2"
         },
-        "widgets": {
-            "strength": "强度"
-        },
+        "widgets": {},
         "outputs": {
-            "combined": "合并嵌入"
+            "image_embeds": "图像嵌入"
+        },
+        "tooltips": {
+            "embeds_2": "该参数用于设置“嵌入_2”",
+            "embeds_1": "该参数用于设置“嵌入_1”"
         }
     },
     "LoadLynxResampler": {
         "title": "加载Lynx重采样器",
-        "widgets": {
-            "model": "模型",
-            "base_precision": "基础精度",
-            "load_device": "加载设备"
+        "inputs": {
+            "model_name": "模型名",
+            "precision": "精度"
         },
+        "widgets": {},
         "outputs": {
-            "lynx_resampler": "Lynx重采样器"
+            "resampler": "重采样器"
+        },
+        "tooltips": {
+            "model_name": "模型名：ComfyUI/models/diffusion_models",
+            "precision": "该参数用于设置“精度”"
         }
     },
     "LynxInsightFaceCrop": {
-        "title": "Lynx InsightFace 裁剪",
+        "title": "Lynx InsightFace裁剪",
         "inputs": {
-            "images": "图像"
+            "image": "图像"
         },
-        "widgets": {
-            "crop_size": "裁剪大小",
-            "face_detection_threshold": "人脸检测阈值"
-        },
+        "widgets": {},
         "outputs": {
-            "cropped_images": "裁剪图像"
+            "ip_image": "IP图像",
+            "ref_image": "参考图像"
+        },
+        "tooltips": {
+            "image": "模型输入图像"
         }
     },
     "LynxEncodeFaceIP": {
-        "title": "Lynx 编码人脸IP",
+        "title": "Lynx Encode Face IP",
         "inputs": {
-            "lynx_resampler": "Lynx重采样器",
-            "images": "图像"
+            "resampler": "lynx重采样器模型",
+            "ip_image": "模型的输入图像"
         },
-        "widgets": {
-            "strength": "强度"
-        },
+        "widgets": {},
         "outputs": {
-            "face_embeds": "人脸嵌入"
+            "lynx_face_embeds": "lynx人脸嵌入"
+        },
+        "tooltips": {
+            "ip_image": "模型的输入图像",
+            "resampler": "lynx重采样器模型"
         }
     },
     "DrawArcFaceLandmarks": {
         "title": "绘制ArcFace关键点",
         "inputs": {
-            "images": "图像"
+            "lynx_face_embeds": "lynx人脸嵌入",
+            "image": "图像"
         },
-        "widgets": {
-            "landmark_size": "关键点大小",
-            "landmark_color": "关键点颜色"
-        },
+        "widgets": {},
         "outputs": {
-            "landmark_images": "关键点图像"
+            "landmarked_image": "带关键点的图像"
+        },
+        "tooltips": {
+            "image": "模型输入图像",
+            "lynx_face_embeds": "lynx重采样模型"
         }
     },
     "WanVideoAddLynxEmbeds": {
-        "title": "WanVideo 添加Lynx嵌入",
+        "title": "WanVideo添加Lynx嵌入",
         "inputs": {
             "embeds": "嵌入",
-            "face_embeds": "人脸嵌入"
+            "vae": "VAE模型",
+            "lynx_ip_embeds": "Lynx人脸嵌入",
+            "ref_image": "参考图像",
+            "ref_text_embed": "参考文本嵌入"
         },
         "widgets": {
-            "strength": "强度"
+            "ip_scale": "IP适配器人脸特征强度",
+            "ref_scale": "参考特征强度",
+            "lynx_cfg_scale": "如果大于1.0且主CFG缩放大于1.0，则运行额外传递，默认值2.0",
+            "start_percent": "应用参考的起始百分比",
+            "end_percent": "应用参考的结束百分比",
+            "ref_blocks_to_use": "用于参考特征的索引和范围列表，例如'0-20, 25, 28, 35-39'。如果为空，则使用所有块。"
         },
         "outputs": {
-            "updated": "更新嵌入"
+            "image_embeds": "图像嵌入"
+        },
+        "tooltips": {
+            "embeds": "该参数用于设置“嵌入”",
+            "end_percent": "应用参考的结束百分比",
+            "lynx_cfg_scale": "如果大于1.0且主CFG缩放大于1.0，则运行额外传递，默认值2.0",
+            "ip_scale": "IP适配器人脸特征强度",
+            "ref_image": "该参数用于设置“参考图像”",
+            "ref_scale": "参考特征强度",
+            "lynx_ip_embeds": "Lynx人脸嵌入",
+            "ref_text_embed": "该参数用于设置“参考文本嵌入”",
+            "ref_blocks_to_use": "用于参考特征的索引和范围列表，例如'0-20, 25, 28, 35-39'。如果为空，则使用所有块。",
+            "start_percent": "应用参考的起始百分比",
+            "vae": "若提供参考图像，则需要指定VAE模型"
+        }
+    },
+    "MochaEmbeds": {
+        "title": "Mocha嵌入",
+        "inputs": {
+            "vae": "VAE模型",
+            "input_video": "输入视频",
+            "mask": "遮罩",
+            "ref1": "参考图像",
+            "ref2": "参考图像"
+        },
+        "widgets": {
+            "force_offload": "强制卸载",
+            "tiled_vae": "使用分块VAE编码以减少内存使用"
+        },
+        "outputs": {
+            "image_embeds": "图像嵌入"
+        },
+        "tooltips": {
+            "force_offload": "该参数用于设置“强制卸载”",
+            "ref2": "要编码的图像",
+            "mask": "遮罩",
+            "vae": "将 VAE 模型文件移动到 `ComfyUI/models/vae` 目录下",
+            "tiled_vae": "使用分块VAE编码以减少内存使用",
+            "ref1": "要编码的图像",
+            "input_video": "要编码的输入视频"
         }
     },
     "DownloadAndLoadNLFModel": {
-        "title": "下载并加载NLF模型",
-        "widgets": {
-            "model": "模型",
-            "base_precision": "基础精度",
-            "load_device": "加载设备"
+        "title": "(下载)加载NLF模型",
+        "inputs": {
+            "url": "url"
         },
+        "widgets": {},
         "outputs": {
             "nlf_model": "NLF模型"
+        },
+        "tooltips": {
+            "url": "该参数用于设置“url”"
         }
     },
     "LoadNLFModel": {
-        "title": "加载NLF模型",
+        "title": "LoadNLFModel",
+        "inputs": {},
         "widgets": {
-            "model": "模型",
-            "base_precision": "基础精度",
-            "load_device": "加载设备"
+            "path": "路径"
         },
         "outputs": {
             "nlf_model": "NLF模型"
+        },
+        "tooltips": {
+            "path": "该参数用于设置“路径”"
         }
     },
     "LoadVQVAE": {
         "title": "加载VQVAE",
-        "widgets": {
-            "model": "模型",
-            "base_precision": "基础精度",
-            "load_device": "加载设备"
+        "inputs": {
+            "model_name": "模型名称"
         },
+        "widgets": {},
         "outputs": {
-            "vqvae": "VQVAE"
+            "vqvae": "vqvae"
+        },
+        "tooltips": {
+            "model_name": "模型名称：ComfyUI/models/vae"
         }
     },
     "MTVCrafterEncodePoses": {
         "title": "MTV Crafter 编码姿态",
         "inputs": {
-            "nlf_model": "NLF模型",
-            "vqvae": "VQVAE",
+            "vqvae": "vqvae",
             "poses": "姿态"
         },
-        "widgets": {
-            "strength": "强度"
-        },
+        "widgets": {},
         "outputs": {
-            "motion_embeds": "运动嵌入"
+            "mtvcrafter_motion": "mtvcrafter_motion",
+            "pose_results": "姿态结果"
+        },
+        "tooltips": {
+            "poses": "模型输入姿态",
+            "vqvae": "VQVAE模型"
         }
     },
     "NLFPredict": {
-        "title": "NLF 预测",
+        "title": "NLF预测",
         "inputs": {
-            "nlf_model": "NLF模型",
-            "poses": "姿态"
+            "model": "模型",
+            "images": "图像"
         },
-        "widgets": {
-            "strength": "强度"
-        },
+        "widgets": {},
         "outputs": {
-            "predicted_poses": "预测姿态"
+            "pose_results": "姿态结果"
+        },
+        "tooltips": {
+            "model": "WanVideo及关联模型ComfyUI封装节点说明。",
+            "images": "模型输入图像"
         }
     },
     "DrawNLFPoses": {
@@ -1350,571 +2311,656 @@
             "poses": "姿态"
         },
         "widgets": {
-            "pose_size": "姿态大小",
-            "pose_color": "姿态颜色"
+            "width": "宽",
+            "height": "高"
         },
         "outputs": {
-            "pose_images": "姿态图像"
+            "image": "图像"
+        },
+        "tooltips": {
+            "width": "该参数用于设置“width”",
+            "poses": "模型输入姿态",
+            "height": "该参数用于设置“height”"
         }
     },
     "Wav2VecModelLoader": {
-        "title": "Wav2Vec 模型加载器",
-        "widgets": {
+        "title": "Wav2vec2模型加载器",
+        "inputs": {
             "model": "模型",
             "base_precision": "基础精度",
             "load_device": "加载设备"
         },
+        "widgets": {},
         "outputs": {
-            "wav2vec_model": "Wav2Vec模型"
+            "wav2vec_model": "wav2vec模型"
+        },
+        "tooltips": {
+            "model": "模型从'ComfyUI/models/wav2vec2'文件夹加载",
+            "load_device": "初始加载模型的设备，不建议使用较大模型，除非你有48GB+显存",
+            "base_precision": "该参数用于设置“基础精度”"
         }
     },
     "MultiTalkModelLoader": {
-        "title": "MultiTalk 模型加载器",
-        "widgets": {
-            "model": "模型",
-            "base_precision": "基础精度",
-            "load_device": "加载设备"
+        "title": "多/无限对话模型加载器",
+        "inputs": {
+            "model": "模型"
         },
+        "widgets": {},
         "outputs": {
-            "multitalk_model": "MultiTalk模型"
+            "model": "模型"
+        },
+        "tooltips": {
+            "model": "模型加载自'ComfyUI/models/diffusion_models'文件夹。"
         }
     },
     "MultiTalkWav2VecEmbeds": {
-        "title": "MultiTalk Wav2Vec 嵌入",
+        "title": "多/无限对话Wav2vec2嵌入",
         "inputs": {
-            "wav2vec_model": "Wav2Vec模型",
-            "multitalk_model": "MultiTalk模型",
-            "audio_1": "音频1",
-            "audio_2": "音频2",
-            "audio_3": "音频3",
-            "audio_4": "音频4",
-            "ref_target_masks": "参考目标蒙版"
+            "wav2vec_model": "wav2vec模型",
+            "audio_1": "音频_1",
+            "multi_audio_type": "多音频类型",
+            "audio_2": "音频_2",
+            "audio_3": "音频_3",
+            "audio_4": "音频_4",
+            "ref_target_masks": "参考目标遮罩"
         },
         "widgets": {
-            "normalize_loudness": "规范化音量",
-            "num_frames": "帧数",
-            "fps": "FPS",
-            "audio_scale": "音频缩放",
-            "audio_cfg_scale": "音频CFG缩放",
-            "multi_audio_type": "多音频类型"
+            "normalize_loudness": "归一化响度",
+            "num_frames": "总帧数",
+            "fps": "帧率",
+            "audio_scale": "音频条件强度",
+            "audio_cfg_scale": "音频引导系数"
         },
         "outputs": {
-            "multitalk_embeds": "MultiTalk嵌入",
-            "audio": "音频"
+            "multitalk_embeds": "多对话嵌入",
+            "audio": "音频",
+            "num_frames": "num_frames"
+        },
+        "tooltips": {
+            "audio_4": "该参数用于设置“音频_4”",
+            "normalize_loudness": "将音频响度归一化到-23 LUFS",
+            "audio_scale": "音频条件强度",
+            "fps": "该参数用于设置“帧率”",
+            "ref_target_masks": "像素空间中的每扬声器语义遮罩。为每个扬声器提供一个遮罩（可选背景）以指导口型分配",
+            "num_frames": "生成总帧数",
+            "audio_cfg_scale": "当不为1.0时，进行额外无音频条件的模型传递：推理速度更慢但允许更多动作",
+            "audio_2": "该参数用于设置“音频_2”",
+            "wav2vec_model": "该参数用于设置“wav2vec模型”",
+            "audio_1": "该参数用于设置“音频_1”",
+            "multi_audio_type": "'para'并行叠加扬声器，'add'顺序连接",
+            "audio_3": "该参数用于设置“音频_3”"
         }
     },
     "MultiTalkSilentEmbeds": {
-        "title": "MultiTalk 静音嵌入",
-        "inputs": {
-            "multitalk_model": "MultiTalk模型"
-        },
-        "widgets": {
-            "num_frames": "帧数",
-            "fps": "FPS"
-        },
-        "outputs": {
-            "silent_embeds": "静音嵌入"
-        }
-    },
-    "WanVideoImageToVideoMultiTalk": {
-        "title": "WanVideo 图像转视频 MultiTalk",
-        "inputs": {
-            "vae": "VAE",
-            "start_image": "起始图像",
-            "clip_embeds": "剪辑嵌入"
-        },
-        "widgets": {
-            "width": "宽度",
-            "height": "高度",
-            "frame_window_size": "帧窗口大小",
-            "motion_frame": "运动帧长度",
-            "force_offload": "强制卸载",
-            "colormatch": "颜色匹配",
-            "tiled_vae": "分块VAE"
-        },
-        "outputs": {
-            "image_embeds": "图像嵌入"
-        }
-    },
-    "FantasyPortraitModelLoader": {
-        "title": "FantasyPortrait 模型加载器",
-        "widgets": {
-            "model": "模型",
-            "base_precision": "基础精度",
-            "load_device": "加载设备"
-        },
-        "outputs": {
-            "fantasyportrait_model": "FantasyPortrait模型"
-        }
-    },
-    "FantasyPortraitFaceDetector": {
-        "title": "FantasyPortrait 人脸检测器",
-        "inputs": {
-            "images": "图像"
-        },
-        "widgets": {
-            "detection_threshold": "检测阈值",
-            "landmark_size": "关键点大小"
-        },
-        "outputs": {
-            "landmarks": "关键点"
-        }
-    },
-    "WanVideoAddFantasyPortrait": {
-        "title": "WanVideo 添加FantasyPortrait",
-        "inputs": {
-            "embeds": "嵌入",
-            "fantasyportrait_model": "FantasyPortrait模型",
-            "landmarks": "关键点"
-        },
-        "widgets": {
-            "strength": "强度"
-        },
-        "outputs": {
-            "updated": "更新嵌入"
-        }
-    },
-    "LandmarksToImage": {
-        "title": "关键点转图像",
-        "inputs": {
-            "landmarks": "关键点"
-        },
-        "widgets": {
-            "image_size": "图像大小",
-            "landmark_color": "关键点颜色"
-        },
-        "outputs": {
-            "landmark_images": "关键点图像"
-        }
-    },
-    "WanVideoUniAnimateDWPoseDetector": {
-        "title": "WanVideo UniAnimate DWPose检测器",
-        "inputs": {
-            "pose_images": "姿态图像",
-            "reference_pose_image": "参考姿态图像"
-        },
-        "widgets": {
-            "score_threshold": "分数阈值",
-            "stick_width": "线段宽度",
-            "draw_body": "绘制身体",
-            "body_keypoint_size": "身体关键点大小",
-            "draw_feet": "绘制脚部",
-            "draw_hands": "绘制手部",
-            "hand_keypoint_size": "手部关键点大小",
-            "colorspace": "色彩空间",
-            "handle_not_detected": "处理未检测情况"
-        },
-        "outputs": {
-            "poses": "姿态",
-            "reference_pose": "参考姿态"
-        }
-    },
-    "WanVideoUniAnimatePoseInput": {
-        "title": "WanVideo UniAnimate 姿态输入",
-        "inputs": {
-            "pose_images": "姿态图像",
-            "reference_pose_image": "参考姿态图像"
-        },
-        "widgets": {
-            "strength": "强度",
-            "start_percent": "起始百分比",
-            "end_percent": "结束百分比"
-        },
-        "outputs": {
-            "unianimate_poses": "UniAnimate姿态"
-        }
-    },
-    "WanVideoUni3C_ControlnetLoader": {
-        "title": "WanVideo Uni3C 控制网络加载器",
-        "inputs": {
-            "compile_args": "编译参数"
-        },
-        "widgets": {
-            "model": "模型",
-            "base_precision": "基础精度",
-            "quantization": "量化",
-            "load_device": "加载设备",
-            "attention_mode": "注意力模式"
-        },
-        "outputs": {
-            "controlnet": "控制网络"
-        }
-    },
-    "WanVideoUni3C_embeds": {
-        "title": "WanVideo Uni3C 嵌入",
-        "inputs": {
-            "controlnet": "控制网络",
-            "render_latent": "渲染潜空间",
-            "render_mask": "渲染蒙版"
-        },
-        "widgets": {
-            "strength": "强度",
-            "start_percent": "起始百分比",
-            "end_percent": "结束百分比"
-        },
-        "outputs": {
-            "uni3c_embeds": "Uni3C嵌入"
-        }
-    },
-    "OviMMAudioVAELoader": {
-        "title": "Ovi 多模态音频VAE加载器",
-        "widgets": {
-            "model": "模型",
-            "base_precision": "基础精度",
-            "load_device": "加载设备"
-        },
-        "outputs": {
-            "ovi_audio_vae": "Ovi音频VAE"
-        }
-    },
-    "WanVideoDecodeOviAudio": {
-        "title": "WanVideo 解码Ovi音频",
-        "inputs": {
-            "ovi_audio_vae": "Ovi音频VAE",
-            "audio_latents": "音频潜空间"
-        },
-        "widgets": {
-            "force_offload": "强制卸载"
-        },
-        "outputs": {
-            "audio": "音频"
-        }
-    },
-    "WanVideoEncodeOviAudio": {
-        "title": "WanVideo 编码Ovi音频",
-        "inputs": {
-            "ovi_audio_vae": "Ovi音频VAE",
-            "audio": "音频"
-        },
-        "widgets": {
-            "force_offload": "强制卸载"
-        },
-        "outputs": {
-            "audio_latents": "音频潜空间"
-        }
-    },
-    "WanVideoAddOviAudioToLatents": {
-        "title": "WanVideo 添加Ovi音频到潜空间",
-        "inputs": {
-            "latents": "潜空间",
-            "audio_latents": "音频潜空间"
-        },
-        "widgets": {
-            "strength": "强度"
-        },
-        "outputs": {
-            "updated_latents": "更新潜空间"
-        }
-    },
-    "WanVideoEmptyMMAudioLatents": {
-        "title": "WanVideo 空多模态音频潜空间",
+        "title": "多语音静音嵌入",
+        "inputs": {},
         "widgets": {
             "num_frames": "帧数"
         },
         "outputs": {
-            "audio_latents": "音频潜空间"
+            "multitalk_embeds": "多语音嵌入"
+        },
+        "tooltips": {
+            "num_frames": "生成总帧数。"
+        }
+    },
+    "WanVideoImageToVideoMultiTalk": {
+        "title": "WanVideo 长视频 I2V 多/无限语音",
+        "inputs": {
+            "vae": "vae",
+            "colormatch": "颜色匹配",
+            "start_image": "起始图像",
+            "clip_embeds": "CLIP嵌入",
+            "mode": "模式"
+        },
+        "widgets": {
+            "width": "宽",
+            "height": "高",
+            "frame_window_size": "帧窗口大小",
+            "motion_frame": "运动帧",
+            "force_offload": "强制卸载",
+            "tiled_vae": "分块VAE",
+            "output_path": "输出路径"
+        },
+        "outputs": {
+            "image_embeds": "图像嵌入",
+            "output_path": "输出路径"
+        },
+        "tooltips": {
+            "force_offload": "是否在循环内强制卸载模型进行VAE操作，如遇内存问题请启用。",
+            "width": "生成宽度",
+            "colormatch": "窗口间使用的颜色匹配方法",
+            "clip_embeds": "CLIP视觉编码图像",
+            "frame_window_size": "一次处理的帧数，应为模型擅长处理的值。",
+            "start_image": "要编码的图像",
+            "tiled_vae": "使用分块VAE编码以减少内存使用",
+            "output_path": "如设置，将每个窗口生成的帧保存到此文件夹，同时禁用返回最终视频张量以节省内存",
+            "motion_frame": "长视频生成中使用的驱动帧长度，基本上是重叠长度。",
+            "mode": "采样策略，需与所选模型匹配",
+            "height": "生成高度",
+            "vae": "将 VAE 模型移动到 `ComfyUI/models/vae` 目录下"
+        }
+    },
+    "WanVideoAddOneToAllReferenceEmbeds": {
+        "title": "WanVideo 添加所有参考嵌入",
+        "inputs": {
+            "embeds": "嵌入",
+            "vae": "vae",
+            "ref_image": "参考图像",
+            "ref_mask": "参考遮罩"
+        },
+        "widgets": {
+            "strength": "强度",
+            "start_percent": "起始百分比",
+            "end_percent": "结束百分比"
+        },
+        "outputs": {
+            "image_embeds": "图像嵌入"
+        },
+        "tooltips": {
+            "strength": "参考嵌入的强度",
+            "ref_mask": "该参数用于设置“参考遮罩”",
+            "embeds": "该参数用于设置“嵌入”",
+            "end_percent": "嵌入应用的结束百分比",
+            "ref_image": "该参数用于设置“参考图像”",
+            "start_percent": "嵌入应用的起始百分比",
+            "vae": "VAE模型"
+        }
+    },
+    "WanVideoAddOneToAllPoseEmbeds": {
+        "title": "WanVideo 添加所有姿态嵌入",
+        "inputs": {
+            "embeds": "嵌入",
+            "pose_images": "姿态图像",
+            "pose_prefix_image": "姿态前缀图像"
+        },
+        "widgets": {
+            "strength": "强度",
+            "start_percent": "起始百分比",
+            "end_percent": "结束百分比"
+        },
+        "outputs": {
+            "image_embeds": "图像嵌入"
+        },
+        "tooltips": {
+            "strength": "姿态控制强度",
+            "embeds": "该参数用于设置“嵌入”",
+            "pose_images": "整个视频的姿态图像",
+            "end_percent": "姿态控制应用的结束百分比",
+            "start_percent": "姿态控制应用的起始百分比",
+            "pose_prefix_image": "该参数用于设置“姿态前缀图像”"
+        }
+    },
+    "WanVideoAddOneToAllExtendEmbeds": {
+        "title": "WanVideo 添加所有扩展嵌入",
+        "inputs": {
+            "embeds": "嵌入",
+            "prev_latents": "先前潜空间",
+            "if_not_enough_frames": "如果帧不足",
+            "pose_images": "姿态图像"
+        },
+        "widgets": {
+            "window_size": "窗口大小",
+            "overlap": "重叠",
+            "frames_processed": "已处理的帧数"
+        },
+        "outputs": {
+            "image_embeds": "图像嵌入",
+            "pose_slice": "姿态切片"
+        },
+        "tooltips": {
+            "overlap": "先前帧和新帧之间的重叠帧数",
+            "embeds": "该参数用于设置“嵌入”",
+            "pose_images": "整个视频的姿态图像",
+            "prev_latents": "用于继续生成的先前潜空间",
+            "frames_processed": "视频中已处理的帧数",
+            "window_size": "要生成的新帧数",
+            "if_not_enough_frames": "如果姿态图像中窗口的帧不足时该做什么"
+        }
+    },
+    "OviMMAudioVAELoader": {
+        "title": "Ovi MMAudio VAE加载器",
+        "inputs": {
+            "vae": "vae",
+            "vocoder": "vocoder",
+            "precision": "精度"
+        },
+        "widgets": {},
+        "outputs": {
+            "mmaudio_vae": "mmaudio_vae"
+        },
+        "tooltips": {
+            "precision": "该参数用于设置“精度”",
+            "vae": "MMAudio VAE 16k 模型（v1-16.pth），位于 models/vae 或 models/mmaudio 目录",
+            "vocoder": "BigVGAN vocoder (best_netG.pt) from models/vae or models/mmaudio"
+        }
+    },
+    "WanVideoDecodeOviAudio": {
+        "title": "WanVideo 解码 Ovi 音频",
+        "inputs": {
+            "mmaudio_vae": "mmaudio_vae",
+            "samples": "样本"
+        },
+        "widgets": {},
+        "outputs": {
+            "audio": "音频"
+        },
+        "tooltips": {
+            "mmaudio_vae": "该参数用于设置“mmaudio_vae”",
+            "samples": "该参数用于设置“样本”"
+        }
+    },
+    "WanVideoEncodeOviAudio": {
+        "title": "WanVideo 编码 Ovi 音频",
+        "inputs": {
+            "mmaudio_vae": "mmaudio_vae",
+            "audio": "音频"
+        },
+        "widgets": {},
+        "outputs": {
+            "samples": "样本"
+        },
+        "tooltips": {
+            "mmaudio_vae": "该参数用于设置“mmaudio_vae”",
+            "audio": "该参数用于设置“音频”"
+        }
+    },
+    "WanVideoAddOviAudioToLatents": {
+        "title": "WanVideo 将 MMAudio 添加到潜空间",
+        "inputs": {
+            "original_samples": "原始样本",
+            "audio_samples": "音频样本"
+        },
+        "widgets": {},
+        "outputs": {
+            "samples": "样本"
+        },
+        "tooltips": {
+            "original_samples": "该参数用于设置“原始样本”",
+            "audio_samples": "该参数用于设置“音频样本”"
+        }
+    },
+    "WanVideoEmptyMMAudioLatents": {
+        "title": "WanVideo 清空 MMAudio 潜空间",
+        "inputs": {},
+        "widgets": {
+            "length": "长度"
+        },
+        "outputs": {
+            "samples": "样本"
+        },
+        "tooltips": {
+            "length": "音频潜空间序列的长度"
         }
     },
     "WanVideoOviCFG": {
-        "title": "WanVideo Ovi CFG",
+        "title": "WanVideo Ovi 引导系数",
         "inputs": {
-            "prompt_embeds_dict": "提示嵌入字典"
+            "original_text_embeds": "原始文本嵌入",
+            "ovi_negative_text_embeds": "Ovi 负面文本嵌入"
         },
         "widgets": {
-            "cfg_scale": "CFG缩放"
+            "ovi_audio_cfg": "Ovi 音频引导系数"
         },
         "outputs": {
-            "prompt_embeds_dict": "提示嵌入字典"
+            "text_embeds": "文本嵌入"
+        },
+        "tooltips": {
+            "ovi_audio_cfg": "该参数用于设置“Ovi 音频引导系数”",
+            "ovi_negative_text_embeds": "该参数用于设置“Ovi 负面文本嵌入”",
+            "original_text_embeds": "该参数用于设置“原始文本嵌入”"
+        }
+    },
+    "QwenLoader": {
+        "title": "Qwen 加载器",
+        "inputs": {
+            "model": "模型",
+            "load_device": "加载设备",
+            "precision": "精度"
+        },
+        "widgets": {},
+        "outputs": {
+            "output_0": "output_0"
+        },
+        "tooltips": {
+            "model": "WanVideo及关联模型ComfyUI封装节点说明。",
+            "precision": "该参数用于设置“精度”",
+            "load_device": "该参数用于设置“加载设备”"
+        }
+    },
+    "WanVideoPromptExtender": {
+        "title": "万视频提示扩展器",
+        "inputs": {
+            "qwen": "qwen",
+            "device": "设备",
+            "system_prompt": "系统提示"
+        },
+        "widgets": {
+            "prompt": "提示",
+            "max_new_tokens": "最大新令牌数",
+            "force_offload": "强制卸载",
+            "custom_system_prompt": "自定义系统提示",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "output_0": "输出_0"
+        },
+        "tooltips": {
+            "force_offload": "生成后强制将模型卸载到卸载设备。适用于大型模型。",
+            "prompt": "该参数用于设置“提示”",
+            "max_new_tokens": "生成的新令牌数上限。",
+            "custom_system_prompt": "用于替代预定义提示的自定义系统提示。",
+            "device": "运行模型的设备。默认使用主设备。",
+            "seed": "该参数用于设置“随机种子”",
+            "system_prompt": "用于模型的系统提示。",
+            "qwen": "该参数用于设置“qwen”"
+        }
+    },
+    "WanVideoPromptExtenderSelect": {
+        "title": "万视频提示扩展器选择",
+        "inputs": {
+            "model": "模型",
+            "system_prompt": "系统提示"
+        },
+        "widgets": {
+            "max_new_tokens": "最大新令牌数",
+            "custom_system_prompt": "自定义系统提示",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "extender_args": "扩展器参数"
+        },
+        "tooltips": {
+            "model": "WanVideo及关联模型ComfyUI封装节点。",
+            "max_new_tokens": "生成的新令牌数上限。",
+            "custom_system_prompt": "用于替代预定义提示的自定义系统提示。",
+            "seed": "该参数用于设置“随机种子”",
+            "system_prompt": "用于模型的系统提示。"
         }
     },
     "WanVideoReCamMasterDefaultCamera": {
-        "title": "WanVideo ReCamMaster 默认相机",
-        "description": "https://github.com/KwaiVCI/ReCamMaster",
+        "title": "万视频重相机主默认相机",
         "inputs": {
+            "camera_type": "相机类型",
             "latents": "潜空间"
         },
+        "widgets": {},
         "outputs": {
             "camera_poses": "相机姿态"
         },
-        "widgets": {
-            "camera_type": "相机类型",
-            "pan_right": "右平移"
+        "tooltips": {
+            "latents": "源视频",
+            "camera_type": "使用的相机类型"
         }
     },
     "WanVideoReCamMasterGenerateOrbitCamera": {
-        "title": "WanVideo ReCamMaster 生成轨道相机",
-        "description": "https://github.com/KwaiVCI/ReCamMaster",
+        "title": "万视频重相机生成轨道相机",
+        "inputs": {},
+        "widgets": {
+            "num_frames": "帧数",
+            "degrees": "度数"
+        },
         "outputs": {
             "camera_poses": "相机姿态"
         },
-        "widgets": {
-            "num_frames": "帧数",
-            "degrees": "角度"
+        "tooltips": {
+            "degrees": "轨道度数",
+            "num_frames": "生成的帧数"
         }
     },
     "WanVideoReCamMasterCameraEmbed": {
-        "title": "WanVideo ReCamMaster 相机嵌入",
-        "description": "https://github.com/JD-P/LaLa-NeRF-Tab/ReCamMaster",
+        "title": "万视频重相机嵌入",
         "inputs": {
             "camera_poses": "相机姿态",
             "latents": "潜空间"
         },
+        "widgets": {},
         "outputs": {
             "camera_embeds": "相机嵌入",
             "camera_poses": "相机姿态"
         },
-        "widgets": {
-            "num_frames": "帧数",
-            "phantom_cfg_scale": "幻影CFG缩放",
-            "phantom_start_percent": "幻影起始百分比",
-            "phantom_end_percent": "幻影结束百分比"
+        "tooltips": {
+            "camera_poses": "该参数用于设置“相机姿态”",
+            "latents": "源视频"
         }
     },
     "ReCamMasterPoseVisualizer": {
-        "title": "ReCamMaster 姿态可视化器",
-        "description": "可视化来自AnimateDiff-Evolved CameraCtrl Pose或包含RealEstate相机内参和坐标的.txt文件的相机姿态，在3D图表中显示",
+        "title": "重相机姿态可视化器",
         "inputs": {
             "camera_poses": "相机姿态"
-        },
-        "outputs": {
-            "IMAGE": "图像"
         },
         "widgets": {
             "base_xval": "基础X值",
             "zval": "Z值",
             "scale": "缩放",
             "arrow_length": "箭头长度"
+        },
+        "outputs": {
+            "output_0": "输出_0"
+        },
+        "tooltips": {
+            "scale": "FP8缩放模型（个人推荐）：",
+            "camera_poses": "该参数用于设置“相机姿态”",
+            "zval": "该参数用于设置“Z值”",
+            "base_xval": "该参数用于设置“基础X值”",
+            "arrow_length": "该参数用于设置“箭头长度”"
         }
     },
     "WanVideoAddS2VEmbeds": {
-        "title": "WanVideo 添加S2V嵌入",
+        "title": "WanVideo 添加 S2V 嵌入",
         "inputs": {
-            "embeds": "嵌入",
-            "s2v_embeds": "S2V嵌入"
+            "embeds": "嵌入组",
+            "audio_encoder_output": "音频编码器输出",
+            "ref_latent": "参考潜空间",
+            "pose_latent": "姿态潜空间",
+            "vae": "vae"
         },
         "widgets": {
-            "strength": "强度"
+            "frame_window_size": "窗口帧数",
+            "audio_scale": "音频嵌入缩放",
+            "pose_start_percent": "姿态嵌入开始百分比",
+            "pose_end_percent": "姿态嵌入结束百分比",
+            "enable_framepack": "启用 Framepack 采样循环，与上下文窗口不兼容"
         },
         "outputs": {
-            "updated": "更新嵌入"
+            "image_embeds": "图像嵌入",
+            "audio_frame_count": "音频帧数"
+        },
+        "tooltips": {
+            "embeds": "该参数用于设置“嵌入组”",
+            "pose_latent": "该参数用于设置“姿态潜空间”",
+            "frame_window_size": "单个窗口中的帧数",
+            "ref_latent": "该参数用于设置“参考潜空间”",
+            "audio_scale": "音频嵌入缩放因子",
+            "pose_start_percent": "姿态嵌入开始百分比",
+            "pose_end_percent": "姿态嵌入结束百分比",
+            "vae": "将Vae模型文件移动到`ComfyUI/models/vae`目录下",
+            "audio_encoder_output": "该参数用于设置“音频编码器输出”",
+            "enable_framepack": "启用 Framepack 采样循环，与上下文窗口不兼容"
         }
     },
     "WanVideoDiffusionForcingSampler": {
-        "title": "WanVideo 扩散强制采样器",
+        "title": "WanVideo 强制采样器",
         "inputs": {
             "model": "模型",
             "text_embeds": "文本嵌入",
             "image_embeds": "图像嵌入",
-            "samples": "采样输入",
-            "prefix_samples": "前缀采样",
-            "teacache_args": "TEA缓存参数",
-            "slg_args": "SLG参数",
-            "experimental_args": "实验参数",
-            "unianimate_poses": "Unianimate姿态"
-        },
-        "widgets": {
-            "addnoise_condition": "添加噪声条件",
-            "fps": "FPS",
-            "steps": "步数",
-            "cfg": "CFG",
-            "shift": "偏移",
-            "seed": "种子",
-            "control_after_generate": "生成后控制",
-            "force_offload": "强制卸载",
             "scheduler": "调度器",
-            "denoise_strength": "去噪强度",
-            "rope_function": "ROPE函数"
-        },
-        "outputs": {
-            "samples": "采样输出"
-        }
-    },
-    "QwenLoader": {
-        "title": "Qwen 加载器",
-        "widgets": {
-            "model": "模型",
-            "base_precision": "基础精度",
-            "load_device": "加载设备"
-        },
-        "outputs": {
-            "qwen_model": "Qwen模型"
-        }
-    },
-    "WanVideoPromptExtender": {
-        "title": "WanVideo 提示扩展器",
-        "inputs": {
-            "qwen_model": "Qwen模型",
-            "prompt": "提示词"
+            "samples": "样本",
+            "prefix_samples": "前缀样本",
+            "cache_args": "缓存参数",
+            "slg_args": "SLG 参数",
+            "rope_function": "RoPE 函数",
+            "experimental_args": "实验参数",
+            "unianimate_poses": "UniAnimate 姿态"
         },
         "widgets": {
-            "max_length": "最大长度",
-            "temperature": "温度"
-        },
-        "outputs": {
-            "extended_prompt": "扩展提示词"
-        }
-    },
-    "WanVideoPromptExtenderSelect": {
-        "title": "WanVideo 提示扩展器选择",
-        "inputs": {
-            "qwen_model": "Qwen模型",
-            "prompt": "提示词"
-        },
-        "widgets": {
-            "extension_type": "扩展类型",
-            "max_length": "最大长度"
-        },
-        "outputs": {
-            "extended_prompt": "扩展提示词"
-        }
-    },
-    "WanVideoImageClipEncode": {
-        "title": "WanVideo 图像剪辑编码(已弃用)",
-        "inputs": {
-            "clip_vision": "视觉编码器",
-            "image": "图像",
-            "vae": "VAE"
-        },
-        "widgets": {
-            "generation_width": "生成宽度",
-            "generation_height": "生成高度",
-            "num_frames": "帧数",
-            "force_offload": "强制卸载",
-            "noise_aug_strength": "噪声增强强度",
-            "latent_strength": "潜空间强度",
-            "clip_embed_strength": "剪辑嵌入强度",
-            "adjust_resolution": "调整分辨率"
-        },
-        "outputs": {
-            "image_embeds": "图像嵌入"
-        }
-    },
-    "DummyComfyWanModelObject": {
-        "title": "虚拟Comfy Wan模型对象",
-        "widgets": {
-            "model_name": "模型名称"
-        },
-        "outputs": {
-            "model": "模型"
-        }
-    },
-    "WanVideoLatentReScale": {
-        "title": "WanVideo 潜空间重缩放",
-        "inputs": {
-            "latents": "潜空间"
-        },
-        "widgets": {
-            "scale_factor": "缩放因子"
-        },
-        "outputs": {
-            "rescaled_latents": "重缩放潜空间"
-        }
-    },
-    "CreateScheduleFloatList": {
-        "title": "创建调度浮点列表",
-        "widgets": {
+            "addnoise_condition": "增强长视频生成的一致性",
+            "fps": "帧率",
             "steps": "步数",
-            "start_value": "起始值",
-            "end_value": "结束值",
-            "interpolation": "插值"
+            "cfg": "引导系数",
+            "shift": "偏移",
+            "seed": "随机种子",
+            "force_offload": "采样后将模型移至卸载设备",
+            "denoise_strength": "降噪强度"
         },
         "outputs": {
-            "float_list": "浮点列表"
+            "samples": "样本"
+        },
+        "tooltips": {
+            "cfg": "该参数用于设置“引导系数”",
+            "steps": "该参数用于设置“步数”",
+            "slg_args": "该参数用于设置“SLG 参数”",
+            "denoise_strength": "该参数用于设置“降噪强度”",
+            "addnoise_condition": "增强长视频生成的一致性",
+            "shift": "该参数用于设置“偏移”",
+            "unianimate_poses": "该参数用于设置“UniAnimate 姿态”",
+            "experimental_args": "该参数用于设置“实验参数”",
+            "model": "为[WanVideo](https://github.com/Wan-Video/Wan2.1)及相关模型提供ComfyUI包装节点。",
+            "force_offload": "采样后将模型移至卸载设备",
+            "prefix_samples": "前缀潜空间",
+            "seed": "该参数用于设置“随机种子”",
+            "scheduler": "该参数用于设置“调度器”",
+            "fps": "该参数用于设置“帧率”",
+            "text_embeds": "该参数用于设置“文本嵌入”",
+            "rope_function": "Comfy的RoPE函数实现不使用复数，因此可编译，在torch.compile时应显著更快。",
+            "samples": "初始化用于视频转换过程的样本潜空间",
+            "image_embeds": "该参数用于设置“图像嵌入”",
+            "cache_args": "该参数用于设置“缓存参数”"
         }
     },
-    "WanVideoSigmaToStep": {
-        "title": "WanVideo Sigma转步骤",
+    "WanVideoAddSteadyDancerEmbeds": {
+        "title": "WanVideo 添加 SteadyDancer 嵌入",
         "inputs": {
-            "sigmas": "Sigmas"
+            "embeds": "嵌入组",
+            "pose_latents_positive": "正面姿态潜空间",
+            "pose_latents_negative": "负面姿态潜空间",
+            "clip_vision_embeds": "CLIP 视觉嵌入"
         },
         "widgets": {
-            "step": "步骤"
-        },
-        "outputs": {
-            "sigma": "Sigma"
-        }
-    },
-    "NormalizeAudioLoudness": {
-        "title": "规范化音频音量",
-        "inputs": {
-            "audio": "音频"
-        },
-        "widgets": {
-            "target_lufs": "目标LUFS"
-        },
-        "outputs": {
-            "normalized_audio": "规范化音频"
-        }
-    },
-    "WanVideoPassImagesFromSamples": {
-        "title": "WanVideo 从采样传递图像",
-        "inputs": {
-            "samples": "采样"
-        },
-        "outputs": {
-            "images": "图像"
-        }
-    },
-    "FaceMaskFromPoseKeypoints": {
-        "title": "从姿态关键点生成人脸蒙版",
-        "inputs": {
-            "pose_images": "姿态图像"
-        },
-        "widgets": {
-            "mask_size": "蒙版大小",
-            "blur_radius": "模糊半径"
-        },
-        "outputs": {
-            "face_masks": "人脸蒙版"
-        }
-    },
-    "WanVideoAnimateEmbeds": {
-        "title": "WanVideo 动画嵌入",
-        "inputs": {
-            "vae": "VAE",
-            "clip_embeds": "剪辑嵌入",
-            "ref_images": "参考图像",
-            "pose_images": "姿态图像",
-            "face_images": "人脸图像",
-            "bg_images": "背景图像",
-            "mask": "蒙版",
-            "width": "宽度",
-            "height": "高度",
-            "num_frames": "帧数"
-        },
-        "widgets": {
-            "width": "宽度",
-            "height": "高度",
-            "num_frames": "帧数",
-            "force_offload": "强制卸载",
-            "frame_window_size": "帧窗口大小",
-            "colormatch": "颜色匹配",
-            "pose_strength": "姿态强度",
-            "face_strength": "人脸强度",
-            "tiled_vae": "分块VAE"
+            "pose_strength_spatial": "姿态嵌入空间强度",
+            "pose_strength_temporal": "姿态嵌入时间强度",
+            "start_percent": "嵌入应用开始百分比",
+            "end_percent": "嵌入应用结束百分比"
         },
         "outputs": {
             "image_embeds": "图像嵌入"
+        },
+        "tooltips": {
+            "embeds": "该参数用于设置“嵌入组”",
+            "end_percent": "嵌入应用结束百分比",
+            "pose_strength_spatial": "姿态嵌入空间强度",
+            "pose_latents_negative": "该参数用于设置“负面姿态潜空间”",
+            "start_percent": "嵌入应用开始百分比",
+            "pose_latents_positive": "该参数用于设置“正面姿态潜空间”",
+            "pose_strength_temporal": "姿态嵌入时间强度",
+            "clip_vision_embeds": "该参数用于设置“CLIP 视觉嵌入”"
         }
     },
-    "WanVideoTextEncodeCached": {
-        "title": "WanVideo 文本编码缓存",
+    "WanVideoUni3C_ControlnetLoader": {
+        "title": "WanVideo Uni3C 控制网加载器",
         "inputs": {
-            "extender_args": "扩展参数"
+            "model": "MODEL",
+            "base_precision": "基础精度",
+            "quantization": "量化",
+            "load_device": "加载设备",
+            "attention_mode": "注意力模式",
+            "compile_args": "编译参数"
+        },
+        "widgets": {},
+        "outputs": {
+            "controlnet": "控制网"
+        },
+        "tooltips": {
+            "model": "模型从'ComfyUI/models/controlnet'文件夹加载（MODEL参数）",
+            "compile_args": "该参数用于设置“编译参数”",
+            "attention_mode": "该参数用于设置“注意力模式”",
+            "load_device": "初始加载模型的设备，不建议用于较大模型，除非你有 48GB+ 显存",
+            "base_precision": "该参数用于设置“基础精度”",
+            "quantization": "可选量化方法"
+        }
+    },
+    "WanVideoUni3C_embeds": {
+        "title": "WanVideo Uni3C 嵌入",
+        "inputs": {
+            "controlnet": "控制网",
+            "render_latent": "渲染潜空间",
+            "render_mask": "渲染遮罩"
         },
         "widgets": {
-            "model_name": "模型名称",
-            "precision": "精度",
-            "positive_prompt": "正向提示",
-            "negative_prompt": "负向提示",
-            "quantization": "量化",
-            "use_disk_cache": "使用磁盘缓存",
-            "device": "设备"
+            "strength": "强度",
+            "start_percent": "应用控制网的步骤开始百分比",
+            "end_percent": "应用控制网的步骤结束百分比"
         },
         "outputs": {
-            "text_embeds": "文本嵌入",
-            "negative_text_embeds": "负向文本嵌入",
-            "positive_prompt": "正向提示"
+            "uni3c_embeds": "Uni3C 嵌入"
+        },
+        "tooltips": {
+            "strength": "该参数用于设置“强度”",
+            "controlnet": "该参数用于设置“控制网”",
+            "render_latent": "该参数用于设置“渲染潜空间”",
+            "end_percent": "应用控制网的步骤结束百分比",
+            "start_percent": "应用控制网的步骤开始百分比",
+            "render_mask": "未实现！"
+        }
+    },
+    "WanVideoUniAnimateDWPoseDetector": {
+        "title": "WanVideo UniAnimate DWPose 检测器",
+        "inputs": {
+            "pose_images": "姿态图像",
+            "colorspace": "色彩空间",
+            "handle_not_detected": "处理未检测到的姿态",
+            "reference_pose_image": "参考姿态图像"
+        },
+        "widgets": {
+            "score_threshold": "姿态检测分数阈值",
+            "stick_width": "关键点线宽",
+            "draw_body": "绘制身体关键点",
+            "body_keypoint_size": "身体关键点大小",
+            "draw_feet": "绘制脚部关键点",
+            "draw_hands": "绘制手部关键点",
+            "hand_keypoint_size": "手部关键点大小",
+            "draw_head": "绘制头部关键点"
+        },
+        "outputs": {
+            "poses": "姿态",
+            "reference_pose": "参考姿态"
+        },
+        "tooltips": {
+            "draw_body": "绘制身体关键点",
+            "pose_images": "姿态图像",
+            "score_threshold": "姿态检测分数阈值",
+            "handle_not_detected": "如何处理未检测到的姿态，空插入黑色并重复插入先前检测",
+            "stick_width": "关键点线宽",
+            "draw_head": "绘制头部关键点",
+            "draw_feet": "绘制脚部关键点",
+            "draw_hands": "绘制手部关键点",
+            "body_keypoint_size": "身体关键点大小",
+            "hand_keypoint_size": "手部关键点大小",
+            "colorspace": "输出图像的色彩空间",
+            "reference_pose_image": "参考姿态图像"
+        }
+    },
+    "WanVideoUniAnimatePoseInput": {
+        "title": "WanVideo UniAnimate姿态输入",
+        "inputs": {
+            "pose_images": "姿态图像",
+            "reference_pose_image": "参考姿态图像"
+        },
+        "widgets": {
+            "strength": "强度",
+            "start_percent": "开始百分比",
+            "end_percent": "结束百分比"
+        },
+        "outputs": {
+            "unianimate_poses": "UniAnimate姿态"
+        },
+        "tooltips": {
+            "strength": "姿态控制强度",
+            "pose_images": "姿态图像",
+            "end_percent": "姿态控制的结束百分比",
+            "start_percent": "姿态控制的开始百分比",
+            "reference_pose_image": "参考姿态图像"
         }
     }
 }

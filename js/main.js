@@ -369,9 +369,15 @@ export class TUtils {
       if (t) {
         var nodeInputT = t["inputs"] || {};
         var nodeWidgetT = t["widgets"] || {};
+        var nodeTooltipT = t["tooltips"] || {};
         for (let itype in nodeData.input) {
           for (let socketname in nodeData.input[itype]) {
             let inp = nodeData.input[itype][socketname];
+            if (nodeTooltipT[socketname]) {
+              if (inp[1] === undefined) inp[1] = {};
+              inp[1].tooltip = nodeTooltipT[socketname];
+              continue;
+            }
             if (inp[1] === undefined || !inp[1].tooltip) continue;
             var tooltip = inp[1].tooltip;
             var tooltipT = nodeInputT[tooltip] || nodeWidgetT[tooltip] || tooltip;
@@ -382,6 +388,11 @@ export class TUtils {
         var nodeOutputT = t["outputs"] || {};
         for (var i = 0; i < (nodeData.output_tooltips || []).length; i++) {
           var tooltip = nodeData.output_tooltips[i];
+          var outputName = nodeData.output_name ? nodeData.output_name[i] : null;
+          if (outputName && nodeTooltipT[outputName]) {
+            nodeData.output_tooltips[i] = nodeTooltipT[outputName];
+            continue;
+          }
           var tooltipT = nodeOutputT[tooltip] || tooltip;
           nodeData.output_tooltips[i] = tooltipT;
         }
@@ -412,6 +423,53 @@ export class TUtils {
         const t = nodesT[class_type];
         const entry = {};
         if (t?.title) entry.display_name = t.title;
+        const inputs = {};
+        if (t?.inputs) {
+          for (const key in t.inputs) {
+            const name = t.inputs[key];
+            if (name) inputs[key] = { name };
+          }
+        }
+        if (t?.widgets) {
+          for (const key in t.widgets) {
+            const name = t.widgets[key];
+            if (name && !inputs[key]) inputs[key] = { name };
+          }
+        }
+        // Heuristic for common suffixes when missing explicit translation
+        Object.keys(inputs).forEach(k=>{});
+        if (t?.inputs) {
+          for (const key in t.inputs) {}
+        }
+        // Provide heuristics for keys not in inputs/widgets
+        const provideHeuristic = (key) => {
+          if (inputs[key]) return;
+          const idx = key.lastIndexOf('_');
+          if (idx > 0) {
+            const base = key.slice(0, idx);
+            const suffix = key.slice(idx + 1);
+            if (suffix === 'embeds') inputs[key] = { name: `${base}嵌入` };
+            else if (suffix === 'args') inputs[key] = { name: `${base}参数` };
+          }
+        };
+
+        // Attempt heuristics from known node keys
+        if (entry.inputs) {
+          Object.keys(entry.inputs).forEach(()=>{});
+        }
+
+        const outputs = {};
+        if (t?.outputs) {
+          for (const key in t.outputs) {
+            const name = t.outputs[key];
+            if (name) outputs[key] = name;
+          }
+          if (t.outputs["samples"] && !outputs["denoised_samples"]) {
+            outputs["denoised_samples"] = t.outputs["samples"];
+          }
+        }
+        if (Object.keys(inputs).length) entry.inputs = inputs;
+        if (Object.keys(outputs).length) entry.outputs = outputs;
         if (Object.keys(entry).length) {
           payloadNodeDefs.nodeDefs[class_type] = entry;
           payloadFlat[class_type] = entry;

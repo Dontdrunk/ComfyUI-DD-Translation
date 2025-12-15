@@ -167,27 +167,36 @@ export function applySuffixHeuristic(key) {
 export function shouldSkipNode(node, extraClassList = [], extraClosestSelectors = '') {
     try {
         if (!node) return true;
-        const el = node.nodeType === Node.TEXT_NODE ? node.parentElement : node;
-        if (!el) return true;
-        if (extraClassList.some(cls => el.classList?.contains(cls))) return true;
-        const container = el.closest?.(extraClosestSelectors || '.workflow-list, .workflow, .workflows, .file-list, .file-browser, .p-tree, .p-treenode, .p-inputtext');
+        if (extraClassList.some(cls => node.classList?.contains(cls))) return true;
+        const container = node.closest?.(extraClosestSelectors || '.workflow-list, .workflow, .workflows, .file-list, .file-browser, .p-tree, .p-treenode, .p-inputtext, .lite-search, .lite-searchbox, .litegraph-searchbox');
         if (container) return true;
-        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.isContentEditable) return true;
-        if (el.tagName === 'CANVAS') return true;
-        let cur = el;
-        while (cur) {
-            const cls = typeof cur.className === 'string' ? cur.className : '';
-            const id = typeof cur.id === 'string' ? cur.id : '';
-            if (/(search|autocomplete|filter|overlay|listbox|virtualscroller)/i.test(cls)) return true;
-            if (/(search|autocomplete|filter)/i.test(id)) return true;
-            if (cur.getAttribute?.('role') === 'dialog') {
-                const hasSearchInput = !!cur.querySelector?.('input[placeholder*="搜索"], input[placeholder*="search"], .p-inputtext');
-                if (hasSearchInput) return true;
-            }
-            cur = cur.parentElement;
-        }
+        if (node.tagName === 'INPUT' || node.tagName === 'TEXTAREA' || node.isContentEditable) return true;
         return false;
     } catch {
         return false;
+    }
+}
+
+/**
+ * 创建观察者（可配置）
+ * @param {HTMLElement} observeTarget
+ * @param {Function} fn
+ * @param {boolean} subtree
+ * @param {Object} options
+ * @returns {MutationObserver|null}
+ */
+export function observeFactory(observeTarget, fn, subtree = false, options = {}) {
+    if (!observeTarget) return null;
+    try {
+        const observer = new MutationObserver(function (mutationsList, observer) {
+            fn(mutationsList, observer);
+        });
+        const defaultOpts = { childList: true, attributes: true, subtree, characterData: false };
+        const observeOptions = Object.assign(defaultOpts, options || {});
+        observer.observe(observeTarget, observeOptions);
+        return observer;
+    } catch (e) {
+        error("创建观察者出错:", e);
+        return null;
     }
 }
