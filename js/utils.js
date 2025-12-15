@@ -167,10 +167,25 @@ export function applySuffixHeuristic(key) {
 export function shouldSkipNode(node, extraClassList = [], extraClosestSelectors = '') {
     try {
         if (!node) return true;
-        if (extraClassList.some(cls => node.classList?.contains(cls))) return true;
-        const container = node.closest?.(extraClosestSelectors || '.workflow-list, .workflow, .workflows, .file-list, .file-browser, .p-tree, .p-treenode, .p-inputtext');
+        const el = node.nodeType === Node.TEXT_NODE ? node.parentElement : node;
+        if (!el) return true;
+        if (extraClassList.some(cls => el.classList?.contains(cls))) return true;
+        const container = el.closest?.(extraClosestSelectors || '.workflow-list, .workflow, .workflows, .file-list, .file-browser, .p-tree, .p-treenode, .p-inputtext');
         if (container) return true;
-        if (node.tagName === 'INPUT' || node.tagName === 'TEXTAREA' || node.isContentEditable) return true;
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.isContentEditable) return true;
+        if (el.tagName === 'CANVAS') return true;
+        let cur = el;
+        while (cur) {
+            const cls = typeof cur.className === 'string' ? cur.className : '';
+            const id = typeof cur.id === 'string' ? cur.id : '';
+            if (/(search|autocomplete|filter|overlay|listbox|virtualscroller)/i.test(cls)) return true;
+            if (/(search|autocomplete|filter)/i.test(id)) return true;
+            if (cur.getAttribute?.('role') === 'dialog') {
+                const hasSearchInput = !!cur.querySelector?.('input[placeholder*="搜索"], input[placeholder*="search"], .p-inputtext');
+                if (hasSearchInput) return true;
+            }
+            cur = cur.parentElement;
+        }
         return false;
     } catch {
         return false;

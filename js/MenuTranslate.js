@@ -41,7 +41,7 @@ class TExe {
     return shouldSkipNode(
       node,
       this.excludeClass,
-      '.workflow-list, .workflow, .workflows, .file-list, .file-browser, .p-tree, .p-treenode, .p-inputtext'
+      '.workflow-list, .workflow, .workflows, .file-list, .file-browser, .p-tree, .p-treenode, .p-inputtext, .litesearchbox, .comfy-search-box, .p-autocomplete-panel, .comfy-menu-search, .search-box'
     );
   }
   translateKjPopDesc(node) {
@@ -234,28 +234,6 @@ function applyVueMenuTranslation(T) {
             window.comfyAPI.i18n.addTranslations('zh-CN', T.Menu);
             return;
         }
-        
-        // Merge node input/widget terms (only snake_case) into menu dictionary for safe text replacement
-        try {
-          const extra = {};
-          const nodes = T.Nodes || {};
-          for (const cls in nodes) {
-            const nt = nodes[cls];
-            if (nt?.inputs) {
-              for (const k in nt.inputs) {
-                const v = nt.inputs[k];
-                if (typeof v === 'string' && !extra[k] && k.includes('_')) extra[k] = v;
-              }
-            }
-            if (nt?.widgets) {
-              for (const k in nt.widgets) {
-                const v = nt.widgets[k];
-                if (typeof v === 'string' && !extra[k] && k.includes('_')) extra[k] = v;
-              }
-            }
-          }
-          texe.T.Menu = Object.assign({}, texe.T.Menu || {}, extra);
-        } catch (e) {}
         // 2. Fallback: Targeted MutationObservers (avoid sidebar/workflow list)
         const targets = [
           document.querySelector('.litegraph'),
