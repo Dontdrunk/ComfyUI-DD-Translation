@@ -18,5 +18,53 @@
         "outputs": {
             "Generated Audio": "生成的音频"
         }
+    },
+    "VoxCPM_TrainConfig": {
+        "title": "VoxCPM 训练配置",
+        "widgets": {
+            "learning_rate": "学习率",
+            "lora_rank": "LoRA 秩",
+            "lora_alpha": "LoRA 缩放因子",
+            "lora_dropout": "LoRA 丢弃率",
+            "warmup_steps": "学习率预热步数",
+            "grad_accum_steps": "梯度累积步数",
+            "max_batch_tokens": "批次最大 Token 数",
+            "sample_rate": "采样率",
+            "weight_decay": "权重衰减系数",
+            "enable_lm_lora": "启用语言模型 LoRA",
+            "enable_dit_lora": "启用 DiT LoRA",
+            "enable_proj_lora": "启用投影层 LoRA"
+        },
+        "outputs": {
+            "Train Config": "训练配置"
+        }
+    },
+    "VoxCPM_DatasetMaker": {
+        "title": "VoxCPM 数据集生成器",
+        "widgets": {
+            "audio_directory": "音频目录",
+            "output_filename": "输出文件名"
+        },
+        "outputs": {
+            "Dataset Path": "数据集路径"
+        }
+    },
+    "VoxCPM_LoraTrainer": {
+        "title": "VoxCPM LoRA 训练器",
+        "inputs": {
+            "train_config": "训练配置"
+        },
+        "widgets": {
+            "base_model_name": "基础模型名称",
+            "train_config": "训练配置",
+            "dataset_path": "数据集路径",
+            "output_name": "输出名称",
+            "max_steps": "最大训练步数",
+            "save_every_steps": "保存间隔步数",
+            "num_workers": "数据加载线程数"
+        },
+        "outputs": {
+            "LoRA Output Path": "LoRA 输出路径"
+        }
     }
 }
