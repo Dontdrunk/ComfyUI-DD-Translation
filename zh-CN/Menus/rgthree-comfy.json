@@ -23,6 +23,8 @@
     "After": "之后",
     "Queue Selected Output Nodes (rgthree) &nbsp;": "执行选中节点",
     "Queue Group Output Nodes (rgthree)": "执行框内节点",
+    "Queue Selected Output Nodes (rgthree)": "对所选输出节点进行排队",
+    "Paste": "粘贴",
     "Connections Layout": "接口布局",
     "Collapse Connections": "取消连接",
     "Left -> Right": "左 -> 右",
