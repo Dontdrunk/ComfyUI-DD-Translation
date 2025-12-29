@@ -1,0 +1,180 @@
+{
+    "Noise Estimation": {
+        "title": "噪声估计",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "block_size": "分块大小",
+            "visualize_noise_map": "可视化噪声图"
+        },
+        "outputs": {
+            "noise_score": "噪声得分",
+            "noise_map": "噪声热图"
+        }
+    },
+    "RGB Histogram Renderer": {
+        "title": "RGB 直方图渲染",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {},
+        "outputs": {
+            "image": "直方图图像"
+        }
+    },
+    "Sharpness / Focus Score": {
+        "title": "清晰度/对焦评分",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "method": "评价方法",
+            "visualize_edges": "可视化边缘"
+        },
+        "outputs": {
+            "sharpness_score": "清晰度得分",
+            "edge_visualization": "边缘可视化",
+            "interpretation": "结果解读"
+        }
+    },
+    "Blur Detection": {
+        "title": "模糊检测",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "block_size": "分块大小",
+            "visualize_blur_map": "可视化模糊图"
+        },
+        "outputs": {
+            "blur_score": "模糊得分",
+            "blur_map": "模糊图",
+            "interpretation": "结果解读"
+        }
+    },
+    "Clipping Analysis": {
+        "title": "曝光/溢出分析",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "mode": "分析模式",
+            "threshold": "阈值",
+            "visualize_clipping_map": "可视化溢出图"
+        },
+        "outputs": {
+            "clipping_score": "溢出率得分",
+            "clipping_map": "溢出分布图",
+            "interpretation": "详细描述"
+        }
+    },
+    "Color Cast Detector": {
+        "title": "色偏检测",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "tolerance": "容差",
+            "visualize_color_bias": "可视化色偏",
+            "visualization_mode": "可视化模式"
+        },
+        "outputs": {
+            "cast_score": "色偏强度",
+            "color_bias_map": "色偏分布图",
+            "interpretation": "检测结果"
+        }
+    },
+    "Color Harmony Analyzer": {
+        "title": "色彩和谐度分析",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "num_clusters": "色彩聚类数量",
+            "visualize_harmony": "可视化色环"
+        },
+        "outputs": {
+            "harmony_score": "和谐度得分",
+            "harmony_type": "和谐类型",
+            "hue_wheel_visual": "色相环视觉效果"
+        }
+    },
+    "Color Temperature Estimator": {
+        "title": "色温估计",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {},
+        "outputs": {
+            "kelvin": "开尔文数值 (K)",
+            "temperature_label": "温度标签",
+            "color_swatch": "色块预览"
+        }
+    },
+    "Contrast Analysis": {
+        "title": "对比度分析",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "method": "方法",
+            "comparison_method": "对比算法",
+            "block_size": "分块大小",
+            "visualize_contrast_map": "可视化对比度图"
+        },
+        "outputs": {
+            "contrast_score": "对比度得分",
+            "contrast_map": "对比度热图"
+        }
+    },
+    "Defocus Analysis": {
+        "title": "离焦分析",
+        "inputs": {
+            "image": "图像",
+            "edge_detector": "边缘检测器"
+        },
+        "widgets": {
+            "method": "分析方法",
+            "normalize": "标准化输出"
+        },
+        "outputs": {
+            "defocus_score": "离焦得分",
+            "interpretation": "结果解读",
+            "fft_heatmap": "FFT 频谱热图",
+            "high_freq_mask": "高频掩码"
+        }
+    },
+    "Edge Density Analysis": {
+        "title": "边缘密度分析",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "method": "边缘算子",
+            "block_size": "分块大小",
+            "visualize_edge_map": "可视化密度图"
+        },
+        "outputs": {
+            "edge_density_score": "边缘密度得分",
+            "edge_density_map": "密度分布图",
+            "interpretation": "结果解读",
+            "edge_preview": "边缘细节预览"
+        }
+    },
+    "Entropy Analysis": {
+        "title": "图像熵/信息量分析",
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "block_size": "分块大小",
+            "visualize_entropy_map": "可视化信息量图"
+        },
+        "outputs": {
+            "entropy_score": "熵得分 (bits)",
+            "entropy_map": "熵分布热图",
+            "interpretation": "结果解读"
+        }
+    }
+}
