@@ -53,6 +53,9 @@ https://github.com/user-attachments/assets/1ec662ba-da6c-4712-8be7-61168b08940e
 - msola-ht丶是小张啊丶alinuo666丶猪的飞行梦丶ZXSZS丶tanglangxia丶AIGCZero丶Artistjjw丶henrylaobai丶FanXiangTM丶xuchenxu168丶LovedeHua丶uiiiaiii丶fuxijun-max丶ANe5s丶cnolka 丶XXXAbit7 丶Yifo98丶xiaobai9009
 
 ## 更新日志
+### v2.1.3(2026-01-22) 
+-合并贡献者(FanXiangTM)对于ComfyUI_Fill-ChatterBox 、ComfyUI_FL-ClearVoice 、 ComfyUI_FL-CosyVoice3 三个节点翻译的翻译修改
+
 ### v2.1.2(2025-12-29) 
 - 合并贡献者(cnolka) 对于ComfyUI-FL-CosyVoice3插件的翻译完善
 - 合并贡献者(cnolka) 对于ComfyUI-Image-Analysis-Tools插件的翻译完善
