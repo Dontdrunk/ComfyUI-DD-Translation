@@ -1,0 +1,23 @@
+{
+    "FL_ClearVoice_ModelLoader": {
+        "title": "ClearVoice_模型加载器",
+        "widgets": {
+            "model": "模型",
+            "force_reload": "强制重新加载"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "FL_ClearVoice_Process": {
+        "title": "ClearVoice_执行",
+        "inputs": {
+            "model": "模型",
+            "audio": "音频"
+        },
+        "outputs": {
+            "audio": "音频",
+            "message": "信息"
+        }
+    }
+}
