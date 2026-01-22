@@ -1,94 +1,92 @@
 {
     "FL_CosyVoice3_AudioCrop": {
-        "title": "CosyVoice3 音频裁剪",
+        "title": "CosyVoice3_音频裁剪",
         "inputs": {
             "audio": "音频"
         },
         "widgets": {
-            "start_time": "开始时间 (MM:SS)",
-            "end_time": "结束时间 (MM:SS)"
+            "start_time": "开始时间",
+            "end_time": "结束时间"
+        },
+        "outputs": {
+            "audio": "音频"
+        }
+    },
+    "FL_CosyVoice3_ModelLoader": {
+        "title": "CosyVoice3_模型加载器",
+        "widgets": {
+            "model_version": "模型版本",
+            "download_source": "下载源",
+            "device": "设备",
+            "force_reload": "强制重新加载",
+            "force_redownload": "强制重新下载"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    },
+    "FL_CosyVoice3_Dialog": {
+        "title": "CosyVoice3_对人对话",
+        "inputs": {
+            "model": "模型",
+            "speaker_A_Audio": "说话人_A_音频",
+            "speaker_B_Audio": "说话人_B_音频",
+            "speaker_C_Audio": "说话人_C_音频",
+            "speaker_D_Audio": "说话人_D_音频"
+        },
+        "widgets": {
+            "speed": "音频速度",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "dialog_audio": "对话音频",
+            "speaker_a_audio": "说话人_a_音频",
+            "speaker_b_audio": "说话人_b_音频",
+            "speaker_c_audio": "说话人_c_音频",
+            "speaker_d_audio": "说话人_d_音频",
+            "message": "信息"
+        }
+    },
+    "FL_CosyVoice3_VoiceConversion": {
+        "title": "CosyVoice3_语音转换",
+        "inputs": {
+            "model": "模型",
+            "source_audio": "参考音频",
+            "target_audio": "目标音频"
+        },
+        "widgets": {
+            "speed": "音频速度",
+            "seed": "随机种子"
         },
         "outputs": {
             "audio": "音频"
         }
     },
     "FL_CosyVoice3_CrossLingual": {
-        "title": "CosyVoice3 跨语言合成",
+        "title": "CosyVoice3_跨语言",
         "inputs": {
-            "model": "CosyVoice 模型",
+            "model": "模型",
             "reference_audio": "参考音频"
         },
         "widgets": {
-            "text": "合成文本",
-            "speed": "语速",
+            "speed": "音频速度",
             "target_language": "目标语言",
-            "seed": "随机种子"
-        },
-        "outputs": {
-            "audio": "音频"
-        }
-    },
-    "FL_CosyVoice3_Dialog": {
-        "title": "CosyVoice3 多角色对话",
-        "inputs": {
-            "model": "CosyVoice 模型",
-            "speaker_A_Audio": "角色 A 音频",
-            "speaker_B_Audio": "角色 B 音频",
-            "speaker_C_Audio": "角色 C 音频 (可选)",
-            "speaker_D_Audio": "角色 D 音频 (可选)"
-        },
-        "widgets": {
-            "dialog_text": "对话文本 (格式: SPEAKER A:内容)",
-            "speed": "语速",
-            "seed": "随机种子"
-        },
-        "outputs": {
-            "dialog_audio": "完整对话音频",
-            "speaker_a_audio": "角色 A 轨道",
-            "speaker_b_audio": "角色 B 轨道",
-            "speaker_c_audio": "角色 C 轨道",
-            "speaker_d_audio": "角色 D 轨道",
-            "message": "状态信息"
-        }
-    },
-    "FL_CosyVoice3_ModelLoader": {
-        "title": "CosyVoice3 模型加载器",
-        "inputs": {},
-        "widgets": {
-            "model_version": "模型版本",
-            "download_source": "下载源",
-            "device": "运行设备",
-            "force_redownload": "强制重新下载",
-            "force_reload": "强制重新加载"
-        },
-        "outputs": {
-            "model": "CosyVoice 模型"
-        }
-    },
-    "FL_CosyVoice3_VoiceConversion": {
-        "title": "CosyVoice3 声音转换 (VC)",
-        "inputs": {
-            "model": "CosyVoice 模型",
-            "source_audio": "源音频 (待变声)",
-            "target_audio": "目标音频 (音色参考)"
-        },
-        "widgets": {
-            "speed": "语速",
-            "seed": "随机种子"
+            "seed": "随机种子",
+            "text_frontend": "文本前端"
         },
         "outputs": {
             "audio": "音频"
         }
     },
     "FL_CosyVoice3_ZeroShot": {
-        "title": "CosyVoice3 零样本语音克隆",
+        "title": "FL_CosyVoice3_零样本克隆",
         "inputs": {
-            "model": "CosyVoice 模型",
-            "reference_audio": "参考音频"
+            "reference_audio": "参考音频",
+            "model": "模型"
         },
         "widgets": {
-            "text": "合成文本",
-            "speed": "语速",
+            "text_frontend": "文本前端",
+            "speed": "音频速度",
             "seed": "随机种子"
         },
         "outputs": {

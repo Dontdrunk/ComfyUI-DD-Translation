@@ -1,0 +1,101 @@
+{
+    "FL_ChatterboxMultilingualTTS": {
+        "title": "FL_ChatterboxTTS（多语言）",
+        "inputs": {
+            "audio_prompt": "参考音频"
+        },
+        "widgets": {
+            "language": "语言",
+            "exaggeration": "夸张程度",
+            "cfg_weight": "CFG 权重",
+            "temperature": "温度",
+            "repetition_penalty": "重复惩罚",
+            "min_p": "最小概率（Min-P）",
+            "top_p": "核采样（Top-P）",
+            "seed": "随机种子",
+            "use_cpu": "使用 CPU",
+            "keep_model_loaded": "保持模型常驻内存"
+        },
+        "outputs": {
+            "audio": "音频",
+            "message": "信息"
+        }
+    },
+    "FL_ChatterboxTTS": {
+        "title": "FL_ChatterboxTTS",
+        "inputs": {
+            "audio_prompt": "参考音频"
+        },
+        "widgets": {
+            "exaggeration": "夸张程度",
+            "cfg_weight": "CFG 权重",
+            "temperature": "温度",
+            "seed": "随机种子",
+            "use_cpu": "使用 CPU",
+            "keep_model_loaded": "保持模型常驻内存"
+        },
+        "outputs": {
+            "audio": "音频",
+            "message": "信息"
+        }
+    },
+    "FL_ChatterboxTurboTTS": {
+        "title": "FL_ChatterboxTTS（加速版）",
+        "inputs": {
+            "audio_prompt": "参考音频"
+        },
+        "widgets": {
+            "temperature": "温度",
+            "top_k": "候选数 ( Top-K )",
+            "top_p": "核采样（Top-P）",
+            "use_cpu": "使用 CPU",
+            "keep_model_loaded": "保持模型常驻内存",
+            "repetition_penalty": "重复惩罚",
+            "seed": "随机种子"
+        },
+        "outputs": {
+            "audio": "音频",
+            "message": "信息"
+        }
+    },
+    "FL_ChatterboxVC": {
+        "title": "FL_ChatterboxVC（变声器）",
+        "inputs": {
+            "input_audio": "参考音频",
+            "target_voice": "目标音频"
+        },
+        "widgets": {
+            "seed": "随机种子",
+            "use_cpu": "使用 CPU",
+            "keep_model_loaded": "保持模型常驻内存"
+        },
+        "outputs": {
+            "audio": "音频",
+            "message": "信息"
+        }
+    },
+    "FL_ChatterboxDialogTTS": {
+        "title": "FL_ChatterboxTTS （多人对话）",
+        "inputs": {
+            "speaker_A_Audio": "说话人_A_音频",
+            "speaker_B_Audio": "说话人_B_音频",
+            "speaker_C_Audio": "说话人_C_音频",
+            "speaker_D_Audio": "说话人_D_音频"
+        },
+        "widgets": {
+            "exaggeration": "夸张程度",
+            "cfg_weight": "CFG 权重",
+            "temperature": "温度",
+            "seed": "随机种子",
+            "use_cpu": "使用 CPU",
+            "keep_model_loaded": "保持模型常驻内存"
+        },
+        "outputs": {
+            "dialog_audio": "对话音频",
+            "speaker_a_audio": "说话人_a_音频",
+            "speaker_b_audio": "说话人_b_音频",
+            "speaker_c_audio": "说话人_c_音频",
+            "speaker_d_audio": "说话人_d_音频"
+        }
+    }
+}
