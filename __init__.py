@@ -16,16 +16,23 @@ CUR_PATH = Path(__file__).parent
 # 读取配置文件
 def load_config():
     config_path = CUR_PATH.joinpath("config.json")
+    default_cfg = {"translation_enabled": True, "need_ui_component": True, "ui_position": None}
     if config_path.exists():
         try:
             config_data = try_get_json(config_path)
-            return config_data.get("translation_enabled", True)
+            if not isinstance(config_data, dict):
+                return default_cfg
+            return {
+                "translation_enabled": config_data.get("translation_enabled", True),
+                "need_ui_component": config_data.get("need_ui_component", True),
+                "ui_position": config_data.get("ui_position", None),
+            }
         except Exception:
-            return True
-    return True
+            return default_cfg
+    return default_cfg
 
 # 全局配置变量
-TRANSLATION_ENABLED = load_config()
+TRANSLATION_ENABLED = load_config().get("translation_enabled", True)
 
 
 def try_get_json(path: Path):
@@ -108,8 +115,8 @@ async def get_translation(request: web.Request):
     headers = {}
 
     # 实时检查配置文件中的翻译开关
-    current_enabled = load_config()
-    if not current_enabled:
+    current_cfg = load_config()
+    if not current_cfg.get("translation_enabled", True):
         return web.Response(status=200, body=json_data, headers=headers)
 
     try:
@@ -126,8 +133,7 @@ async def get_translation(request: web.Request):
 @server.PromptServer.instance.routes.get("/agl/get_config")
 async def get_config(request: web.Request):
     # 实时读取配置文件
-    current_enabled = load_config()
-    config_data = {"translation_enabled": current_enabled}
+    config_data = load_config()
     return web.Response(status=200, body=json.dumps(config_data), headers={"Content-Type": "application/json"})
 
 
@@ -135,21 +141,47 @@ async def get_config(request: web.Request):
 async def set_config(request: web.Request):
     try:
         post = await request.post()
-        enabled = post.get("translation_enabled", "true").lower() == "true"
+        enabled = post.get("translation_enabled", None)
+        ui_needed = post.get("need_ui_component", None)
+        ui_pos = post.get("ui_position", None)
+        
+        enabled_val = (str(enabled).lower() == "true") if enabled is not None else None
+        ui_needed_val = (str(ui_needed).lower() == "true") if ui_needed is not None else None
+        
+        # ui_position might be a json string or x,y string, keep as string or None
+        # But if it comes as "null" or empty, treat as None
+        ui_pos_val = ui_pos if ui_pos and str(ui_pos).lower() != "null" else None
 
         # 更新配置文件
         config_path = CUR_PATH.joinpath("config.json")
-        config_data = {"translation_enabled": enabled}
+        current_cfg = load_config()
+        
+        if enabled_val is None:
+            enabled_val = current_cfg.get("translation_enabled", True)
+        if ui_needed_val is None:
+            ui_needed_val = current_cfg.get("need_ui_component", True)
+        if ui_pos_val is None and "ui_position" in current_cfg:
+            ui_pos_val = current_cfg.get("ui_position", None)
+            
+        config_data = {
+            "translation_enabled": enabled_val, 
+            "need_ui_component": ui_needed_val,
+            "ui_position": ui_pos_val
+        }
 
         with open(config_path, 'w', encoding='utf-8') as f:
             json.dump(config_data, f, indent=2, ensure_ascii=False)
 
         # 更新全局变量
         global TRANSLATION_ENABLED
-        TRANSLATION_ENABLED = enabled
+        TRANSLATION_ENABLED = enabled_val
 
-        return web.Response(status=200, body=json.dumps({"success": True, "translation_enabled": enabled}),
-                          headers={"Content-Type": "application/json"})
+        return web.Response(status=200, body=json.dumps({
+            "success": True, 
+            "translation_enabled": enabled_val, 
+            "need_ui_component": ui_needed_val,
+            "ui_position": ui_pos_val
+        }), headers={"Content-Type": "application/json"})
     except Exception as e:
         return web.Response(status=500, body=json.dumps({"success": False, "error": str(e)}),
                           headers={"Content-Type": "application/json"})

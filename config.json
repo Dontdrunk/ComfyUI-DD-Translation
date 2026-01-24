@@ -1,3 +1,4 @@
 {
-  "translation_enabled": true
+  "translation_enabled": true,
+  "need_ui_component": true
 }

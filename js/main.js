@@ -6,12 +6,15 @@ import {
   hasNativeTranslation,
   nativeTranslatedSettings,
   isTranslationEnabled,
-  toggleTranslation,
+  isNeedUIComponentEnabled,
+  setTranslationEnabled,
+  setNeedUIComponentEnabled,
   initConfig,
   error,
   isVueNodes2,
   applySuffixHeuristic
 } from "./utils.js";
+import { ensureTranslationModeToggleButton } from "./ui.js";
 
 export class TUtils {
   static T = {
@@ -603,19 +606,62 @@ const ext = {
   },
     async setup(app) {
     try {      
+      await initConfig();
       const isComfyUIChineseNative = document.documentElement.lang === 'zh-CN';
+      const translationSettingId = "🌐翻译设置.语言开关.Enable";
+      const uiComponentSettingId = "🌐翻译设置.前端UI组件.Enable";
+      let ignoreTranslationSettingChange = false;
+      let ignoreUIComponentSettingChange = false;
+
+      try {
+        if (app?.ui?.settings?.setSettingValue) {
+          app.ui.settings.setSettingValue(translationSettingId, isTranslationEnabled());
+          app.ui.settings.setSettingValue(uiComponentSettingId, isNeedUIComponentEnabled());
+        }
+      } catch {}
       
       app.ui.settings.addSetting({
-        id: "🌐翻译设置.语言开关.Enable",
+        id: translationSettingId,
         name: "是否开启附加翻译",
         type: "boolean",
         defaultValue: isTranslationEnabled(),
         onChange: async (value) => {
+            if (ignoreTranslationSettingChange) return;
             if (value !== isTranslationEnabled()) {
-                await toggleTranslation();
+                await setTranslationEnabled(value);
             }
         },
       });
+
+      app.ui.settings.addSetting({
+        id: uiComponentSettingId,
+        name: "是否需要前端UI组件",
+        type: "boolean",
+        defaultValue: isNeedUIComponentEnabled(),
+        onChange: async (value) => {
+          if (ignoreUIComponentSettingChange) return;
+          if (value !== isNeedUIComponentEnabled()) {
+            await setNeedUIComponentEnabled(value);
+          }
+        },
+      });
+
+      if (isNeedUIComponentEnabled()) {
+        ensureTranslationModeToggleButton(isTranslationEnabled(), async () => {
+          const newEnabled = !isTranslationEnabled();
+          try {
+            if (app?.ui?.settings?.setSettingValue) {
+              ignoreTranslationSettingChange = true;
+              app.ui.settings.setSettingValue(translationSettingId, newEnabled);
+            }
+          } catch {}
+          try {
+            await setTranslationEnabled(newEnabled);
+          } finally {
+            ignoreTranslationSettingChange = false;
+          }
+        });
+      }
       
       if (isTranslationEnabled()) {
         if (!isVueNodes2()) {
