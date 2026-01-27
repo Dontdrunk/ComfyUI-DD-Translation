@@ -1,0 +1,158 @@
+{
+    "FB_Qwen3TTSVoiceClone": {
+        "title": "🎭 Qwen3-TTS 语音克隆",
+        "inputs": {
+            "ref_audio": "参考音频",
+            "voice_clone_prompt": "语音克隆提示"
+        },
+        "widgets": {
+            "model_choice": "模型选择",
+            "device": "设备",
+            "precision": "浮点精度",
+            "language": "语言",
+            "seed": "随机种子",
+            "max_new_tokens": "最大新令牌数",
+            "top_p": "核采样 ( top_p )",
+            "top_k": "候选词数 ( top_k )",
+            "temperature": "温度",
+            "repetition_penalty": "重复惩罚",
+            "x_vector_only": "仅输出声纹向量",
+            "attention": "注意力",
+            "unload_model_after_generate": "生成后卸载模型"
+        },
+        "outputs": {
+            "audio": "音频"
+        }
+    },
+    "FB_Qwen3TTSVoiceDesign": {
+        "title": "🎨 Qwen3-TTS 语音设计",
+        "widgets": {
+            "model_choice": "模型选择",
+            "device": "设备",
+            "precision": "浮点精度",
+            "language": "语言",
+            "seed": "随机种子",
+            "max_new_tokens": "最大新令牌数",
+            "top_p": "核采样 ( top_p )",
+            "top_k": "候选词数 ( top_k )",
+            "temperature": "温度",
+            "repetition_penalty": "重复惩罚",
+            "attention": "注意力",
+            "unload_model_after_generate": "生成后卸载模型"
+        },
+        "outputs": {
+            "audio": "音频"
+        }
+    },
+    "FB_Qwen3TTSCustomVoice": {
+        "title": "🎵 Qwen3-TTS 预定义语音",
+        "widgets": {
+            "speaker": "说话人",
+            "model_choice": "模型选择",
+            "device": "设备",
+            "precision": "浮点精度",
+            "language": "语言",
+            "seed": "随机种子",
+            "max_new_tokens": "最大新令牌数",
+            "top_p": "核采样 ( top_p )",
+            "top_k": "候选词数 ( top_k )",
+            "temperature": "温度",
+            "repetition_penalty": "重复惩罚",
+            "attention": "注意力",
+            "unload_model_after_generate": "生成后卸载模型"
+        },
+        "outputs": {
+            "audio": "音频"
+        }
+    },
+    "FB_Qwen3TTSVoiceClonePrompt": {
+        "title": "🎭 Qwen3-TTS 语音克隆提示",
+        "inputs": {
+            "ref_audio": "参考音频"
+        },
+        "widgets": {
+            "model_choice": "模型选择",
+            "device": "设备",
+            "precision": "浮点精度",
+            "x_vector_only": "仅输出声纹向量",
+            "unload_model_after_generate": "生成后卸载模型"
+        },
+        "outputs": {
+            "voice_clone_prompt": "语音克隆提示"
+        }
+    },
+    "FB_Qwen3TTSRoleBank": {
+        "title": "📇 Qwen3-TTS 角色库",
+        "inputs": {
+            "prompt_1": "参考文本_1",
+            "prompt_2": "参考文本_2",
+            "prompt_3": "参考文本_3",
+            "prompt_4": "参考文本_4",
+            "prompt_5": "参考文本_5",
+            "prompt_6": "参考文本_6",
+            "prompt_7": "参考文本_7",
+            "prompt_8": "参考文本_8"
+        },
+        "widgets": {
+            "role_name_1": "角色名称_1",
+            "role_name_2": "角色名称_2",
+            "role_name_3": "角色名称_3",
+            "role_name_4": "角色名称_4",
+            "role_name_5": "角色名称_5",
+            "role_name_6": "角色名称_6",
+            "role_name_7": "角色名称_7",
+            "role_name_8": "角色名称_8"
+        },
+        "outputs": {
+            "role_bank": "角色库"
+        }
+    },
+    "FB_Qwen3TTSDialogueInference": {
+        "title": "💬 Qwen3-TTS 对话推理",
+        "inputs": {
+            "role_bank": "角色库"
+        },
+        "widgets": {
+            "model_choice": "模型选择",
+            "device": "设备",
+            "precision": "浮点精度",
+            "language": "语言",
+            "pause_linebreak": "换行停顿",
+            "period_pause": "句号停顿",
+            "comma_pause": "逗号停顿",
+            "question_pause": "问号停顿",
+            "merge_outputs": "合并音频",
+            "batch_size": "批次大小",
+            "hyphen_pause": "连字符停顿",
+            "seed": "随机种子",
+            "max_new_tokens_per_line": "每行最大新令牌数",
+            "top_p": "核采样 ( top_p )",
+            "top_k": "候选词数 ( top_k )",
+            "temperature": "温度",
+            "repetition_penalty": "重复惩罚",
+            "attention": "注意力",
+            "unload_model_after_generate": "生成后卸载模型"
+        },
+        "outputs": {
+            "audio": "音频"
+        }
+    },
+    "FB_Qwen3TTSSaveVoice": {
+        "title": "💾 Qwen3-TTS 保存语音",
+        "inputs": {
+            "voice_clone_prompt": "克隆提示文本",
+            "audio": "音频"
+        },
+        "widgets": {
+            "filename": "文件名"
+        }
+    },
+    "FB_Qwen3TTSLoadSpeaker": {
+        "title": "🎙️ Qwen3-TTS 加载音色",
+        "outputs": {
+            "voice_clone_prompt": "提示文本",
+            "audio": "音频",
+            "ref_text": "参考文本"
+        }
+    }
+}
