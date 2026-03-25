@@ -58,7 +58,7 @@ ComfyUI 中文翻译插件
 
 ## 更新日志
 
-### v2.2.2(2026-01-31)
+### v2.2.2(2026-03-25)
 
 - 合并了贡献者(ZXSZS) 提交的以下插件翻译
 - Comfyui-ZiT-Lora-loader丶ComfyUI-ZImagePowerNodes丶ComfyUI-EditUtils
