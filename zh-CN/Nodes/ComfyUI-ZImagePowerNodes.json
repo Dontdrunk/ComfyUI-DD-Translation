@@ -1,0 +1,102 @@
+{
+    "MyTop10StylesEditor //ZImagePowerNodes": {
+        "outputs": {
+            "TOP_STYLES": "前十风格"
+        }
+    },
+    "SaveImage //ZImagePowerNodes": {
+        "inputs": {
+            "images": "图像"
+        },
+        "widgets": {
+            "filename_prefix": "文件名前缀",
+            "civitai_compatible_metadata": "兼容C站元数据"
+        }
+    },
+    "MyTop10Styles //ZImagePowerNodes": {
+        "inputs": {
+            "input": "输入",
+            "top_styles": "前十风格"
+        },
+        "widgets": {
+            "control_after_generate": "生成后控制",
+            "output_to": "输出至"
+        },
+        "outputs": {
+            "output": "输出"
+        }
+    },
+    "ZSamplerTurbo //ZImagePowerNodes": {
+        "inputs": {
+            "model": "模型",
+            "positive": "正向条件",
+            "latent_input": "Latent输入"
+        },
+        "widgets": {
+            "seed": "随机种",
+            "steps": "步数",
+            "denoise": "降噪",
+            "initial_noise_calibration": "初始噪声校准",
+            "lowres_bias": "低分偏置"
+        },
+        "outputs": {
+            "latent_output": "Latent输出"
+        }
+    },
+    "ZSamplerTurboAdvanced //ZImagePowerNodes": {
+        "inputs": {
+            "model": "模型",
+            "positive": "正向条件",
+            "latent_input": "Latent输入"
+        },
+        "widgets": {
+            "seed": "随机种",
+            "steps": "步数",
+            "denoise": "降噪",
+            "initial_noise_calibration": "初始噪声校准",
+            "noise_bias_estimation": "噪声偏置估计",
+            "noise_bias_sample_size": "噪声偏置采样大小",
+            "noise_bias_scale": "噪声偏置缩放",
+            "noise_overdose": "噪声过载"
+        },
+        "outputs": {
+            "latent_output": "Latent输出"
+        }
+    },
+    "EmptyZImageLatentImage //ZImagePowerNodes": {
+        "widgets": {
+            "landscape": "横向",
+            "ratio": "比例",
+            "size": "尺寸",
+            "batch_size": "批次大小"
+        }
+    },
+    "VAEEncodeSoftInpainting //ZImagePowerNodes": {
+        "inputs": {
+            "pixels": "像素",
+            "vae": "VAE",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "output_size": "输出尺寸",
+            "mask_blur_pixels": "遮罩模糊像素"
+        }
+    },
+    "StylePromptEncoder2 //ZImagePowerNodes": {
+        "inputs": {
+            "clip": "CLIP",
+            "customization": "自定义"
+        },
+        "widgets": {
+            "style": "风格"
+        }
+    },
+    "StyleStringInjector2 //ZImagePowerNodes": {
+        "inputs": {
+            "string": "字符串"
+        },
+        "widgets": {
+            "style": "风格"
+        }
+    }
+}

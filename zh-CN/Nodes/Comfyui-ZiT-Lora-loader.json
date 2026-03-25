@@ -1,0 +1,35 @@
+{
+    "ZImageTurboLoraStack": {
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "fuse_qkv_1": "融合QKV_1",
+            "enabled_1": "启用_1",
+            "strength_1": "强度_1",
+            "lora_1": "LoRA_1",
+            "remove_1": "移除_1",
+            "fuse_qkv_2": "融合QKV_2",
+            "enabled_2": "启用_2",
+            "strength_2": "强度_2",
+            "lora_2": "LoRA_2",
+            "remove_2": "移除_2"
+        },
+        "outputs": {
+            "MODEL": "模型"
+        }
+    },
+    "ZImageTurboLoraLoader": {
+        "inputs": {
+            "model": "模型"
+        },
+        "widgets": {
+            "lora_name": "LoRA名称",
+            "strength_model": "模型强度",
+            "auto_convert_qkv": "自动转换QKV"
+        },
+        "outputs": {
+            "MODEL": "模型"
+        }
+    }
+}

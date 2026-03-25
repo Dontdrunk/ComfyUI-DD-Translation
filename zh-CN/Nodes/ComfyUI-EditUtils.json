@@ -1,0 +1,185 @@
+{
+    "Flux2KleinConfigPreparer_EditUtils": {
+        "inputs": {
+            "image": "图像",
+            "configs": "配置",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "to_ref": "转为参考",
+            "ref_main_image": "主参考",
+            "ref_longest_edge": "参考最长边",
+            "ref_crop": "参考裁剪",
+            "ref_upscale": "参考放大"
+        },
+        "outputs": {
+            "configs": "配置",
+            "config": "配置项"
+        }
+    },
+    "AdaptiveLongestEdge_EditUtils": {
+        "inputs": {
+            "image": "图像"
+        },
+        "widgets": {
+            "min_size": "最小尺寸",
+            "max_size": "最大尺寸"
+        },
+        "outputs": {
+            "longest_edge": "最长边"
+        }
+    },
+    "EditTextEncode_EditUtils": {
+        "inputs": {
+            "clip": "CLIP",
+            "vae": "VAE",
+            "model_config": "模型配置",
+            "configs": "配置"
+        },
+        "outputs": {
+            "conditioning": "条件",
+            "latent": "Latent",
+            "custom_output": "自定义输出",
+            "main_image": "主图像",
+            "mask": "遮罩"
+        }
+    },
+    "CropWithPadInfo_EditUtils": {
+        "inputs": {
+            "pad_info": "填充信息",
+            "image": "图像"
+        },
+        "outputs": {
+            "cropped_image": "裁剪图像",
+            "scale_by": "缩放倍数"
+        }
+    },
+    "Flux2KleinOutputExtractor_EditUtils": {
+        "inputs": {
+            "custom_output": "自定义输出"
+        },
+        "outputs": {
+            "pad_info": "填充信息",
+            "main_image": "主图像",
+            "vae_images": "VAE图像",
+            "ref_latents": "参考潜变量",
+            "full_prompt": "完整提示词",
+            "llama_template": "LLAMA模板",
+            "no_refs_cond": "无参考条件",
+            "mask": "遮罩",
+            "output_8": "输出_8"
+        }
+    },
+    "QwenModelConfig_EditUtils": {
+        "outputs": {
+            "model_config": "模型配置"
+        }
+    },
+    "Flux2KleinModelConfig_EditUtils": {
+        "outputs": {
+            "model_config": "模型配置"
+        }
+    },
+    "QwenConfigPreparer_EditUtils": {
+        "inputs": {
+            "image": "图像",
+            "configs": "配置",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "to_ref": "转为参考",
+            "ref_main_image": "主参考",
+            "ref_longest_edge": "参考最长边",
+            "ref_crop": "参考裁剪",
+            "ref_upscale": "参考放大",
+            "to_vl": "转为VL",
+            "vl_resize": "VL缩放",
+            "vl_target_size": "VL目标尺寸",
+            "vl_crop": "VL裁剪",
+            "vl_upscale": "VL放大"
+        },
+        "outputs": {
+            "configs": "配置",
+            "config": "配置项"
+        }
+    },
+    "ModelConfig_EditUtils": {
+        "widgets": {
+            "model_choice": "模型选择",
+            "model_name": "模型名称",
+            "vae_unit": "VAE单位"
+        },
+        "outputs": {
+            "model_config": "模型配置"
+        }
+    },
+    "Flux2KleinEditTextEncode_EditUtils": {
+        "inputs": {
+            "clip": "CLIP",
+            "vae": "VAE",
+            "image1": "图像1",
+            "image2": "图像2",
+            "image3": "图像3",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "ref_longest_edge": "参考最长边"
+        },
+        "outputs": {
+            "conditioning": "条件",
+            "latent": "Latent",
+            "custom_output": "自定义输出",
+            "main_image": "主图像",
+            "mask": "遮罩"
+        }
+    },
+    "QwenEditTextEncode_EditUtils": {
+        "inputs": {
+            "clip": "CLIP",
+            "vae": "VAE",
+            "image1": "图像1",
+            "image2": "图像2",
+            "image3": "图像3",
+            "mask": "遮罩"
+        },
+        "widgets": {
+            "ref_longest_edge": "参考最长边"
+        },
+        "outputs": {
+            "conditioning": "条件",
+            "latent": "Latent",
+            "custom_output": "自定义输出",
+            "main_image": "主图像",
+            "mask": "遮罩"
+        }
+    },
+    "QwenEditOutputExtractor_EditUtils": {
+        "inputs": {
+            "custom_output": "自定义输出"
+        },
+        "outputs": {
+            "pad_info": "填充信息",
+            "full_refs_cond": "完整参考条件",
+            "main_ref_cond": "主参考条件",
+            "main_image": "主图像",
+            "vae_images": "VAE图像",
+            "ref_latents": "参考潜变量",
+            "vl_images": "VL图像",
+            "full_prompt": "完整提示词",
+            "llama_template": "LLAMA模板",
+            "no_refs_cond": "无参考条件",
+            "mask": "遮罩"
+        }
+    },
+    "ConfigJsonParser_EditUtils": {
+        "inputs": {
+            "image": "图像",
+            "configs": "配置",
+            "mask": "遮罩"
+        },
+        "outputs": {
+            "configs": "配置",
+            "config": "配置项"
+        }
+    }
+}
