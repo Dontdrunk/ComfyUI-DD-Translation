@@ -4,7 +4,8 @@
         "description": "语音克隆: 从参考音频中克隆语音。",
         "inputs": {
             "ref_audio": "参考音频",
-            "voice_clone_prompt": "语音克隆提示"
+            "voice_clone_prompt": "语音克隆提示",
+            "config": "设置"
         },
         "widgets": {
             "model_choice": "模型选择",
@@ -19,7 +20,8 @@
             "repetition_penalty": "重复惩罚",
             "x_vector_only": "仅输出声纹向量",
             "attention": "注意力",
-            "unload_model_after_generate": "生成后卸载模型"
+            "unload_model_after_generate": "生成后卸载模型",
+            "custom_model_path": "自定义模型路径"
         },
         "outputs": {
             "audio": "音频"
@@ -28,6 +30,9 @@
     "FB_Qwen3TTSVoiceDesign": {
         "title": "🎨 Qwen3-TTS 语音设计",
         "description": "语音设计：根据描述生成自定义语音。",
+        "inputs": {
+            "config": "设置"
+        },
         "widgets": {
             "model_choice": "模型选择",
             "device": "设备",
@@ -49,6 +54,9 @@
     "FB_Qwen3TTSCustomVoice": {
         "title": "🎵 Qwen3-TTS 预定义语音",
         "description": "预定义语音：使用预设扬声器生成语音。",
+        "inputs": {
+            "config": "设置"
+        },
         "widgets": {
             "speaker": "说话人",
             "model_choice": "模型选择",
@@ -62,7 +70,9 @@
             "temperature": "温度",
             "repetition_penalty": "重复惩罚",
             "attention": "注意力",
-            "unload_model_after_generate": "生成后卸载模型"
+            "unload_model_after_generate": "生成后卸载模型",
+            "custom_model_path": "自定义模型路径",
+            "custom_speaker_name": "自定义角色名称"
         },
         "outputs": {
             "audio": "音频"
@@ -79,7 +89,8 @@
             "device": "设备",
             "precision": "浮点精度",
             "x_vector_only": "仅输出声纹向量",
-            "unload_model_after_generate": "生成后卸载模型"
+            "unload_model_after_generate": "生成后卸载模型",
+            "attention": "注意力权重"
         },
         "outputs": {
             "voice_clone_prompt": "克隆参考音频"
@@ -157,6 +168,9 @@
     "FB_Qwen3TTSLoadSpeaker": {
         "title": "🎙️ Qwen3-TTS 加载音色",
         "description": "加载音色: 加载保存的WAV音频及其元数据。快速加载。qvp功能（如果可用）。",
+        "widgets": {
+            "filename": "文件名"
+        },
         "outputs": {
             "voice_clone_prompt": "提示文本",
             "audio": "音频",
