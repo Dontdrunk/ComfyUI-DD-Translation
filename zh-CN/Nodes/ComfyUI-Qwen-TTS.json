@@ -1,6 +1,7 @@
 {
     "FB_Qwen3TTSVoiceClone": {
         "title": "🎭 Qwen3-TTS 语音克隆",
+        "description": "语音克隆: 从参考音频中克隆语音。",
         "inputs": {
             "ref_audio": "参考音频",
             "voice_clone_prompt": "语音克隆提示"
@@ -26,6 +27,7 @@
     },
     "FB_Qwen3TTSVoiceDesign": {
         "title": "🎨 Qwen3-TTS 语音设计",
+        "description": "语音设计：根据描述生成自定义语音。",
         "widgets": {
             "model_choice": "模型选择",
             "device": "设备",
@@ -46,6 +48,7 @@
     },
     "FB_Qwen3TTSCustomVoice": {
         "title": "🎵 Qwen3-TTS 预定义语音",
+        "description": "预定义语音：使用预设扬声器生成语音。",
         "widgets": {
             "speaker": "说话人",
             "model_choice": "模型选择",
@@ -66,7 +69,8 @@
         }
     },
     "FB_Qwen3TTSVoiceClonePrompt": {
-        "title": "🎭 Qwen3-TTS 语音克隆提示",
+        "title": "🎭 Qwen3-TTS 声音特征提取与缓存",
+        "description": "声音特征提取与缓存: 提取并缓存语音特征以便在 VoiceClone 节点中重用。",
         "inputs": {
             "ref_audio": "参考音频"
         },
@@ -78,11 +82,12 @@
             "unload_model_after_generate": "生成后卸载模型"
         },
         "outputs": {
-            "voice_clone_prompt": "语音克隆提示"
+            "voice_clone_prompt": "克隆参考音频"
         }
     },
     "FB_Qwen3TTSRoleBank": {
         "title": "📇 Qwen3-TTS 角色库",
+        "description": "角色库：将多个语音提示收集到一个数据库中，以生成对话。",
         "inputs": {
             "prompt_1": "参考文本_1",
             "prompt_2": "参考文本_2",
@@ -109,6 +114,7 @@
     },
     "FB_Qwen3TTSDialogueInference": {
         "title": "💬 Qwen3-TTS 对话推理",
+        "description": "对话推理: 执行具有多个角色的脚本并生成连续的语音。",
         "inputs": {
             "role_bank": "角色库"
         },
@@ -138,7 +144,8 @@
         }
     },
     "FB_Qwen3TTSSaveVoice": {
-        "title": "💾 Qwen3-TTS 保存语音",
+        "title": "💾 Qwen3-TTS 保存声音特征",
+        "description": "保存语音: 将声音克隆提示词特征保存至磁盘，以便日后使用。",
         "inputs": {
             "voice_clone_prompt": "克隆提示文本",
             "audio": "音频"
@@ -149,10 +156,43 @@
     },
     "FB_Qwen3TTSLoadSpeaker": {
         "title": "🎙️ Qwen3-TTS 加载音色",
+        "description": "加载音色: 加载保存的WAV音频及其元数据。快速加载。qvp功能（如果可用）。",
         "outputs": {
             "voice_clone_prompt": "提示文本",
             "audio": "音频",
             "ref_text": "参考文本"
+        }
+    },
+    "FB_Qwen3TTSConfig": {
+        "title": "Qwen3 TTS 配置 (暂停控制)",
+        "widgets": {
+            "pause_linebreak": "换行_停顿",
+            "period_pause": "句号_停顿",
+            "comma_pause": "逗号_停顿",
+            "question_pause": "问号_停顿",
+            "hyphen_pause": "连字符_停顿"
+        },
+        "outputs": {
+            "config": "设置"
+        }
+    },
+    "FB_Qwen3TTSTrain": {
+        "title": "🏋️ Qwen3-TTS 模型训练",
+        "description": "模型再训练 / 微调",
+        "widgets": {
+            "init_model": "初始模型",
+            "tokenizer": "分词器",
+            "audio_folder": "音频文件夹",
+            "speaker_name": "说话人姓名",
+            "language": "语言",
+            "learning_rate": "学习率",
+            "num_epochs": "训练轮数",
+            "batch_size": "批大小",
+            "gradient_accumulation_steps": "梯度累加步数",
+            "validate_every": "验证频率"
+        },
+        "outputs": {
+            "checkpoint_path": "大模型_路径"
         }
     }
 }
