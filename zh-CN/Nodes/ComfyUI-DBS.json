@@ -1,0 +1,29 @@
+{
+    "DBSSeparate": {
+        "title": "DBS 音频分离",
+        "inputs": {
+            "model": "模型",
+            "audio": "音频"
+        },
+        "widgets": {
+            "channels": "通道",
+            "output_sample_rate": "采样率"
+        },
+        "outputs": {
+            "music": "音乐",
+            "sfx": "音效",
+            "speech": "人声",
+            "report": "报告"
+        }
+    },
+    "DBSLoader": {
+        "title": "DBS 加载",
+        "inputs": {
+            "model": "模型",
+            "device": "设备"
+        },
+        "outputs": {
+            "model": "模型"
+        }
+    }
+}
