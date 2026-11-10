@@ -54,9 +54,18 @@ ComfyUI 中文翻译插件
 
 感谢以下贡献者对于ComfyUI中文开源生态的支持
 
-- msola-ht丶是小张啊丶alinuo666丶猪的飞行梦丶ZXSZS丶tanglangxia丶AIGCZero丶Artistjjw丶henrylaobai丶FanXiangTM丶xuchenxu168丶LovedeHua丶uiiiaiii丶fuxijun-max丶ANe5s丶cnolka 丶XXXAbit7 丶Yifo98丶xiaobai9009 
+- msola-ht丶是小张啊丶alinuo666丶猪的飞行梦丶ZXSZS丶tanglangxia丶AIGCZero丶Artistjjw丶henrylaobai丶FanXiangTM丶xuchenxu168丶LovedeHua丶uiiiaiii丶fuxijun-max丶ANe5s丶cnolka 丶XXXAbit7 丶Yifo98丶xiaobai9009丶Aifredd丶junesnowing-source 
 
 ## 更新日志
+
+### v2.2.4(2026-11-11)
+
+- 合并贡献者(Aifredd) 提交的 ComfyUI_Qwen3-VL-Instruct 插件节点翻译（5 个节点）
+- 合并贡献者(junesnowing-source) 提交的 llama-cpp 插件节点翻译（4 个节点）
+- 合并贡献者(junesnowing-source) 提交的 SaveImageExtended 插件节点翻译（1 个节点）
+- 新增 ComfyUI-DBS 插件节点翻译（DBSSeparate、DBSLoader）
+- 补充 zh-CN/Menus/Internal.json 中 preview_mode 与 Plain text 的翻译，并清理重复键
+- 修正 pyproject.toml / __init__.py 版本号：此前停留在 2.1.1，与更新日志不同步，本次统一为 2.2.4
 
 ### v2.2.3(2026-05-03)
 - 合并了贡献者(FanXiangTM) 提交的大量插件翻译补全

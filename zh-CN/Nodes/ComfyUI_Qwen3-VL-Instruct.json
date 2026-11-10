@@ -1,0 +1,88 @@
+{
+    "Qwen3_VQA": {
+        "title": "Qwen3视觉问答",
+        "description": "执行多模态理解任务，如视觉问答（VQA）、图像/视频打标（生成描述）、多图叙事等。",
+        "inputs": {
+            "source_path": "资源路径",
+            "image": "图像输入"
+        },
+        "widgets": {
+            "model": "模型选择",
+            "quantization": "量化设置",
+            "keep_model_loaded": "保持模型加载",
+            "temperature": "温度（随机性控制）",
+            "max_new_tokens": "最大生成 Token",
+            "min_pixels": "最小像素",
+            "max_pixels": "最大像素",
+            "seed": "随机种子",
+            "attention": "注意力机制"
+        }
+    },
+    "ImageLoader": {
+        "title": "高级图像加载",
+        "description": "加载单张图片，同时输出图像数据和文件路径，供 Qwen3 VQA 节点进行视觉理解分析。",
+        "widgets": {
+            "image": "图像"
+        },
+        "outputs": {
+            "PATH": "路径"
+        }
+    },
+    "VideoLoader": {
+        "title": "高级视频加载（上传）",
+        "description": "通过文件上传方式加载视频文件，将视频转换为帧序列供 Qwen3 VQA 节点进行视频内容理解。",
+        "widgets": {
+            "file": "视频文件"
+        },
+        "outputs": {
+            "PATH": "路径"
+        }
+    },
+    "VideoLoaderPath": {
+        "title": "高级视频加载（路径）",
+        "description": "通过本地文件路径直接加载视频文件，适用于批量处理或已知文件路径的场景。此方式不依赖浏览器上传。",
+        "widgets": {
+            "file": "文件路径"
+        },
+        "outputs": {
+            "PATH": "路径"
+        }
+    },
+    "MultiplePathsInput": {
+        "title": "多路径输入",
+        "description": "批量加载多个图片或视频文件。可以动态增加输入端口数量（inputcount），一次性传入多个媒体文件，实现多图叙事或批量分析。它还会根据你设定的帧率（sample_fps）和最大帧数（max_frames）从视频中提取帧，控制处理的数据量。",
+        "inputs": {
+            "path_1": "路径_1",
+            "path_2": "路径_2",
+            "path_3": "路径_3",
+            "path_4": "路径_4",
+            "path_5": "路径_5",
+            "path_6": "路径_6",
+            "path_7": "路径_7",
+            "path_8": "路径_8",
+            "path_9": "路径_9",
+            "path_10": "路径_10",
+            "path_11": "路径_11",
+            "path_12": "路径_12",
+            "path_13": "路径_13",
+            "path_14": "路径_14",
+            "path_15": "路径_15",
+            "path_16": "路径_16",
+            "path_17": "路径_17",
+            "path_18": "路径_18",
+            "path_19": "路径_19",
+            "path_20": "路径_20"
+        },
+        "widgets": {
+            "inputcount": "输入数量",
+            "sample_fps": "采样帧率",
+            "max_frames": "最大帧数",
+            "use_total_frames": "使用总帧数",
+            "use_original_fps_as_sample_fps": "使用原始帧率采样",
+            "Update inputs": "更新输入按钮"
+        },
+        "outputs": {
+            "paths": "路径列表"
+        }
+    }
+}

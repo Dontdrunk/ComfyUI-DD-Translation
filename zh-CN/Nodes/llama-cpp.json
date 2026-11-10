@@ -1,0 +1,90 @@
+{
+  "llama_cpp_model_loader": {
+    "title": "Llama-cpp 模型加载器",
+    "inputs": {},
+    "outputs": {
+      "llama_model": "Llama模型"
+    },
+    "widgets": {
+      "model": "大语言模型文件",
+      "mmproj": "视觉投影模型 (mmproj)",
+      "chat_handler": "对话模板处理器",
+      "n_ctx": "上下文长度 (n_ctx)",
+      "vram_limit": "显存限制",
+      "image_min_tokens": "图像最小Token数",
+      "image_max_tokens": "图像最大Token数"
+    }
+  },
+  "llama_cpp_parameters": {
+    "title": "Llama-cpp 采样参数",
+    "inputs": {},
+    "outputs": {
+      "parameters": "采样参数"
+    },
+    "widgets": {
+      "max_tokens": "最大生成长度 (max_tokens)",
+      "top_k": "Top-K 采样",
+      "top_p": "Top-P 采样",
+      "min_p": "Min-P 采样",
+      "typical_p": "典型P值",
+      "temperature": "温度",
+      "repeat_penalty": "重复惩罚",
+      "frequency_penalty": "频率惩罚",
+      "presence_penalty": "存在惩罚",
+      "mirostat_mode": "Mirostat 模式",
+      "mirostat_eta": "Mirostat 学习率",
+      "mirostat_tau": "Mirostat 目标熵",
+      "state_uid": "状态 UID"
+    }
+  },
+  "llama_cpp_instruct": {
+    "title": "Llama-cpp 指令执行",
+    "inputs": {
+      "llama_model": "Llama模型",
+      "parameters": "采样参数",
+      "images": "图像",
+      "queue_handler": "队列处理器"
+    },
+    "outputs": {
+      "output": "输出文本",
+      "output_list": "输出列表",
+      "state_uid": "状态 UID"
+    },
+    "widgets": {
+      "preset_prompt": "预设提示词模板",
+      "system_prompt": "系统提示词",
+      "prompt": "用户提示词",
+      "inference_mode": "推理模式",
+      "max_frames": "最大帧数",
+      "max_size": "最大尺寸",
+      "seed": "随机种",
+      "force_offload": "强制卸载显存",
+      "save_states": "保存运行状态"
+    }
+  },
+  "llama_cpp_instruct_adv": {
+    "title": "Llama-cpp 指令执行",
+    "inputs": {
+      "llama_model": "Llama模型",
+      "parameters": "采样参数",
+      "images": "图像",
+      "queue_handler": "队列处理器"
+    },
+    "outputs": {
+      "output": "输出文本",
+      "output_list": "输出列表",
+      "state_uid": "状态 UID"
+    },
+    "widgets": {
+      "preset_prompt": "预设提示词模板",
+      "system_prompt": "系统提示词",
+      "prompt": "用户提示词",
+      "inference_mode": "推理模式",
+      "max_frames": "最大帧数",
+      "max_size": "最大尺寸",
+      "seed": "随机种",
+      "force_offload": "强制卸载显存",
+      "save_states": "保存运行状态"
+    }
+  }
+}
