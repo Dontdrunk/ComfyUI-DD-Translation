@@ -1,26 +1,10 @@
-ComfyUI 中文翻译插件
+# ComfyUI 中文翻译插件
 
-> **v3.2.0 更新：右键菜单也支持中文了**
->
-> 节点右键菜单、画布右键菜单里插件自带的英文（rgthree、VideoHelperSuite、
-> Impact Pack、KJNodes 等）现在也会显示中文。这些文案写死在插件 JS 里，
-> 官方中文机制覆盖不到，所以沿用旧插件的做法，只在菜单弹出时替换菜单文字，
-> 不影响节点本身的功能。
->
-> **v3.1.0 更新：更稳定、更完整的中文翻译**
->
-> 新版换成了 ComfyUI 自带的中文机制。装好之后，节点名称、输入输出、下拉选项、分类、
-> 设置面板，以及 rgthree-comfy、ComfyUI 管理器这些扩展面板都会显示中文。
-> ComfyUI 以后升级，翻译不容易再被搞挂。
->
-> 以前所有翻译内容都保留，没有丢；另外补上了以前没翻的设置项和插件面板。
-> 想用中文就选中文、想看英文就切英文，直接在 ComfyUI 设置里换语言即可，不用再点悬浮开关。
->
-> 升级方法：用新版本替换掉旧的插件文件夹，重启 ComfyUI 就行，不需要先卸载。
+ComfyUI 的简体中文翻译插件，让 ComfyUI 界面和常用插件尽量显示中文。装好后跟随 ComfyUI 的语言设置生效：在设置里选「中文」就是中文，选「English」就恢复英文。
 
-本项目是基于 [AIGODLIKE-ComfyUI-Translation](https://github.com/AIGODLIKE/AIGODLIKE-ComfyUI-Translation) 的衍生分支，在此特别感谢原项目的开发者们对开源社区的杰出贡献。正是因为有人愿意成为先驱者，后人才能继承前人的薪火.
+本项目基于 [AIGODLIKE-ComfyUI-Translation](https://github.com/AIGODLIKE/AIGODLIKE-ComfyUI-Translation) 衍生开发，在此特别感谢原项目的开发者们对开源社区的杰出贡献。正是因为有人愿意成为先驱者，后人才能继承前人的薪火。
 
-\==视频展示==
+## 视频展示
 
 <https://github.com/user-attachments/assets/1ec662ba-da6c-4712-8be7-61168b08940e>
 
@@ -76,6 +60,16 @@ ComfyUI 中文翻译插件
 
 > **安装或更新后请重启 ComfyUI**：只刷新浏览器页面不会生效，必须重启一次。
 
+## 开源协议
+
+本项目以 **GPL-3.0-only**（GNU General Public License v3.0）发布，完整协议见 [LICENSE](./LICENSE)。
+
+你可以自由使用、修改、分发本项目，也可以商用；但**基于本项目代码开发的衍生插件必须同样以 GPL-3.0 开源**，分发时需要提供完整源代码，不能改成闭源插件。
+
+Copyright (C) 2025-2026 Dontdrunk
+
+> 翻译数据来自 AIGODLIKE-ComfyUI-Translation 及各位贡献者，相关权利归原作者和贡献者所有。
+
 ## 贡献者名单
 
 感谢以下贡献者对于ComfyUI中文开源生态的支持
@@ -90,6 +84,7 @@ ComfyUI 中文翻译插件
 - **沿用旧插件的做法**：这些文案在插件 JS 里写死，官方 locales 覆盖不到，所以在菜单弹出时做菜单级文字替换；只替换整段匹配的菜单项，不影响功能。
 - **词典来源**：直接复用 `source/zh-CN/Menus` 里旧插件的全部菜单译文（约 5700 条），并补了少量菜单专用译文。
 - **切换语言照常生效**：选中文显示中文，选 English 恢复英文。
+- **开源协议**：明确为 GPL-3.0-only，基于本项目代码的衍生插件必须同样开源。
 
 ### v3.1.0 (2026-11-11) 【更好用的中文翻译】
 
