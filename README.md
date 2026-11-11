@@ -1,17 +1,15 @@
 ComfyUI 中文翻译插件
 
-> **v3.1.0（2026-11-11）｜实现方式已切换为官方 locales**
+> **v3.1.0 更新：更稳定、更完整的中文翻译**
 >
-> 节点 / 分类 / 设置面板的翻译改由 ComfyUI 官方 locales 机制加载（数据在 `locales/zh/`），
-> 不再依赖 JS 钩子，官方前端更新后无需跟着改代码。
-> 旧版翻译成果已完整迁移（`source/zh-CN/`，253 个文件 / 4253 个节点类）。
+> 新版换成了 ComfyUI 自带的中文机制。装好之后，节点名称、输入输出、下拉选项、分类、
+> 设置面板，以及 rgthree-comfy、ComfyUI 管理器这些扩展面板都会显示中文。
+> ComfyUI 以后升级，翻译不容易再被搞挂。
 >
-> 旧版的「悬浮翻译开关」「/agl 路由」「web/extensions 拷贝」已移除——
-> 现在直接在 ComfyUI 设置里切换语言即可。仅下拉框选项值、rgthree / Manager 自绘面板
-> 保留少量 JS 补丁（官方机制覆盖不到的部分）。
+> 以前所有翻译内容都保留，没有丢；另外补上了以前没翻的设置项和插件面板。
+> 想用中文就选中文、想看英文就切英文，直接在 ComfyUI 设置里换语言即可，不用再点悬浮开关。
 >
-> 升级方式：用本仓库覆盖 `custom_nodes` 里的同名文件夹后重启，不需要先卸载旧版。
-> 详细改动见下方 **v3.1.0** 更新日志。
+> 升级方法：用新版本替换掉旧的插件文件夹，重启 ComfyUI 就行，不需要先卸载。
 
 本项目是基于 [AIGODLIKE-ComfyUI-Translation](https://github.com/AIGODLIKE/AIGODLIKE-ComfyUI-Translation) 的衍生分支，在此特别感谢原项目的开发者们对开源社区的杰出贡献。正是因为有人愿意成为先驱者，后人才能继承前人的薪火.
 
@@ -29,19 +27,17 @@ ComfyUI 中文翻译插件
 
 ## 功能特点
 
-- 更强大的简体中文汉化，暂不考虑多语言支持，个人精力有限只支持翻译中文。
-- 在官方汉化的基础上嵌入额外的翻译内容，实现更完整的翻译。
-- 在界面上提供便捷的翻译功能切换按钮，可以选择使用附加翻译和官方实现
-  （使用官方实现的意思就是关闭插件，翻译插件就不生效了，使用官方已经翻译的中文内容）
-  - **v3 起已改为跟随 ComfyUI 语言设置，不再有悬浮开关**（设置 → 语言 → 中文）
-- 支持大部分常用自定义节点的翻译
+- 更完整的简体中文：节点名称、输入输出、下拉选项、节点分类、设置面板，以及常用插件的面板都会显示中文。
+- 在官方中文的基础上补上官方没翻或翻得不够的地方，比只用官方中文更完整。
+- v3 起跟随 ComfyUI 的语言设置：选中文就是中文，选英文就恢复英文，不再有悬浮开关。
+- 目前只做简体中文，暂不考虑其他语言。
 
 ## 使用建议
 
 本项目主要面向使用 ComfyUI 最新版本的用户：
 
 - 与老版本翻译插件 AIGODLIKE/AIGODLIKE-ComfyUI-Translation 并不兼容，安装前请先卸载它
-- **v3 升级方式**：直接用本仓库覆盖 `custom_nodes` 里的同名文件夹 `ComfyUI-DD-Translation`，重启即可，不需要先卸载旧版本
+- **v3 升级方式**：把旧的插件文件夹换成新版本，重启 ComfyUI 即可，不需要先卸载
 - 为确保最佳兼容性，项目将优先支持最新版 ComfyUI
 - 可能会放弃对旧版本的兼容支持，推荐使用以下内容：
 - 【最新版本整合包（至少半年内）或官方桌面版】
@@ -65,7 +61,7 @@ ComfyUI 中文翻译插件
 方法3（推荐）：
 直接在Manager中搜索插件名称安装
 
-> **安装或更新后必须重启 ComfyUI**：翻译走官方 `locales` 机制，服务端有缓存（lru_cache），只刷新浏览器页面不会生效。
+> **安装或更新后请重启 ComfyUI**：只刷新浏览器页面不会生效，必须重启一次。
 
 ## 贡献者名单
 
@@ -75,45 +71,16 @@ ComfyUI 中文翻译插件
 
 ## 更新日志
 
-### v3.1.0 (2026-11-11) 【重构：改用官方 locales，替代旧实现】
+### v3.1.0 (2026-11-11) 【更好用的中文翻译】
 
-**实现方式**
-
-- 节点 / 分类 / 设置面板改为官方 locales：`locales/zh/{nodeDefs,main,settings}.json`
-  - 节点 4253 个类；槽位 1209（本机真机对齐）+ 25263（未安装插件按旧格式映射）；输出名 398；tooltip 708
-  - 下拉选项 150 个槽位 / 671 条
-  - 节点分类 804 条、设置分类 57 条、设置项 42 个
-- 移除旧实现的全部前端钩子（`js/main.js`、`MenuTranslate.js`、`ui.js`、`utils.js`）、
-  `/agl/get_translation` 等 3 个自定义路由、`config.json`、`web/extensions` junction/copytree、
-  悬浮翻译开关、`翻译生成器.html`
-- 仅保留三处 JS（官方机制覆盖不到的部分）：`combo_labels.js`（下拉值）、
-  `ui_zh.js`（rgthree / Manager 自绘面板与核心对话框词典）、`options_zh.js`（生成数据）
-
-**新增作用域**
-
-- rgthree 设置弹窗（`.rgthree-dialog`）：标签 / 描述 / 下拉值 / 底部按钮，共 53 条
-- rgthree 顶栏菜单（`.rgthree-menu`）
-- ComfyUI Manager 主面板（`#cm-manager-dialog`）38 条
-- 自定义节点管理器（`#cn-manager-dialog`）、模型管理器（`#cmm-manager-dialog`）、
-  节点使用分析（`.nu-manager`）、快照管理（`#snapshot-manager-dialog`）
-- 核心对话框：包装 `app.extensionManager.dialog` 的 prompt / confirm / alert 与 `window.confirm` 文案
-- 动态文案规则：N 个自定义节点 / N 个外部模型 / N 个已安装包 / 各类加载中提示 / 错误前缀
-- 语言切换实时同步：监听官方 `Comfy.Locale.change`，切英文时还原被替换的文本与属性
-
-**迁移与工具**
-
-- 旧翻译源数据迁入 `source/zh-CN/`（Nodes 253 + Categories 50 + Menus 48），未丢失任何词条
-- 新增 `scripts/build_locales.py`（源数据 → 官方 locales）、`manual_zh.json`、`manual_settings_zh.json`
-- 新增 `rebuild.bat` / `rebuild.sh`，一键重建 `locales/zh/*.json` 与 `js/options_zh.js`
-- 新增 `.gitignore`：排除 `inventory/`（本机快照）、`__pycache__`、日志与临时文件
-
-### v3.0.0a2 (2026-11-11)
-
-- 新增节点下拉框选项值的显示补丁（官方 `nodeDefs.options` 字段前端暂未读取）
-- 修正 V3 API 节点的信息抓取方式（`GET_NODE_INFO_V1`），DLSS 三个节点补全至 18 个槽位
-
-### v3.0.0a1 (2026-11-11)
-
-- 官方 locales 原型：20 个节点 + 119 条分类，验证 `/api/i18n` 加载链路
+- **更稳定**：翻译改成跟随 ComfyUI 自带的中文机制，ComfyUI 以后升级不需要再跟着改代码，也不容易因为界面改版突然失效。
+- **更完整**：
+  - 节点名称、输入输出、下拉选项、节点分类都是中文
+  - 设置面板里的每一项和说明都是中文
+  - rgthree-comfy 的设置窗口、ComfyUI 管理器的面板和各个列表页也都是中文
+  - 覆盖 4000 多个节点、150 多处下拉选项、40 多个设置项
+- **更好用**：不用再点悬浮的翻译开关，直接在 ComfyUI 设置里切换「中文 / English」。
+- **升级不丢东西**：以前所有翻译内容都保留，另外补上了以前没翻的设置项和插件面板。
+- **怎么升级**：用新版本替换掉旧的插件文件夹，重启 ComfyUI；之前装过其他中文翻译插件的，先把它删掉，避免两个同时生效。
 
 > 更早的 v1.x – v2.x 记录见 [CHANGELOG.md](./CHANGELOG.md)。
