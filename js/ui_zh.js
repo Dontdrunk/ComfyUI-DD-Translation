@@ -309,12 +309,13 @@ function translateDocument() {
 }
 
 function restoreAll() {
+  // 插件可能会缓存菜单/弹窗 DOM（暂时从文档里移除），切语言时这些游离节点
+  // 也要恢复，否则重新打开时还停在旧语言。
   for (const [node, orig] of originals) {
-    if (node.isConnected) node.nodeValue = orig;
+    node.nodeValue = orig;
   }
   originals.clear();
   for (const [el, attrs] of attrOriginals) {
-    if (!el.isConnected) continue;
     for (const [attr, value] of attrs) el.setAttribute(attr, value);
   }
   attrOriginals.clear();

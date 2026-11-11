@@ -109,8 +109,9 @@ function pruneOriginals() {
 }
 
 function restoreAll() {
+  // 菜单 DOM 可能被缓存后重新挂载，游离的文本节点也要恢复。
   for (const [node, raw] of originals) {
-    if (node.isConnected) node.nodeValue = raw;
+    node.nodeValue = raw;
   }
   originals.clear();
 }
