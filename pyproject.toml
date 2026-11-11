@@ -1,13 +1,13 @@
 [project]
 name = "ComfyUI-DD-Translation"
-description = "A translation branch project."
-version = "2.2.4"
-license = "LICENSE"
-dependencies = ["git+https://github.com/Dontdrunk/ComfyUI-DD-Translation/tree/Dontdrunk.git"]
+description = "Simplified Chinese translations for ComfyUI custom nodes, via the official locales/ mechanism."
+version = "3.1.0"
+license = { text = "GPL-3.0" }
+requires-python = ">=3.9"
+dependencies = []
 
 [project.urls]
-Repository = "https://github.com/Dontdrunk/ComfyUI-DD-Translation/tree/Dontdrunk"
-#  Used by Comfy Registry https://comfyregistry.org
+Repository = "https://github.com/Dontdrunk/ComfyUI-DD-Translation"
 
 [tool.comfy]
 PublisherId = "Dontdrunk"

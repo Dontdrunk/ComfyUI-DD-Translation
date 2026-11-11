@@ -1,0 +1,21 @@
+# Python 缓存
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# 本机快照（含本机插件清单与模型文件名，不入库；没有它也能构建）
+inventory/
+
+# 日志与临时文件
+*.log
+*.tmp
+*.bak
+
+# 系统 / 编辑器
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.code-workspace

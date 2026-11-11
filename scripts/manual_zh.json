@@ -1,0 +1,296 @@
+{
+  "Text": {
+    "display_name": "文本",
+    "inputs": {
+      "text": {
+        "name": "文本"
+      }
+    }
+  },
+  "Text_Concatenate": {
+    "display_name": "文本拼接"
+  },
+  "Text_Switch": {
+    "display_name": "文本开关",
+    "inputs": {
+      "switch": {
+        "name": "开关"
+      },
+      "text": {
+        "name": "文本"
+      }
+    }
+  },
+  "Text_Translation": {
+    "display_name": "文本翻译",
+    "inputs": {
+      "trans_switch": {
+        "name": "翻译开关"
+      },
+      "trans_text": {
+        "name": "待翻译文本"
+      }
+    }
+  },
+  "Text_Translation_V2": {
+    "display_name": "文本翻译 V2",
+    "inputs": {
+      "trans_switch": {
+        "name": "翻译开关"
+      },
+      "trans_text": {
+        "name": "待翻译文本"
+      },
+      "translator": {
+        "name": "翻译器"
+      },
+      "source_language": {
+        "name": "源语言"
+      },
+      "target_language": {
+        "name": "目标语言"
+      }
+    }
+  },
+  "Text_Translation_V2_Full": {
+    "display_name": "文本翻译 V2（完整版）",
+    "inputs": {
+      "trans_switch": {
+        "name": "翻译开关"
+      },
+      "trans_text": {
+        "name": "待翻译文本"
+      },
+      "translator": {
+        "name": "翻译器"
+      },
+      "source_language": {
+        "name": "源语言"
+      },
+      "target_language": {
+        "name": "目标语言"
+      }
+    }
+  },
+  "LoadImageS3": {
+    "display_name": "S3 加载图像",
+    "inputs": {
+      "image": {
+        "name": "图像"
+      }
+    }
+  },
+  "LoadVideoUploadS3": {
+    "display_name": "S3 上传并加载视频",
+    "inputs": {
+      "video": {
+        "name": "视频"
+      },
+      "force_rate": {
+        "name": "强制帧率"
+      },
+      "custom_width": {
+        "name": "自定义宽度"
+      },
+      "custom_height": {
+        "name": "自定义高度"
+      },
+      "frame_load_cap": {
+        "name": "帧数上限"
+      },
+      "skip_first_frames": {
+        "name": "跳过开头帧"
+      },
+      "select_every_nth": {
+        "name": "每 N 帧取一"
+      },
+      "meta_batch": {
+        "name": "批处理数"
+      },
+      "vae": {
+        "name": "VAE"
+      },
+      "format": {
+        "name": "格式"
+      }
+    }
+  },
+  "SaveImageS3": {
+    "display_name": "S3 保存图像",
+    "inputs": {
+      "images": {
+        "name": "图像"
+      },
+      "filename_prefix": {
+        "name": "文件名前缀"
+      }
+    }
+  },
+  "VideoCombineS3": {
+    "display_name": "S3 视频合成",
+    "inputs": {
+      "images": {
+        "name": "图像"
+      },
+      "frame_rate": {
+        "name": "帧率"
+      },
+      "loop_count": {
+        "name": "循环次数"
+      },
+      "filename_prefix": {
+        "name": "文件名前缀"
+      },
+      "format": {
+        "name": "格式"
+      },
+      "pingpong": {
+        "name": "乒乓循环"
+      },
+      "save_output": {
+        "name": "保存输出"
+      },
+      "audio": {
+        "name": "音频"
+      },
+      "meta_batch": {
+        "name": "批处理数"
+      },
+      "vae": {
+        "name": "VAE"
+      }
+    }
+  },
+  "NvidiaDLSSFrameInterpolation": {
+    "display_name": "NVIDIA DLSS 帧插值",
+    "inputs": {
+      "video": {
+        "name": "视频"
+      },
+      "output_fps": {
+        "name": "输出帧率"
+      },
+      "dlss_engine": {
+        "name": "DLSS 引擎"
+      },
+      "encoding_quality": {
+        "name": "编码质量"
+      },
+      "video_codec": {
+        "name": "视频编码"
+      },
+      "container": {
+        "name": "封装格式"
+      },
+      "rename": {
+        "name": "重命名"
+      },
+      "custom_suffix": {
+        "name": "自定义后缀"
+      },
+      "hdr_mode": {
+        "name": "HDR 模式"
+      }
+    }
+  },
+  "NvidiaDLSSImageUpscale": {
+    "display_name": "NVIDIA DLSS 图像放大",
+    "inputs": {
+      "image": {
+        "name": "图像"
+      },
+      "upscale_mode": {
+        "name": "放大模式"
+      },
+      "require_neural_upscaling": {
+        "name": "强制神经网络放大"
+      },
+      "nr_preset": {
+        "name": "降噪预设"
+      },
+      "nr_style": {
+        "name": "降噪风格"
+      },
+      "nr_intensity": {
+        "name": "降噪强度"
+      },
+      "local_tone_strength": {
+        "name": "局部色调强度"
+      },
+      "local_structure_strength": {
+        "name": "局部结构强度"
+      },
+      "skin_structure_strength": {
+        "name": "皮肤结构强度"
+      },
+      "automatic_mask": {
+        "name": "自动遮罩"
+      },
+      "dlss_model_preset": {
+        "name": "DLSS 模型预设"
+      },
+      "output_detail_strength": {
+        "name": "输出细节强度"
+      }
+    }
+  },
+  "NvidiaDLSSVideoUpscale": {
+    "display_name": "NVIDIA DLSS 视频放大",
+    "inputs": {
+      "video": {
+        "name": "视频"
+      },
+      "upscale_mode": {
+        "name": "放大模式"
+      },
+      "require_neural_upscaling": {
+        "name": "强制神经网络放大"
+      },
+      "nr_preset": {
+        "name": "降噪预设"
+      },
+      "nr_style": {
+        "name": "降噪风格"
+      },
+      "nr_intensity": {
+        "name": "降噪强度"
+      },
+      "local_tone_strength": {
+        "name": "局部色调强度"
+      },
+      "local_structure_strength": {
+        "name": "局部结构强度"
+      },
+      "skin_structure_strength": {
+        "name": "皮肤结构强度"
+      },
+      "automatic_mask": {
+        "name": "自动遮罩"
+      },
+      "dlss_model_preset": {
+        "name": "DLSS 模型预设"
+      },
+      "encoding_quality": {
+        "name": "编码质量"
+      },
+      "video_codec": {
+        "name": "视频编码"
+      },
+      "container": {
+        "name": "封装格式"
+      },
+      "rename": {
+        "name": "重命名"
+      },
+      "custom_suffix": {
+        "name": "自定义后缀"
+      },
+      "hdr_mode": {
+        "name": "HDR 模式"
+      },
+      "output_detail_strength": {
+        "name": "输出细节强度"
+      }
+    }
+  }
+}
