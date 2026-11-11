@@ -66,6 +66,8 @@ ComfyUI 中文翻译插件
 - 新增 ComfyUI-DBS 插件节点翻译（DBSSeparate、DBSLoader）
 - 补充 zh-CN/Menus/Internal.json 中 preview_mode 与 Plain text 的翻译，并清理重复键
 - 修正 pyproject.toml / __init__.py 版本号：此前停留在 2.1.1，与更新日志不同步，本次统一为 2.2.4
+- 补充 rgthree-comfy 节点右键 properties 面板翻译（matchColors、showNav 等 7 条）
+- 优化 ComfyUI-SeedVR2_VideoUpscaler 插件翻译：统一 DiT/VAE 术语，补全分块参数表述，新增 dit / vae 输入与 IMAGE 输出翻译
 
 ### v2.2.3(2026-05-03)
 - 合并了贡献者(FanXiangTM) 提交的大量插件翻译补全

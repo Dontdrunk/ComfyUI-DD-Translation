@@ -69,5 +69,12 @@
     "mute": "禁用",
     "Save": "保存",
     "Close anyway": "关闭",
-    "Close": "关闭"
+    "Close": "关闭",
+    "matchColors": "匹配颜色",
+    "matchTitle": "匹配标题",
+    "showNav": "显示导航图标",
+    "showAllGraphs": "显示所有子图组",
+    "customSortAlphabet": "自定义字母排序",
+    "toggleRestriction": "选项切换限制",
+    "ue_properties": "UE扩展属性"
 }
