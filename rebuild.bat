@@ -18,6 +18,10 @@ if exist "D:\Projects\Procedure\ComfyUI-X\python_embeded\python.exe" set PY=D:\P
   --out locales\zh ^
   --js-out js\options_zh.js
 
+"%PY%" scripts\build_menus.py ^
+  --old source\zh-CN ^
+  --out js\menus_zh.js
+
 echo.
 echo 完成。重启 ComfyUI 生效。
 pause

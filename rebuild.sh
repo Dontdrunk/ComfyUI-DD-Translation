@@ -12,4 +12,7 @@ PY="${PYTHON:-python3}"
   --plugins-dir "$PLUGINS" \
   --out locales/zh \
   --js-out js/options_zh.js
+"$PY" scripts/build_menus.py \
+  --old source/zh-CN \
+  --out js/menus_zh.js
 echo "完成。重启 ComfyUI 生效。"
