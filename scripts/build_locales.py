@@ -384,7 +384,9 @@ def main():
     setting_defs = collect_settings(args.plugins_dir)
     for extra_def in (manual_settings.get("definitions") or []):
         sid = extra_def.get("id")
-        if sid and sid not in setting_defs:
+        # 手工定义优先：插件 JS 里的 category 常用 this.menuPrefix 拼接，
+        # 自动抓取会丢掉 🪛 前缀和动态分段，这里用人工校正后的定义覆盖。
+        if sid:
             setting_defs[sid] = {
                 "id": sid,
                 "name": extra_def.get("name", ""),

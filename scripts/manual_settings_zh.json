@@ -41,7 +41,39 @@
     "KJNodes.vueCombo.maxVisible": "下拉显示选项数",
     "KJNodes.vueCombo.arrows": "下拉上/下一项箭头",
     "KJNodes.vueCombo.folders": "下拉文件夹视图",
-    "rgthree.config": "打开 rgthree-comfy 配置"
+    "rgthree.config": "打开 rgthree-comfy 配置",
+    "Crystools.RefreshRate": "刷新间隔（秒）",
+    "Crystools.MonitorWidth": "监视器宽度（像素）",
+    "Crystools.MonitorHeight": "监视器高度（像素）",
+    "Crystools.ShowCpu": "CPU 使用率",
+    "Crystools.ShowRam": "内存使用率",
+    "Crystools.ShowHdd": "显示硬盘占用",
+    "Crystools.WhichHdd": "显示哪个分区",
+    "Crystools.ProgressBar": "显示进度条",
+    "Crystools.ShowGpuUsageZero": "GPU 使用率",
+    "Crystools.ShowGpuVramZero": "显存占用",
+    "Crystools.ShowGpuTemperatureZero": "温度",
+    "Crystools.ShowGpuUsageOne": "GPU 使用率",
+    "Crystools.ShowGpuVramOne": "显存占用",
+    "Crystools.ShowGpuTemperatureOne": "温度",
+    "Crystools.ShowGpuUsageTwo": "GPU 使用率",
+    "Crystools.ShowGpuVramTwo": "显存占用",
+    "Crystools.ShowGpuTemperatureTwo": "温度",
+    "Crystools.ShowGpuUsageThree": "GPU 使用率",
+    "Crystools.ShowGpuVramThree": "显存占用",
+    "Crystools.ShowGpuTemperatureThree": "温度",
+    "Crystools.ShowGpuUsageFour": "GPU 使用率",
+    "Crystools.ShowGpuVramFour": "显存占用",
+    "Crystools.ShowGpuTemperatureFour": "温度",
+    "Crystools.ShowGpuUsageFive": "GPU 使用率",
+    "Crystools.ShowGpuVramFive": "显存占用",
+    "Crystools.ShowGpuTemperatureFive": "温度",
+    "Crystools.ShowGpuUsageSix": "GPU 使用率",
+    "Crystools.ShowGpuVramSix": "显存占用",
+    "Crystools.ShowGpuTemperatureSix": "温度",
+    "Crystools.ShowGpuUsageSeven": "GPU 使用率",
+    "Crystools.ShowGpuVramSeven": "显存占用",
+    "Crystools.ShowGpuTemperatureSeven": "温度"
   },
   "categories": {
     "KJNodes": "💥KJ节点",
@@ -99,7 +131,12 @@
     "Dropdown folders": "下拉文件夹视图",
     "Convert ALL Set/Get to links": "全部「设置/获取」转为连线",
     "rgthree": "⛵rgthree",
-    "config": "配置"
+    "config": "配置",
+    "Crystools": "🪛Crystools工具组",
+    "🪛 Configuration": "🪛 配置",
+    "🪛 Hardware": "🪛 硬件",
+    "🪛 Progress Bar": "🪛 进度条",
+    "🪛 Show Hard Disk": "🪛 显示硬盘"
   },
   "options": {
     "VHS.AdvancedPreviews": {
@@ -187,7 +224,11 @@
     "VHS.LatentPreview": "采样过程中是否显示动态 latent 预览。",
     "VHS.LatentPreviewRate": "强制指定 latent 帧播放的帧率。这与输出帧率无关，视频模型下也不会一致。",
     "VHS.MetadataImage": "保存输出第一帧的 PNG，用于元数据。",
-    "VHS.KeepIntermediate": "执行成功后保留所需的中间文件。"
+    "VHS.KeepIntermediate": "执行成功后保留所需的中间文件。",
+    "Crystools.RefreshRate": "监视器每次更新之间的时间间隔（秒），0 表示不刷新。",
+    "Crystools.MonitorWidth": "监视器在界面上的宽度（像素，仅顶部/底部 UI 有效）。",
+    "Crystools.MonitorHeight": "监视器在界面上的高度（像素，仅顶部/底部 UI 有效）。",
+    "Crystools.ProgressBar": "仅对「禁用」（旧版）菜单生效。"
   },
   "definitions": [
     {
@@ -234,6 +275,302 @@
       "category": [
         "rgthree",
         "config"
+      ],
+      "options": []
+    },
+    {
+      "id": "Crystools.RefreshRate",
+      "name": "Refresh per second",
+      "tooltip": "This is the time (in seconds) between each update of the monitors, 0 means no refresh",
+      "category": [
+        "Crystools",
+        "🪛 Configuration"
+      ],
+      "options": []
+    },
+    {
+      "id": "Crystools.MonitorWidth",
+      "name": "Pixel Width",
+      "tooltip": "The width of the monitor in pixels on the UI (only on top/bottom UI)",
+      "category": [
+        "Crystools",
+        "🪛 Configuration"
+      ],
+      "options": []
+    },
+    {
+      "id": "Crystools.MonitorHeight",
+      "name": "Pixel Height",
+      "tooltip": "The height of the monitor in pixels on the UI (only on top/bottom UI)",
+      "category": [
+        "Crystools",
+        "🪛 Configuration"
+      ],
+      "options": []
+    },
+    {
+      "id": "Crystools.ShowCpu",
+      "name": "CPU Usage",
+      "tooltip": "",
+      "category": [
+        "Crystools",
+        "🪛 Hardware"
+      ],
+      "options": []
+    },
+    {
+      "id": "Crystools.ShowRam",
+      "name": "RAM Used",
+      "tooltip": "",
+      "category": [
+        "Crystools",
+        "🪛 Hardware"
+      ],
+      "options": []
+    },
+    {
+      "id": "Crystools.ShowHdd",
+      "name": "Show HDD Used",
+      "tooltip": "",
+      "category": [
+        "Crystools",
+        "🪛 Show Hard Disk"
+      ],
+      "options": []
+    },
+    {
+      "id": "Crystools.WhichHdd",
+      "name": "Partition to show",
+      "tooltip": "",
+      "category": [
+        "Crystools",
+        "🪛 Show Hard Disk"
+      ],
+      "options": []
+    },
+    {
+      "id": "Crystools.ProgressBar",
+      "name": "Show progress bar",
+      "tooltip": "This apply only on \"Disabled\" (old) menu",
+      "category": [
+        "Crystools",
+        "🪛 Progress Bar"
+      ],
+      "options": []
+    },
+    {
+      "id": "Crystools.ShowGpuUsageZero",
+      "name": " Usage",
+      "tooltip": "",
+      "category": [
+        "Crystools"
+      ],
+      "options": []
+    },
+    {
+      "id": "Crystools.ShowGpuVramZero",
+      "name": "VRAM",
+      "tooltip": "",
+      "category": [
+        "Crystools"
+      ],
+      "options": []
+    },
+    {
+      "id": "Crystools.ShowGpuTemperatureZero",
+      "name": "Temperature",
+      "tooltip": "",
+      "category": [
+        "Crystools"
+      ],
+      "options": []
+    },
+    {
+      "id": "Crystools.ShowGpuUsageOne",
+      "name": " Usage",
+      "tooltip": "",
+      "category": [
+        "Crystools"
+      ],
+      "options": []
+    },
+    {
+      "id": "Crystools.ShowGpuVramOne",
+      "name": "VRAM",
+      "tooltip": "",
+      "category": [
+        "Crystools"
+      ],
+      "options": []
+    },
+    {
+      "id": "Crystools.ShowGpuTemperatureOne",
+      "name": "Temperature",
+      "tooltip": "",
+      "category": [
+        "Crystools"
+      ],
+      "options": []
+    },
+    {
+      "id": "Crystools.ShowGpuUsageTwo",
+      "name": " Usage",
+      "tooltip": "",
+      "category": [
+        "Crystools"
+      ],
+      "options": []
+    },
+    {
+      "id": "Crystools.ShowGpuVramTwo",
+      "name": "VRAM",
+      "tooltip": "",
+      "category": [
+        "Crystools"
+      ],
+      "options": []
+    },
+    {
+      "id": "Crystools.ShowGpuTemperatureTwo",
+      "name": "Temperature",
+      "tooltip": "",
+      "category": [
+        "Crystools"
+      ],
+      "options": []
+    },
+    {
+      "id": "Crystools.ShowGpuUsageThree",
+      "name": " Usage",
+      "tooltip": "",
+      "category": [
+        "Crystools"
+      ],
+      "options": []
+    },
+    {
+      "id": "Crystools.ShowGpuVramThree",
+      "name": "VRAM",
+      "tooltip": "",
+      "category": [
+        "Crystools"
+      ],
+      "options": []
+    },
+    {
+      "id": "Crystools.ShowGpuTemperatureThree",
+      "name": "Temperature",
+      "tooltip": "",
+      "category": [
+        "Crystools"
+      ],
+      "options": []
+    },
+    {
+      "id": "Crystools.ShowGpuUsageFour",
+      "name": " Usage",
+      "tooltip": "",
+      "category": [
+        "Crystools"
+      ],
+      "options": []
+    },
+    {
+      "id": "Crystools.ShowGpuVramFour",
+      "name": "VRAM",
+      "tooltip": "",
+      "category": [
+        "Crystools"
+      ],
+      "options": []
+    },
+    {
+      "id": "Crystools.ShowGpuTemperatureFour",
+      "name": "Temperature",
+      "tooltip": "",
+      "category": [
+        "Crystools"
+      ],
+      "options": []
+    },
+    {
+      "id": "Crystools.ShowGpuUsageFive",
+      "name": " Usage",
+      "tooltip": "",
+      "category": [
+        "Crystools"
+      ],
+      "options": []
+    },
+    {
+      "id": "Crystools.ShowGpuVramFive",
+      "name": "VRAM",
+      "tooltip": "",
+      "category": [
+        "Crystools"
+      ],
+      "options": []
+    },
+    {
+      "id": "Crystools.ShowGpuTemperatureFive",
+      "name": "Temperature",
+      "tooltip": "",
+      "category": [
+        "Crystools"
+      ],
+      "options": []
+    },
+    {
+      "id": "Crystools.ShowGpuUsageSix",
+      "name": " Usage",
+      "tooltip": "",
+      "category": [
+        "Crystools"
+      ],
+      "options": []
+    },
+    {
+      "id": "Crystools.ShowGpuVramSix",
+      "name": "VRAM",
+      "tooltip": "",
+      "category": [
+        "Crystools"
+      ],
+      "options": []
+    },
+    {
+      "id": "Crystools.ShowGpuTemperatureSix",
+      "name": "Temperature",
+      "tooltip": "",
+      "category": [
+        "Crystools"
+      ],
+      "options": []
+    },
+    {
+      "id": "Crystools.ShowGpuUsageSeven",
+      "name": " Usage",
+      "tooltip": "",
+      "category": [
+        "Crystools"
+      ],
+      "options": []
+    },
+    {
+      "id": "Crystools.ShowGpuVramSeven",
+      "name": "VRAM",
+      "tooltip": "",
+      "category": [
+        "Crystools"
+      ],
+      "options": []
+    },
+    {
+      "id": "Crystools.ShowGpuTemperatureSeven",
+      "name": "Temperature",
+      "tooltip": "",
+      "category": [
+        "Crystools"
       ],
       "options": []
     }
