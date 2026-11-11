@@ -6,7 +6,9 @@ ComfyUI 的简体中文翻译插件，让 ComfyUI 界面和常用插件尽量显
 
 ## 视频展示
 
-<https://github.com/user-attachments/assets/1ec662ba-da6c-4712-8be7-61168b08940e>
+<video src="https://cdn.jsdelivr.net/gh/Dontdrunk/ComfyUI-DD-Translation@main/assets/demo.mp4" controls width="100%"></video>
+
+> 如果视频无法播放，可以 [直接打开视频](https://github.com/Dontdrunk/ComfyUI-DD-Translation/blob/main/assets/demo.mp4)。
 
 ## 项目背景
 
