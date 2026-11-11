@@ -11,7 +11,7 @@ ComfyUI 中文翻译插件
 > 保留少量 JS 补丁（官方机制覆盖不到的部分）。
 >
 > 升级方式：用本仓库覆盖 `custom_nodes` 里的同名文件夹后重启，不需要先卸载旧版。
-> 详细改动与已知遗漏见下方 **v3.1.0** 更新日志。
+> 详细改动见下方 **v3.1.0** 更新日志。
 
 本项目是基于 [AIGODLIKE-ComfyUI-Translation](https://github.com/AIGODLIKE/AIGODLIKE-ComfyUI-Translation) 的衍生分支，在此特别感谢原项目的开发者们对开源社区的杰出贡献。正是因为有人愿意成为先驱者，后人才能继承前人的薪火.
 
@@ -106,14 +106,6 @@ ComfyUI 中文翻译插件
 - 新增 `scripts/build_locales.py`（源数据 → 官方 locales）、`manual_zh.json`、`manual_settings_zh.json`
 - 新增 `rebuild.bat` / `rebuild.sh`，一键重建 `locales/zh/*.json` 与 `js/options_zh.js`
 - 新增 `.gitignore`：排除 `inventory/`（本机快照）、`__pycache__`、日志与临时文件
-
-**已知遗漏**
-
-- 旧仓库未收录插件的节点（ADE / EditUtils / ZImagePowerNodes 等约 44 个）仍无中文
-- Manager 的分享对话框、插件列表里的说明文字属于接口数据，未翻译
-- 画布右键菜单中的 rgthree 子项未覆盖（ComfyUI 原生 `.litecontextmenu`，避免波及全部菜单）
-- 浏览器原生 confirm 的标题栏与「确定/取消」按钮由浏览器语言决定，只能翻译正文
-- 下拉值 / 自绘面板属于 DOM 替换，插件更新改了文案需要补词条后重建
 
 ### v3.0.0a2 (2026-11-11)
 
