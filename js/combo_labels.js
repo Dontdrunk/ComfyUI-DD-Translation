@@ -56,13 +56,28 @@ function patchNode(node) {
   }
 }
 
-function patchGraph(graph) {
-  if (!graph) return;
-  for (const node of graph._nodes || []) patchNode(node);
-  const subs = graph.subgraphs;
-  if (!subs) return;
-  const list = subs instanceof Map ? subs.values() : Object.values(subs);
-  for (const sub of list) patchGraph(sub);
+function patchGraph(root) {
+  if (!root) return;
+  // 前端 1.58.5 起，LGraph.subgraphs 是 "get subgraphs() { return this.rootGraph._subgraphs }"
+  // 也就是子图读到的同样是根图那一份表，而这份表里又包含子图自己。
+  // 所以这里必须显式迭代 + 按对象去重：每个图、每份子图表只处理一次，
+  // 否则子图会从共享表里再次拿到自己，无限自递归直到栈溢出。
+  const seenGraphs = new Set();
+  const seenTables = new Set();
+  const stack = [root];
+  while (stack.length) {
+    const graph = stack.pop();
+    if (!graph || typeof graph !== "object" || seenGraphs.has(graph)) continue;
+    seenGraphs.add(graph);
+    for (const node of graph._nodes || []) patchNode(node);
+    const subs = graph.subgraphs;
+    if (!subs || seenTables.has(subs)) continue;
+    seenTables.add(subs);
+    const list = subs instanceof Map ? subs.values() : Object.values(subs);
+    for (const sub of list) {
+      if (sub && typeof sub === "object") stack.push(sub);
+    }
+  }
 }
 
 app.registerExtension({
@@ -86,6 +101,12 @@ app.registerExtension({
     patchNode(node);
   },
   afterConfigureGraph() {
-    setTimeout(() => patchGraph(app.graph), 0);
+    setTimeout(() => {
+      try {
+        patchGraph(app.graph);
+      } catch (e) {
+        console.warn("[DD] combo labels:", e);
+      }
+    }, 0);
   },
 });
