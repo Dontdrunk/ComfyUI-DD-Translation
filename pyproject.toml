@@ -10,5 +10,5 @@ dependencies = []
 Repository = "https://github.com/Dontdrunk/ComfyUI-DD-Translation"
 
 [tool.comfy]
-PublisherId = "Dontdrunk"
+PublisherId = "dontdrunk"
 DisplayName = "ComfyUI-DD-Translation"
