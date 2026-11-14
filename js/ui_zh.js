@@ -1,11 +1,14 @@
 import { app } from "../../../scripts/app.js";
+import { MENUS } from "./menus_zh.js";
 
 /**
- * 这两个面板不走 ComfyUI 的 i18n（settings.<id> / locales），
+ * 这些区域不走 ComfyUI 的 i18n（settings.<id> / locales），
  * 文案是插件 JS 里硬编码的，只能做作用域内的文本替换。
  *
  * - rgthree-comfy 设置弹窗：.rgthree-dialog
  * - ComfyUI Manager 面板：#cm-manager-dialog
+ * - ComfyUI 设置弹窗：.settings-dialog（面板里只有 1 条专用译文，其余靠通用词典兜底）
+ * - 顶栏 / 状态栏：Crystools 监控条、右侧操作条、旧版悬浮菜单
  *
  * 只替换“整段文本完全等于词典键”的文本节点，不做子串替换；
  * 切到英文时会把原文还原。
@@ -195,7 +198,15 @@ const SETTINGS_ZH = {
   "rgthree-comfy settings": "rgthree-comfy 设置",
 };
 
-const CONTAINER_SELECTOR = "[data-testid=\"settings-dialog\"], .comfy-dialog, #cm-manager-dialog, #cn-manager-dialog, #cmm-manager-dialog, #snapshot-manager-dialog, .cn-manager, .cmm-manager, .nu-manager, .rgthree-dialog, .rgthree-menu";
+const SETTINGS_SELECTOR = "[data-testid=\"settings-dialog\"]";
+const RGTHREE_SELECTOR = ".rgthree-dialog, .rgthree-menu";
+const MANAGER_SELECTOR = ".comfy-dialog, #cm-manager-dialog, #cn-manager-dialog, #cmm-manager-dialog, #snapshot-manager-dialog, .cn-manager, .cmm-manager, .nu-manager";
+
+// 常驻区域（顶栏 / 状态栏）：以前只扫弹窗和菜单，这两块永远显示英文。
+// 仍然是「整段精确匹配」才替换，数值、图标、百分比不动。
+const CHROME_SELECTOR = ".actionbar-container, [data-testid=\"action-bar-buttons\"], [data-testid=\"top-menu-actionbars\"], [data-testid=\"legacy-topbar-container\"], #crystools-monitors-root, .comfy-menu";
+
+const CONTAINER_SELECTOR = [SETTINGS_SELECTOR, RGTHREE_SELECTOR, MANAGER_SELECTOR, CHROME_SELECTOR].join(", ");
 
 const PREFIX_RULES = [
   ["Installation Error:\n", "安装错误：\n"],
@@ -230,13 +241,22 @@ function localeIsZh() {
   return localeCode().toLowerCase().startsWith("zh");
 }
 
-function dictFor(el) {
+// 按容器返回「词典链」：面板专用词典优先，通用菜单词典 MENUS 兜底。
+// 以前只返回单份词典，设置面板里只有 1 条译文，等于把 5000+ 条通用译文挡在外面。
+function dictsFor(el) {
   if (!el || !el.closest) return null;
-  if (el.closest(".rgthree-dialog")) return RGTHREE_ZH;
-  if (el.closest(".rgthree-menu")) return RGTHREE_ZH;
-  if (el.closest('[data-testid="settings-dialog"]')) return SETTINGS_ZH;
-  if (el.closest(".comfy-dialog, #cm-manager-dialog, #cn-manager-dialog, #cmm-manager-dialog, #snapshot-manager-dialog, .cn-manager, .cmm-manager, .nu-manager")) return MANAGER_ZH;
+  if (el.closest(RGTHREE_SELECTOR)) return [RGTHREE_ZH, MENUS];
+  if (el.closest(SETTINGS_SELECTOR)) return [SETTINGS_ZH, MENUS];
+  if (el.closest(MANAGER_SELECTOR)) return [MANAGER_ZH, MENUS];
+  if (el.closest(CHROME_SELECTOR)) return [MENUS];
   return null;
+}
+
+function lookupZh(dicts, text) {
+  for (const dict of dicts) {
+    if (dict && Object.prototype.hasOwnProperty.call(dict, text)) return dict[text];
+  }
+  return "";
 }
 
 const originals = new Map();
@@ -249,12 +269,12 @@ function translateTextNode(node) {
   if (!parent) return;
   const tag = parent.tagName;
   if (tag === "SCRIPT" || tag === "STYLE" || tag === "TEXTAREA" || tag === "INPUT" || tag === "CODE" || tag === "PRE") return;
-  const dict = dictFor(parent);
-  if (!dict) return;
+  const dicts = dictsFor(parent);
+  if (!dicts) return;
   const trimmed = text.trim();
   if (!trimmed) return;
 
-  let zh = dict[trimmed];
+  let zh = lookupZh(dicts, trimmed);
   let prefixLen = 0;
 
   if (!zh) {
@@ -278,13 +298,13 @@ const ATTRIBUTES = ["placeholder", "title", "aria-label"];
 const attrOriginals = new Map();
 
 function translateElementAttrs(el) {
-  const dict = dictFor(el);
-  if (!dict) return;
+  const dicts = dictsFor(el);
+  if (!dicts) return;
   for (const attr of ATTRIBUTES) {
     const value = el.getAttribute ? el.getAttribute(attr) : null;
     if (!value) continue;
     const trimmed = value.trim();
-    const zh = dict[trimmed];
+    const zh = lookupZh(dicts, trimmed);
     if (!zh) continue;
     let m = attrOriginals.get(el);
     if (!m) { m = new Map(); attrOriginals.set(el, m); }
@@ -340,7 +360,7 @@ const CONFIRM_ZH = {
 function translateMessage(message) {
   if (!localeIsZh() || typeof message !== "string" || !message) return message;
   const trimmed = message.trim();
-  let zh = CONFIRM_ZH[trimmed] || MANAGER_ZH[trimmed] || RGTHREE_ZH[trimmed];
+  let zh = CONFIRM_ZH[trimmed] || MANAGER_ZH[trimmed] || RGTHREE_ZH[trimmed] || MENUS[trimmed];
   if (!zh) {
     for (const [re, fn] of REGEX_RULES) {
       const m = re.exec(trimmed);
@@ -410,6 +430,6 @@ app.registerExtension({
 
     translateDocument();
     for (const d of [300, 1000, 3000]) setTimeout(translateDocument, d);
-    console.log("[DD] UI 词典已就绪：rgthree " + Object.keys(RGTHREE_ZH).length + " 条 / Manager " + Object.keys(MANAGER_ZH).length + " 条");
+    console.log("[DD] UI 词典已就绪：rgthree " + Object.keys(RGTHREE_ZH).length + " 条 / Manager " + Object.keys(MANAGER_ZH).length + " 条 / 通用 " + Object.keys(MENUS).length + " 条");
   },
 });

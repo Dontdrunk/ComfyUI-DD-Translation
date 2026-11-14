@@ -7,7 +7,7 @@ v3：基于 ComfyUI 官方 locales 机制的中文翻译插件。
 - 节点 / 画布右键菜单里插件写死的英文：js/contextmenu_zh.js + js/menus_zh.js
 """
 
-__version__ = "3.2.0"
+__version__ = "3.2.1"
 
 NODE_CLASS_MAPPINGS = {}
 NODE_DISPLAY_NAME_MAPPINGS = {}

@@ -18,6 +18,7 @@
     "Show HDD Used": "显示硬盘使用情况",
     "RAM": "内存",
     "Temp": "温度",
+    "HDD": "硬盘",
     
     "This apply only on \"Disabled\" (old) menu": "这仅适用于\"禁用\"(旧)菜单",
     "The width of the monitor in pixels on the UI (only on top/bottom UI)": "UI上监视器的宽度(像素)(仅适用于顶部/底部UI)",
