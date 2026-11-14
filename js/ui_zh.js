@@ -196,6 +196,9 @@ const MANAGER_ZH = {
 
 const SETTINGS_ZH = {
   "rgthree-comfy settings": "rgthree-comfy 设置",
+  // MAINodes 的 Code review 选项：英文原文带单引号，vue-i18n 的点路径解析不了，
+  // 只能退回面板内的整段文本替换。
+  "Only code Snap doesn't know (default)": "仅 Snap 不认识的代码（默认）",
 };
 
 const SETTINGS_SELECTOR = "[data-testid=\"settings-dialog\"]";

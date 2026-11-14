@@ -220,7 +220,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--old", default="source/zh-CN", help="旧格式翻译源目录（默认 source/zh-CN）")
     ap.add_argument("--inventory", default="")
-    ap.add_argument("--extra", default="")
+    ap.add_argument("--extra", action="append", default=[],
+                    help="旧仓库没有的插件手工翻译，可重复传入多个文件")
     ap.add_argument("--out", required=True)
     ap.add_argument("--js-out", default="js/options_zh.js")
     ap.add_argument("--plugins-dir", default="", help="custom_nodes 目录，用来扒插件设置项")
@@ -236,7 +237,10 @@ def main():
             old.setdefault(cls, {}).update(entry)
 
     inv = load_json(args.inventory) if args.inventory and os.path.exists(args.inventory) else {}
-    extra = load_json(args.extra) if args.extra and os.path.exists(args.extra) else {}
+    extra = {}
+    for path in args.extra:
+        if path and os.path.exists(path):
+            extra.update(load_json(path))
 
     node_defs = {}
     stats = collections.Counter()
@@ -311,6 +315,8 @@ def main():
             merged["display_name"] = entry["display_name"]
         if entry.get("description"):
             merged["description"] = entry["description"]
+        if entry.get("outputs"):
+            merged["outputs"] = entry["outputs"]
         ins = merged.setdefault("inputs", {})
         for slot, val in (entry.get("inputs") or {}).items():
             ins[slot] = dict(val)

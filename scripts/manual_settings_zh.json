@@ -73,7 +73,17 @@
     "Crystools.ShowGpuTemperatureSix": "温度",
     "Crystools.ShowGpuUsageSeven": "GPU 使用率",
     "Crystools.ShowGpuVramSeven": "显存占用",
-    "Crystools.ShowGpuTemperatureSeven": "温度"
+    "Crystools.ShowGpuTemperatureSeven": "温度",
+    "MAINodes.Snap.OpenIn": "点击 Snap 积木时，其设置打开于",
+    "MAINodes.Snap.AgentsMayRun": "允许智能体无需询问即可运行渲染和制作转盘",
+    "MAINodes.Snap.ProposalExpiry": "智能体提案无人回答时，经过这么多小时后搁置（0：从不）",
+    "MAINodes.Snap.AstridLauncher": "Astrid 在这台机器上：其命令行使用的启动器",
+    "MAINodes.Snap.AstridDataRoot": "Astrid 在这台机器上：其数据文件夹（留空：使用启动器自己的）",
+    "MAINodes.Snap.AstridApp": "Astrid 在这台机器上：App 地址（在 Astrid 中打开）",
+    "MAINodes.Snap.VoiceQAGPU": "语音质检：其 Nemotron 服务器运行位置",
+    "MAINodes.Snap.SaveMetadata": "在保存的每张图片和每个视频中保存提示词与工作流（元数据）",
+    "MAINodes.Snap.RatePromptWords": "同时根据提示词中的词语为片段评级（评级上限低于 Adult 的账户始终如此）",
+    "MAINodes.Snap.CodeReview": "当智能体想加入你环境里还没有的代码时，先阅读代码"
   },
   "categories": {
     "KJNodes": "💥KJ节点",
@@ -136,7 +146,17 @@
     "🪛 Configuration": "🪛 配置",
     "🪛 Hardware": "🪛 硬件",
     "🪛 Progress Bar": "🪛 进度条",
-    "🪛 Show Hard Disk": "🪛 显示硬盘"
+    "🪛 Show Hard Disk": "🪛 显示硬盘",
+    "MAINodes": "🧠MAINodes",
+    "Snap": "Snap",
+    "Open in": "打开位置",
+    "Agents run": "智能体运行",
+    "Proposal expiry": "提案过期",
+    "Astrid": "Astrid",
+    "Voice QA": "语音质检",
+    "Metadata": "元数据",
+    "Ratings": "评级",
+    "Code review": "代码审查"
   },
   "options": {
     "VHS.AdvancedPreviews": {
@@ -181,6 +201,23 @@
       "disabled": "禁用",
       "tree": "树形展开",
       "submenus": "侧边子菜单"
+    },
+    "MAINodes.Snap.OpenIn": {
+      "Side panel": "侧边面板",
+      "The brick itself": "积木本身"
+    },
+    "MAINodes.Snap.VoiceQAGPU": {
+      "the other GPU": "另一块 GPU",
+      "this GPU, experts in RAM": "本卡，专家放内存",
+      "off": "关闭"
+    },
+    "MAINodes.Snap.CodeReview": {
+      "Always read it first": "总是先阅读",
+      "Only code Snap doesn't know (default)": "仅 Snap 不认识的代码（默认）",
+      "Never: save the tokens": "从不：节省 Token",
+      "always": "总是先阅读",
+      "unknown": "仅 Snap 不认识的代码（默认）",
+      "never": "从不：节省 Token"
     }
   },
   "tooltips": {
@@ -228,7 +265,16 @@
     "Crystools.RefreshRate": "监视器每次更新之间的时间间隔（秒），0 表示不刷新。",
     "Crystools.MonitorWidth": "监视器在界面上的宽度（像素，仅顶部/底部 UI 有效）。",
     "Crystools.MonitorHeight": "监视器在界面上的高度（像素，仅顶部/底部 UI 有效）。",
-    "Crystools.ProgressBar": "仅对「禁用」（旧版）菜单生效。"
+    "Crystools.ProgressBar": "仅对「禁用」（旧版）菜单生效。",
+    "MAINodes.Snap.AgentsMayRun": "关闭：智能体的运行或 make_dial 会作为提案等待你接受。开启：立即开始（会占用 GPU）。",
+    "MAINodes.Snap.ProposalExpiry": "默认关闭。被搁置的提案会保留（工作卡片的「已搁置」），不会删除，仍可接受（SNAP-R210）。",
+    "MAINodes.Snap.AstridLauncher": "在这台电脑上运行 Astrid 命令的脚本，会在干净环境中执行（例如某个 Astrid 实验目录的 bin/clean.sh）。Snap 每次写入 Astrid 的 Cut 都会用它检查，Cut 镜头也通过它推送。留空：Snap 仍会写入 .astrid 文件，并提示无人检查。",
+    "MAINodes.Snap.AstridDataRoot": "Snap 连接的 Astrid Runtime 所在文件夹。必须是这台电脑上的 Runtime：地址不是本机的会被拒绝。",
+    "MAINodes.Snap.AstridApp": "剪辑镜头中的「在 Astrid 中打开」会跳转到此地址。必须是本机（127.0.0.1 或 localhost）。",
+    "MAINodes.Snap.VoiceQAGPU": "语音检查会听取每个片段的台词以及说话人（audio.cpp 的 Nemotron 转写，约 22 GB 显存）。另一块 GPU：速度快，渲染继续用当前卡。本卡，专家放内存：约 7 GB 显存 + 17 GB 内存，约慢 3 倍，每次检查前会卸载 ComfyUI 的模型。关闭：只运行语音匹配提示。",
+    "MAINodes.Snap.SaveMetadata": "开启：文件保留配方（包括 LoRA 名称），可复现。关闭：此浏览器的运行不保存元数据。也等同于 Snap 中「运行」旁的开关。",
+    "MAINodes.Snap.RatePromptWords": "关闭：根据所用的文件和片段评级。开启：提示词中有明显性相关词语时也会评为 Adult（SNAP-R39）。",
+    "MAINodes.Snap.CodeReview": "这会消耗 Token。Snap 套件里的包已经带有安全审阅。每次安装仍会等待你确认。"
   },
   "definitions": [
     {
@@ -573,6 +619,127 @@
         "Crystools"
       ],
       "options": []
+    },
+    {
+      "id": "MAINodes.Snap.OpenIn",
+      "name": "Clicking a Snap brick opens its settings in",
+      "tooltip": "",
+      "category": [
+        "MAINodes",
+        "Snap",
+        "Open in"
+      ],
+      "options": [
+        "Side panel",
+        "The brick itself"
+      ]
+    },
+    {
+      "id": "MAINodes.Snap.AgentsMayRun",
+      "name": "Let agents run renders and make dials without asking",
+      "tooltip": "Off: an agent's run or make_dial waits as a proposal you accept. On: it starts right away (it uses GPU time).",
+      "category": [
+        "MAINodes",
+        "Snap",
+        "Agents run"
+      ],
+      "options": []
+    },
+    {
+      "id": "MAINodes.Snap.ProposalExpiry",
+      "name": "Park agents' proposals nobody answered after this many hours (0: never)",
+      "tooltip": "Off by default. A parked proposal is kept (the Work card's Parked), never deleted, and can still be accepted (SNAP-R210).",
+      "category": [
+        "MAINodes",
+        "Snap",
+        "Proposal expiry"
+      ],
+      "options": []
+    },
+    {
+      "id": "MAINodes.Snap.AstridLauncher",
+      "name": "Astrid on this machine: the launcher its command line runs through",
+      "tooltip": "",
+      "category": [
+        "MAINodes",
+        "Snap",
+        "Astrid"
+      ],
+      "options": []
+    },
+    {
+      "id": "MAINodes.Snap.AstridDataRoot",
+      "name": "Astrid on this machine: its data folder (empty: the launcher's own)",
+      "tooltip": "",
+      "category": [
+        "MAINodes",
+        "Snap",
+        "Astrid"
+      ],
+      "options": []
+    },
+    {
+      "id": "MAINodes.Snap.AstridApp",
+      "name": "Astrid on this machine: the App's address (Open in Astrid)",
+      "tooltip": "",
+      "category": [
+        "MAINodes",
+        "Snap",
+        "Astrid"
+      ],
+      "options": []
+    },
+    {
+      "id": "MAINodes.Snap.VoiceQAGPU",
+      "name": "Voice QA: where its Nemotron server runs",
+      "tooltip": "",
+      "category": [
+        "MAINodes",
+        "Snap",
+        "Voice QA"
+      ],
+      "options": [
+        "the other GPU",
+        "this GPU, experts in RAM",
+        "off"
+      ]
+    },
+    {
+      "id": "MAINodes.Snap.SaveMetadata",
+      "name": "Save the prompt and workflow (metadata) in every saved picture and video",
+      "tooltip": "",
+      "category": [
+        "MAINodes",
+        "Snap",
+        "Metadata"
+      ],
+      "options": []
+    },
+    {
+      "id": "MAINodes.Snap.RatePromptWords",
+      "name": "Rate takes from their prompt's words too (an account capped below Adult always is)",
+      "tooltip": "",
+      "category": [
+        "MAINodes",
+        "Snap",
+        "Ratings"
+      ],
+      "options": []
+    },
+    {
+      "id": "MAINodes.Snap.CodeReview",
+      "name": "When an agent wants to add code that isn't part of your setup yet, it reads the code first",
+      "tooltip": "",
+      "category": [
+        "MAINodes",
+        "Snap",
+        "Code review"
+      ],
+      "options": [
+        "Always read it first",
+        "Only code Snap doesn't know (default)",
+        "Never: save the tokens"
+      ]
     }
   ]
 }

@@ -1,0 +1,4789 @@
+{
+  "H3AddLatentGuide": {
+    "display_name": "H3 添加 Latent 引导（对齐 Latent 行）[实验]",
+    "inputs": {
+      "positive": {
+        "name": "正面条件"
+      },
+      "latent": {
+        "name": "Latent"
+      },
+      "guide": {
+        "name": "引导"
+      },
+      "token_idx": {
+        "name": "Token 索引"
+      },
+      "noise_aug": {
+        "name": "噪声增强"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "正面条件"
+      },
+      "1": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3AttentionMeasure": {
+    "display_name": "H3 注意力测量",
+    "inputs": {
+      "model": {
+        "name": "模型"
+      },
+      "hold_map": {
+        "name": "保持映射"
+      },
+      "mode": {
+        "name": "模式",
+        "options": {
+          "off": "关闭",
+          "log_measure": "记录测量"
+        }
+      },
+      "strength": {
+        "name": "强度"
+      },
+      "blocks": {
+        "name": "块"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "模型"
+      }
+    }
+  },
+  "H3AudioRecover": {
+    "display_name": "H3 音频恢复（保持映射 atempo，保留音高）",
+    "inputs": {
+      "audio": {
+        "name": "音频"
+      },
+      "hold_map": {
+        "name": "保持映射"
+      },
+      "fps": {
+        "name": "帧率"
+      },
+      "reference": {
+        "name": "参考图像"
+      },
+      "reference_mix": {
+        "name": "参考混合"
+      },
+      "audio_source": {
+        "name": "音频来源",
+        "options": {
+          "custom (use reference_mix)": "自定义（使用参考混合）",
+          "keep the original performance (safe default)": "保留原表演（安全默认）",
+          "use pass 2's foley - ONLY IF the audio rows were seeded": "使用第二遍的拟音（仅当音频行已播种）",
+          "blend, favour the original": "混合，偏向原始",
+          "blend, favour pass 2": "混合，偏向第二遍"
+        }
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "音频"
+      }
+    }
+  },
+  "H3AudioSmear": {
+    "display_name": "H3 音频涂抹（保持映射拉伸，保留音高）[Alpha]",
+    "inputs": {
+      "audio": {
+        "name": "音频"
+      },
+      "hold_map": {
+        "name": "保持映射"
+      },
+      "fps": {
+        "name": "帧率"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "音频"
+      }
+    }
+  },
+  "H3CapabilityProbe": {
+    "display_name": "H3 能力探针（Alpha）",
+    "inputs": {
+      "model": {
+        "name": "模型"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "模型"
+      },
+      "1": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3ClockRemap": {
+    "display_name": "H3 时钟重映射（任意模型，预设）",
+    "inputs": {
+      "hold_map": {
+        "name": "保持映射"
+      },
+      "model_profile": {
+        "name": "模型配置",
+        "options": {
+          "minimax-h3": "MiniMax-H3",
+          "ltx-2.5": "LTX-2.5",
+          "wan-2.2 (unmeasured)": "Wan-2.2（未实测）",
+          "custom (use the fields below)": "自定义（使用下方字段）"
+        }
+      },
+      "custom_block": {
+        "name": "自定义块"
+      },
+      "custom_hold_scale": {
+        "name": "自定义保持缩放"
+      },
+      "custom_legal_step": {
+        "name": "自定义合法步长"
+      },
+      "custom_legal_offset": {
+        "name": "自定义合法偏移"
+      },
+      "custom_fps": {
+        "name": "自定义帧率"
+      },
+      "custom_cap_seconds": {
+        "name": "自定义上限（秒）"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "保持映射"
+      },
+      "1": {
+        "name": "长度"
+      },
+      "2": {
+        "name": "报告"
+      },
+      "3": {
+        "name": "轮廓 JSON"
+      }
+    }
+  },
+  "H3ConditioningBank": {
+    "display_name": "H3 条件缓存（一次编码，逐条不跑 TE）[Alpha]",
+    "inputs": {
+      "conditioning": {
+        "name": "条件"
+      },
+      "bank_key": {
+        "name": "缓存键"
+      },
+      "store_dir": {
+        "name": "存储目录"
+      },
+      "mode": {
+        "name": "模式",
+        "options": {
+          "use bank if present (default)": "有缓存则使用（默认）",
+          "refresh (re-encode, overwrite)": "刷新（重新编码并覆盖）"
+        }
+      },
+      "prompt": {
+        "name": "提示词"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "条件"
+      },
+      "1": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3CondStrength": {
+    "display_name": "H3 条件强度（按类型）",
+    "inputs": {
+      "model": {
+        "name": "模型"
+      },
+      "guide_strength": {
+        "name": "引导强度"
+      },
+      "reference_strength": {
+        "name": "参考强度"
+      },
+      "reference_strengths": {
+        "name": "参考强度列表"
+      },
+      "guide_audio_strength": {
+        "name": "引导音频强度"
+      },
+      "reference_audio_strength": {
+        "name": "参考音频强度"
+      },
+      "label_follows": {
+        "name": "标签跟随",
+        "options": {
+          "guides": "引导",
+          "references": "参考",
+          "core": "核心"
+        }
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "模型"
+      },
+      "1": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3ContactSheet": {
+    "display_name": "H3 联系表（五视图）",
+    "inputs": {
+      "clip": {
+        "name": "CLIP"
+      },
+      "vae": {
+        "name": "VAE"
+      },
+      "prompt": {
+        "name": "提示词"
+      },
+      "size": {
+        "name": "尺寸"
+      },
+      "ref_image": {
+        "name": "参考图像"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "正面条件"
+      },
+      "1": {
+        "name": "Latent"
+      }
+    }
+  },
+  "H3ContactSheetDecode": {
+    "display_name": "H3 联系表解码",
+    "inputs": {
+      "vae": {
+        "name": "VAE"
+      },
+      "samples": {
+        "name": "Latent"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "视图"
+      },
+      "1": {
+        "name": "拼图"
+      }
+    }
+  },
+  "H3CoreCompatibility": {
+    "display_name": "H3 核心兼容性（Alpha）",
+    "inputs": {
+      "model": {
+        "name": "模型"
+      },
+      "mask_velocity_15988": {
+        "name": "遮罩速度（#15988）",
+        "options": {
+          "auto": "自动",
+          "off": "关闭",
+          "on": "开启"
+        }
+      },
+      "scope": {
+        "name": "范围",
+        "options": {
+          "both": "两者",
+          "video only": "仅视频",
+          "audio only": "仅音频"
+        }
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "模型"
+      },
+      "1": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3DeltaColorCarry": {
+    "display_name": "H3 差值色彩延续（Alpha）",
+    "inputs": {
+      "samples": {
+        "name": "Latent"
+      },
+      "vae": {
+        "name": "VAE"
+      },
+      "anchor_stats": {
+        "name": "锚点统计"
+      },
+      "current_stats": {
+        "name": "当前统计"
+      },
+      "prefix_frames": {
+        "name": "前缀帧数"
+      },
+      "strength": {
+        "name": "强度"
+      },
+      "max_luma_shift": {
+        "name": "最大亮度偏移"
+      },
+      "max_saturation_change": {
+        "name": "最大饱和度变化"
+      },
+      "spatial_kernel": {
+        "name": "空间核"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Latent"
+      },
+      "1": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3DeropeSigmas": {
+    "display_name": "H3 De-rope Sigmas（Alpha）",
+    "inputs": {
+      "model": {
+        "name": "模型"
+      },
+      "sigmas": {
+        "name": "Sigmas"
+      },
+      "inject": {
+        "name": "注入"
+      },
+      "steps": {
+        "name": "步数"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Sigmas"
+      }
+    }
+  },
+  "H3DrawnPlan": {
+    "display_name": "H3 绘制计划（Alpha）",
+    "inputs": {
+      "plan_path": {
+        "name": "计划路径"
+      },
+      "plan_json": {
+        "name": "计划 JSON"
+      },
+      "ignore_uncompiled_lanes": {
+        "name": "忽略未编译轨道"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "区间"
+      },
+      "1": {
+        "name": "长度"
+      },
+      "2": {
+        "name": "帧率"
+      },
+      "3": {
+        "name": "窗口起始"
+      },
+      "4": {
+        "name": "窗口长度"
+      },
+      "5": {
+        "name": "报告"
+      },
+      "6": {
+        "name": "保持映射"
+      },
+      "7": {
+        "name": "膨胀帧"
+      },
+      "8": {
+        "name": "引导帧"
+      },
+      "9": {
+        "name": "拼接映射"
+      }
+    }
+  },
+  "H3DriftControl": {
+    "display_name": "H3 漂移控制（Alpha）",
+    "inputs": {
+      "model": {
+        "name": "模型"
+      },
+      "latent": {
+        "name": "Latent"
+      },
+      "prefix_frames": {
+        "name": "前缀帧数"
+      },
+      "matched_steps": {
+        "name": "匹配步数"
+      },
+      "taper_steps": {
+        "name": "渐进步数"
+      },
+      "full_sigmas": {
+        "name": "完整 Sigmas"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "模型"
+      },
+      "1": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3DyRoPE": {
+    "display_name": "H3 DyRoPE（逐层 / Sigma 淡化时间几何）[实验]",
+    "inputs": {
+      "model": {
+        "name": "模型"
+      },
+      "sampler": {
+        "name": "采样器"
+      },
+      "hold_map": {
+        "name": "保持映射"
+      },
+      "mode": {
+        "name": "模式",
+        "options": {
+          "physical_all": "全部物理层",
+          "compact_all": "全部紧凑层",
+          "physical_blocks": "物理块",
+          "compact_blocks": "紧凑块",
+          "fade_physical_to_compact": "物理 → 紧凑渐变",
+          "fade_compact_to_physical": "紧凑 → 物理渐变",
+          "fade_physical_blocks": "物理块渐变"
+        }
+      },
+      "block_lo": {
+        "name": "起始块"
+      },
+      "block_hi": {
+        "name": "结束块"
+      },
+      "fade_end": {
+        "name": "淡化结束"
+      },
+      "preset": {
+        "name": "预设",
+        "options": {
+          "custom": "自定义",
+          "timing fidelity (blocks 30-49)": "时间保真（块 30-49）",
+          "minimal shimmer (blocks 40-49)": "最小闪烁（块 40-49）",
+          "flash-free fade (sigma 0.7)": "无闪烁渐变（Sigma 0.7）"
+        }
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "模型"
+      },
+      "1": {
+        "name": "采样器"
+      },
+      "2": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3EvictTextEncoder": {
+    "display_name": "H3 卸载文本编码器（编码后卸载）",
+    "inputs": {
+      "conditioning": {
+        "name": "条件"
+      },
+      "clip": {
+        "name": "CLIP"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "条件"
+      },
+      "1": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3ExactRecover": {
+    "display_name": "H3 精确恢复（24fps 选帧）",
+    "inputs": {
+      "images": {
+        "name": "图像"
+      },
+      "hold_map": {
+        "name": "保持映射"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "图像"
+      }
+    }
+  },
+  "H3ExpertSchedule": {
+    "display_name": "H3 专家调度（基础头部，Turbo 尾部）",
+    "inputs": {
+      "model": {
+        "name": "模型"
+      },
+      "scheduler": {
+        "name": "调度器",
+        "options": {
+          "simple": "简单",
+          "normal": "正态",
+          "beta": "Beta",
+          "sgm_uniform": "SGM 均匀",
+          "karras": "Karras",
+          "exponential": "指数"
+        }
+      },
+      "total_steps": {
+        "name": "总步数"
+      },
+      "inject": {
+        "name": "注入"
+      },
+      "base_head": {
+        "name": "基础头部"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "头部 Sigmas"
+      },
+      "1": {
+        "name": "尾部 Sigmas"
+      }
+    }
+  },
+  "H3ExtensionPlan": {
+    "display_name": "H3 扩展计划（Alpha）",
+    "inputs": {
+      "segment_frames": {
+        "name": "片段帧数"
+      },
+      "transition": {
+        "name": "过渡方式",
+        "options": {
+          "seamless (39-frame handle)": "无缝（39 帧接缝）",
+          "cheap seamless (5-frame handle, unmeasured)": "廉价无缝（5 帧接缝，未实测）",
+          "frame continuity (last frame only)": "帧连续（仅末帧）",
+          "scene cut (no handle, global refs only)": "场景切换（无接缝，仅全局参考）",
+          "custom (use handle_frames)": "自定义（使用接缝帧数）"
+        }
+      },
+      "handle_frames": {
+        "name": "接缝帧数"
+      },
+      "new_frames": {
+        "name": "新增帧数"
+      },
+      "visual_anchor": {
+        "name": "视觉锚点",
+        "options": {
+          "auto": "自动",
+          "guide": "引导",
+          "per_token_mask": "逐 Token 遮罩",
+          "none": "无"
+        }
+      },
+      "audio_anchor": {
+        "name": "音频锚点",
+        "options": {
+          "auto": "自动",
+          "guide": "引导",
+          "regenerated": "重新生成",
+          "none": "无"
+        }
+      },
+      "fps_num": {
+        "name": "帧率分子"
+      },
+      "fps_den": {
+        "name": "帧率分母"
+      },
+      "previous_length": {
+        "name": "上一段长度"
+      },
+      "final_segment": {
+        "name": "最终片段"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "计划"
+      },
+      "1": {
+        "name": "长度"
+      },
+      "2": {
+        "name": "接缝帧数"
+      },
+      "3": {
+        "name": "新增帧数"
+      },
+      "4": {
+        "name": "报告"
+      },
+      "5": {
+        "name": "扩展到结尾"
+      }
+    }
+  },
+  "H3FakeQuant": {
+    "display_name": "H3 模拟量化（A6：按区域模拟 NVFP4/FP8 激活，Alpha）",
+    "inputs": {
+      "model": {
+        "name": "模型"
+      },
+      "format": {
+        "name": "格式",
+        "options": {
+          "nvfp4": "NVFP4",
+          "nvfp4_had": "NVFP4-HAD",
+          "fp8": "FP8"
+        }
+      },
+      "projections": {
+        "name": "投影"
+      },
+      "block_lo": {
+        "name": "起始块"
+      },
+      "block_hi": {
+        "name": "结束块"
+      },
+      "segments": {
+        "name": "分段"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "模型"
+      }
+    }
+  },
+  "H3FreeCache": {
+    "display_name": "H3 清空缓存（各阶段之间清空分配器）",
+    "inputs": {
+      "samples": {
+        "name": "Latent"
+      },
+      "also_gc": {
+        "name": "同时执行 GC"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Latent"
+      },
+      "1": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3GuideAnchor": {
+    "display_name": "H3 引导锚点（固定 / 浮动）",
+    "inputs": {
+      "positive": {
+        "name": "正面条件"
+      },
+      "mode": {
+        "name": "模式",
+        "options": {
+          "pin": "固定",
+          "float": "浮动",
+          "offset": "偏移"
+        }
+      },
+      "offset_frames": {
+        "name": "偏移帧数"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "正面条件"
+      },
+      "1": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3HoldMapRemap": {
+    "display_name": "H3 保持映射重映射（缩放 / 下限 / 上限）[Alpha]",
+    "inputs": {
+      "hold_map": {
+        "name": "保持映射"
+      },
+      "scale": {
+        "name": "缩放"
+      },
+      "floor": {
+        "name": "下限"
+      },
+      "ceiling": {
+        "name": "上限"
+      },
+      "fps": {
+        "name": "帧率"
+      },
+      "ramp": {
+        "name": "过渡斜坡"
+      },
+      "bridge": {
+        "name": "桥接"
+      },
+      "s_per_step": {
+        "name": "每步耗时（秒）"
+      },
+      "est_steps": {
+        "name": "预计步数"
+      },
+      "overhead_s": {
+        "name": "额外开销（秒）"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "保持映射"
+      },
+      "1": {
+        "name": "分段"
+      },
+      "2": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3IndecisionOracle": {
+    "display_name": "H3 犹豫检测器（x0 抖动 / 混合）[实验]",
+    "inputs": {
+      "dump_dir": {
+        "name": "转储目录"
+      },
+      "length": {
+        "name": "长度"
+      },
+      "width": {
+        "name": "宽度"
+      },
+      "height": {
+        "name": "高度"
+      },
+      "step_a": {
+        "name": "步骤 A"
+      },
+      "step_b": {
+        "name": "步骤 B"
+      },
+      "mode": {
+        "name": "模式",
+        "options": {
+          "indecision": "犹豫",
+          "jerk passthrough": "急动直通",
+          "blend max": "混合取最大",
+          "blend weighted w": "加权混合 w"
+        }
+      },
+      "q": {
+        "name": "分位阈值"
+      },
+      "d_max": {
+        "name": "最大急动阈值"
+      },
+      "ramp": {
+        "name": "过渡斜坡"
+      },
+      "samples": {
+        "name": "Latent"
+      },
+      "images": {
+        "name": "图像"
+      },
+      "normalization": {
+        "name": "归一化",
+        "options": {
+          "rank": "排名",
+          "z": "Z 分数",
+          "none": "无"
+        }
+      },
+      "blend_w": {
+        "name": "混合权重"
+      },
+      "detrend_phase": {
+        "name": "去趋势相位"
+      },
+      "spatial_reduce": {
+        "name": "空间归约",
+        "options": {
+          "mean (matches the jerk oracle)": "均值（与急动检测器一致）",
+          "top-decile mean": "前 10% 均值",
+          "max": "最大值"
+        }
+      },
+      "bridge": {
+        "name": "桥接"
+      },
+      "auto_fallback": {
+        "name": "自动回退"
+      },
+      "alpha": {
+        "name": "透明度"
+      },
+      "fps": {
+        "name": "帧率"
+      },
+      "s_per_step": {
+        "name": "每步耗时（秒）"
+      },
+      "est_steps": {
+        "name": "预计步数"
+      },
+      "overhead_s": {
+        "name": "额外开销（秒）"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "保持映射"
+      },
+      "1": {
+        "name": "分段"
+      },
+      "2": {
+        "name": "窗口起始"
+      },
+      "3": {
+        "name": "窗口长度"
+      },
+      "4": {
+        "name": "轮廓"
+      },
+      "5": {
+        "name": "报告"
+      },
+      "6": {
+        "name": "对比"
+      },
+      "7": {
+        "name": "热力图"
+      }
+    }
+  },
+  "H3InjectSchedule": {
+    "display_name": "H3 注入调度（视频转视频 Sigmas，0.70）",
+    "inputs": {
+      "model": {
+        "name": "模型"
+      },
+      "scheduler": {
+        "name": "调度器",
+        "options": {
+          "simple": "简单",
+          "normal": "正态",
+          "beta": "Beta",
+          "sgm_uniform": "SGM 均匀",
+          "karras": "Karras",
+          "exponential": "指数"
+        }
+      },
+      "total_steps": {
+        "name": "总步数"
+      },
+      "inject": {
+        "name": "注入"
+      },
+      "preset": {
+        "name": "预设",
+        "options": {
+          "custom": "自定义",
+          "balanced 0.70 (default)": "均衡 0.70（默认）",
+          "faithful detail 0.50 (metric best)": "保真细节 0.50（指标最佳）",
+          "loose / creative 0.80": "宽松 / 创意 0.80"
+        }
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Sigmas"
+      }
+    }
+  },
+  "H3JerkHeatmap": {
+    "display_name": "H3 急动热力图（检测器叠加块）",
+    "inputs": {
+      "images": {
+        "name": "图像"
+      },
+      "samples": {
+        "name": "Latent"
+      },
+      "alpha": {
+        "name": "透明度"
+      },
+      "strip_height": {
+        "name": "条带高度"
+      },
+      "show_drift": {
+        "name": "显示漂移"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "图像"
+      }
+    }
+  },
+  "H3JerkOracle": {
+    "display_name": "H3 急动检测器（轮廓 / 窗口 / 保持映射）",
+    "inputs": {
+      "samples": {
+        "name": "Latent"
+      },
+      "length": {
+        "name": "长度"
+      },
+      "q": {
+        "name": "分位阈值"
+      },
+      "d_max": {
+        "name": "最大急动阈值"
+      },
+      "ramp": {
+        "name": "过渡斜坡"
+      },
+      "preset": {
+        "name": "预设",
+        "options": {
+          "custom": "自定义",
+          "balanced (default)": "均衡（默认）",
+          "max quality (wide plateau)": "最高质量（宽平台）",
+          "economy (tight spans)": "经济（紧凑区间）"
+        }
+      },
+      "bridge": {
+        "name": "桥接"
+      },
+      "profile_mode": {
+        "name": "轮廓模式",
+        "options": {
+          "value |d3| (default)": "数值 |d3|（默认）",
+          "value |d1| (energy baseline)": "数值 |d1|（能量基线）",
+          "trajectory centroid |d3|": "轨迹质心 |d3|",
+          "value |d3| camera-compensated": "数值 |d3|（相机补偿）"
+        }
+      },
+      "abstain_below": {
+        "name": "放弃阈值"
+      },
+      "fps": {
+        "name": "帧率"
+      },
+      "s_per_step": {
+        "name": "每步耗时（秒）"
+      },
+      "est_steps": {
+        "name": "预计步数"
+      },
+      "overhead_s": {
+        "name": "额外开销（秒）"
+      },
+      "model_profile": {
+        "name": "模型配置",
+        "options": {
+          "minimax-h3": "MiniMax-H3",
+          "ltx-2.5": "LTX-2.5",
+          "wan-2.2 (unmeasured)": "Wan-2.2（未实测）"
+        }
+      },
+      "protect_tail": {
+        "name": "保护尾部"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "保持映射"
+      },
+      "1": {
+        "name": "分段"
+      },
+      "2": {
+        "name": "窗口起始"
+      },
+      "3": {
+        "name": "窗口长度"
+      },
+      "4": {
+        "name": "轮廓"
+      },
+      "5": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3LatentBank": {
+    "display_name": "H3 Latent 缓存（一次采样，跳过整轮）[Alpha]",
+    "inputs": {
+      "samples": {
+        "name": "Latent"
+      },
+      "bank_key": {
+        "name": "缓存键"
+      },
+      "store_dir": {
+        "name": "存储目录"
+      },
+      "mode": {
+        "name": "模式",
+        "options": {
+          "use bank if present (default)": "有缓存则使用（默认）",
+          "refresh (re-sample, overwrite)": "刷新（重新采样并覆盖）"
+        }
+      },
+      "seed": {
+        "name": "随机种"
+      },
+      "fingerprint": {
+        "name": "指纹"
+      },
+      "store_dtype": {
+        "name": "存储精度",
+        "options": {
+          "float32 (exact)": "float32（精确）",
+          "float16 (half the file)": "float16（一半体积）"
+        }
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Latent"
+      },
+      "1": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3LatentUpscale": {
+    "display_name": "H3 Latent 放大（仅视频，保留音频）[实验]",
+    "inputs": {
+      "samples": {
+        "name": "Latent"
+      },
+      "scale": {
+        "name": "缩放"
+      },
+      "mode": {
+        "name": "模式",
+        "options": {
+          "bilinear": "双线性",
+          "nearest-exact": "最近邻（精确）"
+        }
+      },
+      "width": {
+        "name": "宽度"
+      },
+      "height": {
+        "name": "高度"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Latent"
+      },
+      "1": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3LoadHoldMap": {
+    "display_name": "H3 加载保持映射（sidecar）",
+    "inputs": {
+      "path": {
+        "name": "路径"
+      },
+      "start": {
+        "name": "起始"
+      },
+      "length": {
+        "name": "长度"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "保持映射"
+      },
+      "1": {
+        "name": "世界长度"
+      },
+      "2": {
+        "name": "路径"
+      }
+    }
+  },
+  "H3ManualHoldMap": {
+    "display_name": "H3 手动保持映射（区间 → 保持段，门控）[Alpha]",
+    "inputs": {
+      "length": {
+        "name": "长度"
+      },
+      "fps": {
+        "name": "帧率"
+      },
+      "ranges": {
+        "name": "区间"
+      },
+      "hold": {
+        "name": "保持"
+      },
+      "ramp": {
+        "name": "过渡斜坡"
+      },
+      "bridge": {
+        "name": "桥接"
+      },
+      "oracle_hold_map": {
+        "name": "检测器保持映射"
+      },
+      "s_per_step": {
+        "name": "每步耗时（秒）"
+      },
+      "est_steps": {
+        "name": "预计步数"
+      },
+      "overhead_s": {
+        "name": "额外开销（秒）"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "保持映射"
+      },
+      "1": {
+        "name": "分段"
+      },
+      "2": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3MaskConversion": {
+    "display_name": "H3 遮罩转换（#15988）",
+    "inputs": {
+      "model": {
+        "name": "模型"
+      },
+      "mode": {
+        "name": "模式",
+        "options": {
+          "auto": "自动",
+          "off": "关闭",
+          "on": "开启"
+        }
+      },
+      "scope": {
+        "name": "范围",
+        "options": {
+          "both": "两者",
+          "video only": "仅视频",
+          "audio only": "仅音频"
+        }
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "模型"
+      },
+      "1": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3MemoryProbe": {
+    "display_name": "H3 显存探针（账本 + 分配器追踪，Alpha）",
+    "inputs": {
+      "model": {
+        "name": "模型"
+      },
+      "tag": {
+        "name": "标签"
+      },
+      "ledger": {
+        "name": "账本"
+      },
+      "record_history_forwards": {
+        "name": "记录前向历史"
+      },
+      "max_entries": {
+        "name": "最大条目数"
+      },
+      "out_dir": {
+        "name": "输出目录"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "模型"
+      },
+      "1": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3MidInsert": {
+    "display_name": "H3 中途插入（去噪中途改变 Token 网格）[实验]",
+    "inputs": {
+      "samples": {
+        "name": "Latent"
+      },
+      "hold_map": {
+        "name": "保持映射"
+      },
+      "noise_topup": {
+        "name": "噪声补充"
+      },
+      "seed": {
+        "name": "随机种"
+      },
+      "expand_to_end": {
+        "name": "扩展到结尾"
+      },
+      "length": {
+        "name": "长度"
+      },
+      "sigma_s": {
+        "name": "Sigma 秒"
+      },
+      "init_mode": {
+        "name": "初始化方式",
+        "options": {
+          "lerp": "线性插值",
+          "duplicate": "复制"
+        }
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Latent"
+      },
+      "1": {
+        "name": "保持映射"
+      },
+      "2": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3ModeSwitch": {
+    "display_name": "H3 模式切换（预览 / 最终，惰性）",
+    "inputs": {
+      "mode": {
+        "name": "模式",
+        "options": {
+          "preview": "预览",
+          "final": "最终"
+        }
+      },
+      "preview": {
+        "name": "预览"
+      },
+      "final": {
+        "name": "最终"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "任意"
+      }
+    }
+  },
+  "H3MotionComposite": {
+    "display_name": "H3 运动合成（主体重绘，背景基准）",
+    "inputs": {
+      "regenerated": {
+        "name": "重绘"
+      },
+      "baseline": {
+        "name": "基准"
+      },
+      "threshold": {
+        "name": "阈值"
+      },
+      "grow": {
+        "name": "扩展"
+      },
+      "feather": {
+        "name": "羽化"
+      },
+      "samples": {
+        "name": "Latent"
+      },
+      "mask": {
+        "name": "遮罩"
+      },
+      "invert_mask": {
+        "name": "反转遮罩"
+      },
+      "feather_profile": {
+        "name": "羽化曲线",
+        "options": {
+          "linear": "线性",
+          "smoothstep": "平滑步进",
+          "gaussian": "高斯"
+        }
+      },
+      "feather_direction": {
+        "name": "羽化方向",
+        "options": {
+          "centered": "居中",
+          "inward": "向内",
+          "outward": "向外"
+        }
+      },
+      "mask_is_soft": {
+        "name": "遮罩为软边"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "图像"
+      }
+    }
+  },
+  "H3MotionEditor": {
+    "display_name": "H3 运动编辑器（时间线、遮罩、自动化）[Alpha]",
+    "inputs": {
+      "images": {
+        "name": "图像"
+      },
+      "editor_state": {
+        "name": "编辑器状态"
+      },
+      "samples": {
+        "name": "Latent"
+      },
+      "oracle_hold_map": {
+        "name": "检测器保持映射"
+      },
+      "fps": {
+        "name": "帧率"
+      },
+      "ramp": {
+        "name": "过渡斜坡"
+      },
+      "bridge": {
+        "name": "桥接"
+      },
+      "invert_mask": {
+        "name": "反转遮罩"
+      },
+      "outside_blocks": {
+        "name": "块外区域",
+        "options": {
+          "baseline": "基准",
+          "regenerated": "重绘"
+        }
+      },
+      "paint_res": {
+        "name": "绘制分辨率"
+      },
+      "hold_until_edited": {
+        "name": "编辑前保持"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "保持映射"
+      },
+      "1": {
+        "name": "遮罩"
+      },
+      "2": {
+        "name": "包络"
+      },
+      "3": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3PlanEstimate": {
+    "display_name": "H3 计划估算（Alpha）",
+    "inputs": {
+      "plan_path": {
+        "name": "计划路径"
+      },
+      "plan_json": {
+        "name": "计划 JSON"
+      },
+      "ignore_uncompiled_lanes": {
+        "name": "忽略未编译轨道"
+      },
+      "port": {
+        "name": "端口"
+      },
+      "recorder_path": {
+        "name": "记录器路径"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "等效片段时长"
+      },
+      "1": {
+        "name": "秒"
+      },
+      "2": {
+        "name": "工作单位"
+      },
+      "3": {
+        "name": "显存档位"
+      },
+      "4": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3PlanSettings": {
+    "display_name": "H3 计划设置（Alpha）",
+    "inputs": {
+      "plan_path": {
+        "name": "计划路径"
+      },
+      "plan_json": {
+        "name": "计划 JSON"
+      },
+      "ignore_uncompiled_lanes": {
+        "name": "忽略未编译轨道"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "注入"
+      },
+      "1": {
+        "name": "步数"
+      },
+      "2": {
+        "name": "随机种"
+      },
+      "3": {
+        "name": "提示词"
+      },
+      "4": {
+        "name": "宽度"
+      },
+      "5": {
+        "name": "高度"
+      },
+      "6": {
+        "name": "输出前缀"
+      },
+      "7": {
+        "name": "扩展到结尾"
+      },
+      "8": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3PrecisionProbe": {
+    "display_name": "H3 精度探针（A6：4-bit 与 8-bit 激活图，Alpha）",
+    "inputs": {
+      "model": {
+        "name": "模型"
+      },
+      "tag": {
+        "name": "标签"
+      },
+      "every": {
+        "name": "间隔"
+      },
+      "out_dir": {
+        "name": "输出目录"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "模型"
+      }
+    }
+  },
+  "H3PrefixFreezeMask": {
+    "display_name": "H3 前缀冻结遮罩（Alpha）",
+    "inputs": {
+      "plan": {
+        "name": "计划"
+      },
+      "dilated_length": {
+        "name": "膨胀长度"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "遮罩"
+      },
+      "1": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3ProbeSchedule": {
+    "display_name": "H3 探测调度（提前检测器头部）",
+    "inputs": {
+      "model": {
+        "name": "模型"
+      },
+      "scheduler": {
+        "name": "调度器",
+        "options": {
+          "simple": "简单",
+          "normal": "正态",
+          "beta": "Beta",
+          "sgm_uniform": "SGM 均匀",
+          "karras": "Karras",
+          "exponential": "指数"
+        }
+      },
+      "total_steps": {
+        "name": "总步数"
+      },
+      "probe_steps": {
+        "name": "探测步数"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Sigmas"
+      }
+    }
+  },
+  "H3ProtectPrefix": {
+    "display_name": "H3 保护前缀（Alpha）",
+    "inputs": {
+      "hold_map": {
+        "name": "保持映射"
+      },
+      "plan": {
+        "name": "计划"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "保持映射"
+      },
+      "1": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3RecordStart": {
+    "display_name": "H3 飞行记录器 开始（Alpha）",
+    "inputs": {
+      "anything": {
+        "name": "任意"
+      },
+      "key": {
+        "name": "键"
+      },
+      "log_path": {
+        "name": "日志路径"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "任意"
+      }
+    }
+  },
+  "H3RecordStop": {
+    "display_name": "H3 飞行记录器 停止（Alpha）",
+    "inputs": {
+      "anything": {
+        "name": "任意"
+      },
+      "key": {
+        "name": "键"
+      },
+      "work_units": {
+        "name": "工作单位"
+      },
+      "steps": {
+        "name": "步数"
+      },
+      "pixels": {
+        "name": "像素"
+      },
+      "frames": {
+        "name": "帧"
+      },
+      "model": {
+        "name": "模型"
+      },
+      "path": {
+        "name": "路径"
+      },
+      "log_path": {
+        "name": "日志路径"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "任意"
+      },
+      "1": {
+        "name": "记录"
+      }
+    }
+  },
+  "H3References": {
+    "display_name": "H3 参考素材（Alpha）",
+    "inputs": {
+      "ref_images": {
+        "name": "参考图像"
+      },
+      "ref_videos": {
+        "name": "参考视频"
+      },
+      "ref_video_audios": {
+        "name": "参考视频音频"
+      },
+      "ref_audios": {
+        "name": "参考音频"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "参考素材"
+      }
+    }
+  },
+  "H3ReferenceToVideoRefs": {
+    "display_name": "H3 参考图生视频（refs）（Alpha）",
+    "inputs": {
+      "clip": {
+        "name": "CLIP"
+      },
+      "prompt": {
+        "name": "提示词"
+      },
+      "width": {
+        "name": "宽度"
+      },
+      "height": {
+        "name": "高度"
+      },
+      "length": {
+        "name": "长度"
+      },
+      "ref_image_size": {
+        "name": "参考图像尺寸",
+        "options": {
+          "match": "匹配",
+          "max": "最大"
+        }
+      },
+      "vae": {
+        "name": "VAE"
+      },
+      "audio_vae": {
+        "name": "音频 VAE"
+      },
+      "refs": {
+        "name": "参考素材"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "正面条件"
+      },
+      "1": {
+        "name": "Latent"
+      }
+    }
+  },
+  "H3RepairPlan": {
+    "display_name": "H3 修复计划（Alpha）",
+    "inputs": {
+      "length": {
+        "name": "长度"
+      },
+      "bad_start": {
+        "name": "问题开始帧"
+      },
+      "bad_end": {
+        "name": "问题结束帧"
+      },
+      "hold": {
+        "name": "保持"
+      },
+      "fps": {
+        "name": "帧率"
+      },
+      "shot_cuts": {
+        "name": "镜头切点"
+      },
+      "cut_reach": {
+        "name": "切点范围"
+      },
+      "images": {
+        "name": "图像"
+      },
+      "width": {
+        "name": "宽度"
+      },
+      "height": {
+        "name": "高度"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "保持映射"
+      },
+      "1": {
+        "name": "区间"
+      },
+      "2": {
+        "name": "重绘遮罩"
+      },
+      "3": {
+        "name": "计划"
+      },
+      "4": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3RepairSplice": {
+    "display_name": "H3 修复拼接（Alpha）",
+    "inputs": {
+      "original": {
+        "name": "原始"
+      },
+      "repaired": {
+        "name": "修复后"
+      },
+      "plan": {
+        "name": "计划"
+      },
+      "audio": {
+        "name": "音频"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "图像"
+      },
+      "1": {
+        "name": "音频"
+      },
+      "2": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3RetimeAudio": {
+    "display_name": "H3 音频重定时（子弹时间底噪 + 瞬态）[Alpha]",
+    "inputs": {
+      "baseline": {
+        "name": "基准"
+      },
+      "hold_map": {
+        "name": "保持映射"
+      },
+      "fps": {
+        "name": "帧率"
+      },
+      "held_spans": {
+        "name": "保持区间",
+        "options": {
+          "stretched": "拉伸",
+          "varispeed": "变速",
+          "generated": "生成"
+        }
+      },
+      "anchor_transients": {
+        "name": "锚定瞬态"
+      },
+      "generated": {
+        "name": "生成"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "音频"
+      },
+      "1": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3SaveHoldMap": {
+    "display_name": "H3 保存保持映射（sidecar）",
+    "inputs": {
+      "hold_map": {
+        "name": "保持映射"
+      },
+      "filename_prefix": {
+        "name": "文件名前缀"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "路径"
+      }
+    }
+  },
+  "H3SceneColorStats": {
+    "display_name": "H3 场景色彩统计（Alpha）",
+    "inputs": {
+      "images": {
+        "name": "图像"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "统计"
+      }
+    }
+  },
+  "H3SeamNormalize": {
+    "display_name": "H3 接缝归一化（Alpha）",
+    "inputs": {
+      "source_tail": {
+        "name": "源尾部"
+      },
+      "generated_prefix": {
+        "name": "生成前缀"
+      },
+      "images": {
+        "name": "图像"
+      },
+      "mode": {
+        "name": "模式",
+        "options": {
+          "channels (linear-light RGB gains)": "通道（线性光 RGB 增益）",
+          "luma (one gain)": "亮度（单一增益）",
+          "off (report only)": "关闭（仅报告）"
+        }
+      },
+      "max_gain": {
+        "name": "最大增益"
+      },
+      "source_tail_audio": {
+        "name": "源尾部音频"
+      },
+      "generated_prefix_audio": {
+        "name": "生成前缀音频"
+      },
+      "audio": {
+        "name": "音频"
+      },
+      "audio_mode": {
+        "name": "音频模式",
+        "options": {
+          "off": "关闭",
+          "gain (match the handle's rms)": "增益（匹配接缝 RMS）"
+        }
+      },
+      "audio_fade_ms": {
+        "name": "音频淡化（毫秒）"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "图像"
+      },
+      "1": {
+        "name": "音频"
+      },
+      "2": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3SegmentCrop": {
+    "display_name": "H3 片段裁剪（仅重绘窗口）[Alpha]",
+    "inputs": {
+      "images": {
+        "name": "图像"
+      },
+      "hold_map": {
+        "name": "保持映射"
+      },
+      "handle_frames": {
+        "name": "接缝帧数"
+      },
+      "grid_align": {
+        "name": "网格对齐"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "图像"
+      },
+      "1": {
+        "name": "保持映射"
+      },
+      "2": {
+        "name": "拼接映射"
+      },
+      "3": {
+        "name": "首帧"
+      },
+      "4": {
+        "name": "末帧"
+      },
+      "5": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3SegmentSplice": {
+    "display_name": "H3 片段拼接（交叉淡化重组）[Alpha]",
+    "inputs": {
+      "baseline": {
+        "name": "基准"
+      },
+      "segment": {
+        "name": "片段"
+      },
+      "splice_map": {
+        "name": "拼接映射"
+      },
+      "feather_frames": {
+        "name": "羽化帧数"
+      },
+      "baseline_audio": {
+        "name": "基准音频"
+      },
+      "segment_audio": {
+        "name": "片段音频"
+      },
+      "fps": {
+        "name": "帧率"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "图像"
+      },
+      "1": {
+        "name": "音频"
+      }
+    }
+  },
+  "H3StreamedBlocks": {
+    "display_name": "H3 流式分块（精确低显存，Alpha）",
+    "inputs": {
+      "model": {
+        "name": "模型"
+      },
+      "q_chunk": {
+        "name": "Q 分块大小"
+      },
+      "kv_chunk": {
+        "name": "KV 分块大小"
+      },
+      "mlp_chunk": {
+        "name": "MLP 分块大小"
+      },
+      "min_tokens": {
+        "name": "最小 Token 数"
+      },
+      "kv_block": {
+        "name": "KV 块"
+      },
+      "final_layer_chunk": {
+        "name": "最终层分块大小"
+      },
+      "final_layer_gemm": {
+        "name": "最终层 GEMM",
+        "options": {
+          "exact (whole GEMM, one fp32 buffer)": "精确（整块 GEMM，单个 fp32 缓冲）",
+          "streamed (chunked GEMM, ~1e-6 fp32 diffs)": "流式（分块 GEMM，约 1e-6 fp32 误差）"
+        }
+      },
+      "kv_store": {
+        "name": "KV 存储",
+        "options": {
+          "bf16 (exact)": "bf16（精确）",
+          "kvi8r: rotated int8 K/V (approximate)": "kvi8r：旋转 int8 K/V（近似）",
+          "kvi8s: Sage int8/fp8 K/V, rotated (approximate, faster attention)": "kvi8s：Sage int8/fp8 K/V，旋转（近似，注意力更快）",
+          "kvfp4s: Sage3 FP4 K/V, rotated (approximate, fastest attention)": "kvfp4s：Sage3 FP4 K/V，旋转（近似，注意力最快）",
+          "kvmix: per-head 4/8-bit, fp4 + Sage int8 (the ~6-bit tier)": "kvmix：逐头 4/8-bit，FP4 + Sage int8（约 6-bit 档）"
+        }
+      },
+      "trim_forward": {
+        "name": "裁剪前向"
+      },
+      "self_check": {
+        "name": "自检"
+      },
+      "exact_av_rows": {
+        "name": "精确音视频行"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "模型"
+      }
+    }
+  },
+  "H3TailContext": {
+    "display_name": "H3 尾部上下文（Alpha）",
+    "inputs": {
+      "images": {
+        "name": "图像"
+      },
+      "plan": {
+        "name": "计划"
+      },
+      "audio": {
+        "name": "音频"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "尾部图像"
+      },
+      "1": {
+        "name": "尾部音频"
+      },
+      "2": {
+        "name": "引导帧索引"
+      },
+      "3": {
+        "name": "接缝"
+      },
+      "4": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3TemporalInsert": {
+    "display_name": "H3 时间插入（插入 Token 时间，冻结原始帧）[实验]",
+    "inputs": {
+      "samples": {
+        "name": "Latent"
+      },
+      "hold_map": {
+        "name": "保持映射"
+      },
+      "init_mode": {
+        "name": "初始化方式",
+        "options": {
+          "lerp": "线性插值",
+          "noise": "噪声"
+        }
+      },
+      "expand_to_end": {
+        "name": "扩展到结尾"
+      },
+      "length": {
+        "name": "长度"
+      },
+      "noise_seed": {
+        "name": "随机种"
+      },
+      "anchor_strength": {
+        "name": "锚点强度"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Latent"
+      },
+      "1": {
+        "name": "噪声遮罩"
+      },
+      "2": {
+        "name": "保持映射"
+      },
+      "3": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3TimelineAnalyze": {
+    "display_name": "H3 时间线分析（Alpha）",
+    "inputs": {
+      "clip_path": {
+        "name": "片段路径"
+      },
+      "frames": {
+        "name": "帧"
+      },
+      "plan_path": {
+        "name": "计划路径"
+      },
+      "auto": {
+        "name": "自动"
+      },
+      "jerk_profile": {
+        "name": "急动轮廓"
+      },
+      "indecision_profile": {
+        "name": "犹豫轮廓"
+      },
+      "ceiling": {
+        "name": "上限"
+      },
+      "threshold": {
+        "name": "阈值"
+      },
+      "prompt": {
+        "name": "提示词"
+      },
+      "width": {
+        "name": "宽度"
+      },
+      "height": {
+        "name": "高度"
+      },
+      "regen_strength": {
+        "name": "重绘强度"
+      },
+      "steps": {
+        "name": "步数"
+      },
+      "seed": {
+        "name": "随机种"
+      },
+      "output_prefix": {
+        "name": "输出前缀"
+      },
+      "graph_path": {
+        "name": "图路径"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "计划路径"
+      },
+      "1": {
+        "name": "预览"
+      },
+      "2": {
+        "name": "图路径"
+      },
+      "3": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3TimelineRender": {
+    "display_name": "H3 时间线渲染（Alpha）",
+    "inputs": {
+      "plan_path": {
+        "name": "计划路径"
+      },
+      "graph_path": {
+        "name": "图路径"
+      },
+      "port": {
+        "name": "端口"
+      },
+      "recorder_path": {
+        "name": "记录器路径"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "图路径"
+      },
+      "1": {
+        "name": "启动命令"
+      },
+      "2": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3TimeSmear": {
+    "display_name": "H3 时间涂抹（整数保持）",
+    "inputs": {
+      "images": {
+        "name": "图像"
+      },
+      "dilation": {
+        "name": "膨胀"
+      },
+      "hold_map": {
+        "name": "保持映射"
+      },
+      "expand_to_end": {
+        "name": "扩展到结尾"
+      },
+      "fps": {
+        "name": "帧率"
+      },
+      "s_per_step": {
+        "name": "每步耗时（秒）"
+      },
+      "est_steps": {
+        "name": "预计步数"
+      },
+      "overhead_s": {
+        "name": "额外开销（秒）"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "图像"
+      },
+      "1": {
+        "name": "使用的保持映射"
+      },
+      "2": {
+        "name": "长度"
+      },
+      "3": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3TrajectoryBank": {
+    "display_name": "H3 轨迹库（每步保存检查点）",
+    "inputs": {
+      "sampler": {
+        "name": "采样器"
+      },
+      "dump_dir": {
+        "name": "转储目录"
+      },
+      "every_n": {
+        "name": "每 N 步"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "采样器"
+      }
+    }
+  },
+  "H3TrajectoryLoad": {
+    "display_name": "H3 轨迹加载（从某步分支）",
+    "inputs": {
+      "dump_dir": {
+        "name": "转储目录"
+      },
+      "step": {
+        "name": "步骤"
+      },
+      "reference": {
+        "name": "参考图像"
+      },
+      "audio_scale": {
+        "name": "音频缩放"
+      },
+      "undo_const_scaling": {
+        "name": "撤销常量缩放"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Latent"
+      },
+      "1": {
+        "name": "剩余 Sigmas"
+      },
+      "2": {
+        "name": "已加载步"
+      }
+    }
+  },
+  "H3Trim": {
+    "display_name": "H3 裁剪（Alpha）",
+    "inputs": {
+      "images": {
+        "name": "图像"
+      },
+      "plan": {
+        "name": "计划"
+      },
+      "global_start": {
+        "name": "全局起始"
+      },
+      "audio": {
+        "name": "音频"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "图像"
+      },
+      "1": {
+        "name": "音频"
+      },
+      "2": {
+        "name": "全局结束"
+      },
+      "3": {
+        "name": "全局跨度"
+      },
+      "4": {
+        "name": "报告"
+      },
+      "5": {
+        "name": "前缀图像"
+      },
+      "6": {
+        "name": "前缀音频"
+      }
+    }
+  },
+  "H3TrueClock": {
+    "display_name": "H3 真实时钟（密度校正 RoPE 时间网格）[实验]",
+    "inputs": {
+      "sampler": {
+        "name": "采样器"
+      },
+      "hold_map": {
+        "name": "保持映射"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "采样器"
+      }
+    }
+  },
+  "H3V2VInit": {
+    "display_name": "H3 V2V 初始化（嵌套音视频 Latent）",
+    "inputs": {
+      "samples": {
+        "name": "Latent"
+      },
+      "length": {
+        "name": "长度"
+      },
+      "oracle_samples": {
+        "name": "检测器 Latent"
+      },
+      "freeze_threshold": {
+        "name": "冻结阈值"
+      },
+      "freeze_grow": {
+        "name": "冻结扩展"
+      },
+      "mask": {
+        "name": "遮罩"
+      },
+      "mask_feather": {
+        "name": "遮罩羽化"
+      },
+      "invert_mask": {
+        "name": "反转遮罩"
+      },
+      "time_varying": {
+        "name": "时间变化"
+      },
+      "audio_latent": {
+        "name": "音频 Latent"
+      },
+      "audio_mode": {
+        "name": "音频模式",
+        "options": {
+          "custom (use audio_strength)": "自定义（使用音频强度）",
+          "invent freely (original behaviour)": "自由发挥（原始行为）",
+          "follow the original performance (0.5)": "跟随原表演（0.5）",
+          "follow loosely, re-render more (0.7)": "松散跟随，多重重绘（0.7）",
+          "pin the original outright (0.0)": "完全锁定原表演（0.0）"
+        }
+      },
+      "audio_strength": {
+        "name": "音频强度"
+      },
+      "audio_prefix_ticks": {
+        "name": "音频前缀 Tick 数"
+      },
+      "audio_prefix_release_ticks": {
+        "name": "音频前缀释放 Tick 数"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Latent"
+      }
+    }
+  },
+  "H3VideoFit": {
+    "display_name": "H3 视频适配（源片段 → 17k+5 帧）[Alpha]",
+    "inputs": {
+      "images": {
+        "name": "图像"
+      },
+      "mode": {
+        "name": "模式",
+        "options": {
+          "trim tail (default)": "裁剪尾部（默认）",
+          "trim head": "裁剪头部",
+          "pad tail (freeze last frame)": "补尾（冻结末帧）",
+          "nearest (trim or pad)": "最近匹配（裁剪或补齐）"
+        }
+      },
+      "max_frames": {
+        "name": "最大帧数"
+      },
+      "fps": {
+        "name": "帧率"
+      },
+      "audio": {
+        "name": "音频"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "图像"
+      },
+      "1": {
+        "name": "长度"
+      },
+      "2": {
+        "name": "音频"
+      },
+      "3": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3WindowCollect": {
+    "display_name": "H3 窗口收集（缓存窗口，齐全后拼接）[Alpha]",
+    "inputs": {
+      "baseline": {
+        "name": "基准"
+      },
+      "segment": {
+        "name": "片段"
+      },
+      "splice_map": {
+        "name": "拼接映射"
+      },
+      "window_count": {
+        "name": "窗口数量"
+      },
+      "run_name": {
+        "name": "运行名称"
+      },
+      "feather_frames": {
+        "name": "羽化帧数"
+      },
+      "store_dir": {
+        "name": "存储目录"
+      },
+      "baseline_audio": {
+        "name": "基准音频"
+      },
+      "segment_audio": {
+        "name": "片段音频"
+      },
+      "fps": {
+        "name": "帧率"
+      },
+      "write": {
+        "name": "写入"
+      },
+      "store_dtype": {
+        "name": "存储精度",
+        "options": {
+          "float32 (exact)": "float32（精确）",
+          "float16 (half the disk)": "float16（一半磁盘）"
+        }
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "图像"
+      },
+      "1": {
+        "name": "音频"
+      },
+      "2": {
+        "name": "磁盘上的窗口"
+      },
+      "3": {
+        "name": "完成"
+      },
+      "4": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3WindowCrop": {
+    "display_name": "H3 窗口裁剪（内部）",
+    "inputs": {
+      "images": {
+        "name": "图像"
+      },
+      "window_spec": {
+        "name": "窗口规格"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "图像"
+      },
+      "1": {
+        "name": "保持映射"
+      },
+      "2": {
+        "name": "拼接映射"
+      },
+      "3": {
+        "name": "首帧"
+      },
+      "4": {
+        "name": "末帧"
+      },
+      "5": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3WindowExpand": {
+    "display_name": "H3 窗口扩展（滚动重绘）",
+    "inputs": {
+      "images": {
+        "name": "图像"
+      },
+      "hold_map": {
+        "name": "保持映射"
+      },
+      "vae": {
+        "name": "VAE"
+      },
+      "noise": {
+        "name": "噪声"
+      },
+      "guider": {
+        "name": "引导器"
+      },
+      "sampler": {
+        "name": "采样器"
+      },
+      "sigmas": {
+        "name": "Sigmas"
+      },
+      "max_dilated_frames": {
+        "name": "最大膨胀帧数"
+      },
+      "handle_frames": {
+        "name": "接缝帧数"
+      },
+      "feather_frames": {
+        "name": "羽化帧数"
+      },
+      "audio_vae": {
+        "name": "音频 VAE"
+      },
+      "baseline_audio": {
+        "name": "基准音频"
+      },
+      "fps": {
+        "name": "帧率"
+      },
+      "reference_mix": {
+        "name": "参考混合"
+      },
+      "hot_cut": {
+        "name": "硬切处理",
+        "options": {
+          "pin-and-trim (default)": "固定并裁剪（默认）",
+          "crossfade": "交叉淡化",
+          "refuse": "拒绝"
+        }
+      },
+      "snap_search": {
+        "name": "对齐搜索"
+      },
+      "max_windows": {
+        "name": "最大窗口数"
+      },
+      "grid_growth": {
+        "name": "网格增长"
+      },
+      "plan_only": {
+        "name": "仅生成计划"
+      },
+      "s_per_step": {
+        "name": "每步耗时（秒）"
+      },
+      "est_steps": {
+        "name": "预计步数"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "图像"
+      },
+      "1": {
+        "name": "音频"
+      },
+      "2": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3WindowLoop": {
+    "display_name": "H3 窗口循环（滚动重绘，单节点）[Alpha]",
+    "inputs": {
+      "model": {
+        "name": "模型"
+      },
+      "positive": {
+        "name": "正面条件"
+      },
+      "vae": {
+        "name": "VAE"
+      },
+      "audio_vae": {
+        "name": "音频 VAE"
+      },
+      "sampler": {
+        "name": "采样器"
+      },
+      "sigmas": {
+        "name": "Sigmas"
+      },
+      "noise_seed": {
+        "name": "随机种"
+      },
+      "images": {
+        "name": "图像"
+      },
+      "hold_map": {
+        "name": "保持映射"
+      },
+      "budget_dilated": {
+        "name": "膨胀预算"
+      },
+      "guider": {
+        "name": "引导器"
+      },
+      "baseline_audio": {
+        "name": "基准音频"
+      },
+      "handle_frames": {
+        "name": "接缝帧数"
+      },
+      "pin_frames": {
+        "name": "固定帧数"
+      },
+      "feather_frames": {
+        "name": "羽化帧数"
+      },
+      "fps": {
+        "name": "帧率"
+      },
+      "seed_stride": {
+        "name": "随机种步进"
+      },
+      "draft_width": {
+        "name": "草稿宽度"
+      },
+      "draft_height": {
+        "name": "草稿高度"
+      },
+      "upscale_method": {
+        "name": "放大方法",
+        "options": {
+          "lanczos": "Lanczos",
+          "bicubic": "双三次",
+          "bilinear": "双线性",
+          "area": "区域",
+          "nearest-exact": "最近邻（精确）"
+        }
+      },
+      "on_interrupt": {
+        "name": "中断时",
+        "options": {
+          "raise (stock behaviour)": "抛出异常（原生行为）",
+          "return partial world": "返回部分结果"
+        }
+      },
+      "plan_only": {
+        "name": "仅生成计划"
+      },
+      "audio_rms_search_ms": {
+        "name": "音频 RMS 搜索（毫秒）"
+      },
+      "s_per_step": {
+        "name": "每步耗时（秒）"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "图像"
+      },
+      "1": {
+        "name": "音频"
+      },
+      "2": {
+        "name": "计划"
+      },
+      "3": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3WindowPass": {
+    "display_name": "H3 窗口通道（内部）",
+    "inputs": {
+      "images": {
+        "name": "图像"
+      },
+      "audio": {
+        "name": "音频"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "图像"
+      },
+      "1": {
+        "name": "音频"
+      }
+    }
+  },
+  "H3WindowPlan": {
+    "display_name": "H3 窗口规划（把整段拆成 N 个窗口）[Alpha]",
+    "inputs": {
+      "images": {
+        "name": "图像"
+      },
+      "hold_map": {
+        "name": "保持映射"
+      },
+      "max_dilated_frames": {
+        "name": "最大膨胀帧数"
+      },
+      "window": {
+        "name": "窗口大小"
+      },
+      "handle_frames": {
+        "name": "接缝帧数"
+      },
+      "coverage": {
+        "name": "覆盖范围",
+        "options": {
+          "full clip": "整段片段",
+          "held span": "保持区间"
+        }
+      },
+      "snap_search": {
+        "name": "对齐搜索"
+      },
+      "grid_align": {
+        "name": "网格对齐"
+      },
+      "fps": {
+        "name": "帧率"
+      },
+      "s_per_step": {
+        "name": "每步耗时（秒）"
+      },
+      "est_steps": {
+        "name": "预计步数"
+      },
+      "overhead_s": {
+        "name": "额外开销（秒）"
+      },
+      "edge_protect": {
+        "name": "边缘保护"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "图像"
+      },
+      "1": {
+        "name": "保持映射"
+      },
+      "2": {
+        "name": "拼接映射"
+      },
+      "3": {
+        "name": "首帧"
+      },
+      "4": {
+        "name": "末帧"
+      },
+      "5": {
+        "name": "窗口数量"
+      },
+      "6": {
+        "name": "膨胀帧"
+      },
+      "7": {
+        "name": "报告"
+      }
+    }
+  },
+  "H3WindowSeam": {
+    "display_name": "H3 窗口接缝（内部）",
+    "inputs": {
+      "segment": {
+        "name": "片段"
+      },
+      "splice_map": {
+        "name": "拼接映射"
+      },
+      "trim_head": {
+        "name": "裁剪头部"
+      },
+      "fade_in": {
+        "name": "淡入"
+      },
+      "fade_out": {
+        "name": "淡出"
+      },
+      "segment_audio": {
+        "name": "片段音频"
+      },
+      "fps": {
+        "name": "帧率"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "片段"
+      },
+      "1": {
+        "name": "拼接映射"
+      },
+      "2": {
+        "name": "片段音频"
+      }
+    }
+  },
+  "MAIConceptCaptureArm": {
+    "display_name": "MAI 概念捕获 启用（Alpha）",
+    "inputs": {
+      "model": {
+        "name": "模型"
+      },
+      "arm": {
+        "name": "捕获分支",
+        "options": {
+          "0": "0",
+          "R": "R",
+          "N": "N",
+          "free": "自由"
+        }
+      },
+      "variant_name": {
+        "name": "变体名称"
+      },
+      "seed": {
+        "name": "随机种"
+      },
+      "replicate": {
+        "name": "重复次数"
+      },
+      "blocks": {
+        "name": "块"
+      },
+      "step_quantiles": {
+        "name": "步分位"
+      },
+      "steps": {
+        "name": "步数"
+      },
+      "segments": {
+        "name": "分段"
+      },
+      "store": {
+        "name": "存储"
+      },
+      "sketch_dim": {
+        "name": "草图维度"
+      },
+      "sketch_seed": {
+        "name": "草图随机种"
+      },
+      "stack_label": {
+        "name": "堆栈标签"
+      },
+      "sampler_label": {
+        "name": "采样器标签"
+      },
+      "corpus_row_id": {
+        "name": "语料行 ID"
+      },
+      "enabled": {
+        "name": "启用"
+      },
+      "cond_only": {
+        "name": "仅条件"
+      },
+      "index_root": {
+        "name": "索引根目录"
+      },
+      "tensor_root": {
+        "name": "张量根目录"
+      },
+      "notes": {
+        "name": "备注"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "模型"
+      },
+      "1": {
+        "name": "捕获"
+      }
+    }
+  },
+  "MAIConceptCaptureFlush": {
+    "display_name": "MAI 概念捕获 写出（Alpha）",
+    "inputs": {
+      "capture": {
+        "name": "捕获"
+      },
+      "after": {
+        "name": "之后"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "报告"
+      }
+    }
+  },
+  "MAIConceptInjectDelta": {
+    "display_name": "MAI 概念注入 Delta（Alpha）",
+    "inputs": {
+      "model": {
+        "name": "模型"
+      },
+      "pack_path": {
+        "name": "包路径"
+      },
+      "blocks": {
+        "name": "块"
+      },
+      "alpha": {
+        "name": "透明度"
+      },
+      "step_mode": {
+        "name": "步模式",
+        "options": {
+          "captured_only": "仅捕获步",
+          "nearest_all": "最近的全部"
+        }
+      },
+      "mode": {
+        "name": "模式",
+        "options": {
+          "frame": "帧级",
+          "separable": "可分离",
+          "full": "完整"
+        }
+      },
+      "control": {
+        "name": "控制方式",
+        "options": {
+          "none": "无",
+          "zero": "置零",
+          "time_shuffle": "时间打乱",
+          "space_shuffle": "空间打乱",
+          "sign_flip": "符号翻转"
+        }
+      },
+      "control_seed": {
+        "name": "控制随机种"
+      },
+      "cond_only": {
+        "name": "仅条件"
+      },
+      "enabled": {
+        "name": "启用"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "模型"
+      }
+    }
+  },
+  "MAIDialCombine": {
+    "display_name": "合并转盘（Alpha）",
+    "inputs": {
+      "a": {
+        "name": "A"
+      },
+      "b": {
+        "name": "B"
+      },
+      "weight_a": {
+        "name": "权重 A"
+      },
+      "weight_b": {
+        "name": "权重 B"
+      },
+      "orthogonalize": {
+        "name": "正交化"
+      },
+      "name": {
+        "name": "名称"
+      },
+      "description": {
+        "name": "描述"
+      },
+      "negative_label": {
+        "name": "负面标签"
+      },
+      "positive_label": {
+        "name": "正面标签"
+      },
+      "useful": {
+        "name": "有效范围"
+      },
+      "overcook": {
+        "name": "过火值"
+      },
+      "negative_useful": {
+        "name": "负面有效范围"
+      },
+      "negative_overcook": {
+        "name": "负面过火值"
+      },
+      "evidence": {
+        "name": "证据等级",
+        "options": {
+          "unknown": "未知",
+          "creator": "创作者",
+          "one-seed": "单种子",
+          "multi-seed": "多种子",
+          "multi-scene": "多场景"
+        }
+      },
+      "pipeline": {
+        "name": "管道"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "转盘"
+      }
+    }
+  },
+  "MAIDialHoldMap": {
+    "display_name": "转盘保持映射（Alpha）",
+    "inputs": {
+      "model": {
+        "name": "模型"
+      },
+      "hold_map": {
+        "name": "保持映射"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "模型"
+      }
+    }
+  },
+  "MAIDialMake": {
+    "display_name": "制作转盘（Alpha）",
+    "inputs": {
+      "clip": {
+        "name": "CLIP"
+      },
+      "model": {
+        "name": "模型"
+      },
+      "pairs": {
+        "name": "提示词对"
+      },
+      "subjects": {
+        "name": "主体"
+      },
+      "name": {
+        "name": "名称"
+      },
+      "inject": {
+        "name": "注入",
+        "options": {
+          "post_refiner (hook)": "精炼后（钩子）",
+          "pre_refiner (LoRA file)": "精炼前（LoRA 文件）"
+        }
+      },
+      "debias": {
+        "name": "去偏"
+      },
+      "nuisance_dims": {
+        "name": "干扰维度"
+      },
+      "description": {
+        "name": "描述"
+      },
+      "negative_label": {
+        "name": "负面标签"
+      },
+      "positive_label": {
+        "name": "正面标签"
+      },
+      "useful": {
+        "name": "有效范围"
+      },
+      "overcook": {
+        "name": "过火值"
+      },
+      "negative_useful": {
+        "name": "负面有效范围"
+      },
+      "negative_overcook": {
+        "name": "负面过火值"
+      },
+      "evidence": {
+        "name": "证据等级",
+        "options": {
+          "unknown": "未知",
+          "creator": "创作者",
+          "one-seed": "单种子",
+          "multi-seed": "多种子",
+          "multi-scene": "多场景"
+        }
+      },
+      "pipeline": {
+        "name": "管道"
+      },
+      "folder": {
+        "name": "保存位置"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "转盘"
+      }
+    }
+  },
+  "MAIDialMakeFromPictures": {
+    "display_name": "从图片制作转盘（Alpha）",
+    "inputs": {
+      "clip": {
+        "name": "CLIP"
+      },
+      "model": {
+        "name": "模型"
+      },
+      "prompt": {
+        "name": "提示词"
+      },
+      "name": {
+        "name": "名称"
+      },
+      "debias": {
+        "name": "去偏"
+      },
+      "nuisance_dims": {
+        "name": "干扰维度"
+      },
+      "pictures_a": {
+        "name": "图片组 A"
+      },
+      "pictures_b": {
+        "name": "图片组 B"
+      },
+      "description": {
+        "name": "描述"
+      },
+      "negative_label": {
+        "name": "负面标签"
+      },
+      "positive_label": {
+        "name": "正面标签"
+      },
+      "useful": {
+        "name": "有效范围"
+      },
+      "overcook": {
+        "name": "过火值"
+      },
+      "negative_useful": {
+        "name": "负面有效范围"
+      },
+      "negative_overcook": {
+        "name": "负面过火值"
+      },
+      "evidence": {
+        "name": "证据等级",
+        "options": {
+          "unknown": "未知",
+          "creator": "创作者",
+          "one-seed": "单种子",
+          "multi-seed": "多种子",
+          "multi-scene": "多场景"
+        }
+      },
+      "pipeline": {
+        "name": "管道"
+      },
+      "framing": {
+        "name": "构图方式",
+        "options": {
+          "picture prompt": "图片提示词",
+          "content": "内容",
+          "look": "外观",
+          "bare": "裸图",
+          "all averaged": "全部平均"
+        }
+      },
+      "group_a": {
+        "name": "组 A"
+      },
+      "group_b": {
+        "name": "组 B"
+      },
+      "folder_a": {
+        "name": "文件夹 A",
+        "options": {
+          "none": "无",
+          "3d": "3D"
+        }
+      },
+      "folder_b": {
+        "name": "文件夹 B",
+        "options": {
+          "none": "无",
+          "3d": "3D"
+        }
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "转盘"
+      }
+    }
+  },
+  "MAIDialMakeFromVideos": {
+    "display_name": "从视频制作转盘（Alpha）",
+    "inputs": {
+      "clip": {
+        "name": "CLIP"
+      },
+      "model": {
+        "name": "模型"
+      },
+      "videos_a": {
+        "name": "视频组 A"
+      },
+      "videos_b": {
+        "name": "视频组 B"
+      },
+      "prompt": {
+        "name": "提示词"
+      },
+      "name": {
+        "name": "名称"
+      },
+      "debias": {
+        "name": "去偏"
+      },
+      "nuisance_dims": {
+        "name": "干扰维度"
+      },
+      "description": {
+        "name": "描述"
+      },
+      "negative_label": {
+        "name": "负面标签"
+      },
+      "positive_label": {
+        "name": "正面标签"
+      },
+      "useful": {
+        "name": "有效范围"
+      },
+      "overcook": {
+        "name": "过火值"
+      },
+      "negative_useful": {
+        "name": "负面有效范围"
+      },
+      "negative_overcook": {
+        "name": "负面过火值"
+      },
+      "evidence": {
+        "name": "证据等级",
+        "options": {
+          "unknown": "未知",
+          "creator": "创作者",
+          "one-seed": "单种子",
+          "multi-seed": "多种子",
+          "multi-scene": "多场景"
+        }
+      },
+      "pipeline": {
+        "name": "管道"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "转盘"
+      }
+    }
+  },
+  "MAIDialRack": {
+    "display_name": "转盘架（Alpha）",
+    "inputs": {
+      "model": {
+        "name": "模型"
+      },
+      "rack": {
+        "name": "转盘架"
+      },
+      "dials": {
+        "name": "转盘"
+      },
+      "curve_audio": {
+        "name": "曲线音频"
+      },
+      "hold_map": {
+        "name": "保持映射"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "模型"
+      }
+    }
+  },
+  "MAIFlowCondition": {
+    "display_name": "条件",
+    "inputs": {
+      "expression": {
+        "name": "表达式"
+      },
+      "values": {
+        "name": "值"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "布尔"
+      },
+      "1": {
+        "name": "浮点数"
+      },
+      "2": {
+        "name": "整数"
+      },
+      "3": {
+        "name": "字符串"
+      }
+    }
+  },
+  "MAIFlowFilter": {
+    "display_name": "过滤（列表）",
+    "inputs": {
+      "items": {
+        "name": "项目列表"
+      },
+      "expression": {
+        "name": "表达式"
+      },
+      "values": {
+        "name": "值"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "保留项"
+      },
+      "1": {
+        "name": "保留数量"
+      }
+    }
+  },
+  "MAIFlowGate": {
+    "display_name": "门控（满足则处理）",
+    "inputs": {
+      "expression": {
+        "name": "表达式"
+      },
+      "processed": {
+        "name": "已处理"
+      },
+      "source": {
+        "name": "源"
+      },
+      "values": {
+        "name": "值"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "结果"
+      }
+    }
+  },
+  "MAIFlowLLMChoose": {
+    "display_name": "LLM 选择",
+    "inputs": {
+      "cases": {
+        "name": "分支列表"
+      },
+      "prompt": {
+        "name": "提示词"
+      },
+      "provider": {
+        "name": "提供方"
+      },
+      "model": {
+        "name": "模型"
+      },
+      "seed": {
+        "name": "随机种"
+      },
+      "temperature": {
+        "name": "温度"
+      },
+      "max_tokens": {
+        "name": "最大 Token 数"
+      },
+      "images": {
+        "name": "图像"
+      },
+      "args_schema": {
+        "name": "参数 Schema"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "选择结果"
+      },
+      "1": {
+        "name": "标签"
+      },
+      "2": {
+        "name": "参数"
+      },
+      "3": {
+        "name": "原始"
+      }
+    }
+  },
+  "MAIFlowLLMJudge": {
+    "display_name": "LLM 评判",
+    "inputs": {
+      "prompt": {
+        "name": "提示词"
+      },
+      "provider": {
+        "name": "提供方"
+      },
+      "model": {
+        "name": "模型"
+      },
+      "output_type": {
+        "name": "输出类型"
+      },
+      "json_schema": {
+        "name": "JSON Schema"
+      },
+      "seed": {
+        "name": "随机种"
+      },
+      "temperature": {
+        "name": "温度"
+      },
+      "max_tokens": {
+        "name": "最大 Token 数"
+      },
+      "images": {
+        "name": "图像"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "布尔"
+      },
+      "1": {
+        "name": "整数"
+      },
+      "2": {
+        "name": "浮点数"
+      },
+      "3": {
+        "name": "字符串"
+      },
+      "4": {
+        "name": "原始"
+      }
+    }
+  },
+  "MAIFlowPartition": {
+    "display_name": "分区（列表）",
+    "inputs": {
+      "items": {
+        "name": "项目列表"
+      },
+      "expression": {
+        "name": "表达式"
+      },
+      "values": {
+        "name": "值"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "保留项"
+      },
+      "1": {
+        "name": "拒绝项"
+      },
+      "2": {
+        "name": "保留数量"
+      },
+      "3": {
+        "name": "拒绝数量"
+      }
+    }
+  },
+  "MAIFlowProbe": {
+    "display_name": "流程探针",
+    "inputs": {
+      "value": {
+        "name": "值"
+      },
+      "name": {
+        "name": "名称"
+      },
+      "salt": {
+        "name": "盐值"
+      },
+      "delay_s": {
+        "name": "延迟（秒）"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "值"
+      }
+    }
+  },
+  "MAIFlowSafeFunction": {
+    "display_name": "安全函数",
+    "inputs": {
+      "source": {
+        "name": "源"
+      },
+      "max_iterations": {
+        "name": "最大迭代次数"
+      },
+      "max_ops": {
+        "name": "最大操作数"
+      },
+      "max_calls": {
+        "name": "最大调用数"
+      },
+      "max_collection": {
+        "name": "最大集合大小"
+      },
+      "max_tensor_elements": {
+        "name": "最大张量元素数"
+      },
+      "a": {
+        "name": "A"
+      },
+      "b": {
+        "name": "B"
+      },
+      "c": {
+        "name": "C"
+      },
+      "d": {
+        "name": "D"
+      },
+      "e": {
+        "name": "E"
+      },
+      "f": {
+        "name": "F"
+      },
+      "g": {
+        "name": "G"
+      },
+      "h": {
+        "name": "H"
+      },
+      "i": {
+        "name": "I"
+      },
+      "j": {
+        "name": "J"
+      },
+      "k": {
+        "name": "K"
+      },
+      "l": {
+        "name": "L"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "结果"
+      }
+    }
+  },
+  "MAIFlowSelect": {
+    "display_name": "惰性选择",
+    "inputs": {
+      "selector": {
+        "name": "选择器"
+      },
+      "labels": {
+        "name": "标签"
+      },
+      "case_0": {
+        "name": "分支 0"
+      },
+      "case_1": {
+        "name": "分支 1"
+      },
+      "case_2": {
+        "name": "分支 2"
+      },
+      "case_3": {
+        "name": "分支 3"
+      },
+      "case_4": {
+        "name": "分支 4"
+      },
+      "case_5": {
+        "name": "分支 5"
+      },
+      "case_6": {
+        "name": "分支 6"
+      },
+      "case_7": {
+        "name": "分支 7"
+      },
+      "default": {
+        "name": "默认"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "结果"
+      }
+    }
+  },
+  "MAILoadAudioVault": {
+    "display_name": "加载音频（加密保存）",
+    "inputs": {
+      "audio": {
+        "name": "音频"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "音频"
+      }
+    }
+  },
+  "MAILoadImageMaskVault": {
+    "display_name": "加载图像遮罩（加密保存）",
+    "inputs": {
+      "image": {
+        "name": "图像"
+      },
+      "channel": {
+        "name": "通道",
+        "options": {
+          "alpha": "Alpha",
+          "red": "红",
+          "green": "绿",
+          "blue": "蓝"
+        }
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "遮罩"
+      }
+    }
+  },
+  "MAILoadImageVault": {
+    "display_name": "加载图像（加密保存）",
+    "inputs": {
+      "image": {
+        "name": "图像"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "图像"
+      },
+      "1": {
+        "name": "遮罩"
+      }
+    }
+  },
+  "MAILoadVideoPath": {
+    "display_name": "MAI 加载视频（路径）",
+    "inputs": {
+      "path": {
+        "name": "路径"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "视频"
+      },
+      "1": {
+        "name": "帧"
+      },
+      "2": {
+        "name": "帧率"
+      }
+    }
+  },
+  "MAILoadVideoVault": {
+    "display_name": "加载视频（加密保存）",
+    "inputs": {
+      "file": {
+        "name": "文件"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "视频"
+      }
+    }
+  },
+  "MAIPreviewImagePrivate": {
+    "display_name": "预览图像（无元数据）",
+    "inputs": {
+      "images": {
+        "name": "图像"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "图像"
+      }
+    }
+  },
+  "MAIPreviewImageVault": {
+    "display_name": "预览图像（加密保存）",
+    "inputs": {
+      "images": {
+        "name": "图像"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "图像"
+      }
+    }
+  },
+  "MAIRatingRefused": {
+    "display_name": "超出评级上限：已拒绝",
+    "inputs": {
+      "why": {
+        "name": "原因"
+      }
+    }
+  },
+  "MAIRenderPreset": {
+    "display_name": "渲染预设（Alpha）",
+    "inputs": {
+      "model": {
+        "name": "模型"
+      },
+      "lora": {
+        "name": "LoRA"
+      },
+      "lora_strength": {
+        "name": "LoRA 强度"
+      },
+      "conditioning": {
+        "name": "条件",
+        "options": {
+          "FL2V (first frame)": "FL2V（首帧）",
+          "Ref2V (reference pictures)": "Ref2V（参考图片）"
+        }
+      },
+      "sampler": {
+        "name": "采样器"
+      },
+      "schedule": {
+        "name": "调度",
+        "options": {
+          "manual": "手动",
+          "simple": "简单",
+          "sgm_uniform": "SGM 均匀",
+          "karras": "Karras",
+          "exponential": "指数",
+          "ddim_uniform": "DDIM 均匀",
+          "beta": "Beta",
+          "normal": "正态",
+          "linear_quadratic": "线性二次",
+          "kl_optimal": "KL 最优"
+        }
+      },
+      "sigmas": {
+        "name": "Sigmas"
+      },
+      "steps": {
+        "name": "步数"
+      },
+      "derope_steps": {
+        "name": "De-rope 步数"
+      },
+      "shift_video": {
+        "name": "视频 Flow Shift"
+      },
+      "shift_audio": {
+        "name": "音频 Flow Shift"
+      },
+      "cfg": {
+        "name": "CFG"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "模型"
+      },
+      "1": {
+        "name": "采样器"
+      },
+      "2": {
+        "name": "Sigmas"
+      },
+      "3": {
+        "name": "De-rope 步数"
+      },
+      "4": {
+        "name": "条件"
+      },
+      "5": {
+        "name": "CFG"
+      }
+    }
+  },
+  "MAISaveImagePrivate": {
+    "display_name": "保存图像（无元数据）",
+    "inputs": {
+      "images": {
+        "name": "图像"
+      },
+      "filename_prefix": {
+        "name": "文件名前缀"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "图像"
+      }
+    }
+  },
+  "MAISaveImageVault": {
+    "display_name": "保存图像（加密保存）",
+    "inputs": {
+      "images": {
+        "name": "图像"
+      },
+      "filename_prefix": {
+        "name": "文件名前缀"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "图像"
+      }
+    }
+  },
+  "MAISaveVideoPrivate": {
+    "display_name": "保存视频（无元数据）",
+    "inputs": {
+      "video": {
+        "name": "视频"
+      },
+      "filename_prefix": {
+        "name": "文件名前缀"
+      },
+      "format": {
+        "name": "格式"
+      },
+      "codec": {
+        "name": "编码格式"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "视频"
+      }
+    }
+  },
+  "MAISaveVideoVault": {
+    "display_name": "保存视频（加密保存）",
+    "inputs": {
+      "video": {
+        "name": "视频"
+      },
+      "filename_prefix": {
+        "name": "文件名前缀"
+      },
+      "format": {
+        "name": "格式"
+      },
+      "codec": {
+        "name": "编码格式"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "视频"
+      }
+    }
+  },
+  "MAISeedHunter": {
+    "display_name": "MAI 随机种猎手（对比 + 胜出种子）",
+    "inputs": {
+      "winner": {
+        "name": "胜出视频"
+      },
+      "preview_crf": {
+        "name": "预览 CRF"
+      },
+      "video_1": {
+        "name": "视频 1"
+      },
+      "video_2": {
+        "name": "视频 2"
+      },
+      "video_3": {
+        "name": "视频 3"
+      },
+      "video_4": {
+        "name": "视频 4"
+      },
+      "video_5": {
+        "name": "视频 5"
+      },
+      "video_6": {
+        "name": "视频 6"
+      },
+      "label_1": {
+        "name": "标签 1"
+      },
+      "label_2": {
+        "name": "标签 2"
+      },
+      "label_3": {
+        "name": "标签 3"
+      },
+      "label_4": {
+        "name": "标签 4"
+      },
+      "label_5": {
+        "name": "标签 5"
+      },
+      "label_6": {
+        "name": "标签 6"
+      },
+      "seed_1": {
+        "name": "随机种 1"
+      },
+      "seed_2": {
+        "name": "随机种 2"
+      },
+      "seed_3": {
+        "name": "随机种 3"
+      },
+      "seed_4": {
+        "name": "随机种 4"
+      },
+      "seed_5": {
+        "name": "随机种 5"
+      },
+      "seed_6": {
+        "name": "随机种 6"
+      },
+      "hold_map": {
+        "name": "保持映射"
+      },
+      "curves": {
+        "name": "曲线"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "胜出视频"
+      },
+      "1": {
+        "name": "胜出随机种"
+      },
+      "2": {
+        "name": "胜出索引"
+      },
+      "3": {
+        "name": "清单"
+      }
+    }
+  },
+  "MAISelectEveryNth": {
+    "display_name": "MAI 每隔第 N 帧选取",
+    "inputs": {
+      "images": {
+        "name": "图像"
+      },
+      "every": {
+        "name": "间隔"
+      },
+      "offset": {
+        "name": "偏移"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "图像"
+      }
+    }
+  },
+  "MAISnapCopyScore": {
+    "display_name": "复制评分（Snap）",
+    "inputs": {
+      "clip_vision": {
+        "name": "CLIP视觉"
+      },
+      "reference": {
+        "name": "参考图像"
+      },
+      "images": {
+        "name": "图像"
+      }
+    }
+  },
+  "MAISnapCut": {
+    "display_name": "首尾相接排列片段（Snap Book）",
+    "inputs": {
+      "clips": {
+        "name": "片段"
+      },
+      "plan": {
+        "name": "计划"
+      },
+      "width": {
+        "name": "宽度"
+      },
+      "height": {
+        "name": "高度"
+      },
+      "fps": {
+        "name": "帧率"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "视频"
+      }
+    }
+  },
+  "MAISnapEyeColour": {
+    "display_name": "Snap：保留眼睛颜色",
+    "inputs": {
+      "images": {
+        "name": "图像"
+      },
+      "masks": {
+        "name": "遮罩"
+      },
+      "reference": {
+        "name": "参考图像"
+      },
+      "reference_mask": {
+        "name": "参考遮罩"
+      },
+      "strength": {
+        "name": "强度"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "图像"
+      },
+      "1": {
+        "name": "报告"
+      }
+    }
+  },
+  "MAISnapFaceModelLoader": {
+    "display_name": "加载面部模型（Snap）",
+    "inputs": {
+      "model_name": {
+        "name": "模型名称"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "面部模型"
+      }
+    }
+  },
+  "MAISnapIdentity": {
+    "display_name": "面部与头发（Snap）",
+    "inputs": {
+      "face_model": {
+        "name": "面部模型"
+      },
+      "image": {
+        "name": "图像"
+      },
+      "faces": {
+        "name": "人脸数据"
+      },
+      "hair": {
+        "name": "头发"
+      },
+      "encoder": {
+        "name": "编码器"
+      }
+    }
+  },
+  "MAISnapKeepEdit": {
+    "display_name": "保留区域编辑的修改（Snap）",
+    "inputs": {
+      "redraw": {
+        "name": "重绘"
+      },
+      "edit": {
+        "name": "编辑"
+      },
+      "before": {
+        "name": "之前"
+      },
+      "feather": {
+        "name": "羽化"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "图像"
+      }
+    }
+  },
+  "MAISnapLouder": {
+    "display_name": "把声音调大（Snap）",
+    "inputs": {
+      "video": {
+        "name": "视频"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "视频"
+      }
+    }
+  },
+  "MAISnapSeam": {
+    "display_name": "接缝检查（Snap）",
+    "inputs": {
+      "picture": {
+        "name": "图片"
+      },
+      "edit": {
+        "name": "编辑"
+      },
+      "x": {
+        "name": "X"
+      },
+      "y": {
+        "name": "Y"
+      },
+      "feather": {
+        "name": "羽化"
+      }
+    }
+  },
+  "MAISnapVoice": {
+    "display_name": "语音（Snap）",
+    "inputs": {
+      "voice_model": {
+        "name": "语音模型"
+      },
+      "audio": {
+        "name": "音频"
+      }
+    }
+  },
+  "MAISnapVoiceModelLoader": {
+    "display_name": "加载语音模型（Snap）",
+    "inputs": {
+      "model_name": {
+        "name": "模型名称"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "语音模型"
+      }
+    }
+  },
+  "MAIVideoCompare": {
+    "display_name": "MAI 视频对比（2–6 路，同步）",
+    "inputs": {
+      "winner": {
+        "name": "胜出视频"
+      },
+      "preview_crf": {
+        "name": "预览 CRF"
+      },
+      "video_1": {
+        "name": "视频 1"
+      },
+      "video_2": {
+        "name": "视频 2"
+      },
+      "video_3": {
+        "name": "视频 3"
+      },
+      "video_4": {
+        "name": "视频 4"
+      },
+      "video_5": {
+        "name": "视频 5"
+      },
+      "video_6": {
+        "name": "视频 6"
+      },
+      "label_1": {
+        "name": "标签 1"
+      },
+      "label_2": {
+        "name": "标签 2"
+      },
+      "label_3": {
+        "name": "标签 3"
+      },
+      "label_4": {
+        "name": "标签 4"
+      },
+      "label_5": {
+        "name": "标签 5"
+      },
+      "label_6": {
+        "name": "标签 6"
+      },
+      "hold_map": {
+        "name": "保持映射"
+      },
+      "curves": {
+        "name": "曲线"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "胜出视频"
+      },
+      "1": {
+        "name": "胜出索引"
+      },
+      "2": {
+        "name": "清单"
+      }
+    }
+  },
+  "MAIVideoOut": {
+    "display_name": "MAI 视频输出（文件 + sidecar + 草稿预览）",
+    "inputs": {
+      "images": {
+        "name": "图像"
+      },
+      "fps": {
+        "name": "帧率"
+      },
+      "filename_prefix": {
+        "name": "文件名前缀"
+      },
+      "codec": {
+        "name": "编码格式",
+        "options": {
+          "h264": "H.264",
+          "av1": "AV1"
+        }
+      },
+      "crf": {
+        "name": "CRF"
+      },
+      "audio": {
+        "name": "音频"
+      },
+      "hold_map": {
+        "name": "保持映射"
+      },
+      "notes": {
+        "name": "备注"
+      },
+      "write_meta": {
+        "name": "写入元数据"
+      },
+      "draft_preview": {
+        "name": "草稿预览"
+      },
+      "latent": {
+        "name": "Latent"
+      },
+      "draft_vae_name": {
+        "name": "草稿 VAE 名称"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "路径"
+      },
+      "1": {
+        "name": "元数据 JSON"
+      }
+    }
+  },
+  "MAIVideoOutPrivate": {
+    "display_name": "MAI 视频输出（无元数据）",
+    "inputs": {
+      "images": {
+        "name": "图像"
+      },
+      "fps": {
+        "name": "帧率"
+      },
+      "filename_prefix": {
+        "name": "文件名前缀"
+      },
+      "codec": {
+        "name": "编码格式",
+        "options": {
+          "h264": "H.264",
+          "av1": "AV1"
+        }
+      },
+      "crf": {
+        "name": "CRF"
+      },
+      "audio": {
+        "name": "音频"
+      },
+      "hold_map": {
+        "name": "保持映射"
+      },
+      "notes": {
+        "name": "备注"
+      },
+      "write_meta": {
+        "name": "写入元数据"
+      },
+      "draft_preview": {
+        "name": "草稿预览"
+      },
+      "latent": {
+        "name": "Latent"
+      },
+      "draft_vae_name": {
+        "name": "草稿 VAE 名称"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "路径"
+      },
+      "1": {
+        "name": "元数据 JSON"
+      }
+    }
+  },
+  "MAIVideoOutVault": {
+    "display_name": "MAI 视频输出（加密保存）",
+    "inputs": {
+      "images": {
+        "name": "图像"
+      },
+      "fps": {
+        "name": "帧率"
+      },
+      "filename_prefix": {
+        "name": "文件名前缀"
+      },
+      "codec": {
+        "name": "编码格式",
+        "options": {
+          "h264": "H.264",
+          "av1": "AV1"
+        }
+      },
+      "crf": {
+        "name": "CRF"
+      },
+      "audio": {
+        "name": "音频"
+      },
+      "hold_map": {
+        "name": "保持映射"
+      },
+      "notes": {
+        "name": "备注"
+      },
+      "write_meta": {
+        "name": "写入元数据"
+      },
+      "draft_preview": {
+        "name": "草稿预览"
+      },
+      "latent": {
+        "name": "Latent"
+      },
+      "draft_vae_name": {
+        "name": "草稿 VAE 名称"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "路径"
+      },
+      "1": {
+        "name": "元数据 JSON"
+      }
+    }
+  },
+  "RelayVSRBlockLoopLab": {
+    "display_name": "RelayVSR • 块循环实验室（实验）",
+    "inputs": {
+      "preset": {
+        "name": "预设",
+        "options": {
+          "custom": "自定义",
+          "EXPERIMENTAL_flash_middle_2pass": "EXPERIMENTAL_flash_middle_2pass",
+          "EXPERIMENTAL_wan_early_2pass": "EXPERIMENTAL_wan_early_2pass",
+          "EXPERIMENTAL_wan_early_half_strength": "EXPERIMENTAL_wan_early_half_strength",
+          "EXPERIMENTAL_wan_every_other_call": "EXPERIMENTAL_wan_every_other_call",
+          "EXPERIMENTAL_wan_late_2pass": "EXPERIMENTAL_wan_late_2pass",
+          "EXPERIMENTAL_wan_middle_2pass": "EXPERIMENTAL_wan_middle_2pass",
+          "EXPERIMENTAL_wan_middle_damped_3pass": "EXPERIMENTAL_wan_middle_damped_3pass",
+          "baseline_off": "关闭基线",
+          "discovery_scan": "发现扫描"
+        }
+      },
+      "mode": {
+        "name": "模式",
+        "options": {
+          "off": "关闭",
+          "discover": "发现",
+          "experiment": "实验"
+        }
+      },
+      "wan_indices": {
+        "name": "Wan 索引"
+      },
+      "wan_passes": {
+        "name": "Wan 遍数"
+      },
+      "wan_strength": {
+        "name": "Wan 强度"
+      },
+      "wan_mixing": {
+        "name": "Wan 混合",
+        "options": {
+          "final_blend": "最终混合",
+          "damped_steps": "阻尼步进"
+        }
+      },
+      "wan_loop_style": {
+        "name": "Wan 循环方式",
+        "options": {
+          "group": "分组",
+          "per_block": "逐块"
+        }
+      },
+      "wan_owner_regex": {
+        "name": "Wan 归属正则"
+      },
+      "flash_indices": {
+        "name": "Flash 索引"
+      },
+      "flash_passes": {
+        "name": "Flash 遍数"
+      },
+      "flash_strength": {
+        "name": "Flash 强度"
+      },
+      "flash_mixing": {
+        "name": "Flash 混合",
+        "options": {
+          "final_blend": "最终混合",
+          "damped_steps": "阻尼步进"
+        }
+      },
+      "flash_loop_style": {
+        "name": "Flash 循环方式",
+        "options": {
+          "group": "分组",
+          "per_block": "逐块"
+        }
+      },
+      "flash_owner_regex": {
+        "name": "Flash 归属正则"
+      },
+      "allow_stateful_repeats": {
+        "name": "允许有状态重复"
+      },
+      "allow_advanced_modes": {
+        "name": "允许高级模式"
+      },
+      "advanced_json": {
+        "name": "高级 JSON"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "循环实验"
+      }
+    }
+  },
+  "RelayVSRModelSettings": {
+    "display_name": "RelayVSR • X2 / X4 设置",
+    "inputs": {
+      "variant": {
+        "name": "变体",
+        "options": {
+          "X4 original (recommended, also for 2x)": "X4 原版（推荐，也支持 2 倍）",
+          "X2 native": "X2 原生"
+        }
+      },
+      "lightx2v_root": {
+        "name": "LightX2V 根目录"
+      },
+      "model_dir": {
+        "name": "模型目录"
+      },
+      "python_executable": {
+        "name": "Python 可执行文件"
+      },
+      "execution_mode": {
+        "name": "执行模式",
+        "options": {
+          "single GPU": "单 GPU",
+          "Wan block offload": "Wan 块卸载",
+          "two GPUs (SP)": "双 GPU（SP）"
+        }
+      },
+      "gpu_ids": {
+        "name": "GPU 编号"
+      },
+      "output_scale": {
+        "name": "输出缩放"
+      },
+      "compile_model": {
+        "name": "编译模型"
+      },
+      "warmup": {
+        "name": "预热"
+      },
+      "clip_len": {
+        "name": "片段长度"
+      },
+      "queue_size": {
+        "name": "队列长度"
+      },
+      "codec": {
+        "name": "编码格式"
+      },
+      "crf": {
+        "name": "CRF"
+      },
+      "preserve_audio": {
+        "name": "保留音频"
+      },
+      "unload_comfy_models": {
+        "name": "卸载 ComfyUI 模型"
+      },
+      "quality": {
+        "name": "质量",
+        "options": {
+          "faithful: back-projection + residual 0.85": "保真：反投影 + 残差 0.85",
+          "faithful + Flash loop": "保真 + Flash 循环",
+          "smooth: every knob (calmest, least texture)": "平滑：全部调节（最稳、纹理最少）",
+          "stock (the model as shipped)": "原版（模型默认）",
+          "custom (use the knobs below)": "自定义（使用下方参数）"
+        }
+      },
+      "back_projection": {
+        "name": "反投影"
+      },
+      "residual_gain": {
+        "name": "残差增益"
+      },
+      "downscale": {
+        "name": "降采样",
+        "options": {
+          "bicubic": "双三次",
+          "bilinear": "双线性",
+          "area": "区域"
+        }
+      },
+      "vram": {
+        "name": "显存策略",
+        "options": {
+          "auto (pick by GPU memory)": "自动（按显存选择）",
+          "24 GB+: int8 ConvRot weights + int8 KV (fastest)": "24 GB+：int8 ConvRot 权重 + int8 KV（最快）",
+          "16 GB: W6A8 weights + int4 KV": "16 GB：W6A8 权重 + int4 KV",
+          "16 GB, most headroom: W4A8 weights + int4 KV": "16 GB，最大余量：W4A8 权重 + int4 KV",
+          "full precision: bf16 weights + bf16 KV": "全精度：bf16 权重 + bf16 KV"
+        }
+      },
+      "loop_experiment": {
+        "name": "循环实验"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "设置"
+      }
+    }
+  },
+  "RelayVSRUpscaleFrames": {
+    "display_name": "RelayVSR • 放大图像序列",
+    "inputs": {
+      "settings": {
+        "name": "设置"
+      },
+      "images": {
+        "name": "图像"
+      },
+      "fps": {
+        "name": "帧率"
+      },
+      "output_subfolder": {
+        "name": "输出子目录"
+      },
+      "filename_prefix": {
+        "name": "文件名前缀"
+      },
+      "seed": {
+        "name": "随机种"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "视频"
+      },
+      "1": {
+        "name": "输出路径"
+      },
+      "2": {
+        "name": "统计 JSON"
+      }
+    }
+  },
+  "RelayVSRUpscalePath": {
+    "display_name": "RelayVSR • 放大视频文件",
+    "inputs": {
+      "settings": {
+        "name": "设置"
+      },
+      "input_path": {
+        "name": "输入路径"
+      },
+      "output_subfolder": {
+        "name": "输出子目录"
+      },
+      "filename_prefix": {
+        "name": "文件名前缀"
+      },
+      "seed": {
+        "name": "随机种"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "视频"
+      },
+      "1": {
+        "name": "输出路径"
+      },
+      "2": {
+        "name": "统计 JSON"
+      }
+    }
+  },
+  "RelayVSRUpscaleVideo": {
+    "display_name": "RelayVSR • 放大视频",
+    "inputs": {
+      "settings": {
+        "name": "设置"
+      },
+      "video": {
+        "name": "视频"
+      },
+      "seed": {
+        "name": "随机种"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "视频"
+      },
+      "1": {
+        "name": "统计 JSON"
+      }
+    }
+  },
+  "RelayVSRVideoToFrames": {
+    "display_name": "RelayVSR • 视频解码为图像批次",
+    "inputs": {
+      "input_path": {
+        "name": "输入路径"
+      },
+      "max_frames": {
+        "name": "最大帧数"
+      },
+      "max_total_megapixels": {
+        "name": "最大总百万像素"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "图像"
+      },
+      "1": {
+        "name": "帧率"
+      }
+    }
+  }
+}

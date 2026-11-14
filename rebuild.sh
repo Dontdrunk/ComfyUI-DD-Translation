@@ -8,6 +8,7 @@ PY="${PYTHON:-python3}"
   --old source/zh-CN \
   --inventory inventory/node_slots_snapshot.json \
   --extra scripts/manual_zh.json \
+  --extra scripts/mainodes_zh.json \
   --manual-settings scripts/manual_settings_zh.json \
   --plugins-dir "$PLUGINS" \
   --out locales/zh \

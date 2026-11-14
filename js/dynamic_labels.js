@@ -10,6 +10,9 @@ import { app } from "../../../scripts/app.js";
 const NODE_LABELS = {
   RTXVideoSuperResolution: { scale: "缩放倍数", width: "目标宽度", height: "目标高度" },
   RTXVideoFrameGeneration: { multiplier: "帧率倍数", timestep: "时间步位置" },
+  // 下面两个下拉选项的英文带单引号，vue-i18n 的点路径解析不了，只能按文本替换。
+  H3AudioRecover: { "use pass 2's foley - ONLY IF the audio rows were seeded": "使用第二遍的拟音（仅当音频行已播种）" },
+  H3SeamNormalize: { "gain (match the handle's rms)": "增益（匹配接缝 RMS）" },
 };
 
 function localeIsZh() {

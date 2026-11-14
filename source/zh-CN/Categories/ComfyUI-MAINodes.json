@@ -1,0 +1,21 @@
+{
+  "minimax": "MiniMax",
+  "motion": "运动",
+  "timeline": "时间线",
+  "custom_sampling": "自定义采样",
+  "samplers": "采样器",
+  "schedulers": "调度器",
+  "model_patches": "模型补丁",
+  "MAINodes": "MAINodes",
+  "MAI": "MAI",
+  "concept (alpha)": "概念（Alpha）",
+  "VRAM Lab": "显存实验室",
+  "alpha": "Alpha",
+  "Dials": "转盘",
+  "AI Decisions": "AI 决策",
+  "H3": "H3",
+  "snap": "Snap",
+  "RelayVSR": "RelayVSR",
+  "Research": "研究",
+  "model": "模型"
+}
