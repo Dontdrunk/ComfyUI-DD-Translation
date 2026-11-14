@@ -34,18 +34,106 @@ function patchWidget(widget, map) {
   return true;
 }
 
+/**
+ * 少数节点用 io.DynamicCombo 生成子控件（scale / width / height ...）。
+ * 前端是在运行时按 `父槽位.子名` 动态补进来的，input.label 直接用英文原名，
+ * 官方 nodeDefs 翻译链路覆盖不到，这里按“节点类名 + 父槽位 + 子名”补中文显示。
+ */
+const DYNAMIC_LABELS = {
+  RTXVideoSuperResolution: {
+    resize_type: { scale: "缩放倍数", width: "目标宽度", height: "目标高度" },
+  },
+  RTXVideoFrameGeneration: {
+    generation_type: { multiplier: "帧率倍数", timestep: "时间步位置" },
+  },
+};
+
+/** V3 节点内部输出槽名同样不在 nodeDefs 翻译范围，按类名补中文显示。 */
+const OUTPUT_LABELS = {
+  RTXVideoSuperResolution: { upscaled_images: "放大后的图像" },
+  RTXTrueHDR: { hdr_images: "HDR 图像" },
+  RTXVideoFrameGeneration: { interpolated_images: "插帧后的图像" },
+};
+
+function setLabel(target, zh) {
+  if (!target) return false;
+  if (target.__ddLabelPrev === undefined) target.__ddLabelPrev = target.label;
+  if (target.__ddNamePrev === undefined) target.__ddNamePrev = target.display_name;
+  const on = localeIsZh();
+  target.label = on ? zh : target.__ddLabelPrev;
+  if (target.__ddNamePrev !== undefined) {
+    target.display_name = on ? zh : target.__ddNamePrev;
+  }
+  // 前端 1.58.5 的动态子控件标签取自 spec.display_name，必须一起改
+  const spec = target.spec;
+  if (spec && typeof spec === "object") {
+    if (target.__ddSpecPrev === undefined) target.__ddSpecPrev = spec.display_name;
+    spec.display_name = on ? zh : target.__ddSpecPrev;
+  }
+  return true;
+}
+
+function patchDynamicInputs(node, spec) {
+  let changed = false;
+  for (const [parent, children] of Object.entries(spec)) {
+    for (const [child, zh] of Object.entries(children)) {
+      const full = parent + "." + child;
+      for (const slot of node.inputs || []) {
+        if (slot && (slot.name === full || slot.name === child)) {
+          changed = setLabel(slot, zh) || changed;
+        }
+      }
+      for (const widget of node.widgets || []) {
+        if (widget && (widget.name === full || widget.name === child)) {
+          changed = setLabel(widget, zh) || changed;
+        }
+      }
+    }
+    // 切换动态下拉后会重建子输入，包一层 callback，换档后重新套中文
+    const combo = (node.widgets || []).find((w) => w && w.name === parent);
+    if (combo && !combo.__ddLabelHook) {
+      const prev = combo.callback;
+      combo.callback = function (...args) {
+        const ret = typeof prev === "function" ? prev.apply(this, args) : undefined;
+        setTimeout(() => {
+          try {
+            patchNode(node);
+          } catch (e) {
+            /* ignore */
+          }
+        }, 0);
+        return ret;
+      };
+      combo.__ddLabelHook = true;
+    }
+  }
+  return changed;
+}
+
 function patchNode(node) {
   if (!node || !node.widgets || !Array.isArray(node.widgets)) return;
   const cls = node.comfyClass;
   if (!cls) return;
   const maps = OPTIONS[cls];
-  if (!maps) return;
+  const dyn = DYNAMIC_LABELS[cls];
+  const outLabels = OUTPUT_LABELS[cls];
+  if (!maps && !dyn && !outLabels) return;
   let changed = false;
-  for (const widget of node.widgets) {
-    if (!widget || typeof widget.name !== "string") continue;
-    const map = maps[widget.name];
-    if (!map) continue;
-    if (patchWidget(widget, map)) changed = true;
+  if (maps) {
+    for (const widget of node.widgets) {
+      if (!widget || typeof widget.name !== "string") continue;
+      const map = maps[widget.name];
+      if (!map) continue;
+      if (patchWidget(widget, map)) changed = true;
+    }
+  }
+  if (dyn) changed = patchDynamicInputs(node, dyn) || changed;
+  if (outLabels && Array.isArray(node.outputs)) {
+    for (const slot of node.outputs) {
+      const zh = slot && outLabels[slot.name];
+      if (!zh) continue;
+      changed = setLabel(slot, zh) || changed;
+    }
   }
   if (changed) {
     try {

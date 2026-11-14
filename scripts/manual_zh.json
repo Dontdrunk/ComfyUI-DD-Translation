@@ -292,5 +292,138 @@
         "name": "输出细节强度"
       }
     }
+  },
+  "RTXVideoSuperResolution": {
+    "display_name": "RTX 视频超分辨率",
+    "description": "使用 NVIDIA 视频特效对图像进行放大、降噪或去模糊。",
+    "inputs": {
+      "images": {
+        "name": "图像"
+      },
+      "resize_type": {
+        "name": "缩放方式",
+        "options": {
+          "scale by multiplier": "按倍数缩放",
+          "target dimensions": "指定目标尺寸"
+        }
+      },
+      "scale": {
+        "name": "缩放倍数"
+      },
+      "width": {
+        "name": "目标宽度"
+      },
+      "height": {
+        "name": "目标高度"
+      },
+      "quality": {
+        "name": "质量档位",
+        "options": {
+          "BICUBIC": "双三次插值",
+          "LOW": "低",
+          "MEDIUM": "中",
+          "HIGH": "高",
+          "ULTRA": "超高",
+          "DENOISE_LOW": "降噪（低）",
+          "DENOISE_MEDIUM": "降噪（中）",
+          "DENOISE_HIGH": "降噪（高）",
+          "DENOISE_ULTRA": "降噪（超高）",
+          "DEBLUR_LOW": "去模糊（低）",
+          "DEBLUR_MEDIUM": "去模糊（中）",
+          "DEBLUR_HIGH": "去模糊（高）",
+          "DEBLUR_ULTRA": "去模糊（超高）",
+          "HIGHBITRATE_LOW": "高码率（低）",
+          "HIGHBITRATE_MEDIUM": "高码率（中）",
+          "HIGHBITRATE_HIGH": "高码率（高）",
+          "HIGHBITRATE_ULTRA": "高码率（超高）",
+          "STREAMING_MEDIUM": "流式（中）",
+          "STREAMING_ULTRA": "流式（超高）"
+        }
+      },
+      "strength": {
+        "name": "强度"
+      },
+      "image_encoding": {
+        "name": "图像编码",
+        "options": {
+          "8-bit RGB": "8 位 RGB",
+          "10-bit RGB (RGB10A2)": "10 位 RGB（RGB10A2）"
+        }
+      }
+    }
+  },
+  "RTXTrueHDR": {
+    "display_name": "RTX 视频 HDR",
+    "description": "使用 NVIDIA RTX Video HDR 将 SDR 图像转换为 HLG 或 PQ 的 HDR 图像数据。",
+    "inputs": {
+      "images": {
+        "name": "图像"
+      },
+      "contrast": {
+        "name": "对比度"
+      },
+      "saturation": {
+        "name": "饱和度"
+      },
+      "middle_gray": {
+        "name": "中灰基准"
+      },
+      "luminance": {
+        "name": "峰值亮度"
+      },
+      "debanding": {
+        "name": "去色带"
+      },
+      "output_colorspace": {
+        "name": "输出色彩空间",
+        "options": {
+          "HDR": "HDR（HLG）",
+          "HDR PQ": "HDR PQ"
+        }
+      }
+    }
+  },
+  "RTXVideoFrameGeneration": {
+    "display_name": "RTX 视频插帧",
+    "description": "使用 NVIDIA 视频特效生成视频中间帧（插帧 / 慢动作）。",
+    "inputs": {
+      "images": {
+        "name": "图像"
+      },
+      "generation_type": {
+        "name": "生成方式",
+        "options": {
+          "frame rate multiplier": "按帧率倍数",
+          "specific timestep": "指定时间步"
+        }
+      },
+      "multiplier": {
+        "name": "帧率倍数"
+      },
+      "timestep": {
+        "name": "时间步位置"
+      },
+      "mode": {
+        "name": "帧生成模式",
+        "options": {
+          "LOW": "低",
+          "MEDIUM": "中",
+          "HIGH": "高"
+        }
+      },
+      "automatic_shot_change_detection": {
+        "name": "自动检测镜头切换"
+      },
+      "shot_change": {
+        "name": "标记为镜头切换"
+      },
+      "image_encoding": {
+        "name": "图像编码",
+        "options": {
+          "8-bit RGB": "8 位 RGB",
+          "10-bit RGB (RGB10A2)": "10 位 RGB（RGB10A2）"
+        }
+      }
+    }
   }
 }
