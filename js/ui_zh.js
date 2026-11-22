@@ -191,7 +191,18 @@ const MANAGER_ZH = {
   "This action is not allowed with this security level configuration.": "当前安全级别不允许该操作。",
   "ComfyUI version is outdated.": "ComfyUI 版本过旧。",
   "Please update ComfyUI to use Manager normally.": "请更新 ComfyUI 以正常使用管理器。",
-  "Confirm": "确认"
+  "Confirm": "确认",
+
+  // --- ComfyUI Manager V3.40+ 面板补充（实测 V3.43.2） ---
+  "Channel (cache)": "频道（缓存）",
+  "Use higher version": "使用更高版本",
+  "Use my version": "坚持用我的版本",
+  "ComfyUI Nightly Version": "ComfyUI 开发版",
+  "ComfyUI Legacy Version": "ComfyUI 旧版",
+  "Failed to load": "加载失败",
+  "Failed to load graph": "加载子工作流失败",
+  "conflict": "冲突",
+
 };
 
 const SETTINGS_ZH = {
